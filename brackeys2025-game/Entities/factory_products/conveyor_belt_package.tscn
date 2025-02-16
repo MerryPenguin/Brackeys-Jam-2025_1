@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://df6tl7fr7b6my"]
+
+[ext_resource type="Script" uid="uid://dsiy3ugabmboq" path="res://Entities/factory_products/conveyor_belt_package.gd" id="1_21ubm"]
+[ext_resource type="Texture2D" uid="uid://dxa22uteuj8hv" path="res://Assets/Images/placeholder/pineapple-s.png" id="1_45iep"]
+
+[node name="ConveyorBeltPackage" type="PathFollow2D"]
+script = ExtResource("1_21ubm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_45iep")

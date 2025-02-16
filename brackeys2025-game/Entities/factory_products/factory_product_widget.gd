@@ -5,4 +5,4 @@
 # they can go in inventory or storage chests
 # they can pile up on assembly lines
 
-extends Node2D
+class_name ProductionWidget extends Node2D
