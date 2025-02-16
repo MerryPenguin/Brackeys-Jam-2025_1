@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://u40bu42wivm4"]
+[gd_scene load_steps=4 format=3 uid="uid://u40bu42wivm4"]
 
 [ext_resource type="Script" uid="uid://2qur1tdyetq1" path="res://Entities/factory_products/factory_product_widget.gd" id="1_xm7u0"]
+[ext_resource type="Texture2D" uid="uid://dxa22uteuj8hv" path="res://Assets/Images/placeholder/pineapple-s.png" id="2_84f3h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_60j63"]
+radius = 16.0
 
 [node name="FactoryProductWidget" type="Node2D"]
 script = ExtResource("1_xm7u0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_84f3h")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_60j63")
