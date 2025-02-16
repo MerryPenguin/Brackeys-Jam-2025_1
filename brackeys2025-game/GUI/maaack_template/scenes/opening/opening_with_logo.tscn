@@ -22,7 +22,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StickyNote" parent="BrainstormingPanel" index="0" instance=ExtResource("5_y5lfx")]
+[node name="Label" type="Label" parent="BrainstormingPanel" index="0"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -101.5
+offset_right = 101.5
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+text = "Brain Storming"
+
+[node name="StickyNote" parent="BrainstormingPanel" index="1" instance=ExtResource("5_y5lfx")]
 layout_mode = 1
 NoteTitle = "Big Idea"
 NoteText = "GWJ Theme is \"Erase\""

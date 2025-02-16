@@ -7,7 +7,7 @@
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
-length = 2.4
+step = 0.2
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -15,7 +15,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2.4),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -29,7 +29,7 @@ tracks/1/path = NodePath("MenuContainer/TitleMargin/TitleContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -41,7 +41,7 @@ tracks/2/path = NodePath("MenuContainer/SubTitleMargin/SubTitleContainer:modulat
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8, 1.6),
+"times": PackedFloat32Array(0, 0.2, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -53,7 +53,7 @@ tracks/3/path = NodePath("MenuContainer/MenuButtonsMargin/MenuButtonsContainer:m
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.6, 2.4),
+"times": PackedFloat32Array(0, 0.4, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -65,7 +65,7 @@ tracks/4/path = NodePath("FlowControlContainer:mouse_filter")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 2.4),
+"times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 2]
@@ -77,7 +77,7 @@ tracks/5/path = NodePath("VersionMargin/VersionContainer:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.6, 2.4),
+"times": PackedFloat32Array(0, 0.6, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -347,7 +347,7 @@ states/OpenSubMenu/node = SubResource("13")
 states/OpenSubMenu/position = Vector2(734, 123)
 states/Start/position = Vector2(82, 123)
 transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "Start", "Intro", SubResource("AnimationNodeStateMachineTransition_j0orr"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc")]
-graph_offset = Vector2(-180.277, 49)
+graph_offset = Vector2(-118.44, 72.175)
 
 [node name="MainMenu" instance=ExtResource("1_tp56l")]
 script = ExtResource("2_fg8c4")
