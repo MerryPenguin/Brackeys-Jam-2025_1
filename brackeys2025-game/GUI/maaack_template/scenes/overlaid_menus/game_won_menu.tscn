@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddom1b32w3kwd"]
+
+[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/extras/scenes/overlaid_menus/game_won_menu.tscn" id="1_jooul"]
+[ext_resource type="Script" path="res://GUI/maaack_template/scenes/overlaid_menus/game_won_menu.gd" id="2_j7qrv"]
+
+[node name="GameWonMenu" instance=ExtResource("1_jooul")]
+script = ExtResource("2_j7qrv")
