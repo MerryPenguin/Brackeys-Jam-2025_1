@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dger3w77ypgm"]
+
+[ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="1_iw74v"]
+
+[node name="RequirementsManifest" type="Node"]
+script = ExtResource("1_iw74v")

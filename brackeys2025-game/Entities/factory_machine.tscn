@@ -84,5 +84,8 @@ grow_vertical = 2
 text = "OUT"
 horizontal_alignment = 1
 
+[node name="ProductionTimer" type="Timer" parent="."]
+
 [connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_exited"]
+[connection signal="timeout" from="ProductionTimer" to="." method="_on_production_timer_timeout"]
