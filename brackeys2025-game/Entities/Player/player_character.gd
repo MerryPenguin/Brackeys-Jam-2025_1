@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+func _init():
+	Globals.current_player = self
+
 func _ready():
 	pass
 	

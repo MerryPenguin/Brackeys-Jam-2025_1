@@ -50,7 +50,7 @@ offset_left = -486.0
 offset_top = -292.0
 offset_right = -230.0
 offset_bottom = -36.0
-NoteTitle = "Big Idea"
+NoteTitle = "Big Idea - Sim QC"
 NoteText = "Factory game with inspection/detection element, where player inspects customers to make sure they fit a profile
 "
 
@@ -62,7 +62,7 @@ offset_right = 68.0
 offset_bottom = 69.0
 NoteTitle = "Alternate Idea
 "
-NoteText = "Since \"Papers Please\" and \"Not my Neighbour\" are effectively a Quality Assurance simulators, we could make the discriminator step part of the factory process.. Sim-QC
+NoteText = "Since \"Papers Please\" and \"Not my Neighbour\" are effectively a Quality Control simulators, we could make the discriminator step part of the factory process.. Sim-QC
 "
 
 [node name="OtherIdea" parent="BrainstormingPanel" index="4" instance=ExtResource("5_y5lfx")]

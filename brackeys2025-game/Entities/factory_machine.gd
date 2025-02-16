@@ -18,19 +18,8 @@ func _ready():
 	#setup_inventory_dict()
 	$ProductionTimer.set_wait_time(production_time)
 	$ProductionTimer.start()
-	
 
-#func setup_inventory_dict():
-	#var unique_inputs = []
-	#for input in required_inputs:
-		#if not unique_inputs.has(input):
-			#unique_inputs.push_back(input)
-	#for item : PackedScene in unique_inputs:
-		#var ref_item = item.instantiate()
-		#inventory[ref_item.name] = {"scene": item, "held":0, "capacity":10}
-		#ref_item.queue_free()
-			
-	
+
 func _on_mouse_detection_area_mouse_entered() -> void:
 	connectors.show()
 
@@ -42,9 +31,8 @@ func receive_product(widget : FactoryProductWidget):
 		if manifest.get_widget_name() == widget.name:
 			if not manifest.is_full():
 				manifest.add(1)
-			
-	
-		
+
+
 func is_full(item_name : String):
 	#return inventory[item_name]["held"] >= inventory[item_name]["capacity"]
 	for manifest in required_inputs:
@@ -52,18 +40,36 @@ func is_full(item_name : String):
 			return manifest.max_capacity >= manifest.currently_held
 	return false # couldn't find item name in required_inputs
 
+
 func requirements_met():
 	for manifest in required_inputs:
 		if not manifest.requirements_met():
 			return false
 	return true
 
+
 func produce(widget_scene : PackedScene):
-	# instantiate one of these onto a conveyor belt
+	# instantiate one of these onto a conveyor belt, or on the floor for the player if no conveyor belt
 	print("Produced: ", get_root_node_name(widget_scene))
 	
+	if not is_output_connected():
+		drop_on_floor(widget_scene)
+	else:
+		pass
+
+func is_output_connected():
+	# TODO check for conveyor belt
+	return false
+
+func drop_on_floor(widget_scene : PackedScene):
+	var scatter_vec = Vector2(randi_range(-32, 32), randi_range(-32,32))
+	var location = %OutputNode.global_position + scatter_vec
+	
+	Globals.current_level.spawn_widget_on_floor(widget_scene, location)
+
 func get_root_node_name(packed_scene : PackedScene):
 	return packed_scene.get_state().get_node_name(0)
+
 
 func _on_production_timer_timeout() -> void:
 	# consume inventory, release product

@@ -35,6 +35,7 @@ shape = SubResource("CircleShape2D_rh01v")
 [node name="Connectors" type="Node2D" parent="."]
 
 [node name="InputNode" type="Area2D" parent="Connectors"]
+unique_name_in_owner = true
 position = Vector2(-33, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Connectors/InputNode"]
@@ -60,6 +61,7 @@ text = "IN"
 horizontal_alignment = 1
 
 [node name="OutputNode" type="Area2D" parent="Connectors"]
+unique_name_in_owner = true
 position = Vector2(34, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Connectors/OutputNode"]

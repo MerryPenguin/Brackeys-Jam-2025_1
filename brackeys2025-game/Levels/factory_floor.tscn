@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://vndqdct5f50s"]
+[gd_scene load_steps=12 format=3 uid="uid://vndqdct5f50s"]
 
 [ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="1_8j4uy"]
+[ext_resource type="Script" uid="uid://y1manp7jpn4c" path="res://Levels/factory_floor.gd" id="1_wrr4c"]
 [ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_6kdma"]
 [ext_resource type="PackedScene" uid="uid://d1m8n26ymxpa8" path="res://Entities/MobileWorker/factory_worker.tscn" id="2_7d5sh"]
 [ext_resource type="PackedScene" uid="uid://vnwdbq7jjq83" path="res://Entities/factory_products/pineapple.tscn" id="2_fpxqv"]
@@ -20,6 +21,7 @@ metadata/_custom_type_script = ExtResource("2_6kdma")
 
 [node name="FactoryFloor" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_wrr4c")
 
 [node name="Machines" type="Node2D" parent="."]
 
@@ -54,3 +56,5 @@ position = Vector2(1114, 230)
 [node name="Storage" type="Node2D" parent="."]
 
 [node name="Chest" parent="Storage" instance=ExtResource("6_fpxqv")]
+
+[node name="LooseWidgets" type="Node2D" parent="."]
