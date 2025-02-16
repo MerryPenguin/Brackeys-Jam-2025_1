@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cegq3dg2ut413"]
+[gd_scene load_steps=8 format=3 uid="uid://cegq3dg2ut413"]
 
 [ext_resource type="Script" uid="uid://dlhuetv61urld" path="res://Entities/factory_machine.gd" id="1_kxche"]
 [ext_resource type="Texture2D" uid="uid://d2d1npekd2c6j" path="res://Assets/Images/placeholder/factory_01.png" id="2_kxche"]
+[ext_resource type="Texture2D" uid="uid://c8ug15hy7gt3q" path="res://Assets/Images/placeholder/white_circle.png" id="3_q574a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btwl5"]
 size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rh01v"]
+radius = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q574a"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_btwl5"]
+radius = 16.0
 
 [node name="FactoryMachine" type="Node2D"]
 script = ExtResource("1_kxche")
@@ -16,3 +26,63 @@ shape = SubResource("RectangleShape2D_btwl5")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture = ExtResource("2_kxche")
+
+[node name="MouseDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDetectionArea"]
+shape = SubResource("CircleShape2D_rh01v")
+
+[node name="Connectors" type="Node2D" parent="."]
+
+[node name="InputNode" type="Area2D" parent="Connectors"]
+position = Vector2(-33, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Connectors/InputNode"]
+shape = SubResource("CircleShape2D_q574a")
+
+[node name="Sprite2D" type="Sprite2D" parent="Connectors/InputNode"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_q574a")
+
+[node name="Label" type="Label" parent="Connectors/InputNode"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = 10.0
+offset_right = 21.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "IN"
+horizontal_alignment = 1
+
+[node name="OutputNode" type="Area2D" parent="Connectors"]
+position = Vector2(34, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Connectors/OutputNode"]
+shape = SubResource("CircleShape2D_btwl5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Connectors/OutputNode"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_q574a")
+
+[node name="Label" type="Label" parent="Connectors/OutputNode"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 9.0
+offset_right = 20.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "OUT"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_entered"]
+[connection signal="mouse_exited" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_exited"]

@@ -3,6 +3,7 @@
 class_name ConveyorBeltPackage extends PathFollow2D
 
 @export var speed : float = 20.0
+var widget : FactoryProductWidget
 
 func _process(delta):
 	progress += speed * delta # in pixels
