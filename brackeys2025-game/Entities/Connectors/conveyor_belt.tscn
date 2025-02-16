@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnnapxyigsc4a"]
+
+[ext_resource type="Texture2D" uid="uid://xx0fxojr51y3" path="res://Assets/Images/placeholder/conveyor.png" id="1_8j324"]
+
+[node name="ConveyorBelt" type="Node2D"]
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_filter = 3
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 256, 0)
+width = 32.0
+texture = ExtResource("1_8j324")
+texture_mode = 1

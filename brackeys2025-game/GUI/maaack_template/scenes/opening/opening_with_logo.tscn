@@ -34,7 +34,52 @@ grow_horizontal = 2
 theme_type_variation = &"HeaderLarge"
 text = "Brain Storming"
 
-[node name="StickyNote" parent="BrainstormingPanel" index="1" instance=ExtResource("5_y5lfx")]
+[node name="Themes" parent="BrainstormingPanel" index="1" instance=ExtResource("5_y5lfx")]
 layout_mode = 1
+offset_left = -847.0
+offset_top = -422.0
+offset_right = -591.0
+offset_bottom = -166.0
+NoteTitle = "Themes"
+NoteText = "Brackeys theme is \"Nothing can go wrong\"
+GWJ Theme is \"Erase\""
+
+[node name="BigIdea" parent="BrainstormingPanel" index="2" instance=ExtResource("5_y5lfx")]
+layout_mode = 1
+offset_left = -486.0
+offset_top = -292.0
+offset_right = -230.0
+offset_bottom = -36.0
 NoteTitle = "Big Idea"
-NoteText = "GWJ Theme is \"Erase\""
+NoteText = "Factory game with inspection/detection element, where player inspects customers to make sure they fit a profile
+"
+
+[node name="AltIdea" parent="BrainstormingPanel" index="3" instance=ExtResource("5_y5lfx")]
+layout_mode = 1
+offset_left = -188.0
+offset_top = -187.0
+offset_right = 68.0
+offset_bottom = 69.0
+NoteTitle = "Alternate Idea
+"
+NoteText = "Since \"Papers Please\" and \"Not my Neighbour\" are effectively a Quality Assurance simulators, we could make the discriminator step part of the factory process.. Sim-QC
+"
+
+[node name="OtherIdea" parent="BrainstormingPanel" index="4" instance=ExtResource("5_y5lfx")]
+layout_mode = 1
+offset_left = 135.0
+offset_top = -71.0
+offset_right = 391.0
+offset_bottom = 185.0
+NoteTitle = "Other Idea
+"
+NoteText = "MerryPenguin and Plexsoup both expressed interest in using a mushroom protagonist, but MP prefers to draw mechanical assets, not organic."
+
+[node name="ProjectNotes" parent="BrainstormingPanel" index="5" instance=ExtResource("5_y5lfx")]
+layout_mode = 1
+offset_left = -568.0
+offset_top = 273.0
+offset_right = -312.0
+offset_bottom = 529.0
+NoteTitle = "Project Notes"
+NoteText = "Main scene is Levels/factory_floor.tscn"

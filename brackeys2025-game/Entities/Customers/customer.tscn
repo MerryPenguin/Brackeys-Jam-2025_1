@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm8v5aepcle5p"]
+
+[ext_resource type="Texture2D" uid="uid://upsvedsr6ksx" path="res://Assets/Images/placeholder/dude.png" id="1_nkqq3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tronh"]
+radius = 16.0
+height = 32.0
+
+[node name="Customer" type="CharacterBody2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -15)
+texture = ExtResource("1_nkqq3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tronh")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://vndqdct5f50s"]
+
+[ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="1_8j4uy"]
+[ext_resource type="PackedScene" uid="uid://d1m8n26ymxpa8" path="res://Entities/MobileWorker/factory_worker.tscn" id="2_7d5sh"]
+[ext_resource type="PackedScene" uid="uid://cnnapxyigsc4a" path="res://Entities/Connectors/conveyor_belt.tscn" id="3_xicpb"]
+[ext_resource type="PackedScene" uid="uid://caxpkhkblou4e" path="res://Entities/Player/PlayerCharacter.tscn" id="4_fpxqv"]
+[ext_resource type="PackedScene" uid="uid://cm8v5aepcle5p" path="res://Entities/Customers/customer.tscn" id="5_xicpb"]
+[ext_resource type="PackedScene" uid="uid://cu7xb7uvvt414" path="res://Entities/StorageChest.tscn" id="6_fpxqv"]
+
+[node name="FactoryFloor" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Machines" type="Node2D" parent="."]
+
+[node name="FactoryMachine" parent="Machines" instance=ExtResource("1_8j4uy")]
+position = Vector2(356, 220)
+
+[node name="FactoryMachine2" parent="Machines" instance=ExtResource("1_8j4uy")]
+position = Vector2(876, 206)
+
+[node name="MobileWorkers" type="Node2D" parent="."]
+
+[node name="Player" parent="MobileWorkers" instance=ExtResource("4_fpxqv")]
+position = Vector2(601, 330)
+
+[node name="FactoryWorker" parent="MobileWorkers" instance=ExtResource("2_7d5sh")]
+
+[node name="Transporters" type="Node2D" parent="."]
+
+[node name="ConveyorBelt" parent="Transporters" instance=ExtResource("3_xicpb")]
+position = Vector2(390, 221)
+
+[node name="Customers" type="Node2D" parent="."]
+
+[node name="Customer" parent="Customers" instance=ExtResource("5_xicpb")]
+position = Vector2(1114, 230)
+
+[node name="Storage" type="Node2D" parent="."]
+
+[node name="Chest" parent="Storage" instance=ExtResource("6_fpxqv")]

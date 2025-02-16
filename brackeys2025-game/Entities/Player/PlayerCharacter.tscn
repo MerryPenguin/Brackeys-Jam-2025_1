@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://caxpkhkblou4e"]
+
+[ext_resource type="Script" uid="uid://ccjs078e3b71" path="res://Entities/Player/player_character.gd" id="1_7soik"]
+[ext_resource type="Texture2D" uid="uid://cjevl1i2vvjnn" path="res://Assets/Images/placeholder/mushroom.png" id="1_ju36h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7soik"]
+radius = 16.0
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_7soik")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -13)
+texture = ExtResource("1_ju36h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7soik")

@@ -3,7 +3,7 @@ extends Control
 
 
 
-@export_multiline var NoteTitle : String:
+@export var NoteTitle : String:
 	set(v):
 		%NoteTitle.text = v
 		NoteTitle = v

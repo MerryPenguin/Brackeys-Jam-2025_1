@@ -352,7 +352,7 @@ graph_offset = Vector2(-118.44, 72.175)
 [node name="MainMenu" instance=ExtResource("1_tp56l")]
 script = ExtResource("2_fg8c4")
 level_select_packed_scene = null
-game_scene_path = "res://GUI/maaack_template/scenes/game_scene/game_ui.tscn"
+game_scene_path = "uid://vndqdct5f50s"
 options_packed_scene = ExtResource("3_nj250")
 credits_packed_scene = ExtResource("4_fdut4")
 
