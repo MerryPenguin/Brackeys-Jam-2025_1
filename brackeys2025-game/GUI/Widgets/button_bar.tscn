@@ -1,10 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://cr6s0syst023p"]
+[gd_scene load_steps=12 format=3 uid="uid://cr6s0syst023p"]
 
 [ext_resource type="Script" uid="uid://b3lw358sa2bi4" path="res://GUI/Widgets/button_bar.gd" id="1_birog"]
 [ext_resource type="Texture2D" uid="uid://d3e8epqhh247q" path="res://Assets/Images/Factories_prototype.png" id="1_hfl1c"]
 [ext_resource type="Texture2D" uid="uid://pmitx0a4qkmt" path="res://Assets/Images/placeholder/book.png" id="2_birog"]
 [ext_resource type="Script" uid="uid://1f7cgscgww03" path="res://GUI/Widgets/factory_placement_button.gd" id="3_2lpnr"]
 [ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="4_c3j1w"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_c3j1w"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_0sd2f"]
+events = [SubResource("InputEventKey_c3j1w")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r8uld"]
 atlas = ExtResource("1_hfl1c")
@@ -33,6 +41,7 @@ script = ExtResource("1_birog")
 [node name="OrganicHarvesterButton" type="Button" parent="."]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+shortcut = SubResource("Shortcut_0sd2f")
 icon = SubResource("AtlasTexture_r8uld")
 icon_alignment = 1
 expand_icon = true
