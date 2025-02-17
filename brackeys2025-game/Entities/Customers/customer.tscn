@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm8v5aepcle5p"]
+[gd_scene load_steps=5 format=3 uid="uid://cm8v5aepcle5p"]
 
 [ext_resource type="Texture2D" uid="uid://upsvedsr6ksx" path="res://Assets/Images/placeholder/dude.png" id="1_nkqq3"]
 [ext_resource type="Script" uid="uid://1gnswtuhuqxq" path="res://Entities/Customers/customer.gd" id="1_tronh"]
+[ext_resource type="PackedScene" uid="uid://vmifcy0mv2yo" path="res://Entities/Customers/sketchy_prop.tscn" id="3_j3thj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tronh"]
 radius = 16.0
@@ -24,3 +25,5 @@ texture = ExtResource("1_nkqq3")
 shape = SubResource("CapsuleShape2D_tronh")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="SketchyProp" parent="." instance=ExtResource("3_j3thj")]

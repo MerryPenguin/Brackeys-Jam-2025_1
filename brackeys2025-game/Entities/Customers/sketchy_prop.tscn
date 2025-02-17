@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://vmifcy0mv2yo"]
+
+[ext_resource type="Texture2D" uid="uid://da2b0otf8fib4" path="res://Assets/Images/placeholder/costume_pieces/beard.png" id="1_ob02a"]
+[ext_resource type="Script" uid="uid://cllfbur4my1u1" path="res://Entities/Customers/sketchy_prop.gd" id="1_xyg0k"]
+[ext_resource type="Texture2D" uid="uid://3f8ynrgqvhr8" path="res://Assets/Images/placeholder/costume_pieces/full_beard.png" id="2_xyg0k"]
+[ext_resource type="Texture2D" uid="uid://c0eov0c1n6mr7" path="res://Assets/Images/placeholder/costume_pieces/moustache.png" id="3_qjmxd"]
+[ext_resource type="Texture2D" uid="uid://wwdvf2xo531b" path="res://Assets/Images/placeholder/costume_pieces/sunglasses.png" id="4_bsmqy"]
+[ext_resource type="Texture2D" uid="uid://upsvedsr6ksx" path="res://Assets/Images/placeholder/dude.png" id="5_pxudi"]
+
+[node name="SketchyProp" type="Node2D"]
+script = ExtResource("1_xyg0k")
+
+[node name="CustomerRef" type="Sprite2D" parent="."]
+position = Vector2(1, -15)
+texture = ExtResource("5_pxudi")
+
+[node name="Moustache" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -20)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_qjmxd")
+
+[node name="Beard" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -13)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_ob02a")
+
+[node name="FullBeard" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -13)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_xyg0k")
+
+[node name="Sunglasses" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -28)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("4_bsmqy")

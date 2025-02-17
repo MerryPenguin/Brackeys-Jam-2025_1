@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://vndqdct5f50s"]
+[gd_scene load_steps=15 format=3 uid="uid://vndqdct5f50s"]
 
 [ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="1_8j4uy"]
 [ext_resource type="Script" uid="uid://y1manp7jpn4c" path="res://Levels/factory_floor.gd" id="1_wrr4c"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cu7xb7uvvt414" path="res://Entities/StorageChest.tscn" id="6_fpxqv"]
 [ext_resource type="PackedScene" uid="uid://djc0g4iedr3xo" path="res://Entities/Customers/customer_spawner.tscn" id="10_jtrj6"]
 [ext_resource type="PackedScene" uid="uid://b01165no4oubu" path="res://Entities/Inspection/inspector.tscn" id="12_2g2ty"]
+[ext_resource type="PackedScene" uid="uid://bmuqgwwm8fcko" path="res://GUI/hud.tscn" id="13_2g2ty"]
 
 [sub_resource type="Resource" id="Resource_wrr4c"]
 script = ExtResource("2_6kdma")
@@ -78,6 +79,8 @@ position = Vector2(916, 96)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="HUD" parent="." instance=ExtResource("13_2g2ty")]
 
 [editable path="Machines/PineappleMachine"]
 [editable path="Machines/GrenadeMachine"]

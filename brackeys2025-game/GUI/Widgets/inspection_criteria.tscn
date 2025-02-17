@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://pgsa53sfqf32"]
+
+[ext_resource type="Script" uid="uid://btt7lo8k0s4tb" path="res://GUI/Widgets/inspection_criteria.gd" id="1_jyhmb"]
+
+[node name="InspectionCriteria" type="HBoxContainer"]
+script = ExtResource("1_jyhmb")
+
+[node name="Heading" type="Label" parent="."]
+layout_mode = 2
+text = "Look out for: "
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+
+[node name="List" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
