@@ -25,16 +25,22 @@ script = ExtResource("1_wrr4c")
 
 [node name="Machines" type="Node2D" parent="."]
 
+[node name="PineappleMachine" parent="Machines" instance=ExtResource("1_8j4uy")]
+position = Vector2(271, 112)
+production_time = 3.0
+output_widget = ExtResource("2_fpxqv")
+
+[node name="Sprite2D" parent="Machines/PineappleMachine/StaticBody2D" index="1"]
+frame = 4
+
 [node name="GrenadeMachine" parent="Machines" instance=ExtResource("1_8j4uy")]
 position = Vector2(832, 116)
 required_inputs = Array[ExtResource("2_6kdma")]([SubResource("Resource_wrr4c")])
 production_time = 5.0
 output_widget = ExtResource("3_64ewy")
 
-[node name="PineappleMachine" parent="Machines" instance=ExtResource("1_8j4uy")]
-position = Vector2(271, 112)
-production_time = 3.0
-output_widget = ExtResource("2_fpxqv")
+[node name="Sprite2D" parent="Machines/GrenadeMachine/StaticBody2D" index="1"]
+frame = 1
 
 [node name="MobileWorkers" type="Node2D" parent="."]
 
@@ -58,3 +64,6 @@ position = Vector2(1114, 230)
 [node name="Chest" parent="Storage" instance=ExtResource("6_fpxqv")]
 
 [node name="LooseWidgets" type="Node2D" parent="."]
+
+[editable path="Machines/PineappleMachine"]
+[editable path="Machines/GrenadeMachine"]
