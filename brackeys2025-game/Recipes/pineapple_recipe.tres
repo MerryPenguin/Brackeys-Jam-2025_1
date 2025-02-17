@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=5 format=3 uid="uid://caw4fnmk3jd1a"]
+
+[ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="1_oedb6"]
+[ext_resource type="Texture2D" uid="uid://dxa22uteuj8hv" path="res://Assets/Images/placeholder/pineapple-s.png" id="1_vgjaf"]
+[ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_pblho"]
+[ext_resource type="PackedScene" uid="uid://vnwdbq7jjq83" path="res://Entities/factory_products/pineapple.tscn" id="2_vgjaf"]
+
+[resource]
+script = ExtResource("1_oedb6")
+required_inputs = Array[ExtResource("2_pblho")]([])
+production_time = 10.0
+output_widget = ExtResource("2_vgjaf")
+icon = ExtResource("1_vgjaf")
+metadata/_custom_type_script = ExtResource("1_oedb6")

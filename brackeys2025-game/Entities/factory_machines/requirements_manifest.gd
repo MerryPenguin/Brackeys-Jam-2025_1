@@ -8,7 +8,7 @@ class_name RequirementsManifest extends Resource
 @export var max_capacity : int = 10
 @export var currently_held : int = 0
 var widget_name : String
-
+var icon : Texture2D
 
 func get_widget_name():
 	return widget_scene.get_state().get_node_name(0)

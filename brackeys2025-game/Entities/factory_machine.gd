@@ -82,3 +82,9 @@ func _on_production_timer_timeout() -> void:
 	else:
 		$MissingRequirementsLabel.show()
 	$ProductionTimer.start()
+
+func _on_new_recipe_received(recipe):
+	# update required inputs, production time and outputs
+	required_inputs = recipe.required_inputs
+	production_time = recipe.production_time
+	output_widget = recipe.output_widget

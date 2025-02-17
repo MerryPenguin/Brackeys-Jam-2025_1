@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cegq3dg2ut413"]
+[gd_scene load_steps=8 format=3 uid="uid://cegq3dg2ut413"]
 
 [ext_resource type="Script" uid="uid://dlhuetv61urld" path="res://Entities/factory_machine.gd" id="1_kxche"]
 [ext_resource type="Texture2D" uid="uid://d3e8epqhh247q" path="res://Assets/Images/Factories_prototype.png" id="2_btwl5"]
 [ext_resource type="PackedScene" uid="uid://b3tihsme16qjf" path="res://Entities/factory_machines/connector_node.tscn" id="3_q574a"]
 [ext_resource type="PackedScene" uid="uid://8gmeexoieddc" path="res://Entities/factory_machines/missing_requirements_label.tscn" id="4_btwl5"]
+[ext_resource type="PackedScene" uid="uid://b2y6dn7deqgw2" path="res://Entities/factory_machines/interaction_button.tscn" id="5_rh01v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btwl5"]
 size = Vector2(64, 64)
@@ -49,6 +50,8 @@ offset_left = -7.0
 offset_top = -45.0
 offset_right = 8.0
 offset_bottom = -22.0
+
+[node name="InteractionButton" parent="." instance=ExtResource("5_rh01v")]
 
 [connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_exited"]

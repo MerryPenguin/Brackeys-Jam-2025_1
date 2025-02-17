@@ -17,7 +17,7 @@
 [sub_resource type="Resource" id="Resource_wrr4c"]
 script = ExtResource("2_6kdma")
 widget_scene = ExtResource("2_fpxqv")
-quantity_required = 1
+quantity_required = 2
 max_capacity = 10
 currently_held = 0
 metadata/_custom_type_script = ExtResource("2_6kdma")
