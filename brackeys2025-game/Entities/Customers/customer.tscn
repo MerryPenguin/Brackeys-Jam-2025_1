@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm8v5aepcle5p"]
+[gd_scene load_steps=4 format=3 uid="uid://cm8v5aepcle5p"]
 
 [ext_resource type="Texture2D" uid="uid://upsvedsr6ksx" path="res://Assets/Images/placeholder/dude.png" id="1_nkqq3"]
+[ext_resource type="Script" uid="uid://1gnswtuhuqxq" path="res://Entities/Customers/customer.gd" id="1_tronh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tronh"]
 radius = 16.0
@@ -8,6 +9,12 @@ height = 32.0
 
 [node name="Customer" type="CharacterBody2D"]
 y_sort_enabled = true
+script = ExtResource("1_tronh")
+
+[node name="RedLight" type="Polygon2D" parent="."]
+show_behind_parent = true
+color = Color(1, 0.568627, 0, 0.368627)
+polygon = PackedVector2Array(-18, 21, -34, 1, -34, -25, -15, -49, 18, -49, 39, -27, 38, 6, 18, 20)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -15)
@@ -15,3 +22,5 @@ texture = ExtResource("1_nkqq3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_tronh")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

@@ -11,12 +11,14 @@ var hovering : bool = false
 
 var conveyor_belt : ConveyorBelt
 var previous_conveyor : ConveyorBelt # Maybe this should be a stack
-var factory_machine : FactoryMachine
+var connected_machine # Can be FactoryMachine or StorageChest
 
 func _ready():
 	$Label.text = types.keys()[type].capitalize()
 	if owner is FactoryMachine:
-		factory_machine = owner
+		connected_machine = owner
+	elif owner is StorageChest:
+		connected_machine = owner
 
 func _process(_delta):
 	match type:
@@ -67,6 +69,6 @@ func receive_product(widget : FactoryProductWidget):
 		types.OUTPUT:
 			conveyor_belt.receive_product(widget)
 		types.INPUT:
-			factory_machine.receive_product(widget)
+			connected_machine.receive_product(widget)
 		
 	

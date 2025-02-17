@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://vndqdct5f50s"]
+[gd_scene load_steps=14 format=3 uid="uid://vndqdct5f50s"]
 
 [ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="1_8j4uy"]
 [ext_resource type="Script" uid="uid://y1manp7jpn4c" path="res://Levels/factory_floor.gd" id="1_wrr4c"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://caxpkhkblou4e" path="res://Entities/Player/PlayerCharacter.tscn" id="4_fpxqv"]
 [ext_resource type="PackedScene" uid="uid://cm8v5aepcle5p" path="res://Entities/Customers/customer.tscn" id="5_xicpb"]
 [ext_resource type="PackedScene" uid="uid://cu7xb7uvvt414" path="res://Entities/StorageChest.tscn" id="6_fpxqv"]
+[ext_resource type="PackedScene" uid="uid://djc0g4iedr3xo" path="res://Entities/Customers/customer_spawner.tscn" id="10_jtrj6"]
+[ext_resource type="PackedScene" uid="uid://b01165no4oubu" path="res://Entities/Inspection/inspector.tscn" id="12_2g2ty"]
 
 [sub_resource type="Resource" id="Resource_wrr4c"]
 script = ExtResource("2_6kdma")
@@ -34,7 +36,7 @@ output_widget = ExtResource("2_fpxqv")
 frame = 4
 
 [node name="GrenadeMachine" parent="Machines" instance=ExtResource("1_8j4uy")]
-position = Vector2(832, 116)
+position = Vector2(446, 384)
 required_inputs = Array[ExtResource("2_6kdma")]([SubResource("Resource_wrr4c")])
 production_time = 5.0
 output_widget = ExtResource("3_64ewy")
@@ -57,13 +59,25 @@ position = Vector2(390, 221)
 [node name="Customers" type="Node2D" parent="."]
 
 [node name="Customer" parent="Customers" instance=ExtResource("5_xicpb")]
-position = Vector2(1114, 230)
+position = Vector2(1120, 392)
+
+[node name="CustomerSpawner" parent="Customers" instance=ExtResource("10_jtrj6")]
+position = Vector2(1080, 0)
 
 [node name="Storage" type="Node2D" parent="."]
 
 [node name="Chest" parent="Storage" instance=ExtResource("6_fpxqv")]
+position = Vector2(878, 330)
 
 [node name="LooseWidgets" type="Node2D" parent="."]
+
+[node name="InspectionArea" type="Node2D" parent="."]
+
+[node name="Inspector" parent="InspectionArea" instance=ExtResource("12_2g2ty")]
+position = Vector2(916, 96)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 
 [editable path="Machines/PineappleMachine"]
 [editable path="Machines/GrenadeMachine"]

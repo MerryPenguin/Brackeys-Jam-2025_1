@@ -15,3 +15,7 @@ func spawn_widget_on_floor(widget : FactoryProductWidget, location):
 
 func spawn_conveyor_belt(conveyor_belt : ConveyorBelt):
 	$Transporters.add_child(conveyor_belt)
+
+func spawn_customer(customer, location):
+	$Customers.add_child(customer)
+	customer.global_position = location

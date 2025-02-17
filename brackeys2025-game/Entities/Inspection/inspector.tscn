@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://b01165no4oubu"]
+
+[ext_resource type="Script" uid="uid://b8e8p7v41jor1" path="res://Entities/Inspection/inspector.gd" id="1_hoq6h"]
+[ext_resource type="Texture2D" uid="uid://bv2mm5k3rxp3h" path="res://Assets/Images/placeholder/inspection.png" id="2_vv1o7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5wv4"]
+size = Vector2(96, 96)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7sx2g"]
+radius = 7.0
+height = 40.0
+
+[node name="Inspector" type="Node2D" groups=["inspection_areas"]]
+script = ExtResource("1_hoq6h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(0, -24)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_vv1o7")
+
+[node name="InspectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InspectionArea"]
+shape = SubResource("RectangleShape2D_b5wv4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_7sx2g")
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="RedLight" type="Polygon2D" parent="Lights"]
+unique_name_in_owner = true
+color = Color(1, 0.27451, 0, 0.572549)
+polygon = PackedVector2Array(11, -47, 42, 2, 26, 26, -26, 26, -49, 3, -17, -48, -13, -50, 4, -51, 5, -48)
+
+[node name="GreenLight" type="Polygon2D" parent="Lights"]
+unique_name_in_owner = true
+color = Color(0.297136, 0.644082, 0.587877, 0.572549)
+polygon = PackedVector2Array(11, -47, 42, 2, 26, 26, -26, 26, -49, 3, -17, -48, -13, -50, 4, -51, 5, -48)
+
+[node name="RandomInspectionTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="RandomInspectionTimer" to="." method="_on_random_inspection_timer_timeout"]

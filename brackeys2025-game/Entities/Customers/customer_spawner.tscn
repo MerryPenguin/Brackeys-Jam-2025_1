@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://djc0g4iedr3xo"]
+
+[ext_resource type="Script" uid="uid://d3x8ijpa45qct" path="res://Entities/Customers/customer_spawner.gd" id="1_t6ipv"]
+
+[sub_resource type="Curve2D" id="Curve2D_llyv8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, 640)
+}
+point_count = 2
+
+[node name="CustomerSpawner" type="Path2D"]
+curve = SubResource("Curve2D_llyv8")
+script = ExtResource("1_t6ipv")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotation = 1.57392
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

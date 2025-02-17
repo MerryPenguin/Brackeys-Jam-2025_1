@@ -1,3 +1,43 @@
-[gd_scene format=3 uid="uid://cu7xb7uvvt414"]
+[gd_scene load_steps=5 format=3 uid="uid://cu7xb7uvvt414"]
 
-[node name="Chest" type="Node2D"]
+[ext_resource type="Script" uid="uid://tajmnv1ghui5" path="res://Entities/storage_chest.gd" id="1_iiyxp"]
+[ext_resource type="Texture2D" uid="uid://dmtriqbvgiy2o" path="res://Assets/Images/placeholder/storage_chest.png" id="1_ljvoe"]
+[ext_resource type="PackedScene" uid="uid://b3tihsme16qjf" path="res://Entities/factory_machines/connector_node.tscn" id="2_iiyxp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3577q"]
+size = Vector2(64, 64)
+
+[node name="Chest" type="Node2D" groups=["storage"]]
+script = ExtResource("1_iiyxp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ljvoe")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_3577q")
+
+[node name="ConnectorNode" parent="." instance=ExtResource("2_iiyxp")]
+position = Vector2(-35, -1)
+
+[node name="Output" parent="." instance=ExtResource("2_iiyxp")]
+position = Vector2(37, -1)
+type = 1
+
+[node name="ItemCountLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -1.0
+offset_right = 20.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "0"
+horizontal_alignment = 1
