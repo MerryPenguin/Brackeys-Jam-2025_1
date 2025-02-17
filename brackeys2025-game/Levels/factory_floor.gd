@@ -13,3 +13,6 @@ func spawn_widget_on_floor(widget_scene : PackedScene, location):
 	var new_widget = widget_scene.instantiate()
 	$LooseWidgets.add_child(new_widget)
 	new_widget.global_position = location
+
+func spawn_conveyor_belt(conveyor_belt : Node2D):
+	$Transporters.add_child(conveyor_belt)
