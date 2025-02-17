@@ -18,8 +18,8 @@ var desired_points : PackedVector2Array = []
 var polling_interval : int = 100 # msec
 var time_at_last_poll : int = 0
 
-var from : ConnectorNode
-var to : ConnectorNode
+var origin : ConnectorNode
+var destination : ConnectorNode
 
 
 func _ready():
@@ -28,7 +28,7 @@ func _ready():
 
 func activate(connector_node : ConnectorNode):
 	# whoever spawns the conveyor should call this
-	from = connector_node
+	origin = connector_node
 	state = states.DRAWING
 	
 func _process(_delta):
@@ -41,8 +41,6 @@ func _process(_delta):
 					if not point_too_close():
 						add_point()
 		states.OPERATING:
-			#if from != null and to != null:
-				#move_goods()
 			pass
 
 func move_goods():
@@ -76,7 +74,7 @@ func stop_drawing():
 	if nearby_input_connectors != null and not nearby_input_connectors.is_empty():
 		var connector_reached : ConnectorNode = nearby_input_connectors[0]
 		connector_reached.conveyor_belt = self
-		to = connector_reached
+		destination = connector_reached
 		
 		print("Connected a conveyor belt!")
 	else:
@@ -99,7 +97,7 @@ func add_new_conveyance(widget: FactoryProductWidget):
 	var new_package = ConveyorBeltPackage.new()
 	$Path2D.add_child(new_package)
 	new_package.add_contents(widget)
-	new_package.destination = to
+	new_package.conveyor_belt = self
 
 func _on_new_widget_received(widget : FactoryProductWidget):
 	add_new_conveyance(widget)

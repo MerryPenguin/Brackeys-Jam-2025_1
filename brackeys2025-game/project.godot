@@ -23,6 +23,11 @@ SceneLoader="*res://addons/maaacks_game_template/base/scenes/autoloads/scene_loa
 ProjectMusicController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_music_controller.tscn"
 ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_ui_sound_controller.tscn"
 
+[editor]
+
+movie_writer/movie_file="/Users/sdanic/Documents/Godot/Brackeys2025/Brackeys-Jam-2025/exports/movies/movie.avi"
+movie_writer/fps=20
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
