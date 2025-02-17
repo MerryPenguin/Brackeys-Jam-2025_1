@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c35be2ve56k4l"]
+
+[ext_resource type="Script" uid="uid://btuy3wb4r6hd2" path="res://Entities/factory_blueprints/factory_blueprint.gd" id="1_g7h2m"]
+[ext_resource type="Texture2D" uid="uid://d3e8epqhh247q" path="res://Assets/Images/Factories_prototype.png" id="2_nw72y"]
+
+[node name="FactoryBlueprint" type="Node2D"]
+script = ExtResource("1_g7h2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.212327, 0.286106, 1, 1)
+self_modulate = Color(1, 1, 1, 0.537255)
+texture_filter = 3
+scale = Vector2(5, 5)
+texture = ExtResource("2_nw72y")
+region_enabled = true
+region_rect = Rect2(3.20558, 5.21792, 10.9959, 11.5226)

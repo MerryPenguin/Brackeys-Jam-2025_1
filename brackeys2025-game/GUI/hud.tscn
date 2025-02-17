@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmuqgwwm8fcko"]
+[gd_scene load_steps=3 format=3 uid="uid://bmuqgwwm8fcko"]
 
 [ext_resource type="PackedScene" uid="uid://pgsa53sfqf32" path="res://GUI/Widgets/inspection_criteria.tscn" id="1_15n47"]
+[ext_resource type="PackedScene" uid="uid://cr6s0syst023p" path="res://GUI/Widgets/button_bar.tscn" id="2_36ch1"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -20,3 +21,6 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+
+[node name="ButtonBar" parent="HUD" instance=ExtResource("2_36ch1")]
+layout_mode = 2

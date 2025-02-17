@@ -19,3 +19,8 @@ func spawn_conveyor_belt(conveyor_belt : ConveyorBelt):
 func spawn_customer(customer, location):
 	$Customers.add_child(customer)
 	customer.global_position = location
+
+func spawn_factory(factory : FactoryMachine, location : Vector2):
+	$Machines.add_child(factory)
+	factory.global_position = location
+	
