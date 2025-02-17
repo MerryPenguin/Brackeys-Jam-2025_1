@@ -10,6 +10,7 @@ var connected : bool = false
 var hovering : bool = false
 
 var conveyor_belt : ConveyorBelt
+var previous_conveyor : ConveyorBelt # Maybe this should be a stack
 var factory_machine : FactoryMachine
 
 func _ready():
@@ -34,8 +35,15 @@ func begin_drawing():
 	var new_conveyor = preload("res://Entities/Connectors/conveyor_belt.tscn").instantiate()
 	Globals.current_level.spawn_conveyor_belt(new_conveyor)
 	new_conveyor.global_position = Vector2.ZERO
+	new_conveyor.belt_connected.connect(self._on_new_conveyor_belt_connected)
 	new_conveyor.activate(self)
+	if conveyor_belt != null:
+		previous_conveyor = conveyor_belt
 	conveyor_belt = new_conveyor
+
+func destroy_previous_conveyor_belts():
+	if previous_conveyor != null:
+		previous_conveyor.destruct()
 
 func stop_drawing():
 	# conveyor belts handle their own stop_drawing()
@@ -48,6 +56,10 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	hovering = false
 	
+func _on_new_conveyor_belt_connected(_belt):
+	destroy_previous_conveyor_belts()
+	
+
 func receive_product(widget : FactoryProductWidget):
 	# coming from factory
 	# spawn a package, add the widget scene to the package

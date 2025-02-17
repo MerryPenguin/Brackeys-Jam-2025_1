@@ -21,6 +21,8 @@ var time_at_last_poll : int = 0
 var origin : ConnectorNode
 var destination : ConnectorNode
 
+signal belt_connected(belt)
+
 
 func _ready():
 	if $Path2D.curve == null:
@@ -70,24 +72,43 @@ func stop_drawing():
 	# if no nearby input, create an output node for drawing more paths.
 
 	state = states.OPERATING
-	var nearby_input_connectors = get_nearby_inputs()
-	if nearby_input_connectors != null and not nearby_input_connectors.is_empty():
-		var connector_reached : ConnectorNode = nearby_input_connectors[0]
+	if proposed_destination_is_valid():
+		var connector_reached : ConnectorNode = get_nearest_input_connector()
 		connector_reached.conveyor_belt = self
 		destination = connector_reached
-		
 		print("Connected a conveyor belt! ", origin.name, ", " , destination.name)
+		belt_connected.emit(self)
 	else:
 		# TODO: drop all the contents on the ground, flash and queue_free
 		origin.conveyor_belt = null
 		queue_free()
-		
+
+func destruct():
+	#TODO: drop the widgets on the ground
+	queue_free()
+	
+	
+	
+
+func proposed_destination_is_valid():
+	var valid = true
+	var nearby_input_connectors = get_nearby_inputs()
+	if nearby_input_connectors == null or nearby_input_connectors.is_empty():
+		valid = false # no inputs to connect to at mouse location
+	elif get_nearest_input_connector().get_parent() == origin.get_parent():
+		valid = false # connected to the same building
+	return valid
 
 func get_nearby_inputs():
 	var all_connectors = get_tree().get_nodes_in_group("connectors")
 	var all_inputs = all_connectors.filter(is_input_node)
 	var nearby_inputs = all_inputs.filter(is_node_near_cursor)
 	return nearby_inputs
+
+func get_nearest_input_connector():
+	var nearby_inputs = get_nearby_inputs()
+	if not nearby_inputs.is_empty():
+		return nearby_inputs[0]
 
 func is_node_near_cursor(node):
 	var tolerance_sq = 32*32
