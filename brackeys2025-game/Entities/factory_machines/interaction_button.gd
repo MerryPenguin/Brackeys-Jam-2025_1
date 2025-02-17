@@ -54,5 +54,7 @@ func dir_contents(path : String):
 	return files
 
 func _on_recipe_button_pressed(recipe):
+	$Button.icon = recipe.icon
+	$Button.text = ""
 	$Panel.hide()
 	recipe_changed.emit(recipe)
