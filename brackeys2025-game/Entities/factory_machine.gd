@@ -1,7 +1,7 @@
 ## Factory Machine
 # take inputs, add time, make outputs
 
-extends Node2D
+class_name FactoryMachine extends Node2D
 
 @export var required_inputs : Array[RequirementsManifest] = []
 

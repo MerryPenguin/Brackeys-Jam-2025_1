@@ -10,10 +10,12 @@ var connected : bool = false
 var hovering : bool = false
 
 var conveyor_belt : ConveyorBelt
+var factory_machine : FactoryMachine
 
 func _ready():
 	$Label.text = types.keys()[type].capitalize()
-
+	if owner is FactoryMachine:
+		factory_machine = owner
 
 func _process(_delta):
 	if state == states.IDLE and hovering == true:
@@ -45,6 +47,10 @@ func _on_mouse_exited() -> void:
 func receive_product(widget : FactoryProductWidget):
 	# coming from factory
 	# spawn a package, add the widget scene to the package
-	conveyor_belt.receive_product(widget)
-	
+	match type:
+		types.OUTPUT:
+			conveyor_belt.receive_product(widget)
+		types.INPUT:
+			factory_machine.receive_product(widget)
+		
 	
