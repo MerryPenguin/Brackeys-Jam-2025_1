@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ceox10kxh50ne" path="res://Entities/Connectors/conveyor_belt.gd" id="1_kdglh"]
 
 [sub_resource type="Curve2D" id="Curve2D_4tvtk"]
+resource_local_to_scene = true
 bake_interval = 16.0
 
 [node name="ConveyorBelt" type="Node2D"]

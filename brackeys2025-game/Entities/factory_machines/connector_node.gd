@@ -18,11 +18,15 @@ func _ready():
 		factory_machine = owner
 
 func _process(_delta):
-	if state == states.IDLE and hovering == true:
-		if Input.is_action_just_pressed("interact"):
-			begin_drawing()
-	elif state == states.DRAWING and Input.is_action_just_released("interact"):
-		stop_drawing()
+	match type:
+		types.OUTPUT:
+			if state == states.IDLE and hovering == true:
+				if Input.is_action_just_pressed("interact"):
+					begin_drawing()
+			elif state == states.DRAWING and Input.is_action_just_released("interact"):
+				stop_drawing()
+		types.INPUT:
+			pass # don't do anything with mouse clicks
 
 
 func begin_drawing():
