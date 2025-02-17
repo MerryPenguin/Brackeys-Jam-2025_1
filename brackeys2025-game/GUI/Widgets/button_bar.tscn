@@ -105,6 +105,7 @@ Combinor
 horizontal_alignment = 1
 
 [node name="RecipesButton" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 icon = ExtResource("2_birog")
 icon_alignment = 1
@@ -112,8 +113,6 @@ expand_icon = true
 
 [node name="RecipeLabel" type="Label" parent="."]
 layout_mode = 2
-text = "Super
-Aggregator
-Combinor
-1000"
+text = "Recipe 
+Book"
 horizontal_alignment = 1

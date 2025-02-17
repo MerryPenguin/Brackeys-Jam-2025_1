@@ -51,9 +51,12 @@ func requirements_met():
 
 
 func produce(widget_scene : PackedScene):
+	if widget_scene == null:
+		return # No recipe. Do nothing
+
 	# instantiate one of these onto a conveyor belt, or on the floor for the player if no conveyor belt
-	
 	if not is_output_connected():
+		
 		drop_on_floor(widget_scene.instantiate())
 	else:
 		%OutputNode.receive_product(widget_scene.instantiate())
