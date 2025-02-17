@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://8gmeexoieddc"]
+
+[ext_resource type="Script" uid="uid://cfdjx2mg6dsgl" path="res://Entities/factory_machines/missing_requirements_label.gd" id="1_qm465"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4ehr"]
+size = Vector2(64, 32)
+
+[node name="MissingRequirementsLabel" type="Label"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -583.0
+offset_top = -336.0
+offset_right = -568.0
+offset_bottom = -313.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "[ !!! ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_qm465")
+
+[node name="InfoHoverArea" type="Area2D" parent="."]
+position = Vector2(27.5, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InfoHoverArea"]
+shape = SubResource("RectangleShape2D_l4ehr")
+
+[node name="DetailsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -51.5
+offset_right = 86.0
+offset_bottom = -28.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Missing Requirements"
+horizontal_alignment = 1
+
+[node name="DisplayTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="mouse_entered" from="InfoHoverArea" to="." method="_on_info_hover_area_mouse_entered"]
+[connection signal="mouse_exited" from="InfoHoverArea" to="." method="_on_info_hover_area_mouse_exited"]
+[connection signal="timeout" from="DisplayTimer" to="." method="_on_display_timer_timeout"]

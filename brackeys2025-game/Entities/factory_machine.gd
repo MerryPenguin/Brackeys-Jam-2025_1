@@ -13,6 +13,8 @@ extends Node2D
 #var inventory: Dictionary[String, Dictionary] = {} # name: {scene, held, max}
 # We'll store the currently_held value inside the specific manifest in required_inputs
 
+
+
 func _ready():
 	connectors.hide()
 	#setup_inventory_dict()
@@ -50,7 +52,6 @@ func requirements_met():
 
 func produce(widget_scene : PackedScene):
 	# instantiate one of these onto a conveyor belt, or on the floor for the player if no conveyor belt
-	print("Produced: ", get_root_node_name(widget_scene))
 	
 	if not is_output_connected():
 		drop_on_floor(widget_scene.instantiate())
@@ -58,8 +59,10 @@ func produce(widget_scene : PackedScene):
 		%OutputNode.receive_product(widget_scene.instantiate())
 
 func is_output_connected():
-	# TODO check for conveyor belt
-	return false
+	if %OutputNode.conveyor_belt != null:
+		return true
+	else:
+		return false
 
 func drop_on_floor(widget : FactoryProductWidget):
 	var scatter_vec = Vector2(randi_range(-32, 32), randi_range(-32,32))
@@ -75,6 +78,7 @@ func _on_production_timer_timeout() -> void:
 	# consume inventory, release product
 	if requirements_met():
 		produce(output_widget)
+		$MissingRequirementsLabel.hide()
 	else:
-		print("failed to meet requirements for ", get_root_node_name(output_widget))
+		$MissingRequirementsLabel.show()
 	$ProductionTimer.start()

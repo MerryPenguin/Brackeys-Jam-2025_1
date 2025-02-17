@@ -28,12 +28,12 @@ script = ExtResource("1_wrr4c")
 [node name="GrenadeMachine" parent="Machines" instance=ExtResource("1_8j4uy")]
 position = Vector2(832, 116)
 required_inputs = Array[ExtResource("2_6kdma")]([SubResource("Resource_wrr4c")])
-production_time = 3.0
+production_time = 5.0
 output_widget = ExtResource("3_64ewy")
 
 [node name="PineappleMachine" parent="Machines" instance=ExtResource("1_8j4uy")]
 position = Vector2(271, 112)
-production_time = 1.0
+production_time = 3.0
 output_widget = ExtResource("2_fpxqv")
 
 [node name="MobileWorkers" type="Node2D" parent="."]

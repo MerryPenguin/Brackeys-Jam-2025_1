@@ -45,6 +45,6 @@ func _on_mouse_exited() -> void:
 func receive_product(widget : FactoryProductWidget):
 	# coming from factory
 	# spawn a package, add the widget scene to the package
-	var new_package = ConveyorBeltPackage.new()
-	new_package.add_contents(widget)
+	conveyor_belt.receive_product(widget)
+	
 	

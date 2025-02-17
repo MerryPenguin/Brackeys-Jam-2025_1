@@ -16,7 +16,12 @@ var package : PathFollow2D # the conveyor belt assembly.
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body != origin:
+	if package != null:
+		return # you're on a conveyor belt, let the package handle delivery
+		
+	elif body != origin:
 		if body.has_method("receive_product"):
+			get_parent().remove_child(self) # detach from conveyor belt or floor
 			body.receive_product(self)
-			package.release_contents()
+			if package != null:
+				package.release_contents()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cegq3dg2ut413"]
+[gd_scene load_steps=7 format=3 uid="uid://cegq3dg2ut413"]
 
 [ext_resource type="Script" uid="uid://dlhuetv61urld" path="res://Entities/factory_machine.gd" id="1_kxche"]
 [ext_resource type="Texture2D" uid="uid://d2d1npekd2c6j" path="res://Assets/Images/placeholder/factory_01.png" id="2_kxche"]
 [ext_resource type="PackedScene" uid="uid://b3tihsme16qjf" path="res://Entities/factory_machines/connector_node.tscn" id="3_q574a"]
+[ext_resource type="PackedScene" uid="uid://8gmeexoieddc" path="res://Entities/factory_machines/missing_requirements_label.tscn" id="4_btwl5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btwl5"]
 size = Vector2(64, 64)
@@ -38,6 +39,12 @@ position = Vector2(28, 6)
 type = 1
 
 [node name="ProductionTimer" type="Timer" parent="."]
+
+[node name="MissingRequirementsLabel" parent="." instance=ExtResource("4_btwl5")]
+offset_left = -7.0
+offset_top = -45.0
+offset_right = 8.0
+offset_bottom = -22.0
 
 [connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_exited"]

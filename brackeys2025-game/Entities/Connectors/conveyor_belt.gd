@@ -98,9 +98,12 @@ func add_new_conveyance(widget: FactoryProductWidget):
 	# add a pathfollower2d and give it a reference to the widget we're transporting
 	var new_package = ConveyorBeltPackage.new()
 	$Path2D.add_child(new_package)
-	new_package.widget = widget
-	
+	new_package.add_contents(widget)
+	new_package.destination = to
 
 func _on_new_widget_received(widget : FactoryProductWidget):
 	add_new_conveyance(widget)
 	
+
+func receive_product(widget):
+	_on_new_widget_received(widget)
