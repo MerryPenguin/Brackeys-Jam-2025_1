@@ -56,3 +56,4 @@ offset_bottom = -22.0
 [connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_exited"]
 [connection signal="timeout" from="ProductionTimer" to="." method="_on_production_timer_timeout"]
+[connection signal="recipe_changed" from="InteractionButton" to="." method="_on_interaction_button_recipe_changed"]

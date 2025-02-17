@@ -29,7 +29,8 @@ offset_bottom = -1.0
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="Panel/ScrollContainer"]
+[node name="Buttons" type="GridContainer" parent="Panel/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6

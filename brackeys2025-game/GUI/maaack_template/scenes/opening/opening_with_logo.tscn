@@ -82,4 +82,6 @@ offset_top = 273.0
 offset_right = -312.0
 offset_bottom = 529.0
 NoteTitle = "Project Notes"
-NoteText = "Main scene is Levels/factory_floor.tscn"
+NoteText = "Main scene is Levels/factory_floor.tscn
+Factories get recipes, which are composed of manifests
+"

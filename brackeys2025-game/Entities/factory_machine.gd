@@ -83,7 +83,8 @@ func _on_production_timer_timeout() -> void:
 		$MissingRequirementsLabel.show()
 	$ProductionTimer.start()
 
-func _on_new_recipe_received(recipe):
+
+func _on_interaction_button_recipe_changed(recipe: Variant) -> void:
 	# update required inputs, production time and outputs
 	required_inputs = recipe.required_inputs
 	production_time = recipe.production_time
