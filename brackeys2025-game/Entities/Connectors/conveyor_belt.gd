@@ -9,18 +9,27 @@
 		# customers (maybe)
 
 
-extends Node2D
+class_name ConveyorBelt extends Node2D
 
 enum states { DRAWING, OPERATING }
-var state = states.DRAWING
+var state = states.OPERATING
 var desired_points : PackedVector2Array = []
 
 var polling_interval : int = 100 # msec
 var time_at_last_poll : int = 0
 
+var from : ConnectorNode
+var to : ConnectorNode
+
+
 func _ready():
 	if $Path2D.curve == null:
 		$Path2D.curve = Curve2D.new()
+
+func activate(connector_node : ConnectorNode):
+	# whoever spawns the conveyor should call this
+	from = connector_node
+	state = states.DRAWING
 	
 func _process(_delta):
 	match state:
@@ -32,7 +41,15 @@ func _process(_delta):
 					if not point_too_close():
 						add_point()
 		states.OPERATING:
+			#if from != null and to != null:
+				#move_goods()
 			pass
+
+func move_goods():
+	# Maybe just let the packages move themselves
+	#for package : ConveyorBeltPackage in $Path2D:
+		#package.move(delta)
+	pass
 
 func add_point():
 	var location = get_global_mouse_position()
@@ -53,8 +70,29 @@ func point_too_close():
 func stop_drawing():
 	# end the path and check for nearby input nodes.
 	# if no nearby input, create an output node for drawing more paths.
-	
+
 	state = states.OPERATING
+	var nearby_input_connectors = get_nearby_inputs()
+	if nearby_input_connectors != null and not nearby_input_connectors.is_empty():
+		var connector_reached : ConnectorNode = nearby_input_connectors[0]
+		connector_reached.conveyor_belt = self
+		to = connector_reached
+		
+		print("Connected a conveyor belt!")
+	else:
+		# TODO: spawn a new output connector
+		pass
+
+func get_nearby_inputs():
+	var all_inputs = get_tree().get_nodes_in_group("connectors")
+	var nearby_inputs = all_inputs.filter(is_node_near_cursor)
+	return nearby_inputs
+
+func is_node_near_cursor(node):
+	var tolerance_sq = 32*32
+	if node.global_position.distance_squared_to(get_global_mouse_position()) < tolerance_sq:
+		return true
+	
 
 func add_new_conveyance(widget: FactoryProductWidget):
 	# add a pathfollower2d and give it a reference to the widget we're transporting

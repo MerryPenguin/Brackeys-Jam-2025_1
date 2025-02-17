@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_q574a"]
 radius = 16.0
 
-[node name="ConnectorNode" type="Area2D"]
+[node name="ConnectorNode" type="Area2D" groups=["connectors"]]
 script = ExtResource("1_7ir7r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

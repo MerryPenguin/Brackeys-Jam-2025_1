@@ -1,4 +1,4 @@
-extends Area2D
+class_name ConnectorNode extends Area2D
 
 enum types { INPUT, OUTPUT }
 @export var type : types = types.INPUT
@@ -9,6 +9,7 @@ var state : states = states.IDLE
 var connected : bool = false
 var hovering : bool = false
 
+var conveyor_belt : ConveyorBelt
 
 func _ready():
 	$Label.text = types.keys()[type].capitalize()
@@ -25,12 +26,13 @@ func _process(_delta):
 func begin_drawing():
 	state = states.DRAWING
 	var new_conveyor = preload("res://Entities/Connectors/conveyor_belt.tscn").instantiate()
-	new_conveyor.state = new_conveyor.states.DRAWING
 	Globals.current_level.spawn_conveyor_belt(new_conveyor)
 	new_conveyor.global_position = Vector2.ZERO
+	new_conveyor.activate(self)
+	conveyor_belt = new_conveyor
 
 func stop_drawing():
-	# conveyor belts handle their own drawing
+	# conveyor belts handle their own stop_drawing()
 	state = states.IDLE
 
 func _on_mouse_entered() -> void:
@@ -39,4 +41,10 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	hovering = false
+	
+func receive_product(widget : FactoryProductWidget):
+	# coming from factory
+	# spawn a package, add the widget scene to the package
+	var new_package = ConveyorBeltPackage.new()
+	new_package.add_contents(widget)
 	

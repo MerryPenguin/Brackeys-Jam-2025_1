@@ -9,10 +9,9 @@ extends Node2D
 func _init():
 	Globals.current_level = self
 
-func spawn_widget_on_floor(widget_scene : PackedScene, location):
-	var new_widget = widget_scene.instantiate()
-	$LooseWidgets.add_child(new_widget)
-	new_widget.global_position = location
+func spawn_widget_on_floor(widget : FactoryProductWidget, location):
+	$LooseWidgets.add_child(widget)
+	widget.global_position = location
 
-func spawn_conveyor_belt(conveyor_belt : Node2D):
+func spawn_conveyor_belt(conveyor_belt : ConveyorBelt):
 	$Transporters.add_child(conveyor_belt)

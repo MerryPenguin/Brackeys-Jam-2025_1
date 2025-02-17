@@ -53,19 +53,19 @@ func produce(widget_scene : PackedScene):
 	print("Produced: ", get_root_node_name(widget_scene))
 	
 	if not is_output_connected():
-		drop_on_floor(widget_scene)
+		drop_on_floor(widget_scene.instantiate())
 	else:
-		pass
+		%OutputNode.receive_product(widget_scene.instantiate())
 
 func is_output_connected():
 	# TODO check for conveyor belt
 	return false
 
-func drop_on_floor(widget_scene : PackedScene):
+func drop_on_floor(widget : FactoryProductWidget):
 	var scatter_vec = Vector2(randi_range(-32, 32), randi_range(-32,32))
 	var location = %OutputNode.global_position + scatter_vec
 	
-	Globals.current_level.spawn_widget_on_floor(widget_scene, location)
+	Globals.current_level.spawn_widget_on_floor(widget, location)
 
 func get_root_node_name(packed_scene : PackedScene):
 	return packed_scene.get_state().get_node_name(0)
