@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjteivr6q34df"]
+
+[ext_resource type="Script" uid="uid://es4vgfyhheta" path="res://Props/hover_popup_display.gd" id="1_b4a3t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j3thj"]
+radius = 48.0
+
+[node name="HoverPopupDisplay" type="Area2D"]
+script = ExtResource("1_b4a3t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j3thj")
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -103.0
+offset_right = 64.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+text = "Information"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

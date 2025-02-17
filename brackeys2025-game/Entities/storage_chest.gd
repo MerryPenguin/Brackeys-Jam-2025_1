@@ -4,7 +4,7 @@
 class_name StorageChest extends Node2D
 
 @export var max_capacity : int = 24
-var items_stored : Array[FactoryProductWidget]
+var items_stored : Array[FactoryProductWidget] # may not be optimal keeping all those objects around, could be a dictionary with names and quantities
 
 
 func receive_product(widget):
@@ -13,3 +13,10 @@ func receive_product(widget):
 	
 func is_full():
 	return items_stored.size() >= max_capacity
+
+	
+func sell(widget_name : StringName):
+	# most likely selling a product to a customer
+	
+	pass
+	

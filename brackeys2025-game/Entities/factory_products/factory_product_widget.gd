@@ -9,6 +9,8 @@
 
 class_name FactoryProductWidget extends Node2D
 
+@export var market_value : float = 25 # dollars
+
 var origin : Node2D
 var destination : Node2D
 var package : PathFollow2D # the conveyor belt assembly.

@@ -22,3 +22,10 @@ func add(quantity):
 func requirements_met():
 	return currently_held >= quantity_required
 	
+func generate_random_requirement():
+	# for customers to create a random manifest
+	var random_product = Globals.product_scenes.keys().pick_random()
+	widget_scene = Globals.product_scenes[random_product]
+	quantity_required = randi()%5
+	max_capacity = quantity_required
+	widget_name = get_widget_name()

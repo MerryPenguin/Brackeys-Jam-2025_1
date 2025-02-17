@@ -6,10 +6,23 @@ var target_destination : Node2D
 @export_range(0.0, 1.0) var sketchiness_factor : float = 0.25
 var dangerous_limit : float = 0.5
 
+@export var widgets_desired : Array[RequirementsManifest]
+
 func _ready():
 	$RedLight.hide()
 	set_initial_sketchiness()
 	check_for_sketchiness()
+	create_requirements_manifests()
+	
+
+func create_requirements_manifests():
+	var req_text = ""
+	for i in range((randi()%3) +1):
+		var new_manifest = RequirementsManifest.new()
+		new_manifest.generate_random_requirement()
+		widgets_desired.push_back(new_manifest)
+		req_text += new_manifest.widget_name + ", "
+	$HoverPopupDisplay.text = "Customer Wants:\n" + req_text
 
 func set_initial_sketchiness():
 	sketchiness_factor = randf()
@@ -56,6 +69,26 @@ func move_toward_target(_delta):
 	if target_destination:
 		velocity = global_position.direction_to(target_destination.global_position) * speed
 		move_and_slide()
+		if target_destination is StorageChest and is_near_storage_bin():
+			for manifest in widgets_desired:
+				if not manifest.requirements_met():
+					target_destination.sell(manifest.widget_name)
+				
 
 func _on_selected_for_inspection(inspection_area):
 	go_to_inspector(inspection_area)
+
+func is_near_storage_bin():
+	if target_destination is StorageChest:
+		var threshold_sq = 32 * 32 # pixels
+		if global_position.distance_squared_to(target_destination.global_position) < threshold_sq:
+			return true
+	return false
+
+
+func _on_hover_detection_area_mouse_entered() -> void:
+	pass # Replace with function body.
+
+
+func _on_hover_detection_area_mouse_exited() -> void:
+	pass # Replace with function body.

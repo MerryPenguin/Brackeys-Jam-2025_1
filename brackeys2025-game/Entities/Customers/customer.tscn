@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm8v5aepcle5p"]
+[gd_scene load_steps=6 format=3 uid="uid://cm8v5aepcle5p"]
 
 [ext_resource type="Texture2D" uid="uid://upsvedsr6ksx" path="res://Assets/Images/placeholder/dude.png" id="1_nkqq3"]
 [ext_resource type="Script" uid="uid://1gnswtuhuqxq" path="res://Entities/Customers/customer.gd" id="1_tronh"]
 [ext_resource type="PackedScene" uid="uid://vmifcy0mv2yo" path="res://Entities/Customers/sketchy_prop.tscn" id="3_j3thj"]
+[ext_resource type="PackedScene" uid="uid://bjteivr6q34df" path="res://Props/hover_popup_display.tscn" id="4_8yoh6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tronh"]
 radius = 16.0
@@ -27,3 +28,8 @@ shape = SubResource("CapsuleShape2D_tronh")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="SketchyProp" parent="." instance=ExtResource("3_j3thj")]
+
+[node name="HoverPopupDisplay" parent="." instance=ExtResource("4_8yoh6")]
+position = Vector2(0, -10)
+text = "Customer Wants:
+"
