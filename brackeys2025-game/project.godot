@@ -89,3 +89,7 @@ locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/t
 
 disable_plugin_dialogues=true
 copy_path="res://GUI/maaack_template"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.0748452, 0.0748453, 0.0748452, 1)

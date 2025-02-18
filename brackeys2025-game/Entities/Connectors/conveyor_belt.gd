@@ -60,7 +60,10 @@ func add_point(location):
 		last_point = desired_points[-1]
 	if last_point.x != stepped_location.x and last_point.y != stepped_location.y:
 		# make an extra point, because user moved diagonally
-		add_point(Vector2(stepped_location.x, last_point.y))
+		if abs(last_point.x - stepped_location.x) > abs(last_point.y - stepped_location.y):
+			add_point(Vector2(stepped_location.x, last_point.y))
+		else:
+			add_point(Vector2(last_point.x, stepped_location.y))
 	
 	desired_points.push_back(stepped_location)
 	$Line2D.add_point(stepped_location)

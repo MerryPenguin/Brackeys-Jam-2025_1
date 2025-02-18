@@ -4,7 +4,7 @@ extends Node
 var current_level : Node2D
 var current_player : CharacterBody2D
 
-var grid_size : Vector2 = Vector2(32,32)
+var grid_size : Vector2 = Vector2(64,64)
 
 
 enum products {

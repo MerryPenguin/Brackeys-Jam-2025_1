@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnnapxyigsc4a"]
+[gd_scene load_steps=5 format=3 uid="uid://cnnapxyigsc4a"]
 
-[ext_resource type="Texture2D" uid="uid://xx0fxojr51y3" path="res://Assets/Images/placeholder/conveyor.png" id="1_8j324"]
 [ext_resource type="Script" uid="uid://ceox10kxh50ne" path="res://Entities/Connectors/conveyor_belt.gd" id="1_kdglh"]
+[ext_resource type="Texture2D" uid="uid://bumtfh025v622" path="res://Assets/Images/Conveyor_belt.png" id="2_kdglh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdglh"]
+atlas = ExtResource("2_kdglh")
+region = Rect2(16.0669, -4.60924, 19.819, 22.321)
 
 [sub_resource type="Curve2D" id="Curve2D_4tvtk"]
 resource_local_to_scene = true
@@ -13,8 +17,8 @@ script = ExtResource("1_kdglh")
 [node name="Line2D" type="Line2D" parent="."]
 texture_filter = 3
 texture_repeat = 2
-width = 32.0
-texture = ExtResource("1_8j324")
+width = 16.0
+texture = SubResource("AtlasTexture_kdglh")
 texture_mode = 1
 
 [node name="Path2D" type="Path2D" parent="."]
