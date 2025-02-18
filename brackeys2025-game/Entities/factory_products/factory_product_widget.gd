@@ -14,7 +14,7 @@ class_name FactoryProductWidget extends Node2D
 var origin : Node2D
 var destination : Node2D
 var package : PathFollow2D # the conveyor belt assembly.
-
+var recipe : ProductWidgetRecipe # so we don't need a unique scene for each product? We can just refer to the recipe.
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -27,3 +27,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			body.receive_product(self)
 			if package != null:
 				package.release_contents()
+
+func activate(new_recipe : ProductWidgetRecipe):
+	recipe = new_recipe
+	$Sprite2D.texture = new_recipe.icon
+	var tex_size = new_recipe.icon.get_size()
+	var desired_size = Vector2(32,32)
+	$Sprite2D.scale = desired_size / tex_size

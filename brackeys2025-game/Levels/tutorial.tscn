@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8vf7xtonorpt"]
+[gd_scene load_steps=7 format=3 uid="uid://b8vf7xtonorpt"]
 
 [ext_resource type="Script" uid="uid://6igrotro1nqu" path="res://Levels/tutorial.gd" id="1_0xeif"]
 [ext_resource type="PackedScene" uid="uid://3j00pxhcg44x" path="res://Entities/factory_machines/organics_harvester_machine.tscn" id="1_lalqu"]
 [ext_resource type="PackedScene" uid="uid://cxnywkrqyk8qg" path="res://Entities/factory_machines/aggregator_combiner_machine.tscn" id="2_0xeif"]
+[ext_resource type="Resource" uid="uid://caw4fnmk3jd1a" path="res://Recipes/pineapple_recipe.tres" id="3_gdvy0"]
+[ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_mscth"]
+[ext_resource type="Resource" uid="uid://eescdi7hydkg" path="res://Recipes/grenade_recipe.tres" id="6_e312d"]
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_0xeif")
@@ -48,8 +51,11 @@ text = "Skip >>"
 
 [node name="OrganicsHarvester" parent="FactoryFloor" instance=ExtResource("1_lalqu")]
 position = Vector2(334, 420)
+unlocked_recipes = Array[ExtResource("3_mscth")]([ExtResource("3_gdvy0")])
+current_recipe = ExtResource("3_gdvy0")
 
 [node name="AggregatorCombiner" parent="FactoryFloor" instance=ExtResource("2_0xeif")]
 position = Vector2(823, 423)
+unlocked_recipes = Array[ExtResource("3_mscth")]([ExtResource("6_e312d")])
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/SkipButton" to="." method="_on_skip_button_pressed"]

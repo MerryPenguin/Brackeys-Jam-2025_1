@@ -1,14 +1,13 @@
-[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=7 format=3 uid="uid://eescdi7hydkg"]
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=6 format=3 uid="uid://eescdi7hydkg"]
 
 [ext_resource type="Texture2D" uid="uid://dgsfp4jmdbg1t" path="res://Assets/Images/placeholder/green_pineapple.png" id="1_b113f"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="1_me54w"]
 [ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_wtk63"]
-[ext_resource type="PackedScene" uid="uid://vnwdbq7jjq83" path="res://Entities/factory_products/pineapple.tscn" id="3_wtk63"]
-[ext_resource type="PackedScene" uid="uid://c3qjd8apbolsn" path="res://Entities/factory_products/grenade.tscn" id="3_xlpg3"]
+[ext_resource type="Resource" uid="uid://caw4fnmk3jd1a" path="res://Recipes/pineapple_recipe.tres" id="4_b113f"]
 
 [sub_resource type="Resource" id="Resource_b113f"]
 script = ExtResource("2_wtk63")
-widget_scene = ExtResource("3_wtk63")
+recipe = ExtResource("4_b113f")
 quantity_required = 2
 max_capacity = 10
 currently_held = 0
@@ -16,8 +15,9 @@ metadata/_custom_type_script = ExtResource("2_wtk63")
 
 [resource]
 script = ExtResource("1_me54w")
+product_name = &"Greande"
 required_inputs = Array[ExtResource("2_wtk63")]([SubResource("Resource_b113f")])
 production_time = 10.0
-output_widget = ExtResource("3_xlpg3")
 icon = ExtResource("1_b113f")
+recipe_type = 0
 metadata/_custom_type_script = ExtResource("1_me54w")

@@ -1,46 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://vndqdct5f50s"]
+[gd_scene load_steps=7 format=3 uid="uid://vndqdct5f50s"]
 
-[ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="1_8j4uy"]
 [ext_resource type="Script" uid="uid://y1manp7jpn4c" path="res://Levels/factory_floor.gd" id="1_wrr4c"]
-[ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_6kdma"]
 [ext_resource type="PackedScene" uid="uid://d1m8n26ymxpa8" path="res://Entities/MobileWorker/factory_worker.tscn" id="2_7d5sh"]
-[ext_resource type="PackedScene" uid="uid://vnwdbq7jjq83" path="res://Entities/factory_products/pineapple.tscn" id="2_fpxqv"]
-[ext_resource type="PackedScene" uid="uid://c3qjd8apbolsn" path="res://Entities/factory_products/grenade.tscn" id="3_64ewy"]
 [ext_resource type="PackedScene" uid="uid://cnnapxyigsc4a" path="res://Entities/Connectors/conveyor_belt.tscn" id="3_xicpb"]
 [ext_resource type="PackedScene" uid="uid://cu7xb7uvvt414" path="res://Entities/StorageChest.tscn" id="6_fpxqv"]
 [ext_resource type="PackedScene" uid="uid://b01165no4oubu" path="res://Entities/Inspection/inspector.tscn" id="12_2g2ty"]
 [ext_resource type="PackedScene" uid="uid://bmuqgwwm8fcko" path="res://GUI/hud.tscn" id="13_2g2ty"]
-
-[sub_resource type="Resource" id="Resource_wrr4c"]
-script = ExtResource("2_6kdma")
-widget_scene = ExtResource("2_fpxqv")
-quantity_required = 2
-max_capacity = 10
-currently_held = 0
-metadata/_custom_type_script = ExtResource("2_6kdma")
 
 [node name="FactoryFloor" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_wrr4c")
 
 [node name="Machines" type="Node2D" parent="."]
-
-[node name="PineappleMachine" parent="Machines" instance=ExtResource("1_8j4uy")]
-position = Vector2(271, 112)
-production_time = 3.0
-output_widget = ExtResource("2_fpxqv")
-
-[node name="Sprite2D" parent="Machines/PineappleMachine/StaticBody2D" index="1"]
-frame = 4
-
-[node name="GrenadeMachine" parent="Machines" instance=ExtResource("1_8j4uy")]
-position = Vector2(446, 384)
-required_inputs = Array[ExtResource("2_6kdma")]([SubResource("Resource_wrr4c")])
-production_time = 5.0
-output_widget = ExtResource("3_64ewy")
-
-[node name="Sprite2D" parent="Machines/GrenadeMachine/StaticBody2D" index="1"]
-frame = 1
 
 [node name="MobileWorkers" type="Node2D" parent="."]
 
@@ -69,6 +40,3 @@ position = Vector2(916, 96)
 anchor_mode = 0
 
 [node name="HUD" parent="." instance=ExtResource("13_2g2ty")]
-
-[editable path="Machines/PineappleMachine"]
-[editable path="Machines/GrenadeMachine"]

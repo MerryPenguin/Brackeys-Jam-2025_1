@@ -8,11 +8,27 @@ var grid_size : Vector2 = Vector2(64,64)
 
 
 enum products {
-	PINEAPPLE,
-	GRENADE
+	STARCH, # ORGANIC
+	ASH, # ORGANIC
+	GEARS, # INORGANIC
+	SPRINGS, # INORGANIC
+	HOPES, # SPIRITUAL
+	ANXIETY, # SPIRITUAL
+	GUNPOWDER, # ASH + GEARS - for babies
+	GRENADE, # PINEAPPLE + GEARS - for monkeys
+	PINEAPPLE, # STARCH + HOPES - for time travellers
+	BANANA, # STARCH + ASH - for monkeys
+	EPISTEMOLOGY, # ANXIETY + GUNPOWDER - for time travellers
+	ARTIFACT, # SPRINGS + HOPES - for time travellers
+	PACIFIER, # ANXIETY + BANANA - for babies
+	RAYGUN, # SPRINGS + GRENADE - for time travellers
+	FRUITPHONE, # BANANA + EPISTEMOLOGY - for monkeys
+	PARADOX, # FRUITPHONE + ANXIETY + EPISTEMOLOGY - anyone - win game (anxiety ending)
+	SINGULARITY, # ARTIFACT + PINEAPPLE + FRUITPHONE - anyone - win game (hopeful ending)
 }
 
-var product_scenes = {
-	products.PINEAPPLE : preload("res://Entities/factory_products/pineapple.tscn"),
-	products.GRENADE : preload("res://Entities/factory_products/grenade.tscn"),
+var product_recipes : Dictionary = {
+	products.PINEAPPLE : preload("res://Recipes/pineapple_recipe.tres"),
+	products.GRENADE : preload("res://Recipes/grenade_recipe.tres"),
+	products.GEARS : preload("res://Recipes/gears_recipe.tres"),
 }

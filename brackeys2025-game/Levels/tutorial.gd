@@ -1,5 +1,6 @@
 extends "res://Levels/factory_floor.gd"
 
+signal level_won
 
 func _on_skip_button_pressed() -> void:
 	var level_won_overlay = preload("res://GUI/maaack_template/scenes/overlaid_menus/level_won_menu.tscn").instantiate()	

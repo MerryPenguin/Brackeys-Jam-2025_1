@@ -6,6 +6,8 @@ func _ready():
 	$Panel.hide()
 	populate_grid_container()
 
+	
+
 func _on_button_pressed() -> void:
 	popup_widget_selection_panel()
 
@@ -26,16 +28,20 @@ func populate_grid_container():
 		
 func get_recipes():
 	var possible_recipes = dir_contents("res://Recipes/")
-	var actual_recipies = []
+	var actual_recipes = []
 	for possible_recipe_path : String in possible_recipes:
 		if possible_recipe_path.get_extension() == "tres":
 			var item = load(possible_recipe_path)
 			if item is ProductWidgetRecipe:
-				actual_recipies.push_back(item)
-	return actual_recipies
+				actual_recipes.push_back(item)
+	var unlocked_recipes = actual_recipes.filter(is_recipe_unlocked)
+	return unlocked_recipes
 
 func is_recipe(item):
 	return item is ProductWidgetRecipe
+
+func is_recipe_unlocked(recipe):
+	return recipe in owner.unlocked_recipes
 
 
 func dir_contents(path : String):

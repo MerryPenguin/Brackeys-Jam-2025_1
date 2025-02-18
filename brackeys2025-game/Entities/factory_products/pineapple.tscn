@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://vnwdbq7jjq83"]
-
-[ext_resource type="PackedScene" uid="uid://u40bu42wivm4" path="res://Entities/factory_products/factory_product_widget.tscn" id="1_calq6"]
-
-[node name="Pineapple" instance=ExtResource("1_calq6")]

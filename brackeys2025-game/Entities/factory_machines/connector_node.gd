@@ -13,12 +13,19 @@ var conveyor_belt : ConveyorBelt
 var previous_conveyor : ConveyorBelt # Maybe this should be a stack
 var connected_machine # Can be FactoryMachine or StorageChest
 
+signal node_connected(node)
+
+
 func _ready():
 	$Label.text = types.keys()[type].capitalize()
 	if owner is FactoryMachine:
 		connected_machine = owner
 	elif owner is StorageChest:
 		connected_machine = owner
+	
+	if owner and owner.has_method("_on_connector_node_connected"):
+		node_connected.connect(owner._on_connector_node_connected)
+
 
 func _process(_delta):
 	match type:
@@ -59,8 +66,9 @@ func _on_mouse_exited() -> void:
 	hovering = false
 	
 func _on_new_conveyor_belt_connected(_belt):
+	# happens when a belt attaches to your input
 	destroy_previous_conveyor_belts()
-	
+	node_connected.emit(self)
 
 func receive_product(widget : FactoryProductWidget):
 	# coming from factory
