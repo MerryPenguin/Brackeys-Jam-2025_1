@@ -37,6 +37,11 @@ movie_writer/fps=20
 
 enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
 
+[gui]
+
+theme/custom="uid://d1e0mgeiio6bb"
+theme/custom_font="uid://tyndbjefl5xn"
+
 [input]
 
 move_left={

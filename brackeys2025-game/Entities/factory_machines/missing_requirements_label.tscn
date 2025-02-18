@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://8gmeexoieddc"]
+[gd_scene load_steps=4 format=3 uid="uid://8gmeexoieddc"]
 
+[ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="1_dqpbf"]
 [ext_resource type="Script" uid="uid://cfdjx2mg6dsgl" path="res://Entities/factory_machines/missing_requirements_label.gd" id="1_qm465"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4ehr"]
@@ -17,6 +18,7 @@ offset_right = -568.0
 offset_bottom = -313.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_dqpbf")
 theme_type_variation = &"HeaderLarge"
 text = "[ !!! ]"
 horizontal_alignment = 1

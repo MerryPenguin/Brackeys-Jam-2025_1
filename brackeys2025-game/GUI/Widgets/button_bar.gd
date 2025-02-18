@@ -25,7 +25,7 @@ func setup_button(button : Button, button_num: int):
 	button.pressed.connect(_on_button_pressed.bind(button))
 	button.shortcut = Shortcut.new()
 	var event_key = InputEventKey.new()
-	var keycodes = [ KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6 ]
+	var keycodes = [ KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7 ]
 	event_key.keycode = keycodes[button_num]
 	button.shortcut.events.push_back(event_key)
 	

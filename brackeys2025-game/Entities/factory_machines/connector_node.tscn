@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3tihsme16qjf"]
+[gd_scene load_steps=5 format=3 uid="uid://b3tihsme16qjf"]
 
 [ext_resource type="Script" uid="uid://bvpwywu8m1rr8" path="res://Entities/factory_machines/connector_node.gd" id="1_7ir7r"]
 [ext_resource type="Texture2D" uid="uid://c8ug15hy7gt3q" path="res://Assets/Images/placeholder/white_circle.png" id="1_sk435"]
+[ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="3_k84ef"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q574a"]
 radius = 16.0
@@ -28,6 +29,7 @@ offset_right = 21.0
 offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_k84ef")
 text = "IN"
 horizontal_alignment = 1
 

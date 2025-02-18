@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cegq3dg2ut413"]
 
 [ext_resource type="Script" uid="uid://dlhuetv61urld" path="res://Entities/factory_machine.gd" id="1_kxche"]
-[ext_resource type="Texture2D" uid="uid://d3e8epqhh247q" path="res://Assets/Images/Factories_prototype.png" id="2_btwl5"]
+[ext_resource type="Texture2D" uid="uid://cv7myqqm0ja6u" path="res://Assets/Images/Factories.png" id="2_rh01v"]
 [ext_resource type="PackedScene" uid="uid://b3tihsme16qjf" path="res://Entities/factory_machines/connector_node.tscn" id="3_q574a"]
 [ext_resource type="PackedScene" uid="uid://8gmeexoieddc" path="res://Entities/factory_machines/missing_requirements_label.tscn" id="4_btwl5"]
 [ext_resource type="PackedScene" uid="uid://b2y6dn7deqgw2" path="res://Entities/factory_machines/interaction_button.tscn" id="5_rh01v"]
@@ -23,7 +23,7 @@ shape = SubResource("RectangleShape2D_btwl5")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture_filter = 3
 scale = Vector2(6, 6)
-texture = ExtResource("2_btwl5")
+texture = ExtResource("2_rh01v")
 hframes = 3
 vframes = 2
 

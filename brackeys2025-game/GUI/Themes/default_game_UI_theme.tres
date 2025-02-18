@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d1e0mgeiio6bb"]
+
+[ext_resource type="FontFile" uid="uid://tyndbjefl5xn" path="res://GUI/Fonts/Pizel.ttf" id="1_6v8ok"]
+
+[resource]
+default_font = ExtResource("1_6v8ok")
