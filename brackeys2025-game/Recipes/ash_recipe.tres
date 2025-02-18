@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=4 format=3 uid="uid://bsqo7o5y0dslv"]
+
+[ext_resource type="Texture2D" uid="uid://c456q6g2s5eff" path="res://Assets/Images/placeholder/starch.png" id="1_fgvxv"]
+[ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_alrcg"]
+[ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_mv38p"]
+
+[resource]
+script = ExtResource("3_mv38p")
+product_name = &"Starch"
+required_inputs = Array[ExtResource("2_alrcg")]([])
+production_time = 10.0
+icon = ExtResource("1_fgvxv")
+recipe_type = 0
+metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=4 format=3 uid="uid://bv28cte2sl2ip"]
+
+[ext_resource type="Texture2D" uid="uid://gq1am4gdvnlu" path="res://Assets/Images/placeholder/anxiety.png" id="1_aw2hf"]
+[ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_lg7fg"]
+[ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_udfbn"]
+
+[resource]
+script = ExtResource("3_udfbn")
+product_name = &"Anxiety"
+required_inputs = Array[ExtResource("2_lg7fg")]([])
+production_time = 10.0
+icon = ExtResource("1_aw2hf")
+recipe_type = 2
+metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

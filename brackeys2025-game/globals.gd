@@ -4,7 +4,7 @@ extends Node
 var current_level : Node2D
 var current_player : CharacterBody2D
 
-var grid_size : Vector2 = Vector2(64,64)
+const grid_size : Vector2 = Vector2(64,64)
 
 
 enum products {
@@ -27,8 +27,22 @@ enum products {
 	SINGULARITY, # ARTIFACT + PINEAPPLE + FRUITPHONE - anyone - win game (hopeful ending)
 }
 
-var product_recipes : Dictionary = {
-	products.PINEAPPLE : preload("res://Recipes/pineapple_recipe.tres"),
-	products.GRENADE : preload("res://Recipes/grenade_recipe.tres"),
+const product_recipes : Dictionary = {
+	products.STARCH : preload("res://Recipes/starch_recipe.tres"),
+	products.ASH : preload("res://Recipes/ash_recipe.tres"),
 	products.GEARS : preload("res://Recipes/gears_recipe.tres"),
+	products.SPRINGS : preload("res://Recipes/springs_recipe.tres"),
+	products.HOPES : preload( "res://Recipes/hopes_recipe.tres"),
+	products.ANXIETY : preload("res://Recipes/anxiety_recipe.tres"),
+	products.GUNPOWDER : preload("res://Recipes/gunpowder_recipe.tres"),
+	products.GRENADE : preload("res://Recipes/grenade_recipe.tres"),
+	products.PINEAPPLE : preload("res://Recipes/pineapple_recipe.tres"),
+	products.BANANA : preload("res://Recipes/banana_recipe.tres"),
+	products.EPISTEMOLOGY : preload("res://Recipes/epistemology_recipe.tres"),
+	products.ARTIFACT : preload("res://Recipes/artifact_recipe.tres"),
+	products.PACIFIER : preload("res://Recipes/pacifier_recipe.tres"),
+	products.RAYGUN : preload("res://Recipes/raygun_recipe.tres"),
+	products.FRUITPHONE : preload("res://Recipes/fruitphone_recipe.tres"),
+	products.PARADOX : preload("res://Recipes/paradox_recipe.tres"),
+	products.SINGULARITY : preload("res://Recipes/singularity_recipe.tres"),
 }
