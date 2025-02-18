@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxnywkrqyk8qg"]
+
+[ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="1_jr0p4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sgi0p"]
+load_path = "res://.godot/imported/Factories_prototype.png-0394bdf5cde180eb93527416570357ca.ctex"
+
+[node name="AggregatorCombiner" instance=ExtResource("1_jr0p4")]
+
+[node name="Sprite2D" parent="StaticBody2D" index="1"]
+texture = SubResource("CompressedTexture2D_sgi0p")
+hframes = 1
+vframes = 1
+region_enabled = true
+region_rect = Rect2(33.8887, 4.75702, 11.4568, 11.6543)
