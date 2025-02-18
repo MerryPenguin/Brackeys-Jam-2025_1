@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cdv8xiqsdhwgm"]
+[gd_scene load_steps=19 format=3 uid="uid://cdv8xiqsdhwgm"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_tp56l"]
 [ext_resource type="Script" uid="uid://c7x00yr8ykb25" path="res://GUI/maaack_template/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_fg8c4"]
+[ext_resource type="PackedScene" uid="uid://dqe6dlpqetod4" path="res://GUI/maaack_template/scenes/menus/level_select_menu/level_select_menu.tscn" id="3_fg8c4"]
 [ext_resource type="PackedScene" uid="uid://cxwuykg32myvr" path="res://GUI/maaack_template/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_nj250"]
 [ext_resource type="PackedScene" uid="uid://8wcbk06fa6fh" path="res://GUI/maaack_template/scenes/credits/credits.tscn" id="4_fdut4"]
 
@@ -351,8 +352,8 @@ graph_offset = Vector2(-118.44, 72.175)
 
 [node name="MainMenu" instance=ExtResource("1_tp56l")]
 script = ExtResource("2_fg8c4")
-level_select_packed_scene = null
-game_scene_path = "uid://vndqdct5f50s"
+level_select_packed_scene = ExtResource("3_fg8c4")
+game_scene_path = "uid://b8vf7xtonorpt"
 options_packed_scene = ExtResource("3_nj250")
 credits_packed_scene = ExtResource("4_fdut4")
 
@@ -365,9 +366,6 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_vikuh")
 anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
-
-[node name="BackgroundMusicPlayer" parent="." index="3"]
-bus = &"Master"
 
 [node name="VersionContainer" parent="VersionMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
@@ -399,7 +397,6 @@ text = "Continue"
 
 [node name="LevelSelectButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="2"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
 text = "Level Select"

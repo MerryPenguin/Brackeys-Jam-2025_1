@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8vf7xtonorpt"]
+
+[ext_resource type="Script" uid="uid://6igrotro1nqu" path="res://Levels/tutorial.gd" id="1_0xeif"]
+[ext_resource type="PackedScene" uid="uid://3j00pxhcg44x" path="res://Entities/factory_machines/organics_harvester_machine.tscn" id="1_lalqu"]
+[ext_resource type="PackedScene" uid="uid://cxnywkrqyk8qg" path="res://Entities/factory_machines/aggregator_combiner_machine.tscn" id="2_0xeif"]
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_0xeif")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"HeaderLarge"
+text = "Tutorial"
+
+[node name="Instructions" type="Label" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Connect the Harvester to the Combinator
+"
+horizontal_alignment = 1
+
+[node name="SkipButton" type="Button" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Skip >>"
+
+[node name="FactoryFloor" type="Node2D" parent="."]
+
+[node name="OrganicsHarvester" parent="FactoryFloor" instance=ExtResource("1_lalqu")]
+position = Vector2(334, 420)
+
+[node name="AggregatorCombiner" parent="FactoryFloor" instance=ExtResource("2_0xeif")]
+position = Vector2(823, 423)
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/SkipButton" to="." method="_on_skip_button_pressed"]
