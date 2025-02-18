@@ -114,8 +114,47 @@ icon = ExtResource("2_birog")
 icon_alignment = 1
 expand_icon = true
 
+[node name="RecipeBookPopup" type="PopupPanel" parent="RecipesButton"]
+unique_name_in_owner = true
+size = Vector2i(508, 508)
+visible = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RecipesButton/RecipeBookPopup"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 504.0
+offset_bottom = 504.0
+
+[node name="Label" type="Label" parent="RecipesButton/RecipeBookPopup/VBoxContainer"]
+layout_mode = 2
+text = "Recipe Book"
+horizontal_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="RecipesButton/RecipeBookPopup/VBoxContainer"]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+text = "    STARCH, # ORGANIC
+    ASH, # ORGANIC
+    GEARS, # INORGANIC
+    SPRINGS, # INORGANIC
+    HOPES, # SPIRITUAL
+    ANXIETY, # SPIRITUAL
+    GUNPOWDER, # ASH + GEARS - for babies
+    GRENADE, # PINEAPPLE + GEARS - for monkeys
+    PINEAPPLE, # STARCH + HOPES - for time travellers
+    BANANA, # STARCH + ASH - for monkeys
+    EPISTEMOLOGY, # ANXIETY + GUNPOWDER - for time travellers
+    ARTIFACT, # SPRINGS + HOPES - for time travellers
+    PACIFIER, # ANXIETY + BANANA - for babies
+    RAYGUN, # SPRINGS + GRENADE - for time travellers
+    FRUITPHONE, # BANANA + EPISTEMOLOGY - for monkeys
+    PARADOX, # FRUITPHONE + ANXIETY + EPISTEMOLOGY - anyone - win game (anxiety ending)
+    SINGULARITY, # ARTIFACT + PINEAPPLE + FRUITPHONE - anyone - win game (hopeful ending)"
+
 [node name="RecipeLabel" type="Label" parent="."]
 layout_mode = 2
 text = "Recipe 
 Book"
 horizontal_alignment = 1
+
+[connection signal="pressed" from="RecipesButton" to="." method="_on_recipes_button_pressed"]

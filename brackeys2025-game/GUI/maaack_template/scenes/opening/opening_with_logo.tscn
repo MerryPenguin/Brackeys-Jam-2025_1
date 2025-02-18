@@ -11,9 +11,6 @@ script = ExtResource("2_xsrvf")
 next_scene = "res://GUI/maaack_template/scenes/menus/main_menu/main_menu_with_animations.tscn"
 images = Array[Texture2D]([ExtResource("3_rfd6u"), ExtResource("3_jmxi8")])
 
-[node name="BackgroundMusicPlayer" parent="." index="0"]
-bus = &"Master"
-
 [node name="BrainstormingPanel" type="Panel" parent="." index="2"]
 layout_mode = 1
 anchors_preset = 15

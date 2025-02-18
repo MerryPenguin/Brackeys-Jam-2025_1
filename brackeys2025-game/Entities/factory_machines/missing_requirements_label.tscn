@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cfdjx2mg6dsgl" path="res://Entities/factory_machines/missing_requirements_label.gd" id="1_qm465"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4ehr"]
-size = Vector2(64, 32)
+size = Vector2(144, 99)
 
 [node name="MissingRequirementsLabel" type="Label"]
 anchors_preset = 8
@@ -27,6 +27,7 @@ script = ExtResource("1_qm465")
 position = Vector2(27.5, 20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfoHoverArea"]
+position = Vector2(-16, 33.5)
 shape = SubResource("RectangleShape2D_l4ehr")
 
 [node name="DetailsLabel" type="Label" parent="."]

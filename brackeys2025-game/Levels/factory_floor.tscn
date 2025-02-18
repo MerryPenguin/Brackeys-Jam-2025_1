@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://vndqdct5f50s"]
+[gd_scene load_steps=8 format=3 uid="uid://vndqdct5f50s"]
 
 [ext_resource type="Script" uid="uid://y1manp7jpn4c" path="res://Levels/factory_floor.gd" id="1_wrr4c"]
 [ext_resource type="PackedScene" uid="uid://d1m8n26ymxpa8" path="res://Entities/MobileWorker/factory_worker.tscn" id="2_7d5sh"]
 [ext_resource type="PackedScene" uid="uid://cnnapxyigsc4a" path="res://Entities/Connectors/conveyor_belt.tscn" id="3_xicpb"]
 [ext_resource type="PackedScene" uid="uid://cu7xb7uvvt414" path="res://Entities/StorageChest.tscn" id="6_fpxqv"]
+[ext_resource type="AudioStream" uid="uid://by8bqpohhprun" path="res://Assets/music/Factory 1 (With EQ).mp3" id="7_fpxqv"]
 [ext_resource type="PackedScene" uid="uid://b01165no4oubu" path="res://Entities/Inspection/inspector.tscn" id="12_2g2ty"]
 [ext_resource type="PackedScene" uid="uid://bmuqgwwm8fcko" path="res://GUI/hud.tscn" id="13_2g2ty"]
 
@@ -40,3 +41,9 @@ position = Vector2(916, 96)
 anchor_mode = 0
 
 [node name="HUD" parent="." instance=ExtResource("13_2g2ty")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fpxqv")
+volume_db = -6.0
+autoplay = true
+bus = &"Music"

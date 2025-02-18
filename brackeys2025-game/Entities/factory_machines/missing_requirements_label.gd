@@ -7,12 +7,17 @@ func _ready():
 	
 func _on_info_hover_area_mouse_entered() -> void:
 	hovered = true
-	$DetailsLabel.show()
 
+	$DetailsLabel.text = "Producing: " + owner.current_recipe.product_name	
+	if not owner.requirements_met():
+		$DetailsLabel.text += "\nMissing: "
+		for requirement in owner.get_missing_requirements():
+			$DetailsLabel.text += "\n\t" + requirement
+	$DetailsLabel.show()
 
 func _on_info_hover_area_mouse_exited() -> void:
 	hovered = false
-	$DisplayTimer.set_wait_time(3.0)
+	$DisplayTimer.set_wait_time(2.0)
 	$DisplayTimer.start()
 
 

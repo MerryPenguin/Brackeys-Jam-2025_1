@@ -50,6 +50,7 @@ offset_left = -7.0
 offset_top = -45.0
 offset_right = 8.0
 offset_bottom = -22.0
+text = ""
 
 [node name="InteractionButton" parent="." instance=ExtResource("5_rh01v")]
 

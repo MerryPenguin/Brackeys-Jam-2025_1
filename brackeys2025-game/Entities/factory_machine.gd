@@ -85,14 +85,20 @@ func drop_on_floor(widget : FactoryProductWidget):
 func get_root_node_name(packed_scene : PackedScene):
 	return packed_scene.get_state().get_node_name(0)
 
+func get_missing_requirements() -> PackedStringArray:
+	var missing : PackedStringArray = []
+	for manifest : RequirementsManifest in current_recipe.required_inputs:
+		if not manifest.requirements_met():
+			missing.push_back(manifest.get_widget_name())
+	return missing
 
 func _on_production_timer_timeout() -> void:
 	# consume inventory, release product
 	if requirements_met():
 		produce(current_recipe.output_widget)
-		$MissingRequirementsLabel.hide()
+		$MissingRequirementsLabel.text = ""
 	else:
-		$MissingRequirementsLabel.show()
+		$MissingRequirementsLabel.text = "!!!"
 	$ProductionTimer.start()
 
 
