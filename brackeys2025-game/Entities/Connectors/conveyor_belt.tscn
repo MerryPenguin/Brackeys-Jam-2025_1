@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnnapxyigsc4a"]
+[gd_scene load_steps=7 format=3 uid="uid://cnnapxyigsc4a"]
 
 [ext_resource type="Script" uid="uid://ceox10kxh50ne" path="res://Entities/Connectors/conveyor_belt.gd" id="1_kdglh"]
 [ext_resource type="Texture2D" uid="uid://bumtfh025v622" path="res://Assets/Images/Conveyor_belt.png" id="2_kdglh"]
@@ -10,6 +10,55 @@ region = Rect2(16.0669, -4.60924, 19.819, 22.321)
 [sub_resource type="Curve2D" id="Curve2D_4tvtk"]
 resource_local_to_scene = true
 bake_interval = 16.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdglh"]
+texture = ExtResource("2_kdglh")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/left_side = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/top_side = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/left_side = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_side = 0
+
+[sub_resource type="TileSet" id="TileSet_4tvtk"]
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "Conveyors 0"
+terrain_set_0/terrain_0/color = Color(0.82, 0.164, 0.776267, 1)
+sources/0 = SubResource("TileSetAtlasSource_kdglh")
 
 [node name="ConveyorBelt" type="Node2D"]
 script = ExtResource("1_kdglh")
@@ -23,3 +72,8 @@ texture_mode = 1
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_4tvtk")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 3
+scale = Vector2(5, 5)
+tile_set = SubResource("TileSet_4tvtk")

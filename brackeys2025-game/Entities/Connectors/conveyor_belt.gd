@@ -14,12 +14,15 @@ class_name ConveyorBelt extends Node2D
 enum states { DRAWING, OPERATING }
 var state = states.OPERATING
 var desired_points : PackedVector2Array = []
+var tilemap_path : Array[Vector2i]
 
 var polling_interval : int = 100 # msec
 var time_at_last_poll : int = 0
 
 var origin : ConnectorNode
 var destination : ConnectorNode
+
+var previous_tile_coord : Vector2
 
 signal belt_connected(belt)
 
@@ -68,7 +71,24 @@ func add_point(location):
 	desired_points.push_back(stepped_location)
 	$Line2D.add_point(stepped_location)
 	$Path2D.curve.add_point(stepped_location)
+	update_tilemap(stepped_location)
+
+func update_tilemap(location):
+	var tilemap : TileMapLayer = $TileMapLayer
+	var tilemap_coord : Vector2i = tilemap.local_to_map(location / tilemap.scale)
 	
+	#var direction = tilemap_coord - previous_tile_coord
+	#direction.x = ceil(direction.x)
+	#direction.y = ceil(direction.y)
+	#var tile_atlas_coord = direction + Vector2.ONE
+	if tilemap_path.is_empty() or tilemap_coord != tilemap_path[-1]:
+		tilemap_path.push_back(tilemap_coord)
+	
+	#tilemap.set_cell(tilemap_coord, 0, tile_atlas_coord)
+	if tilemap_path.size() > 1:
+		tilemap.set_cells_terrain_path(tilemap_path, 0, 0)
+		
+	previous_tile_coord = tilemap_coord
 
 func point_too_close():
 	var tolerance_sq = 32 * 32
