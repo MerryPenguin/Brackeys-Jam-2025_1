@@ -12,3 +12,11 @@ func _on_next_level_requested():
 	# so the system knows which levels are complete.
 	GameState.set_current_level(1)
 	SceneLoader.load_scene("res://Levels/factory_floor.tscn")
+
+
+func _on_aggregator_combiner_input_node_connected() -> void:
+	_on_skip_button_pressed()
+
+
+func _on_organics_harvester_input_node_connected() -> void:
+	_on_skip_button_pressed()

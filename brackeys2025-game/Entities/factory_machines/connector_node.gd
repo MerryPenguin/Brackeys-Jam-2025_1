@@ -23,9 +23,11 @@ func _ready():
 	elif owner is StorageChest:
 		connected_machine = owner
 	
+	await owner.ready
 	if owner and owner.has_method("_on_connector_node_connected"):
 		node_connected.connect(owner._on_connector_node_connected)
-
+	
+		
 
 func _process(_delta):
 	match type:
@@ -65,10 +67,10 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	hovering = false
 	
-func _on_new_conveyor_belt_connected(_belt):
-	# happens when a belt attaches to your input
+func _on_new_conveyor_belt_connected(belt : ConveyorBelt):
+	# happens when a belt attaches to an input
 	destroy_previous_conveyor_belts()
-	node_connected.emit(self)
+	node_connected.emit(belt.destination)
 
 func receive_product(widget : FactoryProductWidget):
 	# coming from factory

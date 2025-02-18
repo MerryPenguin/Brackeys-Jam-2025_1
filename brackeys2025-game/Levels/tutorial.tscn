@@ -62,3 +62,5 @@ position = Vector2(823, 423)
 unlocked_recipes = Array[ExtResource("3_mscth")]([ExtResource("6_e312d")])
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="input_node_connected" from="FactoryFloor/OrganicsHarvester" to="." method="_on_organics_harvester_input_node_connected"]
+[connection signal="input_node_connected" from="FactoryFloor/AggregatorCombiner" to="." method="_on_aggregator_combiner_input_node_connected"]
