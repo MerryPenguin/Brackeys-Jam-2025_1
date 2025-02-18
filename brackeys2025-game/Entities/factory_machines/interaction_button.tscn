@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bjcv0bngd7xlv" path="res://Entities/factory_machines/interaction_button.gd" id="1_tfde3"]
 
 [node name="InteractionButton" type="Node2D"]
+z_index = 1
 script = ExtResource("1_tfde3")
 
 [node name="Button" type="Button" parent="."]
@@ -18,7 +19,7 @@ offset_right = 14.0
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "[F]"
+text = "[...]"
 expand_icon = true
 
 [node name="Panel" type="PanelContainer" parent="."]

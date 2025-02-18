@@ -1,0 +1,121 @@
+[gd_scene load_steps=15 format=3 uid="uid://cr6s0syst023p"]
+
+[ext_resource type="Script" uid="uid://b3lw358sa2bi4" path="res://GUI/Widgets/button_bar.gd" id="1_birog"]
+[ext_resource type="Texture2D" uid="uid://d3e8epqhh247q" path="res://Assets/Images/Factories_prototype.png" id="1_hfl1c"]
+[ext_resource type="Texture2D" uid="uid://pmitx0a4qkmt" path="res://Assets/Images/placeholder/book.png" id="2_birog"]
+[ext_resource type="Script" uid="uid://1f7cgscgww03" path="res://GUI/Widgets/factory_placement_button.gd" id="3_2lpnr"]
+[ext_resource type="PackedScene" uid="uid://3j00pxhcg44x" path="res://Entities/factory_machines/organics_harvester_machine.tscn" id="4_npfic"]
+[ext_resource type="PackedScene" uid="uid://c67okxlqxki7t" path="res://Entities/factory_machines/inorganics_harvester_machine.tscn" id="5_bbqvn"]
+[ext_resource type="PackedScene" uid="uid://bjiy14821bbjm" path="res://Entities/factory_machines/spiritual_harvester_machine.tscn" id="6_sfx4s"]
+[ext_resource type="PackedScene" uid="uid://cxnywkrqyk8qg" path="res://Entities/factory_machines/aggregator_combiner_machine.tscn" id="7_hsg8g"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_c3j1w"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_0sd2f"]
+events = [SubResource("InputEventKey_c3j1w")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8uld"]
+atlas = ExtResource("1_hfl1c")
+region = Rect2(2.69136, 4.93004, 12.0494, 12.2469)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3herd"]
+atlas = ExtResource("1_hfl1c")
+region = Rect2(17.2961, 4.03274, 12.8395, 13.1029)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drwp6"]
+atlas = ExtResource("1_hfl1c")
+region = Rect2(2.54714, 20.0327, 12.3128, 13.5638)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdmlu"]
+atlas = ExtResource("1_hfl1c")
+region = Rect2(32.506, 4.03274, 13.7613, 13.4321)
+
+[node name="ButtonBar" type="GridContainer"]
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 2
+script = ExtResource("1_birog")
+
+[node name="OrganicHarvesterButton" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+shortcut = SubResource("Shortcut_0sd2f")
+icon = SubResource("AtlasTexture_r8uld")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_2lpnr")
+factory_scene = ExtResource("4_npfic")
+
+[node name="OrganicsLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Organics
+Harvester
+(Vegetal)"
+horizontal_alignment = 1
+
+[node name="InorganicHarvesterButton2" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = SubResource("AtlasTexture_3herd")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_2lpnr")
+factory_scene = ExtResource("5_bbqvn")
+
+[node name="InorganicsLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Inorganics
+Harvester
+(Mineral)"
+horizontal_alignment = 1
+
+[node name="SpiritualHarvesterButton3" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = SubResource("AtlasTexture_drwp6")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_2lpnr")
+factory_scene = ExtResource("6_sfx4s")
+
+[node name="SpiritualLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Mood
+Harvester
+(psy-residual)"
+horizontal_alignment = 1
+
+[node name="CombinerButton" type="Button" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = SubResource("AtlasTexture_rdmlu")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_2lpnr")
+factory_scene = ExtResource("7_hsg8g")
+
+[node name="CombinerLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Super
+Aggregator
+Combinor
+1000"
+horizontal_alignment = 1
+
+[node name="RecipesButton" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+icon = ExtResource("2_birog")
+icon_alignment = 1
+expand_icon = true
+
+[node name="RecipeLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Recipe 
+Book"
+horizontal_alignment = 1

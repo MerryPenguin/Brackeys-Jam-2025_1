@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjiy14821bbjm"]
+
+[ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="1_sgi0p"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sgi0p"]
+load_path = "res://.godot/imported/Factories_prototype.png-0394bdf5cde180eb93527416570357ca.ctex"
+
+[node name="InOrganicsHarvester" instance=ExtResource("1_sgi0p")]
+
+[node name="Sprite2D" parent="StaticBody2D" index="1"]
+texture = SubResource("CompressedTexture2D_sgi0p")
+hframes = 1
+vframes = 1
+region_enabled = true
+region_rect = Rect2(2.9422, 20.6912, 11.1276, 12.1152)
