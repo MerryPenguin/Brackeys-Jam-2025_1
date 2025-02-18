@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cegq3dg2ut413"]
 
-[ext_resource type="Script" path="res://Entities/factory_machine.gd" id="1_kxche"]
+[ext_resource type="Script" uid="uid://dlhuetv61urld" path="res://Entities/factory_machine.gd" id="1_kxche"]
 [ext_resource type="Texture2D" uid="uid://d3e8epqhh247q" path="res://Assets/Images/Factories_prototype.png" id="2_btwl5"]
 [ext_resource type="PackedScene" uid="uid://b3tihsme16qjf" path="res://Entities/factory_machines/connector_node.tscn" id="3_q574a"]
 [ext_resource type="PackedScene" uid="uid://8gmeexoieddc" path="res://Entities/factory_machines/missing_requirements_label.tscn" id="4_btwl5"]

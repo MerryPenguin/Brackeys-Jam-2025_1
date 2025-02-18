@@ -103,8 +103,8 @@ factory_scene = ExtResource("7_hsg8g")
 layout_mode = 2
 text = "Super
 Aggregator
-Combinor
-1000"
+Combinator
+9000"
 horizontal_alignment = 1
 
 [node name="RecipesButton" type="Button" parent="."]

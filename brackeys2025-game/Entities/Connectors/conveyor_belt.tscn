@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnnapxyigsc4a"]
 
 [ext_resource type="Texture2D" uid="uid://xx0fxojr51y3" path="res://Assets/Images/placeholder/conveyor.png" id="1_8j324"]
-[ext_resource type="Script" path="res://Entities/Connectors/conveyor_belt.gd" id="1_kdglh"]
+[ext_resource type="Script" uid="uid://ceox10kxh50ne" path="res://Entities/Connectors/conveyor_belt.gd" id="1_kdglh"]
 
 [sub_resource type="Curve2D" id="Curve2D_4tvtk"]
 resource_local_to_scene = true

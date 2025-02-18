@@ -9,4 +9,5 @@ func _on_skip_button_pressed() -> void:
 func _on_next_level_requested():
 	# TODO: This needs to emit something to a level manager from Maaack's template.
 	# so the system knows which levels are complete.
+	GameState.set_current_level(1)
 	SceneLoader.load_scene("res://Levels/factory_floor.tscn")

@@ -41,7 +41,8 @@ func _process(_delta):
 			else:
 				if Time.get_ticks_msec() > time_at_last_poll + polling_interval:
 					if not point_too_close():
-						add_point()
+						# TODO: Change this to virtual cursor for gamepads
+						add_point(get_global_mouse_position())
 		states.OPERATING:
 			pass
 
@@ -51,11 +52,20 @@ func move_goods():
 		#package.move(delta)
 	pass
 
-func add_point():
-	var location = get_global_mouse_position()
-	desired_points.push_back(location)
-	$Line2D.add_point(location)
-	$Path2D.curve.add_point(location)
+func add_point(location):
+	var stepped_location = location.snapped(Globals.grid_size)
+	
+	var last_point : Vector2 = location
+	if not desired_points.is_empty():
+		last_point = desired_points[-1]
+	if last_point.x != stepped_location.x and last_point.y != stepped_location.y:
+		# make an extra point, because user moved diagonally
+		add_point(Vector2(stepped_location.x, last_point.y))
+	
+	desired_points.push_back(stepped_location)
+	$Line2D.add_point(stepped_location)
+	$Path2D.curve.add_point(stepped_location)
+	
 
 func point_too_close():
 	var tolerance_sq = 32 * 32
