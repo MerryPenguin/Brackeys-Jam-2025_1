@@ -13,11 +13,6 @@ bake_interval = 16.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdglh"]
 texture = ExtResource("2_kdglh")
-0:0/0 = 0
-0:0/0/terrain_set = 0
-0:0/0/terrain = 0
-0:0/0/terrains_peering_bit/right_side = 0
-0:0/0/terrains_peering_bit/bottom_side = 0
 1:0/0 = 0
 1:0/0/terrain_set = 0
 1:0/0/terrain = 0
@@ -35,9 +30,6 @@ texture = ExtResource("2_kdglh")
 0:1/0/terrains_peering_bit/top_side = 0
 2:1/0 = 0
 2:1/0/terrain_set = 0
-2:1/0/terrain = 0
-2:1/0/terrains_peering_bit/bottom_side = 0
-2:1/0/terrains_peering_bit/top_side = 0
 0:2/0 = 0
 0:2/0/terrain_set = 0
 0:2/0/terrain = 0
@@ -45,14 +37,16 @@ texture = ExtResource("2_kdglh")
 0:2/0/terrains_peering_bit/top_side = 0
 1:2/0 = 0
 1:2/0/terrain_set = 0
-1:2/0/terrain = 0
-1:2/0/terrains_peering_bit/right_side = 0
-1:2/0/terrains_peering_bit/left_side = 0
 2:2/0 = 0
 2:2/0/terrain_set = 0
 2:2/0/terrain = 0
 2:2/0/terrains_peering_bit/left_side = 0
 2:2/0/terrains_peering_bit/top_side = 0
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
 
 [sub_resource type="TileSet" id="TileSet_4tvtk"]
 terrain_set_0/mode = 2
@@ -64,6 +58,7 @@ sources/0 = SubResource("TileSetAtlasSource_kdglh")
 script = ExtResource("1_kdglh")
 
 [node name="Line2D" type="Line2D" parent="."]
+visible = false
 texture_filter = 3
 texture_repeat = 2
 width = 16.0

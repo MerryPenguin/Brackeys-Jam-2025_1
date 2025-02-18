@@ -39,7 +39,8 @@ func activate(connector_node : ConnectorNode):
 func _process(_delta):
 	match state:
 		states.DRAWING:
-			if not Input.is_action_pressed("draw_conveyor_belt"):
+			if Input.is_action_just_released("draw_conveyor_belt"):
+				add_point(get_global_mouse_position())
 				stop_drawing() # note: we don't care whether the destination is valid yet.
 			else:
 				if Time.get_ticks_msec() > time_at_last_poll + polling_interval:
