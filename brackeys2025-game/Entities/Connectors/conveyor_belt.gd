@@ -11,6 +11,9 @@
 
 class_name ConveyorBelt extends Node2D
 
+enum draw_modes { TILEMAP, SMOOTH_LINE, CARDINAL_LINE }
+@export var draw_mode : draw_modes = draw_modes.SMOOTH_LINE
+
 enum states { DRAWING, OPERATING }
 var state = states.OPERATING
 var desired_points : PackedVector2Array = []
@@ -28,8 +31,26 @@ signal belt_connected(belt)
 
 
 func _ready():
+	validate_requirements()
+	setup_draw_mode()
+	
+
+func validate_requirements():
 	if $Path2D.curve == null:
 		$Path2D.curve = Curve2D.new()
+
+func setup_draw_mode():
+	match draw_mode:
+		draw_modes.TILEMAP:
+			$TileMapLayer.show()
+			$Line2D.hide()
+		draw_modes.SMOOTH_LINE:
+			$TileMapLayer.hide()
+			$Line2D.show()
+		draw_modes.CARDINAL_LINE:
+			$TileMapLayer.hide()
+			$Line2D.show()
+			
 
 func activate(connector_node : ConnectorNode):
 	# whoever spawns the conveyor should call this
@@ -62,17 +83,23 @@ func add_point(location):
 	var last_point : Vector2 = location
 	if not desired_points.is_empty():
 		last_point = desired_points[-1]
-	if last_point.x != stepped_location.x and last_point.y != stepped_location.y:
-		# make an extra point, because user moved diagonally
-		if abs(last_point.x - stepped_location.x) > abs(last_point.y - stepped_location.y):
-			add_point(Vector2(stepped_location.x, last_point.y))
-		else:
-			add_point(Vector2(last_point.x, stepped_location.y))
+	if draw_mode != draw_modes.SMOOTH_LINE:
+		if last_point.x != stepped_location.x and last_point.y != stepped_location.y:
+			# make an extra point, because user moved diagonally
+			if abs(last_point.x - stepped_location.x) > abs(last_point.y - stepped_location.y):
+				add_point(Vector2(stepped_location.x, last_point.y))
+			else:
+				add_point(Vector2(last_point.x, stepped_location.y))
+		desired_points.push_back(stepped_location)
+	else:
+		desired_points.push_back(location)
 	
-	desired_points.push_back(stepped_location)
-	$Line2D.add_point(stepped_location)
-	$Path2D.curve.add_point(stepped_location)
-	update_tilemap(stepped_location)
+	$Path2D.curve.add_point(desired_points[-1])
+	if draw_mode == draw_modes.TILEMAP:
+		update_tilemap(desired_points[-1])
+	else: # SMOOTH_LINE or #CARDINAL_LINE
+		$Line2D.add_point(desired_points[-1])
+	
 
 func update_tilemap(location):
 	var tilemap : TileMapLayer = $TileMapLayer
