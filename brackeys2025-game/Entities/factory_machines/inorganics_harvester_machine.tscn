@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://c67okxlqxki7t"]
+[gd_scene load_steps=6 format=3 uid="uid://c67okxlqxki7t"]
 
 [ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="1_iixpc"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="2_ckbdl"]
+[ext_resource type="Resource" uid="uid://blm7hw6xx78w7" path="res://Recipes/gears_recipe.tres" id="3_syu7b"]
+[ext_resource type="Resource" uid="uid://0quaimd7cba1" path="res://Recipes/springs_recipe.tres" id="4_0w5ck"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iixpc"]
 load_path = "res://.godot/imported/Factories_prototype.png-0394bdf5cde180eb93527416570357ca.ctex"
 
 [node name="InOrganicsHarvester" instance=ExtResource("1_iixpc")]
-unlocked_recipes = Array[ExtResource("2_ckbdl")]([null])
+unlocked_recipes = Array[ExtResource("2_ckbdl")]([ExtResource("3_syu7b"), ExtResource("4_0w5ck")])
 
 [node name="Sprite2D" parent="StaticBody2D" index="1"]
 texture = SubResource("CompressedTexture2D_iixpc")
