@@ -1,35 +1,29 @@
 [gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=8 format=3 uid="uid://bm013l6hpxvab"]
 
+[ext_resource type="Texture2D" uid="uid://drx17uee0x3vb" path="res://Assets/Images/placeholder/raygun.png" id="1_ltkuw"]
 [ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_tekr0"]
 [ext_resource type="Resource" uid="uid://0quaimd7cba1" path="res://Recipes/springs_recipe.tres" id="3_du8o6"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_ltkuw"]
 [ext_resource type="Resource" uid="uid://eescdi7hydkg" path="res://Recipes/grenade_recipe.tres" id="4_8movj"]
 
-[sub_resource type="Resource" id="Resource_nj12f"]
-metadata/__load_path__ = "res://Assets/Images/placeholder/raygun.png"
-
 [sub_resource type="Resource" id="Resource_q430s"]
 script = ExtResource("2_tekr0")
 recipe = ExtResource("3_du8o6")
 quantity_required = 1
-max_capacity = 10
-currently_held = 0
 metadata/_custom_type_script = "uid://blqkt7huduip"
 
 [sub_resource type="Resource" id="Resource_vghl8"]
 script = ExtResource("2_tekr0")
 recipe = ExtResource("4_8movj")
 quantity_required = 1
-max_capacity = 10
-currently_held = 0
 metadata/_custom_type_script = "uid://blqkt7huduip"
 
 [resource]
 script = ExtResource("3_ltkuw")
 product_name = &"Raygun"
 required_inputs = Array[ExtResource("2_tekr0")]([SubResource("Resource_q430s"), SubResource("Resource_vghl8")])
-production_time = 10.0
-icon = SubResource("Resource_nj12f")
+production_time = 1.5
+icon = ExtResource("1_ltkuw")
 recipe_type = 3
 default_sale_price = 10
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

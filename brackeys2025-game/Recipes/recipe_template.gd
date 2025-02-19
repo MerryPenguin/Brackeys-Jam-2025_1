@@ -4,7 +4,7 @@ class_name ProductWidgetRecipe extends Resource
 @export var product_name : StringName = ""
 @export var required_inputs : Array[RequirementsManifest] = []
 
-@export var production_time : float = 10.0 # time to convert requirements into output
+@export var production_time : float = 1.5 # time to convert requirements into output
 #const output_widget : PackedScene = preload("res://Entities/factory_products/factory_product_widget.tscn")
 @export var icon : Texture2D
 
