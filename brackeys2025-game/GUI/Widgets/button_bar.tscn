@@ -39,11 +39,17 @@ atlas = ExtResource("2_bbqvn")
 region = Rect2(17.3882, 18.5276, 14.5046, 15.1508)
 
 [node name="ButtonBar" type="GridContainer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -236.0
+offset_right = 64.0
+offset_bottom = 236.0
+grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-theme_override_constants/h_separation = 12
-theme_override_constants/v_separation = 12
-columns = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
 script = ExtResource("1_birog")
 
 [node name="OrganicHarvesterButton" type="Button" parent="."]
@@ -56,8 +62,12 @@ expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("4_npfic")
 
-[node name="OrganicsLabel" type="Label" parent="."]
+[node name="OrganicsLabel" type="Label" parent="OrganicHarvesterButton"]
 layout_mode = 2
+offset_left = 76.0
+offset_top = 5.0
+offset_right = 200.0
+offset_bottom = 59.0
 text = "Organics
 Harvester
 (Vegetal)"
@@ -72,8 +82,12 @@ expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("5_bbqvn")
 
-[node name="InorganicsLabel" type="Label" parent="."]
+[node name="InorganicsLabel" type="Label" parent="InorganicHarvesterButton2"]
 layout_mode = 2
+offset_left = 82.0
+offset_top = 11.0
+offset_right = 206.0
+offset_bottom = 65.0
 text = "Inorganics
 Harvester
 (Mineral)"
@@ -88,8 +102,12 @@ expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("6_sfx4s")
 
-[node name="SpiritualLabel" type="Label" parent="."]
+[node name="SpiritualLabel" type="Label" parent="SpiritualHarvesterButton3"]
 layout_mode = 2
+offset_left = 79.0
+offset_top = 11.0
+offset_right = 203.0
+offset_bottom = 65.0
 text = "Mood
 Harvester
 (psy-residual)"
@@ -104,8 +122,12 @@ expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("7_hsg8g")
 
-[node name="CombinerLabel" type="Label" parent="."]
+[node name="CombinerLabel" type="Label" parent="CombinerButton"]
 layout_mode = 2
+offset_left = 90.0
+offset_top = 1.0
+offset_right = 194.0
+offset_bottom = 74.0
 text = "Super
 Aggregator
 Combinator
@@ -121,8 +143,12 @@ expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("8_bbqvn")
 
-[node name="AdvCombinerLabel" type="Label" parent="."]
+[node name="AdvCombinerLabel" type="Label" parent="AdvCombinerButton"]
 layout_mode = 2
+offset_left = 86.0
+offset_top = 5.0
+offset_right = 190.0
+offset_bottom = 78.0
 text = "Super Duper
 Aggregator
 Combinator
@@ -135,6 +161,7 @@ layout_mode = 2
 icon = ExtResource("2_birog")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("3_2lpnr")
 
 [node name="RecipeBookPopup" type="PopupPanel" parent="RecipesButton"]
 unique_name_in_owner = true
@@ -172,8 +199,12 @@ text = "    STARCH, # ORGANIC
     PARADOX, # FRUITPHONE + ANXIETY + EPISTEMOLOGY - anyone - win game (anxiety ending)
     SINGULARITY, # ARTIFACT + PINEAPPLE + FRUITPHONE - anyone - win game (hopeful ending)"
 
-[node name="RecipeLabel" type="Label" parent="."]
+[node name="RecipeLabel" type="Label" parent="RecipesButton"]
 layout_mode = 2
+offset_left = 96.0
+offset_top = 7.0
+offset_right = 160.0
+offset_bottom = 42.0
 text = "Recipe 
 Book"
 horizontal_alignment = 1

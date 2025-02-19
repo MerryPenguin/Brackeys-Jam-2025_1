@@ -14,7 +14,7 @@ func _ready():
 	
 func hide_hover_info():
 	$ItemCountLabel.hide()
-	$ConnectorNodes.hide()
+	#$ConnectorNodes.hide()
 	$PopupInfo.hide()
 	
 func show_hover_info():
