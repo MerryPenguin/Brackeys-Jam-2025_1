@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=10 format=3 uid="uid://b5xpis4hcix7q"]
 
-[ext_resource type="Texture2D" uid="uid://gq1am4gdvnlu" path="res://Assets/Images/placeholder/anxiety.png" id="1_b8gop"]
 [ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_p3u27"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_fof86"]
 [ext_resource type="Resource" uid="uid://wo131a4l7f8o" path="res://Recipes/fruitphone_recipe.tres" id="3_sf3xs"]
 [ext_resource type="Resource" uid="uid://bv28cte2sl2ip" path="res://Recipes/anxiety_recipe.tres" id="4_n0xp3"]
 [ext_resource type="Resource" uid="uid://beacj5fvu83yg" path="res://Recipes/epistemology_recipe.tres" id="5_heeau"]
+
+[sub_resource type="Resource" id="Resource_53civ"]
+metadata/__load_path__ = "res://Assets/Images/placeholder/anxiety.png"
 
 [sub_resource type="Resource" id="Resource_altu1"]
 script = ExtResource("2_p3u27")
@@ -36,6 +38,6 @@ script = ExtResource("3_fof86")
 product_name = &"Paradox"
 required_inputs = Array[ExtResource("2_p3u27")]([SubResource("Resource_altu1"), SubResource("Resource_14gvu"), SubResource("Resource_7758d")])
 production_time = 10.0
-icon = ExtResource("1_b8gop")
+icon = SubResource("Resource_53civ")
 recipe_type = 3
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"
