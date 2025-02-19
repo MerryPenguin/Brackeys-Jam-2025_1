@@ -13,7 +13,11 @@ var dangerous_limit : float = 0.5
 enum states { MOVING_TO_INSPECTOR, DETAINED, MOVING_TO_SHOP, BROWSING, BUYING, LEAVING }
 var state = states.MOVING_TO_SHOP
 
+@export var max_cycles_to_wait : int = 10
+var cycles_waited : int = 0
+
 func _ready():
+	%CyclesRemaining.text = str(max_cycles_to_wait)
 	$RedLight.hide()
 	set_initial_sketchiness()
 	check_for_sketchiness()
@@ -23,9 +27,13 @@ func _ready():
 func create_requirements_manifests():
 	var req_text = ""
 	for i in range((randi()%3) +1):
-		var new_manifest = RequirementsManifest.new()
+		var new_manifest : RequirementsManifest = RequirementsManifest.new()
 		
-		new_manifest.recipe = Globals.product_recipes[Globals.products.values().pick_random()]
+		var random_choice = Globals.products.values().pick_random()
+		#var random_recipe : ProductWidgetRecipe = Globals.product_recipes[random_choice]
+		var random_recipe : ProductWidgetRecipe = Globals.product_recipes[Globals.products.GUNPOWDER]
+
+		new_manifest.recipe = random_recipe
 		new_manifest.quantity_required = randi()%3+1
 		
 		new_manifest.generate_random_requirement()
@@ -64,13 +72,31 @@ func sort_vacancy(a,b):
 	
 
 func _process(delta):
+	%StateLabel.text = states.keys()[state]
 	update_target()
 	move_toward_target(delta)
-	attempt_to_buy_product()
+	
+	match state:
+		states.MOVING_TO_SHOP:
+			if is_near_storage_bin(target_destination):
+				state = states.BROWSING
+		states.BROWSING:
+			attempt_to_buy_product()
+		states.LEAVING:
+			pass
+		
 
 func update_target():
 	if target_destination == null:
-		target_destination = find_least_occupied_storage_bin()
+		match state:
+			states.MOVING_TO_SHOP:
+				target_destination = find_least_occupied_storage_bin()
+			states.BROWSING:
+				pass
+			states.LEAVING:
+				target_destination = get_tree().get_first_node_in_group("exits")
+
+
 
 func find_nearest_storage_bin():
 	var bins = get_tree().get_nodes_in_group("storage")
@@ -83,6 +109,8 @@ func find_least_occupied_storage_bin():
 	if bins != null and not bins.is_empty():
 		bins.sort_custom(sort_vacancy)
 		return bins[0]
+
+
 	
 func move_toward_target(_delta):
 	# TODO: update this to use navmesh, NavigationAgent2D
@@ -112,30 +140,44 @@ func get_avoidance_vector():
 	
 		
 func attempt_to_buy_product():
+	if not target_destination.has_method("sell"):
+		return
+	if state != states.BROWSING:
+		return
 	if not $CooldownTimer.is_stopped():
 		return
-	if target_destination is StorageChest and is_near_storage_bin():
+	if target_destination is StorageChest and is_near_storage_bin(target_destination):
 		for manifest in widgets_desired:
 			if not manifest.requirements_met():
-				var new_item = target_destination.sell(manifest.recipe.product_name, self)
-				if new_item != null:
-					receive_product(new_item)
-					add_child(new_item)
-				$CooldownTimer.start()
-				if manifest.requirements_met():
-					leave()
+				if target_destination.has_method("sell"):
+					var new_item = target_destination.sell(manifest.recipe.product_name, self)
+					if new_item != null:
+						receive_product(new_item)
+						cycles_waited = 0
+						add_child(new_item)
+					else:
+						cycles_waited += 1
+					if cycles_waited > max_cycles_to_wait:
+						leave()
+					%CyclesRemaining.text = str(max_cycles_to_wait - cycles_waited)
+					$CooldownTimer.start()
+					if manifest.requirements_met():
+						leave()
 
 func leave():
-	pass
+	state = states.LEAVING
+	var exit = get_tree().get_first_node_in_group("exits")
+	if exit != null:
+		target_destination = exit
 
 func _on_selected_for_inspection(inspection_area):
 	#go_to_inspector(inspection_area)
 	pass
 
-func is_near_storage_bin():
-	if target_destination is StorageChest:
-		var threshold_sq = 32 * 32 # pixels
-		if global_position.distance_squared_to(target_destination.global_position) < threshold_sq:
+func is_near_storage_bin(bin : StorageChest):
+	if bin:
+		var threshold_sq = 64 * 64 # pixels
+		if global_position.distance_squared_to(bin.global_position) < threshold_sq:
 			return true
 	return false
 
@@ -157,3 +199,8 @@ func receive_product(widget : FactoryProductWidget):
 
 func _on_cooldown_timer_timeout() -> void:
 	pass # Replace with function body.
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	if state == states.LEAVING:
+		queue_free()

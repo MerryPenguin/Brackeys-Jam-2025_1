@@ -50,7 +50,7 @@ func is_full():
 	return items_stored.size() >= max_capacity
 
 	
-func sell(product_name : StringName, buyer:RovingCustomer) -> FactoryProductWidget:
+func sell(product_name : StringName, _buyer:RovingCustomer) -> FactoryProductWidget:
 	# most likely selling a product to a customer
 	# remove widget from inventory, give it to customer
 	for item in items_stored:

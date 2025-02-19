@@ -15,6 +15,8 @@ radius = 69.3542
 [node name="Customer" type="CharacterBody2D" groups=["Customers"]]
 y_sort_enabled = true
 script = ExtResource("1_tronh")
+speed = 120.0
+max_cycles_to_wait = 3
 
 [node name="RedLight" type="Polygon2D" parent="."]
 show_behind_parent = true
@@ -46,4 +48,44 @@ one_shot = true
 position = Vector2(1, -12)
 shape = SubResource("CircleShape2D_8yoh6")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="DebugInfoPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(96, 48)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = 18.0
+offset_right = 71.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CyclesRemaining" type="Label" parent="DebugInfoPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="StateLabel" type="Label" parent="DebugInfoPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "state"
+horizontal_alignment = 1
+
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
