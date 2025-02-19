@@ -12,6 +12,8 @@ enum states { DRAGGING, DROPPED }
 var state = states.DRAGGING
 
 func _ready():
+	#$SpawnNoise.play()
+	# was conflicting with button press
 	pass
 	
 func _process(delta):

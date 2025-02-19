@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://c35be2ve56k4l"]
+[gd_scene load_steps=8 format=3 uid="uid://c35be2ve56k4l"]
 
 [ext_resource type="Script" uid="uid://btuy3wb4r6hd2" path="res://Entities/factory_blueprints/factory_blueprint.gd" id="1_g7h2m"]
 [ext_resource type="Texture2D" uid="uid://d3e8epqhh247q" path="res://Assets/Images/Factories_prototype.png" id="2_nw72y"]
+[ext_resource type="AudioStream" uid="uid://debyo1qgfpfqp" path="res://Assets/sfx/Sounds/UI/UI_Hover_SFX1-001.wav" id="3_42015"]
+[ext_resource type="AudioStream" uid="uid://b0bpuwe1ml8q4" path="res://Assets/sfx/Sounds/UI/UI_Hover_SFX1-002.wav" id="4_r5to8"]
+[ext_resource type="AudioStream" uid="uid://csn4a36x3dj07" path="res://Assets/sfx/Sounds/UI/UI_Hover_SFX1-003.wav" id="5_6a0bh"]
+[ext_resource type="AudioStream" uid="uid://cgn0eoc6x0u7q" path="res://Assets/sfx/Sounds/UI/UI_Hover_SFX1-004.wav" id="6_fj0fi"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6ffpd"]
+streams_count = 4
+stream_0/stream = ExtResource("3_42015")
+stream_1/stream = ExtResource("4_r5to8")
+stream_2/stream = ExtResource("5_6a0bh")
+stream_3/stream = ExtResource("6_fj0fi")
 
 [node name="FactoryBlueprint" type="Node2D"]
 script = ExtResource("1_g7h2m")
@@ -14,3 +25,6 @@ scale = Vector2(5, 5)
 texture = ExtResource("2_nw72y")
 region_enabled = true
 region_rect = Rect2(3.20558, 5.21792, 10.9959, 11.5226)
+
+[node name="SpawnNoise" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_6ffpd")

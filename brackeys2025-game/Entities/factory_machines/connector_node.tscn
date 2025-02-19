@@ -1,11 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3tihsme16qjf"]
+[gd_scene load_steps=11 format=3 uid="uid://b3tihsme16qjf"]
 
 [ext_resource type="Script" uid="uid://bvpwywu8m1rr8" path="res://Entities/factory_machines/connector_node.gd" id="1_7ir7r"]
 [ext_resource type="Texture2D" uid="uid://c8ug15hy7gt3q" path="res://Assets/Images/placeholder/white_circle.png" id="1_sk435"]
 [ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="3_k84ef"]
+[ext_resource type="AudioStream" uid="uid://cav3av8yijjus" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-001.wav" id="4_ekjjj"]
+[ext_resource type="AudioStream" uid="uid://2kimpjjfjy4f" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-002.wav" id="5_gyq4a"]
+[ext_resource type="AudioStream" uid="uid://b354evqxorlrq" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-003.wav" id="6_s6bh0"]
+[ext_resource type="AudioStream" uid="uid://cjjlu4rtwmgvr" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-004.wav" id="7_2rgko"]
+[ext_resource type="AudioStream" uid="uid://b2cq3tv16r8dd" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-005.wav" id="8_cll5a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q574a"]
 radius = 16.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cs0hk"]
+streams_count = 5
+stream_0/stream = ExtResource("4_ekjjj")
+stream_1/stream = ExtResource("5_gyq4a")
+stream_2/stream = ExtResource("6_s6bh0")
+stream_3/stream = ExtResource("7_2rgko")
+stream_4/stream = ExtResource("8_cll5a")
 
 [node name="ConnectorNode" type="Area2D" groups=["connectors"]]
 script = ExtResource("1_7ir7r")
@@ -32,6 +45,9 @@ grow_vertical = 2
 theme = ExtResource("3_k84ef")
 text = "IN"
 horizontal_alignment = 1
+
+[node name="ConnectionNoise" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_cs0hk")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

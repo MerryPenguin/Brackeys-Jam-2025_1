@@ -22,7 +22,7 @@ func _ready():
 	#setup_inventory_dict()
 	$ProductionTimer.set_wait_time(current_recipe.production_time)
 	$ProductionTimer.start()
-
+	$PlacementNoise.play()
 
 func _on_mouse_detection_area_mouse_entered() -> void:
 	connectors.show()

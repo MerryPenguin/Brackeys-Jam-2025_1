@@ -1,16 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://cegq3dg2ut413"]
+[gd_scene load_steps=14 format=3 uid="uid://cegq3dg2ut413"]
 
 [ext_resource type="Script" uid="uid://dlhuetv61urld" path="res://Entities/factory_machine.gd" id="1_kxche"]
 [ext_resource type="Texture2D" uid="uid://cv7myqqm0ja6u" path="res://Assets/Images/Factories.png" id="2_rh01v"]
 [ext_resource type="PackedScene" uid="uid://b3tihsme16qjf" path="res://Entities/factory_machines/connector_node.tscn" id="3_q574a"]
 [ext_resource type="PackedScene" uid="uid://8gmeexoieddc" path="res://Entities/factory_machines/missing_requirements_label.tscn" id="4_btwl5"]
 [ext_resource type="PackedScene" uid="uid://b2y6dn7deqgw2" path="res://Entities/factory_machines/interaction_button.tscn" id="5_rh01v"]
+[ext_resource type="AudioStream" uid="uid://cav3av8yijjus" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-001.wav" id="6_5g4ug"]
+[ext_resource type="AudioStream" uid="uid://2kimpjjfjy4f" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-002.wav" id="7_02cwj"]
+[ext_resource type="AudioStream" uid="uid://b354evqxorlrq" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-003.wav" id="8_lsgkg"]
+[ext_resource type="AudioStream" uid="uid://cjjlu4rtwmgvr" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-004.wav" id="9_y8mm5"]
+[ext_resource type="AudioStream" uid="uid://b2cq3tv16r8dd" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-005.wav" id="10_fpwrl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btwl5"]
 size = Vector2(64, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rh01v"]
 radius = 64.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0qtup"]
+streams_count = 5
+stream_0/stream = ExtResource("6_5g4ug")
+stream_1/stream = ExtResource("7_02cwj")
+stream_2/stream = ExtResource("8_lsgkg")
+stream_3/stream = ExtResource("9_y8mm5")
+stream_4/stream = ExtResource("10_fpwrl")
 
 [node name="FactoryMachine" type="Node2D"]
 script = ExtResource("1_kxche")
@@ -53,6 +66,9 @@ offset_bottom = -22.0
 text = ""
 
 [node name="InteractionButton" parent="." instance=ExtResource("5_rh01v")]
+
+[node name="PlacementNoise" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_0qtup")
 
 [connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_exited"]
