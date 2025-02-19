@@ -12,7 +12,7 @@
 class_name ConveyorBelt extends Node2D
 
 enum draw_modes { TILEMAP, SMOOTH_LINE, CARDINAL_LINE }
-@export var draw_mode : draw_modes = draw_modes.SMOOTH_LINE
+var draw_mode : draw_modes = draw_modes.TILEMAP
 
 enum states { DRAWING, OPERATING }
 var state = states.OPERATING
@@ -40,16 +40,20 @@ func validate_requirements():
 		$Path2D.curve = Curve2D.new()
 
 func setup_draw_mode():
-	match draw_mode:
-		draw_modes.TILEMAP:
+	var desired_draw_mode = Config.get_config('GameSettings', 'ConveyorBeltStyle', "TILEMAP")
+	match desired_draw_mode:
+		"TILEMAP":
 			$TileMapLayer.show()
 			$Line2D.hide()
-		draw_modes.SMOOTH_LINE:
+			draw_mode = draw_modes.TILEMAP
+		"SMOOTH_LINE":
 			$TileMapLayer.hide()
 			$Line2D.show()
-		draw_modes.CARDINAL_LINE:
+			draw_mode = draw_modes.SMOOTH_LINE
+		"CARDINAL_LINE":
 			$TileMapLayer.hide()
 			$Line2D.show()
+			draw_mode = draw_modes.CARDINAL_LINE
 			
 
 func activate(connector_node : ConnectorNode):
