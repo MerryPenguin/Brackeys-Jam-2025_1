@@ -1,30 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu7xb7uvvt414"]
+[gd_scene load_steps=8 format=3 uid="uid://cu7xb7uvvt414"]
 
 [ext_resource type="Script" uid="uid://tajmnv1ghui5" path="res://Entities/storage_chest.gd" id="1_iiyxp"]
 [ext_resource type="Texture2D" uid="uid://dmtriqbvgiy2o" path="res://Assets/Images/placeholder/storage_chest.png" id="1_ljvoe"]
+[ext_resource type="PackedScene" uid="uid://dfqi3t3sg40rk" path="res://Components/storage_component.tscn" id="2_3577q"]
 [ext_resource type="PackedScene" uid="uid://b3tihsme16qjf" path="res://Entities/factory_machines/connector_node.tscn" id="2_iiyxp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3577q"]
-size = Vector2(64, 64)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iiyxp"]
+radius = 15.0
+height = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iiyxp"]
+radius = 52.2398
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3577q"]
+radius = 85.3756
 
 [node name="Chest" type="Node2D" groups=["storage"]]
 script = ExtResource("1_iiyxp")
 
+[node name="StorageComponent" parent="." instance=ExtResource("2_3577q")]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_ljvoe")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_3577q")
-
-[node name="ConnectorNode" parent="." instance=ExtResource("2_iiyxp")]
-position = Vector2(-35, -1)
-
-[node name="Output" parent="." instance=ExtResource("2_iiyxp")]
-position = Vector2(37, -1)
-type = 1
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_iiyxp")
 
 [node name="ItemCountLabel" type="Label" parent="."]
 anchors_preset = 8
@@ -41,3 +46,73 @@ grow_vertical = 2
 theme_type_variation = &"HeaderLarge"
 text = "0"
 horizontal_alignment = 1
+
+[node name="ConnectorNodes" type="Node2D" parent="."]
+
+[node name="InputConnectorNode" parent="ConnectorNodes" instance=ExtResource("2_iiyxp")]
+position = Vector2(-35, -1)
+
+[node name="OutputConnectorNode" parent="ConnectorNodes" instance=ExtResource("2_iiyxp")]
+visible = false
+position = Vector2(37, -1)
+type = 1
+
+[node name="MouseDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDetectionArea"]
+shape = SubResource("CircleShape2D_iiyxp")
+
+[node name="HoverTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PopupInfo" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(128, 96)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -137.0
+offset_right = 64.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupInfo"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PopupInfo/VBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="InventoryList" type="TextEdit" parent="PopupInfo/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "1
+2
+34
+"
+editable = false
+
+[node name="NameLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.0
+offset_top = 43.0
+offset_right = 88.0
+offset_bottom = 59.0
+grow_horizontal = 2
+text = "Sell products here."
+horizontal_alignment = 1
+
+[node name="CustomerInteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerInteractionArea"]
+shape = SubResource("CircleShape2D_3577q")
+
+[connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_entered"]
+[connection signal="mouse_exited" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_exited"]
+[connection signal="timeout" from="HoverTimer" to="." method="_on_hover_timer_timeout"]

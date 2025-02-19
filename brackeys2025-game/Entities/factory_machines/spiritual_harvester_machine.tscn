@@ -1,20 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjiy14821bbjm"]
+[gd_scene load_steps=5 format=3 uid="uid://bjiy14821bbjm"]
 
 [ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="1_sgi0p"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="2_cvmkr"]
 [ext_resource type="Resource" uid="uid://cxvefv0jaevrt" path="res://Recipes/hopes_recipe.tres" id="3_460co"]
 [ext_resource type="Resource" uid="uid://bv28cte2sl2ip" path="res://Recipes/anxiety_recipe.tres" id="4_6n75g"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sgi0p"]
-load_path = "res://.godot/imported/Factories_prototype.png-0394bdf5cde180eb93527416570357ca.ctex"
-
 [node name="InOrganicsHarvester" instance=ExtResource("1_sgi0p")]
 unlocked_recipes = Array[ExtResource("2_cvmkr")]([ExtResource("3_460co"), ExtResource("4_6n75g")])
 current_recipe = ExtResource("3_460co")
 
 [node name="Sprite2D" parent="StaticBody2D" index="1"]
-texture = SubResource("CompressedTexture2D_sgi0p")
 hframes = 1
 vframes = 1
 region_enabled = true
 region_rect = Rect2(2.9422, 20.6912, 11.1276, 12.1152)
+
+[node name="InputNode" parent="Connectors" index="0"]
+visible = false

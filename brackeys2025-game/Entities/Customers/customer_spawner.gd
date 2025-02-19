@@ -6,12 +6,13 @@
 extends Path2D
 @export var time_between_customers : float = 5.0
 @export var num_to_spawn : int = 1
-
+@export var max_customers_on_stage : int = 5
 
 func _on_timer_timeout() -> void:
 	var jitter_factor = randf_range(0.8, 1.25)
 	$Timer.set_wait_time(time_between_customers * jitter_factor)
-	spawn_customers(num_to_spawn)
+	if get_tree().get_node_count_in_group("Customers") < max_customers_on_stage:
+		spawn_customers(num_to_spawn)
 	
 func spawn_customers(num):
 	for i in range(num):

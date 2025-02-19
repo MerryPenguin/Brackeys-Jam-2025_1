@@ -69,5 +69,5 @@ curve = SubResource("Curve2D_4tvtk")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 3
-scale = Vector2(5, 5)
+scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_4tvtk")

@@ -1,6 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc37235kj4384"]
+[gd_scene load_steps=13 format=3 uid="uid://cc37235kj4384"]
 
 [ext_resource type="Script" uid="uid://b5oej1q4h7jvh" path="res://addons/maaacks_game_template/base/scripts/ui_sound_controller.gd" id="1_dmagn"]
+[ext_resource type="AudioStream" uid="uid://debyo1qgfpfqp" path="res://Assets/sfx/Sounds/UI/UI_Hover_SFX1-001.wav" id="2_mbwen"]
+[ext_resource type="AudioStream" uid="uid://b0bpuwe1ml8q4" path="res://Assets/sfx/Sounds/UI/UI_Hover_SFX1-002.wav" id="3_iftdg"]
+[ext_resource type="AudioStream" uid="uid://csn4a36x3dj07" path="res://Assets/sfx/Sounds/UI/UI_Hover_SFX1-003.wav" id="4_xlkju"]
+[ext_resource type="AudioStream" uid="uid://cgn0eoc6x0u7q" path="res://Assets/sfx/Sounds/UI/UI_Hover_SFX1-004.wav" id="5_0rpw3"]
+[ext_resource type="AudioStream" uid="uid://cav3av8yijjus" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-001.wav" id="6_gq4pn"]
+[ext_resource type="AudioStream" uid="uid://2kimpjjfjy4f" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-002.wav" id="7_rpsvy"]
+[ext_resource type="AudioStream" uid="uid://cjjlu4rtwmgvr" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-004.wav" id="8_cmxbp"]
+[ext_resource type="AudioStream" uid="uid://b354evqxorlrq" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-003.wav" id="9_yueaj"]
+[ext_resource type="AudioStream" uid="uid://b2cq3tv16r8dd" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-005.wav" id="10_e8qjt"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_khdxm"]
+streams_count = 4
+stream_0/stream = ExtResource("2_mbwen")
+stream_1/stream = ExtResource("3_iftdg")
+stream_2/stream = ExtResource("4_xlkju")
+stream_3/stream = ExtResource("5_0rpw3")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b51jl"]
+streams_count = 5
+stream_0/stream = ExtResource("6_gq4pn")
+stream_1/stream = ExtResource("7_rpsvy")
+stream_2/stream = ExtResource("8_cmxbp")
+stream_3/stream = ExtResource("9_yueaj")
+stream_4/stream = ExtResource("10_e8qjt")
 
 [node name="ProjectUISoundController" type="Node"]
 script = ExtResource("1_dmagn")
+button_hovered = SubResource("AudioStreamRandomizer_khdxm")
+button_pressed = SubResource("AudioStreamRandomizer_b51jl")

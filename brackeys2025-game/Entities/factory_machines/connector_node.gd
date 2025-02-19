@@ -43,6 +43,7 @@ func _process(_delta):
 
 func begin_drawing():
 	state = states.DRAWING
+	$ConnectionNoise.play()
 	var new_conveyor = preload("res://Entities/Connectors/conveyor_belt.tscn").instantiate()
 	Globals.current_level.spawn_conveyor_belt(new_conveyor)
 	new_conveyor.global_position = Vector2.ZERO
@@ -70,6 +71,7 @@ func _on_mouse_exited() -> void:
 func _on_new_conveyor_belt_connected(belt : ConveyorBelt):
 	# happens when a belt attaches to an input
 	destroy_previous_conveyor_belts()
+	$ConnectionNoise.play()
 	node_connected.emit(belt.destination)
 
 func receive_product(widget : FactoryProductWidget):

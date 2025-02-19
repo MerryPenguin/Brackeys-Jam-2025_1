@@ -144,13 +144,18 @@ static func set_video_from_config(window : Window) -> void:
 	if not (fullscreen_enabled or OS.has_feature("web")):
 		var current_resolution : Vector2i = get_resolution(window)
 		set_resolution(current_resolution, window)
-		
+
+static func set_user_prefs_from_config():
+	pass # Plex: not sure if I need to do anything here, since I can just look up config settings on the fly
+	
+
 # All
 
 static func set_from_config() -> void:
 	set_default_inputs()
 	set_inputs_from_config()
 	set_audio_from_config()
+	set_user_prefs_from_config()
 
 static func set_from_config_and_window(window : Window) -> void:
 	set_from_config()

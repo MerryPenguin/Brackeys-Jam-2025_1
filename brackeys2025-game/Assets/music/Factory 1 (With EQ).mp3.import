@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://by8bqpohhprun"
+path="res://.godot/imported/Factory 1 (With EQ).mp3-c5eebb6e47fe73164f5e9085d423bf78.mp3str"
+
+[deps]
+
+source_file="res://Assets/music/Factory 1 (With EQ).mp3"
+dest_files=["res://.godot/imported/Factory 1 (With EQ).mp3-c5eebb6e47fe73164f5e9085d423bf78.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
