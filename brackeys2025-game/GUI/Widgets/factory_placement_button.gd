@@ -35,7 +35,7 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	hovering = false
-	timer.set_wait_time(2.0)
+	timer.set_wait_time(1.0)
 	timer.start()
 	
 func _on_timer_timeout():

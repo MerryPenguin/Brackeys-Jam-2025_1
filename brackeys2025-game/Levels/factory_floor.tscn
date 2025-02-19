@@ -10,6 +10,7 @@
 
 [node name="FactoryFloor" type="Node2D"]
 y_sort_enabled = true
+texture_filter = 3
 script = ExtResource("1_wrr4c")
 
 [node name="Machines" type="Node2D" parent="."]

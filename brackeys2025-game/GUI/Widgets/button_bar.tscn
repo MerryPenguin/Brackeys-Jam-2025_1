@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cr6s0syst023p"]
+[gd_scene load_steps=18 format=3 uid="uid://cr6s0syst023p"]
 
 [ext_resource type="Script" uid="uid://b3lw358sa2bi4" path="res://GUI/Widgets/button_bar.gd" id="1_birog"]
+[ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="1_sfx4s"]
 [ext_resource type="Texture2D" uid="uid://cv7myqqm0ja6u" path="res://Assets/Images/Factories.png" id="2_bbqvn"]
 [ext_resource type="Texture2D" uid="uid://pmitx0a4qkmt" path="res://Assets/Images/placeholder/book.png" id="2_birog"]
 [ext_resource type="Script" uid="uid://1f7cgscgww03" path="res://GUI/Widgets/factory_placement_button.gd" id="3_2lpnr"]
@@ -48,11 +49,13 @@ offset_bottom = 236.0
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+theme = ExtResource("1_sfx4s")
 theme_override_constants/h_separation = 24
 theme_override_constants/v_separation = 24
 script = ExtResource("1_birog")
 
 [node name="OrganicHarvesterButton" type="Button" parent="."]
+texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 shortcut = SubResource("Shortcut_0sd2f")
@@ -74,6 +77,7 @@ Harvester
 horizontal_alignment = 1
 
 [node name="InorganicHarvesterButton2" type="Button" parent="."]
+texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = SubResource("AtlasTexture_bbqvn")
@@ -94,6 +98,7 @@ Harvester
 horizontal_alignment = 1
 
 [node name="SpiritualHarvesterButton3" type="Button" parent="."]
+texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = SubResource("AtlasTexture_sfx4s")
@@ -114,6 +119,7 @@ Harvester
 horizontal_alignment = 1
 
 [node name="CombinerButton" type="Button" parent="."]
+texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = SubResource("AtlasTexture_hsg8g")
@@ -135,6 +141,7 @@ Combinator
 horizontal_alignment = 1
 
 [node name="AdvCombinerButton" type="Button" parent="."]
+texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = SubResource("AtlasTexture_djy10")
@@ -156,7 +163,8 @@ Combinator
 horizontal_alignment = 1
 
 [node name="RecipesButton" type="Button" parent="."]
-custom_minimum_size = Vector2(32, 32)
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = ExtResource("2_birog")
 icon_alignment = 1

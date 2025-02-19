@@ -1,6 +1,15 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d1e0mgeiio6bb"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://d1e0mgeiio6bb"]
 
 [ext_resource type="FontFile" uid="uid://tyndbjefl5xn" path="res://GUI/Fonts/Pizel.ttf" id="1_6v8ok"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6v8ok"]
+bg_color = Color(0.291646, 0.231385, 0.211067, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.533425, 0.390827, 0.350945, 1)
+
 [resource]
 default_font = ExtResource("1_6v8ok")
+Button/styles/normal = SubResource("StyleBoxFlat_6v8ok")

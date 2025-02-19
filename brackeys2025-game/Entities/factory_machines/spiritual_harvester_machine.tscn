@@ -14,3 +14,6 @@ hframes = 1
 vframes = 1
 region_enabled = true
 region_rect = Rect2(2.9422, 20.6912, 11.1276, 12.1152)
+
+[node name="InputNode" parent="Connectors" index="0"]
+visible = false
