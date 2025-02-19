@@ -46,5 +46,5 @@ func spawn_factory_blueprint(factory_scene):
 
 
 func _on_recipes_button_pressed() -> void:
-	%RecipeBookPopup.popup_centered_ratio(0.67)
+	%RecipeBookPopup.popup_centered_ratio(0.8)
 	

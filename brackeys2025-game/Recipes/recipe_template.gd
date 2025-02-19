@@ -11,3 +11,6 @@ var output_widget : PackedScene = load("res://Entities/factory_products/factory_
 # helper var to describe which type of machines can produce this.
 enum recipe_types { ORGANIC, INORGANIC, SPIRITUAL, AGGREGATED }
 @export var recipe_type : recipe_types
+
+@export var default_sale_price : int = 10
+# Might want to have market trends, supply/demand, which affect actual sale prices

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cr6s0syst023p"]
+[gd_scene load_steps=19 format=3 uid="uid://cr6s0syst023p"]
 
 [ext_resource type="Script" uid="uid://b3lw358sa2bi4" path="res://GUI/Widgets/button_bar.gd" id="1_birog"]
 [ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="1_sfx4s"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bjiy14821bbjm" path="res://Entities/factory_machines/spiritual_harvester_machine.tscn" id="6_sfx4s"]
 [ext_resource type="PackedScene" uid="uid://cxnywkrqyk8qg" path="res://Entities/factory_machines/aggregator_combiner_machine.tscn" id="7_hsg8g"]
 [ext_resource type="PackedScene" uid="uid://bii0ko6ggnccs" path="res://Entities/factory_machines/super_aggregator_combiner_machine.tscn" id="8_bbqvn"]
+[ext_resource type="PackedScene" uid="uid://ddmw8ctke14gl" path="res://GUI/Widgets/recipe_book_popup.tscn" id="11_hsg8g"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_c3j1w"]
 device = -1
@@ -171,41 +172,8 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_2lpnr")
 
-[node name="RecipeBookPopup" type="PopupPanel" parent="RecipesButton"]
+[node name="RecipeBookPopup" parent="RecipesButton" instance=ExtResource("11_hsg8g")]
 unique_name_in_owner = true
-size = Vector2i(508, 508)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="RecipesButton/RecipeBookPopup"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 504.0
-offset_bottom = 504.0
-
-[node name="Label" type="Label" parent="RecipesButton/RecipeBookPopup/VBoxContainer"]
-layout_mode = 2
-text = "Recipe Book"
-horizontal_alignment = 1
-
-[node name="TextEdit" type="TextEdit" parent="RecipesButton/RecipeBookPopup/VBoxContainer"]
-custom_minimum_size = Vector2(500, 300)
-layout_mode = 2
-text = "    STARCH, # ORGANIC
-    ASH, # ORGANIC
-    GEARS, # INORGANIC
-    SPRINGS, # INORGANIC
-    HOPES, # SPIRITUAL
-    ANXIETY, # SPIRITUAL
-    GUNPOWDER, # ASH + GEARS - for babies
-    GRENADE, # PINEAPPLE + GEARS - for monkeys
-    PINEAPPLE, # STARCH + HOPES - for time travellers
-    BANANA, # STARCH + ASH - for monkeys
-    EPISTEMOLOGY, # ANXIETY + GUNPOWDER - for time travellers
-    ARTIFACT, # SPRINGS + HOPES - for time travellers
-    PACIFIER, # ANXIETY + BANANA - for babies
-    RAYGUN, # SPRINGS + GRENADE - for time travellers
-    FRUITPHONE, # BANANA + EPISTEMOLOGY - for monkeys
-    PARADOX, # FRUITPHONE + ANXIETY + EPISTEMOLOGY - anyone - win game (anxiety ending)
-    SINGULARITY, # ARTIFACT + PINEAPPLE + FRUITPHONE - anyone - win game (hopeful ending)"
 
 [node name="RecipeLabel" type="Label" parent="RecipesButton"]
 layout_mode = 2

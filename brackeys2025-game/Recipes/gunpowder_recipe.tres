@@ -29,4 +29,5 @@ required_inputs = Array[ExtResource("2_sdnaa")]([SubResource("Resource_u7xrr"), 
 production_time = 10.0
 icon = ExtResource("1_cdqc2")
 recipe_type = 3
+default_sale_price = 10
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

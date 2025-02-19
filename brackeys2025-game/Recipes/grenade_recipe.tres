@@ -20,4 +20,5 @@ required_inputs = Array[ExtResource("2_wtk63")]([SubResource("Resource_b113f")])
 production_time = 10.0
 icon = ExtResource("1_b113f")
 recipe_type = 0
+default_sale_price = 10
 metadata/_custom_type_script = ExtResource("1_me54w")
