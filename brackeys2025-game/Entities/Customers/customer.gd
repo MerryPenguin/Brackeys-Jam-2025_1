@@ -58,7 +58,11 @@ func go_to_inspector(inspector : Node2D = null):
 
 func sort_proximity(a,b):
 	return global_position.distance_squared_to(a.global_position) < global_position.distance_squared_to(b.global_position)
+
+func sort_vacancy(a,b):
+	return a.get_customer_count() < b.get_customer_count()
 	
+
 func _process(delta):
 	update_target()
 	move_toward_target(delta)
@@ -66,20 +70,46 @@ func _process(delta):
 
 func update_target():
 	if target_destination == null:
-		target_destination = find_nearest_storage_bin()
+		target_destination = find_least_occupied_storage_bin()
 
 func find_nearest_storage_bin():
 	var bins = get_tree().get_nodes_in_group("storage")
 	if bins != null and not bins.is_empty():
 		bins.sort_custom(sort_proximity)
 		return bins[0]
+
+func find_least_occupied_storage_bin():
+	var bins = get_tree().get_nodes_in_group("storage")
+	if bins != null and not bins.is_empty():
+		bins.sort_custom(sort_vacancy)
+		return bins[0]
 	
 func move_toward_target(_delta):
 	# TODO: update this to use navmesh, NavigationAgent2D
 	# alternatively, could have them chase a virtual rabbit on a path, like greyhounds on a track
 	if target_destination:
-		velocity = global_position.direction_to(target_destination.global_position) * speed
+		var dir_vector = global_position.direction_to(target_destination.global_position)
+		dir_vector += get_avoidance_vector()
+		if get_avoidance_vector().length_squared() > 0.1:
+			dir_vector /= 2.0
+		velocity = dir_vector * speed
+		
+		
 		move_and_slide()
+
+func get_avoidance_vector():
+	var nearby_customers = []
+	var nearby_bodies = $CustomerAvoidanceArea.get_overlapping_bodies()
+	for body in nearby_bodies:
+		if body is RovingCustomer and body != self:
+			nearby_customers.push_back(body)
+	var vector = Vector2.ZERO
+	for customer in nearby_customers:
+		vector += customer.global_position.direction_to(global_position)
+	vector /= max(nearby_customers.size(), 1)
+	return vector
+	
+	
 		
 func attempt_to_buy_product():
 	if not $CooldownTimer.is_stopped():

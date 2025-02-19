@@ -1,26 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu7xb7uvvt414"]
+[gd_scene load_steps=7 format=3 uid="uid://cu7xb7uvvt414"]
 
 [ext_resource type="Script" uid="uid://tajmnv1ghui5" path="res://Entities/storage_chest.gd" id="1_iiyxp"]
 [ext_resource type="Texture2D" uid="uid://dmtriqbvgiy2o" path="res://Assets/Images/placeholder/storage_chest.png" id="1_ljvoe"]
 [ext_resource type="PackedScene" uid="uid://b3tihsme16qjf" path="res://Entities/factory_machines/connector_node.tscn" id="2_iiyxp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3577q"]
-size = Vector2(64, 64)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iiyxp"]
+radius = 15.0
+height = 60.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iiyxp"]
 radius = 52.2398
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3577q"]
+radius = 85.3756
 
 [node name="Chest" type="Node2D" groups=["storage"]]
 script = ExtResource("1_iiyxp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_ljvoe")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_3577q")
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_iiyxp")
 
 [node name="ItemCountLabel" type="Label" parent="."]
 anchors_preset = 8
@@ -98,6 +104,11 @@ offset_bottom = 59.0
 grow_horizontal = 2
 text = "Sell products here."
 horizontal_alignment = 1
+
+[node name="CustomerInteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerInteractionArea"]
+shape = SubResource("CircleShape2D_3577q")
 
 [connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_exited"]

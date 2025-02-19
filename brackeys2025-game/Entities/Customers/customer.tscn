@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cm8v5aepcle5p"]
+[gd_scene load_steps=7 format=3 uid="uid://cm8v5aepcle5p"]
 
 [ext_resource type="Texture2D" uid="uid://upsvedsr6ksx" path="res://Assets/Images/placeholder/dude.png" id="1_nkqq3"]
 [ext_resource type="Script" uid="uid://1gnswtuhuqxq" path="res://Entities/Customers/customer.gd" id="1_tronh"]
@@ -8,6 +8,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tronh"]
 radius = 16.0
 height = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8yoh6"]
+radius = 69.3542
 
 [node name="Customer" type="CharacterBody2D" groups=["Customers"]]
 y_sort_enabled = true
@@ -36,5 +39,11 @@ text = "Customer Wants:
 
 [node name="CooldownTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="CustomerAvoidanceArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerAvoidanceArea"]
+position = Vector2(1, -12)
+shape = SubResource("CircleShape2D_8yoh6")
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

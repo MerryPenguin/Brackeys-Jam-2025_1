@@ -26,14 +26,25 @@ script = ExtResource("1_wrr4c")
 position = Vector2(390, 221)
 
 [node name="Customers" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="CustomerSpawner" parent="Customers" instance=ExtResource("4_64ewy")]
 position = Vector2(1149, 6)
 
 [node name="Storage" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Chest" parent="Storage" instance=ExtResource("6_fpxqv")]
+y_sort_enabled = true
 position = Vector2(878, 330)
+
+[node name="Chest2" parent="Storage" instance=ExtResource("6_fpxqv")]
+y_sort_enabled = true
+position = Vector2(878, 489)
+
+[node name="Chest3" parent="Storage" instance=ExtResource("6_fpxqv")]
+y_sort_enabled = true
+position = Vector2(878, 150)
 
 [node name="LooseWidgets" type="Node2D" parent="."]
 

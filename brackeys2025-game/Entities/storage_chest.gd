@@ -62,6 +62,13 @@ func sell(product_name : StringName, buyer:RovingCustomer) -> FactoryProductWidg
 			return item
 	return null
 
+func get_customer_count():
+	var count = 0
+	for body in $CustomerInteractionArea.get_overlapping_bodies():
+		if body is RovingCustomer:
+			count += 1
+	return count
+
 
 func _on_mouse_detection_area_mouse_entered() -> void:
 	$HoverTimer.set_wait_time(0.2)
