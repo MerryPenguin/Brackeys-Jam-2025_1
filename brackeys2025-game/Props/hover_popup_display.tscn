@@ -24,7 +24,12 @@ offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="DesiresLabel" type="Label" parent="Panel/ScrollContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 48)
 layout_mode = 2
 text = "Information"

@@ -9,7 +9,7 @@
 radius = 16.0
 height = 32.0
 
-[node name="Customer" type="CharacterBody2D"]
+[node name="Customer" type="CharacterBody2D" groups=["Customers"]]
 y_sort_enabled = true
 script = ExtResource("1_tronh")
 
@@ -33,3 +33,8 @@ shape = SubResource("CapsuleShape2D_tronh")
 position = Vector2(0, -10)
 text = "Customer Wants:
 "
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

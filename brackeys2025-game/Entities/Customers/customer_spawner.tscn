@@ -11,6 +11,7 @@ point_count = 2
 [node name="CustomerSpawner" type="Path2D"]
 curve = SubResource("Curve2D_llyv8")
 script = ExtResource("1_t6ipv")
+time_between_customers = 18.0
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

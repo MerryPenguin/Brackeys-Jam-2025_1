@@ -10,11 +10,11 @@ var hovering: bool = false
 
 
 func _ready():
-	$Panel/Label.text = text
+	%DesiresLabel.text = text
 	$Panel.hide()
 
 func update_label(new_text):
-	$Panel/Label.text = new_text
+	%DesiresLabel.text = new_text
 
 func _on_mouse_entered() -> void:
 	hovering = true

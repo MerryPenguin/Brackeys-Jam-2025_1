@@ -50,11 +50,17 @@ func is_full():
 	return items_stored.size() >= max_capacity
 
 	
-func sell(widget_name : StringName):
+func sell(product_name : StringName, buyer:RovingCustomer) -> FactoryProductWidget:
 	# most likely selling a product to a customer
-	
-	pass
-	
+	# remove widget from inventory, give it to customer
+	for item in items_stored:
+		if item.recipe.product_name == product_name:
+			#buyer.receive_product(item) # instead of pushing it on them, we return the item directly
+			Globals.cash += item.recipe.default_sale_price
+			# Play a noise?
+			items_stored.erase(item)
+			return item
+	return null
 
 
 func _on_mouse_detection_area_mouse_entered() -> void:

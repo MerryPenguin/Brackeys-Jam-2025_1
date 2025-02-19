@@ -9,9 +9,10 @@ func _ready():
 	pass
 	
 func create_recipe_book():
+	pass
 	
-	for recipe_name in Globals.product_recipes:
-		var recipe = Globals.product_recipes[recipe_name]
+	#for recipe_name in Globals.product_recipes:
+		#var recipe = Globals.product_recipes[recipe_name]
 		
 		# if recipe has no requirements, check the type.
 		# show the harvester colour which generates it

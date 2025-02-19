@@ -6,6 +6,7 @@ var current_player : CharacterBody2D
 
 const grid_size : Vector2 = Vector2(64,64)
 
+var cash : int = 0
 
 enum products {
 	STARCH, # ORGANIC

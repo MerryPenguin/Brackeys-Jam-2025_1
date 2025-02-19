@@ -174,6 +174,7 @@ script = ExtResource("3_2lpnr")
 
 [node name="RecipeBookPopup" parent="RecipesButton" instance=ExtResource("11_hsg8g")]
 unique_name_in_owner = true
+visible = false
 
 [node name="RecipeLabel" type="Label" parent="RecipesButton"]
 layout_mode = 2
