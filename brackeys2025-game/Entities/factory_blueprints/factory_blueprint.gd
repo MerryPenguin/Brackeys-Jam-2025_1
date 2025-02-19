@@ -17,12 +17,17 @@ func _ready():
 func _process(delta):
 	follow_mouse(delta)
 	if Input.is_action_just_pressed("interact"):
-		spawn_factory()
+		spawn_factory(global_position)
 		queue_free()
 
 func follow_mouse(_delta):
-	global_position = get_global_mouse_position()
+	var mouse_pos = get_global_mouse_position()
+	var adjusted_pos = mouse_pos.snapped(Globals.grid_size)
+	if Config.get_config("GameSettings", "FactoriesSnapToGrid") == true:
+		global_position = adjusted_pos
+	else:
+		global_position = mouse_pos
 	
-func spawn_factory():
+func spawn_factory(location):
 	var new_factory = factory_scene.instantiate()
-	Globals.current_level.spawn_factory(new_factory, get_global_mouse_position() )
+	Globals.current_level.spawn_factory(new_factory, location )

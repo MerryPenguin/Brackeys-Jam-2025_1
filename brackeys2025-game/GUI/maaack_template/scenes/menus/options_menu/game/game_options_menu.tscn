@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cricb7t8kqydx"]
+[gd_scene load_steps=6 format=3 uid="uid://cricb7t8kqydx"]
 
 [ext_resource type="Script" uid="uid://ufkuom4l1n8k" path="res://GUI/maaack_template/scenes/menus/options_menu/game/game_options_menu.gd" id="1_smkl6"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/scripts/capture_focus.gd" id="2_ruxe3"]
 [ext_resource type="PackedScene" uid="uid://dwsw221le2ea1" path="res://GUI/maaack_template/scenes/menus/options_menu/game/reset_game_control/reset_game_control.tscn" id="3_rlgji"]
 [ext_resource type="PackedScene" uid="uid://b6bl3n5mp3m1e" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/option_control/list_option_control.tscn" id="4_ruxe3"]
+[ext_resource type="PackedScene" uid="uid://bsxh6v7j0257h" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/option_control/toggle_option_control.tscn" id="5_rlgji"]
 
 [node name="Game" type="MarginContainer"]
 anchors_preset = 15
@@ -33,5 +34,12 @@ option_section = 4
 key = "ConveyorBeltStyle"
 section = "GameSettings"
 property_type = 4
+
+[node name="FactoriesSnapToGridOption" parent="VBoxContainer" instance=ExtResource("5_rlgji")]
+layout_mode = 2
+option_name = "Factories Snap To Grid"
+option_section = 4
+key = "FactoriesSnapToGrid"
+section = "GameSettings"
 
 [connection signal="reset_confirmed" from="VBoxContainer/ResetGameControl" to="." method="_on_ResetGameControl_reset_confirmed"]
