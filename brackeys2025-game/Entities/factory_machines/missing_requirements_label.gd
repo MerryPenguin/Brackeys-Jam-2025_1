@@ -9,9 +9,9 @@ func _on_info_hover_area_mouse_entered() -> void:
 	hovered = true
 
 	$DetailsLabel.text = "Producing: " + owner.current_recipe.product_name	
-	if not owner.requirements_met():
+	if not owner.requirements_met(owner.current_recipe):
 		$DetailsLabel.text += "\nMissing: "
-		for requirement in owner.get_missing_requirements():
+		for requirement in owner.get_missing_requirements(owner.current_recipe):
 			$DetailsLabel.text += "\n\t" + requirement
 	$DetailsLabel.show()
 

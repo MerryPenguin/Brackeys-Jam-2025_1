@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm8v5aepcle5p"]
+[gd_scene load_steps=8 format=3 uid="uid://cm8v5aepcle5p"]
 
 [ext_resource type="Texture2D" uid="uid://upsvedsr6ksx" path="res://Assets/Images/placeholder/dude.png" id="1_nkqq3"]
 [ext_resource type="Script" uid="uid://1gnswtuhuqxq" path="res://Entities/Customers/customer.gd" id="1_tronh"]
+[ext_resource type="PackedScene" uid="uid://dfqi3t3sg40rk" path="res://Components/storage_component.tscn" id="2_hhold"]
 [ext_resource type="PackedScene" uid="uid://vmifcy0mv2yo" path="res://Entities/Customers/sketchy_prop.tscn" id="3_j3thj"]
 [ext_resource type="PackedScene" uid="uid://bjteivr6q34df" path="res://Props/hover_popup_display.tscn" id="4_8yoh6"]
 
@@ -17,6 +18,8 @@ y_sort_enabled = true
 script = ExtResource("1_tronh")
 speed = 120.0
 max_cycles_to_wait = 3
+
+[node name="StorageComponent" parent="." instance=ExtResource("2_hhold")]
 
 [node name="RedLight" type="Polygon2D" parent="."]
 show_behind_parent = true

@@ -16,6 +16,8 @@ var state = states.MOVING_TO_SHOP
 @export var max_cycles_to_wait : int = 10
 var cycles_waited : int = 0
 
+@onready var storage : StorageComponent = $StorageComponent
+
 func _ready():
 	%CyclesRemaining.text = str(max_cycles_to_wait)
 	$RedLight.hide()
@@ -31,7 +33,7 @@ func create_requirements_manifests():
 		
 		var random_choice = Globals.products.values().pick_random()
 		#var random_recipe : ProductWidgetRecipe = Globals.product_recipes[random_choice]
-		var random_recipe : ProductWidgetRecipe = Globals.product_recipes[Globals.products.GUNPOWDER]
+		var random_recipe : ProductWidgetRecipe = Globals.product_recipes[Globals.products.ASH]
 
 		new_manifest.recipe = random_recipe
 		new_manifest.quantity_required = randi()%3+1
@@ -137,32 +139,39 @@ func get_avoidance_vector():
 	vector /= max(nearby_customers.size(), 1)
 	return vector
 	
-	
+func can_buy():
+	var allowed = true
+	if not target_destination.has_method("sell"):
+		allowed = false
+	elif state != states.BROWSING:
+		allowed = false
+	elif not $CooldownTimer.is_stopped():
+		allowed = false
+	return allowed
 		
 func attempt_to_buy_product():
-	if not target_destination.has_method("sell"):
+	if not can_buy():
 		return
-	if state != states.BROWSING:
-		return
-	if not $CooldownTimer.is_stopped():
-		return
+	print("Customer can buy")
 	if target_destination is StorageChest and is_near_storage_bin(target_destination):
+		var requirements_met = true
 		for manifest in widgets_desired:
-			if not manifest.requirements_met():
+			var requirement = manifest.get_requirements()
+			if target_destination is Marker2D: # Not sure why i need this after we already verified that the target is a storage chest.. may be an unexpected multithreading issue, timers change variables even during a cycle.
+				return
+			if target_destination.storage.has_product_named(requirement[0].product_name, requirement[1]):
 				if target_destination.has_method("sell"):
-					var new_item = target_destination.sell(manifest.recipe.product_name, self)
-					if new_item != null:
-						receive_product(new_item)
-						cycles_waited = 0
-						add_child(new_item)
-					else:
-						cycles_waited += 1
-					if cycles_waited > max_cycles_to_wait:
-						leave()
-					%CyclesRemaining.text = str(max_cycles_to_wait - cycles_waited)
-					$CooldownTimer.start()
-					if manifest.requirements_met():
-						leave()
+					target_destination.sell(manifest.recipe.product_name, self)
+					cycles_waited = 0
+			else:
+				requirements_met = false
+			
+			if cycles_waited > max_cycles_to_wait:
+				leave()
+			%CyclesRemaining.text = str(max_cycles_to_wait - cycles_waited)
+			$CooldownTimer.start()
+			if requirements_met:
+				leave()
 
 func leave():
 	state = states.LEAVING
@@ -190,12 +199,8 @@ func _on_hover_detection_area_mouse_exited() -> void:
 	pass # Replace with function body.
 
 func receive_product(widget : FactoryProductWidget):
-	for manifest : RequirementsManifest in widgets_desired:
-		if not widget or not widget.recipe:
-			push_warning(widget.name, " has no recipe?")
-		if manifest.get_widget_name() == widget.recipe.product_name:
-			if not manifest.is_full():
-				manifest.add(1)
+	if not storage.is_full():
+		storage.receive_product(widget)
 
 func _on_cooldown_timer_timeout() -> void:
 	pass # Replace with function body.

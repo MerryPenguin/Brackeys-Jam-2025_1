@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cegq3dg2ut413"]
+[gd_scene load_steps=15 format=3 uid="uid://cegq3dg2ut413"]
 
 [ext_resource type="Script" uid="uid://dlhuetv61urld" path="res://Entities/factory_machine.gd" id="1_kxche"]
+[ext_resource type="PackedScene" uid="uid://dfqi3t3sg40rk" path="res://Components/storage_component.tscn" id="2_02cwj"]
 [ext_resource type="Texture2D" uid="uid://cv7myqqm0ja6u" path="res://Assets/Images/Factories.png" id="2_rh01v"]
 [ext_resource type="PackedScene" uid="uid://b3tihsme16qjf" path="res://Entities/factory_machines/connector_node.tscn" id="3_q574a"]
 [ext_resource type="PackedScene" uid="uid://8gmeexoieddc" path="res://Entities/factory_machines/missing_requirements_label.tscn" id="4_btwl5"]
@@ -27,6 +28,8 @@ stream_4/stream = ExtResource("10_fpwrl")
 
 [node name="FactoryMachine" type="Node2D"]
 script = ExtResource("1_kxche")
+
+[node name="StorageComponent" parent="." instance=ExtResource("2_02cwj")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

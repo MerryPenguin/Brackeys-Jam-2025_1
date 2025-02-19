@@ -32,14 +32,18 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
+[node name="Header" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MarginContainer/Header"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_type_variation = &"HeaderLarge"
 text = "Tutorial"
 
-[node name="Instructions" type="Label" parent="CanvasLayer/MarginContainer"]
+[node name="Instructions" type="Label" parent="CanvasLayer/MarginContainer/Header"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Connect the Harvester to the Combinator

@@ -3,10 +3,11 @@
 
 class_name StorageChest extends Node2D
 
-@export var max_capacity : int = 24
-var items_stored : Array[FactoryProductWidget] # may not be optimal keeping all those objects around, could be a dictionary with names and quantities
+#@export var max_capacity : int = 24
+#var items_stored : Array[FactoryProductWidget] # may not be optimal keeping all those objects around, could be a dictionary with names and quantities
 
 var hovering : bool = false
+@onready var storage : StorageComponent = $StorageComponent
 
 func _ready():
 	hide_hover_info()
@@ -26,41 +27,28 @@ func show_hover_info():
 
 func update_popup_text():
 	var textbox : TextEdit = %InventoryList
-	textbox.text = ""
-	var product_counts = widget_array_to_dictionary(items_stored)
-	for product_type in product_counts.keys():
-		textbox.text += "\n" + product_type+ ": " + str(product_counts[product_type])
+	textbox.text = storage.get_inventory_list()
 
-func widget_array_to_dictionary(widgets_array):
-	var product_counts := {}
-	for widget in widgets_array:
-		var product_name = widget.recipe.product_name
-		if product_name in product_counts:
-			product_counts[product_name] += 1
-		else:
-			product_counts[product_name] = 1
-	return product_counts
 
 func receive_product(widget):
-	items_stored.push_back(widget)
-	$ItemCountLabel.text = str(items_stored.size())
+	storage.receive_product(widget)
+	$ItemCountLabel.text = str(storage.get_total_held())
 	update_popup_text()
-	
-func is_full():
-	return items_stored.size() >= max_capacity
 
-	
-func sell(product_name : StringName, _buyer:RovingCustomer) -> FactoryProductWidget:
+
+func sell(product_name : StringName, buyer:RovingCustomer):
 	# most likely selling a product to a customer
 	# remove widget from inventory, give it to customer
-	for item in items_stored:
-		if item.recipe.product_name == product_name:
-			#buyer.receive_product(item) # instead of pushing it on them, we return the item directly
-			Globals.cash += item.recipe.default_sale_price
-			# Play a noise?
-			items_stored.erase(item)
-			return item
-	return null
+	if storage.has_product_named(product_name):
+		storage.give_product_by_name(product_name, buyer)
+		Globals.cash += lookup_value(product_name)
+
+func lookup_value(product_name):
+	for product_num in Globals.products.values():
+		var product_recipe : ProductWidgetRecipe = Globals.product_recipes[product_num]
+		if product_recipe.product_name == product_name:
+			return product_recipe.default_sale_price
+	
 
 func get_customer_count():
 	var count = 0

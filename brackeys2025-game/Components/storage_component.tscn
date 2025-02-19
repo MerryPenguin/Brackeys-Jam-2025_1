@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfqi3t3sg40rk"]
+
+[ext_resource type="Script" uid="uid://crhdm7jt4mvmw" path="res://Components/storage_component.gd" id="1_ce8pt"]
+
+[node name="StorageComponent" type="Node"]
+script = ExtResource("1_ce8pt")

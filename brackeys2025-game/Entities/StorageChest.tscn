@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu7xb7uvvt414"]
+[gd_scene load_steps=8 format=3 uid="uid://cu7xb7uvvt414"]
 
 [ext_resource type="Script" uid="uid://tajmnv1ghui5" path="res://Entities/storage_chest.gd" id="1_iiyxp"]
 [ext_resource type="Texture2D" uid="uid://dmtriqbvgiy2o" path="res://Assets/Images/placeholder/storage_chest.png" id="1_ljvoe"]
+[ext_resource type="PackedScene" uid="uid://dfqi3t3sg40rk" path="res://Components/storage_component.tscn" id="2_3577q"]
 [ext_resource type="PackedScene" uid="uid://b3tihsme16qjf" path="res://Entities/factory_machines/connector_node.tscn" id="2_iiyxp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iiyxp"]
@@ -16,6 +17,8 @@ radius = 85.3756
 
 [node name="Chest" type="Node2D" groups=["storage"]]
 script = ExtResource("1_iiyxp")
+
+[node name="StorageComponent" parent="." instance=ExtResource("2_3577q")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -12)
