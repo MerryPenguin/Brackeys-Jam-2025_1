@@ -24,7 +24,7 @@ search_depth = 2
 [node name="ResetGameControl" parent="VBoxContainer" instance=ExtResource("3_rlgji")]
 layout_mode = 2
 
-[node name="OptionControl" parent="VBoxContainer" instance=ExtResource("4_ruxe3")]
+[node name="ConveyorBeltStyle" parent="VBoxContainer" instance=ExtResource("4_ruxe3")]
 layout_mode = 2
 option_values = ["TILEMAP", "SMOOTH_LINE", "CARDINAL_LINE"]
 option_titles = ["TILEMAP", "SMOOTH_LINE", "CARDINAL_LINE"]

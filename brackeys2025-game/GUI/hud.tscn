@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmuqgwwm8fcko"]
+[gd_scene load_steps=5 format=3 uid="uid://bmuqgwwm8fcko"]
 
 [ext_resource type="PackedScene" uid="uid://pgsa53sfqf32" path="res://GUI/Widgets/inspection_criteria.tscn" id="1_15n47"]
 [ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="1_niwoe"]
+[ext_resource type="Script" uid="uid://dl0vcd1semq6p" path="res://GUI/hud.gd" id="1_r8uld"]
 [ext_resource type="PackedScene" uid="uid://cr6s0syst023p" path="res://GUI/Widgets/button_bar.tscn" id="2_36ch1"]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUDCanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_r8uld")
 
-[node name="HUD" type="MarginContainer" parent="."]
+[node name="HUDMarginControl" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,10 +21,10 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="InspectionCriteria" parent="HUD" instance=ExtResource("1_15n47")]
+[node name="InspectionCriteria" parent="HUDMarginControl" instance=ExtResource("1_15n47")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="ButtonBar" parent="HUD" instance=ExtResource("2_36ch1")]
+[node name="ButtonBar" parent="HUDMarginControl" instance=ExtResource("2_36ch1")]
 layout_mode = 2
