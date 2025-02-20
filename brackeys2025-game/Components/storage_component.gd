@@ -6,6 +6,9 @@ var items_stored : Array[FactoryProductWidget] # may not be optimal keeping all 
 
 var hovering : bool = false
 
+func _ready():
+	hide_popup_info()
+
 func widget_array_to_dictionary(widgets_array):
 	var product_counts := {}
 	for widget in widgets_array:

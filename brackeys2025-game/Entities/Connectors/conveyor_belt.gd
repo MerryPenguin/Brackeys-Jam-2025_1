@@ -19,6 +19,7 @@ var state = states.OPERATING
 var desired_points : PackedVector2Array = []
 var tilemap_path : Array[Vector2i]
 
+
 var polling_interval : int = 20 # msec
 var time_at_last_poll : int = 0
 
@@ -83,6 +84,11 @@ func move_goods():
 
 func add_point(location):
 	var stepped_location = location.snapped(Globals.grid_size)
+	var path : Path2D = $Path2D
+	
+	
+	if path.curve.point_count > 0 and is_zero_approx(path.curve.get_closest_point(stepped_location).distance_squared_to(stepped_location)):
+		return
 	
 	var last_point : Vector2 = location
 	if not desired_points.is_empty():
@@ -103,31 +109,9 @@ func add_point(location):
 		update_tilemap(desired_points[-1])
 	else: # SMOOTH_LINE or #CARDINAL_LINE
 		$Line2D.add_point(desired_points[-1])
-	
 
-#func update_tilemap(global_location):
-	## method intended to draw a continuous pipe using Godot tilemap
-	### BUG: If user draws too quickly, line creation fails.
-	#
-	## Note: tilemap is scaled Vector2(4.0,4.0)
-	#var tilemap : TileMapLayer = $TileMapLayer
-	#var tilemap_local_pos = tilemap.to_local(global_location) # Does this account for scale of tilemap?
-	#var tilemap_coord : Vector2i = tilemap.local_to_map(tilemap_local_pos)
-	#print(tilemap_coord, " at scale: ", tilemap.scale)
-	##var direction = tilemap_coord - previous_tile_coord
-	##direction.x = ceil(direction.x)
-	##direction.y = ceil(direction.y)
-	##var tile_atlas_coord = direction + Vector2.ONE
-	#if tilemap_path.is_empty() or tilemap_coord != tilemap_path[-1]:
-		#tilemap_path.push_back(tilemap_coord)
-	#
-	##tilemap.set_cell(tilemap_coord, 0, tile_atlas_coord)
-	#if tilemap_path.size() > 1:
-		#tilemap.set_cells_terrain_path(tilemap_path, 0, 0)
-		#
-	#previous_tile_coord = tilemap_coord
 
-func update_tilemap(global_location):
+func update_tilemap(global_location): # works, but doesn't incorporate Globals.grid_size
 	# method intended to draw a continuous pipe using Godot tilemap
 	## BUG: If user draws too quickly, line creation fails.
 	
@@ -161,7 +145,7 @@ func update_tilemap(global_location):
 
 
 func point_too_close():
-	var tolerance_sq = 32 * 32
+	var tolerance_sq = Globals.grid_size.x * Globals.grid_size.y
 	if desired_points.is_empty():
 		return false
 	elif desired_points[-1].distance_squared_to(get_global_mouse_position()) < tolerance_sq:
@@ -226,7 +210,10 @@ func add_new_conveyance(widget: FactoryProductWidget):
 	if path.curve.point_count > 1 and path.curve.get_baked_length() > 0:
 		# add a pathfollower2d and give it a reference to the widget we're transporting
 		var new_package = ConveyorBeltPackage.new()
-		path.add_child(new_package)
+		if path.curve.get_baked_length() > 0:
+			path.add_child(new_package) ## BUG: We get a lot of errors about zero length interval here.
+		else:
+			breakpoint
 		new_package.add_contents(widget)
 		new_package.conveyor_belt = self
 	else:
