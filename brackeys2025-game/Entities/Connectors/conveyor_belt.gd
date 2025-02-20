@@ -111,15 +111,12 @@ func add_point(location):
 		$Line2D.add_point(desired_points[-1])
 
 
-func update_tilemap(global_location): # works, but doesn't incorporate Globals.grid_size
+func update_tilemap(global_location):
 	# method intended to draw a continuous pipe using Godot tilemap
-	## BUG: If user draws too quickly, line creation fails.
 	
-	# Note: tilemap is scaled Vector2(4.0,4.0)
 	var tilemap : TileMapLayer = $TileMapLayer
-	var tilemap_local_pos = tilemap.to_local(global_location) # Does this account for scale of tilemap?
+	var tilemap_local_pos = tilemap.to_local(global_location)
 	var tilemap_coord : Vector2i = tilemap.local_to_map(tilemap_local_pos)
-	print(tilemap_coord, " at scale: ", tilemap.scale)
 	
 	if tilemap_path.is_empty():
 		tilemap_path.push_back(tilemap_coord)
@@ -163,7 +160,6 @@ func stop_drawing():
 		var connector_reached : ConnectorNode = get_nearest_input_connector()
 		connector_reached.conveyor_belt = self
 		destination = connector_reached
-		print("Connected a conveyor belt! ", origin.name, ", " , destination.name)
 		belt_connected.emit(self)
 	else:
 		# TODO: drop all the contents on the ground, flash and queue_free
@@ -210,8 +206,9 @@ func add_new_conveyance(widget: FactoryProductWidget):
 	if path.curve.point_count > 1 and path.curve.get_baked_length() > 0:
 		# add a pathfollower2d and give it a reference to the widget we're transporting
 		var new_package = ConveyorBeltPackage.new()
-		if path.curve.get_baked_length() > 0:
-			path.add_child(new_package) ## BUG: We get a lot of errors about zero length interval here.
+		if path.curve.get_baked_length() > 1:
+			new_package.progress = 0.00001 ## Prevents BUG: a lot of errors about zero length interval.
+			path.call_deferred("add_child", new_package) 
 		else:
 			breakpoint
 		new_package.add_contents(widget)

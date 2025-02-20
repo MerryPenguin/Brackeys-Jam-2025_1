@@ -41,5 +41,6 @@ option_name = "Factories Snap To Grid"
 option_section = 4
 key = "FactoriesSnapToGrid"
 section = "GameSettings"
+default_value = true
 
 [connection signal="reset_confirmed" from="VBoxContainer/ResetGameControl" to="." method="_on_ResetGameControl_reset_confirmed"]

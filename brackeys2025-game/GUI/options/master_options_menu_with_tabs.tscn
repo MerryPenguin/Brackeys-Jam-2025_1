@@ -1,31 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckd0aoi0ydshh"]
+[gd_scene load_steps=2 format=3 uid="uid://ckd0aoi0ydshh"]
 
 [ext_resource type="PackedScene" uid="uid://bvwl11s2p0hd" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/master_options_menu.tscn" id="1_1jkj2"]
 
-[sub_resource type="Resource" id="Resource_ctdci"]
-metadata/__load_path__ = "res://addons/maaacks_game_template/examples/scenes/menus/options_menu/master_options_menu.gd"
-
 [node name="MasterOptionsMenu" instance=ExtResource("1_1jkj2")]
-script = SubResource("Resource_ctdci")
-
-[node name="TabContainer" parent="." index="0"]
-current_tab = 0
-
-[node name="Controls" parent="TabContainer" index="1"]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="Audio" parent="TabContainer" index="2"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="Video" parent="TabContainer" index="3"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="Game" parent="TabContainer" index="4"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 3
