@@ -4,8 +4,9 @@ extends Node
 var current_level : Node2D
 var current_player : CharacterBody2D
 
-const grid_size : Vector2 = Vector2(64,64)
-
+const grid_size : Vector2 = Vector2(16,16)
+const building_scale : Vector2 = Vector2(4,4)
+	
 var cash : int = 0
 
 enum products {

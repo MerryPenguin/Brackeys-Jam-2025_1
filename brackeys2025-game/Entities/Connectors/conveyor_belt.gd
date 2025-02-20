@@ -19,7 +19,7 @@ var state = states.OPERATING
 var desired_points : PackedVector2Array = []
 var tilemap_path : Array[Vector2i]
 
-var polling_interval : int = 100 # msec
+var polling_interval : int = 20 # msec
 var time_at_last_poll : int = 0
 
 var origin : ConnectorNode
@@ -33,7 +33,7 @@ signal belt_connected(belt)
 func _ready():
 	validate_requirements()
 	setup_draw_mode()
-	
+	add_point(get_global_mouse_position())
 
 func validate_requirements():
 	if $Path2D.curve == null:
@@ -105,22 +105,60 @@ func add_point(location):
 		$Line2D.add_point(desired_points[-1])
 	
 
-func update_tilemap(location):
+#func update_tilemap(global_location):
+	## method intended to draw a continuous pipe using Godot tilemap
+	### BUG: If user draws too quickly, line creation fails.
+	#
+	## Note: tilemap is scaled Vector2(4.0,4.0)
+	#var tilemap : TileMapLayer = $TileMapLayer
+	#var tilemap_local_pos = tilemap.to_local(global_location) # Does this account for scale of tilemap?
+	#var tilemap_coord : Vector2i = tilemap.local_to_map(tilemap_local_pos)
+	#print(tilemap_coord, " at scale: ", tilemap.scale)
+	##var direction = tilemap_coord - previous_tile_coord
+	##direction.x = ceil(direction.x)
+	##direction.y = ceil(direction.y)
+	##var tile_atlas_coord = direction + Vector2.ONE
+	#if tilemap_path.is_empty() or tilemap_coord != tilemap_path[-1]:
+		#tilemap_path.push_back(tilemap_coord)
+	#
+	##tilemap.set_cell(tilemap_coord, 0, tile_atlas_coord)
+	#if tilemap_path.size() > 1:
+		#tilemap.set_cells_terrain_path(tilemap_path, 0, 0)
+		#
+	#previous_tile_coord = tilemap_coord
+
+func update_tilemap(global_location):
+	# method intended to draw a continuous pipe using Godot tilemap
+	## BUG: If user draws too quickly, line creation fails.
+	
+	# Note: tilemap is scaled Vector2(4.0,4.0)
 	var tilemap : TileMapLayer = $TileMapLayer
-	var tilemap_coord : Vector2i = tilemap.local_to_map(location / tilemap.scale)
+	var tilemap_local_pos = tilemap.to_local(global_location) # Does this account for scale of tilemap?
+	var tilemap_coord : Vector2i = tilemap.local_to_map(tilemap_local_pos)
+	print(tilemap_coord, " at scale: ", tilemap.scale)
 	
-	#var direction = tilemap_coord - previous_tile_coord
-	#direction.x = ceil(direction.x)
-	#direction.y = ceil(direction.y)
-	#var tile_atlas_coord = direction + Vector2.ONE
-	if tilemap_path.is_empty() or tilemap_coord != tilemap_path[-1]:
+	if tilemap_path.is_empty():
 		tilemap_path.push_back(tilemap_coord)
+	else:
+		var last_tile_coord = tilemap_path[-1]
+		# Convert Vector2i to Vector2 for calculations
+		var last_tile_coord_vec2 = Vector2(last_tile_coord)
+		var tilemap_coord_vec2 = Vector2(tilemap_coord)
+		
+		var distance = last_tile_coord_vec2.distance_to(tilemap_coord_vec2)
+		var direction = (tilemap_coord_vec2 - last_tile_coord_vec2).normalized()
+		
+		for i in range(1, int(distance) + 1):
+			var intermediate_coord_vec2 = last_tile_coord_vec2 + direction * i
+			var intermediate_coord = Vector2i(intermediate_coord_vec2) # Convert back to Vector2i
+			if intermediate_coord != tilemap_path[-1]:
+				tilemap_path.push_back(intermediate_coord)
 	
-	#tilemap.set_cell(tilemap_coord, 0, tile_atlas_coord)
 	if tilemap_path.size() > 1:
 		tilemap.set_cells_terrain_path(tilemap_path, 0, 0)
 		
 	previous_tile_coord = tilemap_coord
+
 
 func point_too_close():
 	var tolerance_sq = 32 * 32
