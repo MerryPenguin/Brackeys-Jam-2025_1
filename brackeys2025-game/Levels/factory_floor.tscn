@@ -36,15 +36,15 @@ y_sort_enabled = true
 
 [node name="Chest" parent="Storage" instance=ExtResource("6_fpxqv")]
 y_sort_enabled = true
-position = Vector2(878, 330)
+position = Vector2(840, 368)
 
 [node name="Chest2" parent="Storage" instance=ExtResource("6_fpxqv")]
 y_sort_enabled = true
-position = Vector2(878, 489)
+position = Vector2(840, 496)
 
 [node name="Chest3" parent="Storage" instance=ExtResource("6_fpxqv")]
 y_sort_enabled = true
-position = Vector2(878, 150)
+position = Vector2(840, 176)
 
 [node name="LooseWidgets" type="Node2D" parent="."]
 
