@@ -32,8 +32,8 @@ func create_requirements_manifests():
 		var new_manifest : RequirementsManifest = RequirementsManifest.new()
 		
 		var random_choice = Globals.products.values().pick_random()
-		#var random_recipe : ProductWidgetRecipe = Globals.product_recipes[random_choice]
-		var random_recipe : ProductWidgetRecipe = Globals.product_recipes[Globals.products.ASH]
+		var random_recipe : ProductWidgetRecipe = Globals.product_recipes[random_choice]
+		#var random_recipe : ProductWidgetRecipe = Globals.product_recipes[Globals.products.ASH]
 
 		new_manifest.recipe = random_recipe
 		new_manifest.quantity_required = randi()%3+1
@@ -152,7 +152,6 @@ func can_buy():
 func attempt_to_buy_product():
 	if not can_buy():
 		return
-	print("Customer can buy")
 	if target_destination is StorageChest and is_near_storage_bin(target_destination):
 		var requirements_met = true
 		for manifest in widgets_desired:

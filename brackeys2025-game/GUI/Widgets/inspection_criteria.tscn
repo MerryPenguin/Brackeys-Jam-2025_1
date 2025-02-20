@@ -7,7 +7,7 @@ script = ExtResource("1_jyhmb")
 
 [node name="Heading" type="Label" parent="."]
 layout_mode = 2
-text = "Look out for: "
+text = "Look out for customers with: "
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 12.0
