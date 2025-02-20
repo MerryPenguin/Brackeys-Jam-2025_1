@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="1_jr0p4"]
 
 [node name="AggregatorCombiner" groups=["aggregators"] instance=ExtResource("1_jr0p4")]
+type = 1
 
 [node name="Sprite2D" parent="StaticBody2D" index="1"]
 hframes = 1

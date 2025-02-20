@@ -6,21 +6,31 @@ class_name FactoryMachine extends Node2D
 
 @onready var connectors : Node2D = $Connectors
 
+enum types { HARVESTER, AGGREGATOR }
+@export var type = types.HARVESTER
+
 @export var unlocked_recipes : Array[ProductWidgetRecipe]
 @export var current_recipe : ProductWidgetRecipe
 
+
 @onready var storage : StorageComponent = $StorageComponent
 @onready var production_timer : Timer = $ProductionTimer
+
 
 signal input_node_connected # for tutorial win condition only
 signal recipe_changed
 
 func _ready():
 	connectors.hide()
+	remove_unneeded_connectors()
 	#setup_inventory_dict()
 	$PlacementNoise.play()
 	recipe_changed.connect($InteractionButton._on_factory_machine_recipe_changed)
 	setup_timer()
+
+func remove_unneeded_connectors():
+	if type == types.HARVESTER:
+		%InputNode.queue_free()
 
 func setup_timer():
 	var timer : Timer = $ProductionTimer
