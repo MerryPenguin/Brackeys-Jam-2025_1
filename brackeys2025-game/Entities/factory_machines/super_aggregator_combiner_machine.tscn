@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bii0ko6ggnccs"]
+[gd_scene load_steps=2 format=3 uid="uid://bii0ko6ggnccs"]
 
 [ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="1_kph0n"]
-[ext_resource type="Resource" uid="uid://eescdi7hydkg" path="res://Recipes/grenade_recipe.tres" id="8_e0x6d"]
 
 [node name="SuperAggregatorCombiner" groups=["aggregators"] instance=ExtResource("1_kph0n")]
-current_recipe = ExtResource("8_e0x6d")
 
 [node name="Sprite2D" parent="StaticBody2D" index="1"]
 hframes = 1

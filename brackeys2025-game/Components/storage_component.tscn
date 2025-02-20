@@ -1,6 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfqi3t3sg40rk"]
+[gd_scene load_steps=3 format=3 uid="uid://dfqi3t3sg40rk"]
 
 [ext_resource type="Script" uid="uid://crhdm7jt4mvmw" path="res://Components/storage_component.gd" id="1_ce8pt"]
 
-[node name="StorageComponent" type="Node"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ce8pt"]
+radius = 64.0
+
+[node name="StorageComponent" type="Node2D"]
 script = ExtResource("1_ce8pt")
+
+[node name="HoverArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea"]
+shape = SubResource("CircleShape2D_ce8pt")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 47.0
+offset_right = 64.0
+offset_bottom = 111.0
+grow_horizontal = 2
+
+[node name="TooltipInfo" type="TextEdit" parent="PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+text = "Storage Info"
+
+[node name="HoverTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
+[connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]
+[connection signal="timeout" from="HoverTimer" to="." method="_on_hover_timer_timeout"]

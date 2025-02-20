@@ -9,7 +9,8 @@ signal recipe_changed(recipe)
 func _ready():
 	$Panel.hide()
 	populate_grid_container()
-
+	if owner.is_in_group("aggregators"):
+		$Button.disabled = true
 	
 
 func _on_button_pressed() -> void:

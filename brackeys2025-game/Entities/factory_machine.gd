@@ -20,16 +20,17 @@ func _ready():
 	#setup_inventory_dict()
 	$PlacementNoise.play()
 	recipe_changed.connect($InteractionButton._on_factory_machine_recipe_changed)
-	set_first_recipe()
-	$ProductionTimer.set_wait_time(current_recipe.production_time)
-	$ProductionTimer.start()
+	setup_timer()
 
-func set_first_recipe():
-	if unlocked_recipes.is_empty():
-		push_warning(self.name, " factory_machine has no unlocked recipes")
-		return
-	current_recipe = unlocked_recipes[0]
-	recipe_changed.emit(current_recipe)
+func setup_timer():
+	var timer : Timer = $ProductionTimer
+	if current_recipe:
+		timer.set_wait_time(current_recipe.production_time)
+	else:
+		timer.set_wait_time(1.0)
+	timer.start()
+	
+
 	
 
 func _on_mouse_detection_area_mouse_entered() -> void:
@@ -54,6 +55,8 @@ func is_full(_item_name : String):
 
 
 func requirements_met(recipe : ProductWidgetRecipe) -> bool:
+	if recipe == null:
+		return false
 	if recipe.required_inputs.is_empty():
 		return true # Harvesters don't need anything
 	else:
@@ -67,19 +70,21 @@ func requirements_met(recipe : ProductWidgetRecipe) -> bool:
 		return requirements_met >= requirements_count
 	
 
-func produce():
+func produce(recipe : ProductWidgetRecipe):
 	var widget_scene = preload("res://Entities/factory_products/factory_product_widget.tscn")
 	if widget_scene == null:
 		push_warning(self.name, ": factory_machine has no widget_scene")
-		push_warning(current_recipe)
+		push_warning(recipe)
 		breakpoint
 		return # No recipe. Do nothing
 
 	# instantiate one of these onto a conveyor belt, or on the floor for the player if no conveyor belt
 	if is_output_connected():
 		var new_widget : FactoryProductWidget = widget_scene.instantiate()
-		new_widget.activate(current_recipe)
+		new_widget.activate(recipe)
 		%OutputNode.receive_product(new_widget)
+		for requirement in recipe.required_inputs:
+			storage.erase_product(requirement)
 	else:  # no conveyor belt
 		#drop_on_floor()
 		pass # player has no means to pick these up, so we removed it
@@ -126,8 +131,8 @@ func _on_production_timer_timeout() -> void:
 			current_recipe = valid_recipe
 		recipe_changed.emit(valid_recipe)
 		# should also change the icon on the button
-	if requirements_met(current_recipe):
-		produce()
+	if current_recipe and requirements_met(current_recipe):
+		produce(current_recipe)
 		$MissingRequirementsLabel.text = ""
 	else:
 		$MissingRequirementsLabel.text = "!!!"
