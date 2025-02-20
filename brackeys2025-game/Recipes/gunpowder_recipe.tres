@@ -12,16 +12,12 @@ metadata/__load_path__ = "res://Assets/Images/placeholder/starch.png"
 script = ExtResource("2_sdnaa")
 recipe = ExtResource("3_ka87a")
 quantity_required = 1
-max_capacity = 10
-currently_held = 0
 metadata/_custom_type_script = "uid://blqkt7huduip"
 
 [sub_resource type="Resource" id="Resource_saqe0"]
 script = ExtResource("2_sdnaa")
 recipe = ExtResource("4_ank1j")
 quantity_required = 1
-max_capacity = 10
-currently_held = 0
 metadata/_custom_type_script = "uid://blqkt7huduip"
 
 [resource]

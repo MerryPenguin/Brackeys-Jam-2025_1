@@ -12,16 +12,12 @@ metadata/__load_path__ = "res://Assets/Images/placeholder/raygun.png"
 script = ExtResource("2_tekr0")
 recipe = ExtResource("3_du8o6")
 quantity_required = 1
-max_capacity = 10
-currently_held = 0
 metadata/_custom_type_script = "uid://blqkt7huduip"
 
 [sub_resource type="Resource" id="Resource_vghl8"]
 script = ExtResource("2_tekr0")
 recipe = ExtResource("4_8movj")
 quantity_required = 1
-max_capacity = 10
-currently_held = 0
 metadata/_custom_type_script = "uid://blqkt7huduip"
 
 [resource]
