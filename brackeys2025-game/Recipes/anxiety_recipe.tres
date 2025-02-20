@@ -7,7 +7,7 @@
 script = ExtResource("3_udfbn")
 product_name = &"Anxiety"
 required_inputs = Array[int]([])
-production_time = 10.0
+production_time = 1.5
 icon = ExtResource("1_aw2hf")
 recipe_type = 2
 default_sale_price = 10

@@ -53,17 +53,19 @@ func is_full(_item_name : String):
 	return storage.is_full()
 
 
-func requirements_met(recipe : ProductWidgetRecipe):
+func requirements_met(recipe : ProductWidgetRecipe) -> bool:
 	if recipe.required_inputs.is_empty():
-		return true
+		return true # Harvesters don't need anything
+	else:
+		var requirements_count = recipe.required_inputs.size()
+		var requirements_met = 0
+		for product : Globals.products in recipe.required_inputs:
 
-	for product : Globals.products in recipe.required_inputs:
-		var requirement = Globals.product_recipes[product] # [recipe, quantity]
-		if storage.has_product_named(requirement.product_name):
-			return true
-		else:
-			return false
-
+			var requirement = Globals.product_recipes[product] # [recipe, quantity]
+			if storage.has_product_named(requirement.product_name):
+				requirements_met += 1
+		return requirements_met >= requirements_count
+	
 
 func produce():
 	var widget_scene = preload("res://Entities/factory_products/factory_product_widget.tscn")
@@ -119,7 +121,9 @@ func _on_production_timer_timeout() -> void:
 	# consume inventory, release product
 	var valid_recipe = check_all_recipes_for_requirements()
 	if valid_recipe:
-		current_recipe = valid_recipe
+		if current_recipe != valid_recipe:
+			# New recipe
+			current_recipe = valid_recipe
 		recipe_changed.emit(valid_recipe)
 		# should also change the icon on the button
 	if requirements_met(current_recipe):
