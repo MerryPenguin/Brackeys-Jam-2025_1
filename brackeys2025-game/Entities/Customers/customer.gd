@@ -8,7 +8,7 @@ var target_destination : Node2D
 @export_range(0.0, 1.0) var sketchiness_factor : float = 0.25
 var dangerous_limit : float = 0.5
 
-@export var widgets_desired : Array[RequirementsManifest]
+@export var widgets_desired : Array[Globals.products]
 
 enum states { MOVING_TO_INSPECTOR, DETAINED, MOVING_TO_SHOP, BROWSING, BUYING, LEAVING }
 var state = states.MOVING_TO_SHOP
@@ -23,24 +23,16 @@ func _ready():
 	$RedLight.hide()
 	set_initial_sketchiness()
 	check_for_sketchiness()
-	create_requirements_manifests()
+	create_requirements_list()
 	
 
-func create_requirements_manifests():
+func create_requirements_list():
 	var req_text = ""
 	for i in range((randi()%3) +1):
-		var new_manifest : RequirementsManifest = RequirementsManifest.new()
-		
 		var random_choice = Globals.products.values().pick_random()
 		var random_recipe : ProductWidgetRecipe = Globals.product_recipes[random_choice]
-		#var random_recipe : ProductWidgetRecipe = Globals.product_recipes[Globals.products.ASH]
-
-		new_manifest.recipe = random_recipe
-		new_manifest.quantity_required = randi()%3+1
-		
-		new_manifest.generate_random_requirement()
-		widgets_desired.push_back(new_manifest)
-		req_text += new_manifest.recipe.product_name + ", "
+		widgets_desired.push_back(random_choice)
+		req_text += Globals.product_recipes[random_choice].product_name + ", "
 		
 	$HoverPopupDisplay.text = "Customer Wants:\n" + req_text
 	$RequirementsThoughtBubble.update_icons(widgets_desired)
@@ -160,13 +152,13 @@ func attempt_to_buy_product():
 		return
 
 	var requirements_met = true
-	for manifest in widgets_desired:
-		var requirement = manifest.get_requirements()
+	for desired_product in widgets_desired:
+		var requirement : ProductWidgetRecipe = Globals.product_recipes[desired_product]
 		if target_destination is Marker2D: # Not sure why i need this after we already verified that the target is a storage chest.. may be an unexpected multithreading issue, timers change variables even during a cycle.
 			return
-		if target_destination.storage.has_product_named(requirement[0].product_name, requirement[1]):
+		if target_destination.storage.has_product_named(requirement.product_name):
 			if target_destination.has_method("sell"):
-				target_destination.sell(manifest.recipe.product_name, self)
+				target_destination.sell(requirement.product_name, self)
 				cycles_waited = 0
 		else:
 			requirements_met = false

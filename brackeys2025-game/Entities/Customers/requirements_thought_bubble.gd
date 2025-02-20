@@ -1,11 +1,10 @@
 extends Control
 
-func update_icons(manifests : Array[RequirementsManifest]):
+func update_icons(desired_products : Array[Globals.products]):
 	for previous_icon in $GridContainer.get_children():
 		previous_icon.queue_free()
-	for manifest in manifests:
-		if manifest.get("recipe"):
-			$GridContainer.add_child(make_icon(manifest.recipe))
+	for product in desired_products:
+		$GridContainer.add_child(make_icon(Globals.product_recipes[product]))
 
 func make_icon(recipe) -> TextureRect:
 	var new_texture_rect = TextureRect.new()

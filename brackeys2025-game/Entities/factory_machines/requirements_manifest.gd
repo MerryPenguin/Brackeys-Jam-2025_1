@@ -1,6 +1,7 @@
 ## Keep track of specific requirements and inventory for FactoryMachines
 
 class_name RequirementsManifest extends Resource
+# DEPRECATED: We're just using lists of Globals.products (enum) now.
 
 
 @export var recipe : ProductWidgetRecipe

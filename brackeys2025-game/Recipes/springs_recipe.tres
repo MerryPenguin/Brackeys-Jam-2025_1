@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=4 format=3 uid="uid://0quaimd7cba1"]
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=3 format=3 uid="uid://0quaimd7cba1"]
 
 [ext_resource type="Texture2D" uid="uid://7cqg5vidpf4j" path="res://Assets/Images/placeholder/spring.png" id="1_tthh7"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="2_8ye15"]
-[ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="3_xakag"]
 
 [resource]
 script = ExtResource("2_8ye15")
 product_name = &"Springs"
-required_inputs = Array[ExtResource("3_xakag")]([])
+required_inputs = Array[int]([])
 production_time = 10.0
 icon = ExtResource("1_tthh7")
 recipe_type = 1
+default_sale_price = 10
 metadata/_custom_type_script = ExtResource("2_8ye15")

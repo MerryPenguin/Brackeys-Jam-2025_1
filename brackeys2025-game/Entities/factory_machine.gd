@@ -3,10 +3,6 @@
 
 class_name FactoryMachine extends Node2D
 
-#@export var required_inputs : Array[RequirementsManifest] = []
-
-#@export var production_time : float = 10.0 # time to convert requirements into output
-#@export var output_widget : PackedScene # NOTE: It might be smarter to use paths instead of packed scenes. we'll see.
 
 @onready var connectors : Node2D = $Connectors
 
@@ -60,13 +56,13 @@ func is_full(_item_name : String):
 func requirements_met(recipe : ProductWidgetRecipe):
 	if recipe.required_inputs.is_empty():
 		return true
-	else:
-		for manifest : RequirementsManifest in recipe.required_inputs:
-			var requirement = manifest.get_requirements() # [recipe, quantity]
-			if storage.has_product_named(requirement[0].product_name, requirement[1]):
-				return true
-			else:
-				return false
+
+	for product : Globals.products in recipe.required_inputs:
+		var requirement = Globals.product_recipes[product] # [recipe, quantity]
+		if storage.has_product_named(requirement.product_name):
+			return true
+		else:
+			return false
 
 
 func produce():
@@ -105,10 +101,10 @@ func get_root_node_name(packed_scene : PackedScene):
 
 func get_missing_requirements(recipe : ProductWidgetRecipe) -> PackedStringArray:
 	var missing : PackedStringArray = []
-	for manifest : RequirementsManifest in recipe.required_inputs:
-		var requirement = manifest.get_requirements() # [ recipe, quantity]
-		if storage.has_product_named(requirement[0].product_name, requirement[1]):
-			missing.push_back(manifest.get_widget_name())
+	for required_product : Globals.products in recipe.required_inputs:
+		var requirement = Globals.product_recipes[required_product]
+		if storage.has_product_named(requirement.product_name):
+			missing.push_back(requirement.product_name)
 	return missing
 
 func check_all_recipes_for_requirements() -> ProductWidgetRecipe:
@@ -135,10 +131,6 @@ func _on_production_timer_timeout() -> void:
 
 
 func _on_interaction_button_recipe_changed(recipe: Variant) -> void:
-	# update required inputs, production time and outputs
-	#required_inputs = recipe.required_inputs
-	#production_time = recipe.production_time
-	#output_widget = recipe.output_widget
 	current_recipe = recipe # save it so we can pass it on the the produced widgets
 
 func _on_connector_node_connected(node):

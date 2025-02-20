@@ -7,7 +7,6 @@
 
 [node name="OrganicsHarvester" instance=ExtResource("1_3xjko")]
 unlocked_recipes = Array[ExtResource("2_dsm2w")]([ExtResource("3_p52ud"), ExtResource("4_xk0ei")])
-current_recipe = ExtResource("3_p52ud")
 
 [node name="Sprite2D" parent="StaticBody2D" index="1"]
 hframes = 1

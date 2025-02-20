@@ -7,7 +7,6 @@
 
 [node name="SpiritualHarvester" instance=ExtResource("1_sgi0p")]
 unlocked_recipes = Array[ExtResource("2_cvmkr")]([ExtResource("3_460co"), ExtResource("4_6n75g")])
-current_recipe = ExtResource("3_460co")
 
 [node name="Sprite2D" parent="StaticBody2D" index="1"]
 hframes = 1
