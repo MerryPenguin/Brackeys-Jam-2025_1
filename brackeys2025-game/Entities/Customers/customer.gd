@@ -41,7 +41,9 @@ func create_requirements_manifests():
 		new_manifest.generate_random_requirement()
 		widgets_desired.push_back(new_manifest)
 		req_text += new_manifest.recipe.product_name + ", "
+		
 	$HoverPopupDisplay.text = "Customer Wants:\n" + req_text
+	$RequirementsThoughtBubble.update_icons(widgets_desired)
 
 func set_initial_sketchiness():
 	sketchiness_factor = randf()
@@ -147,30 +149,35 @@ func can_buy():
 		allowed = false
 	elif not $CooldownTimer.is_stopped():
 		allowed = false
+	elif not target_destination is StorageChest:
+		allowed = false
+	elif not is_near_storage_bin(target_destination):
+		allowed = false
 	return allowed
 		
 func attempt_to_buy_product():
 	if not can_buy():
 		return
-	if target_destination is StorageChest and is_near_storage_bin(target_destination):
-		var requirements_met = true
-		for manifest in widgets_desired:
-			var requirement = manifest.get_requirements()
-			if target_destination is Marker2D: # Not sure why i need this after we already verified that the target is a storage chest.. may be an unexpected multithreading issue, timers change variables even during a cycle.
-				return
-			if target_destination.storage.has_product_named(requirement[0].product_name, requirement[1]):
-				if target_destination.has_method("sell"):
-					target_destination.sell(manifest.recipe.product_name, self)
-					cycles_waited = 0
-			else:
-				requirements_met = false
-			
-			if cycles_waited > max_cycles_to_wait:
-				leave()
-			%CyclesRemaining.text = str(max_cycles_to_wait - cycles_waited)
-			$CooldownTimer.start()
-			if requirements_met:
-				leave()
+
+	var requirements_met = true
+	for manifest in widgets_desired:
+		var requirement = manifest.get_requirements()
+		if target_destination is Marker2D: # Not sure why i need this after we already verified that the target is a storage chest.. may be an unexpected multithreading issue, timers change variables even during a cycle.
+			return
+		if target_destination.storage.has_product_named(requirement[0].product_name, requirement[1]):
+			if target_destination.has_method("sell"):
+				target_destination.sell(manifest.recipe.product_name, self)
+				cycles_waited = 0
+		else:
+			requirements_met = false
+		
+		if cycles_waited > max_cycles_to_wait:
+			leave()
+		%CyclesRemaining.text = str(max_cycles_to_wait - cycles_waited)
+		$CooldownTimer.start()
+		if requirements_met:
+			leave()
+	cycles_waited += 1
 
 func leave():
 	state = states.LEAVING
