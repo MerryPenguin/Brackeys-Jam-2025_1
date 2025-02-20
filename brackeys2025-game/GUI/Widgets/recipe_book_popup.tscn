@@ -1,0 +1,794 @@
+[gd_scene load_steps=26 format=3 uid="uid://ddmw8ctke14gl"]
+
+[ext_resource type="Script" uid="uid://ck463osk2dw8t" path="res://GUI/Widgets/recipe_book_popup.gd" id="1_b5rhh"]
+[ext_resource type="Texture2D" uid="uid://cv7myqqm0ja6u" path="res://Assets/Images/Factories.png" id="2_v8hw0"]
+[ext_resource type="Texture2D" uid="uid://b4d014h1tpp2" path="res://Assets/Images/placeholder/arrow.png" id="3_4ah1o"]
+[ext_resource type="Texture2D" uid="uid://t7agpu4b0npd" path="res://Assets/Images/placeholder/gear16x16.png" id="4_c1jkh"]
+[ext_resource type="Texture2D" uid="uid://7cqg5vidpf4j" path="res://Assets/Images/placeholder/spring.png" id="5_g1488"]
+[ext_resource type="Texture2D" uid="uid://b354hqedmuctf" path="res://Assets/Images/placeholder/ash.png" id="6_fnjiw"]
+[ext_resource type="Texture2D" uid="uid://c456q6g2s5eff" path="res://Assets/Images/placeholder/starch.png" id="7_g3num"]
+[ext_resource type="Texture2D" uid="uid://w32xjk0pmknr" path="res://Assets/Images/placeholder/hope.png" id="8_5u37l"]
+[ext_resource type="Texture2D" uid="uid://gq1am4gdvnlu" path="res://Assets/Images/placeholder/anxiety.png" id="9_o0m7r"]
+[ext_resource type="Texture2D" uid="uid://d0vm5h16qyc1b" path="res://Assets/Images/placeholder/artifact.png" id="10_p6ihj"]
+[ext_resource type="Texture2D" uid="uid://c7ie3ho42yiwn" path="res://Assets/Images/placeholder/plus.png" id="11_foj40"]
+[ext_resource type="Texture2D" uid="uid://dxa22uteuj8hv" path="res://Assets/Images/placeholder/pineapple-s.png" id="12_tiqkg"]
+[ext_resource type="Texture2D" uid="uid://c50mumkbl8mp6" path="res://Assets/Images/placeholder/fruitphone.png" id="13_qjbi5"]
+[ext_resource type="Texture2D" uid="uid://rr67c2oi7ipv" path="res://icon.svg" id="14_xak70"]
+[ext_resource type="Texture2D" uid="uid://dlxvo7os0cbw7" path="res://Assets/Images/placeholder/epistemology.png" id="15_0tdsp"]
+[ext_resource type="Texture2D" uid="uid://dgsfp4jmdbg1t" path="res://Assets/Images/placeholder/green_pineapple.png" id="16_v3o8y"]
+[ext_resource type="Texture2D" uid="uid://ng0mv1hhegv6" path="res://Assets/Images/placeholder/banana.png" id="17_57eu8"]
+[ext_resource type="Texture2D" uid="uid://cm85dw602l71t" path="res://Assets/Images/placeholder/pacifier.png" id="18_lhryc"]
+[ext_resource type="Texture2D" uid="uid://drx17uee0x3vb" path="res://Assets/Images/placeholder/raygun.png" id="19_ci5d8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8hw0"]
+bg_color = Color(0.632518, 0.542487, 0.493417, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqj5d"]
+atlas = ExtResource("2_v8hw0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htf5p"]
+atlas = ExtResource("2_v8hw0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhhxh"]
+atlas = ExtResource("2_v8hw0")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70tfe"]
+atlas = ExtResource("2_v8hw0")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo5ya"]
+atlas = ExtResource("2_v8hw0")
+region = Rect2(32, 0, 16, 16)
+
+[node name="RecipeBookPopup" type="PopupPanel"]
+auto_translate_mode = 1
+size = Vector2i(1152, 648)
+visible = true
+script = ExtResource("1_b5rhh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 1148.0
+offset_bottom = 644.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Recipe Book"
+horizontal_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+text = "    STARCH, # ORGANIC
+    ASH, # ORGANIC
+    GEARS, # INORGANIC
+    SPRINGS, # INORGANIC
+    HOPES, # SPIRITUAL
+    ANXIETY, # SPIRITUAL
+    GUNPOWDER, # ASH + GEARS - for babies
+    GRENADE, # PINEAPPLE + GEARS - for monkeys
+    PINEAPPLE, # STARCH + HOPES - for time travellers
+    BANANA, # STARCH + ASH - for monkeys
+    EPISTEMOLOGY, # ANXIETY + GUNPOWDER - for time travellers
+    ARTIFACT, # SPRINGS + HOPES - for time travellers
+    PACIFIER, # ANXIETY + BANANA - for babies
+    RAYGUN, # SPRINGS + GRENADE - for time travellers
+    FRUITPHONE, # BANANA + EPISTEMOLOGY - for monkeys
+    PARADOX, # FRUITPHONE + ANXIETY + EPISTEMOLOGY - anyone - win game (anxiety ending)
+    SINGULARITY, # ARTIFACT + PINEAPPLE + FRUITPHONE - anyone - win game (hopeful ending)"
+
+[node name="Panel" type="PanelContainer" parent="."]
+texture_filter = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -572.0
+offset_top = -320.0
+offset_right = 572.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_v8hw0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 64
+
+[node name="Harvested" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Inorganics" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Harvested"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="InorganicHarvester" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Inorganics"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_gqj5d")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Inorganics"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Gears" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Inorganics"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_c1jkh")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Springs" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Inorganics"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("5_g1488")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Organics" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Harvested"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="OrganicHarvester" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Organics"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_htf5p")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Organics"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Ash" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Organics"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("6_fnjiw")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Starch" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Organics"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("7_g3num")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Psychic" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Harvested"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="PsychicHarvester" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Psychic"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_uhhxh")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Psychic"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Hopes" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Psychic"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("8_5u37l")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Anxiety" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Psychic"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("9_o0m7r")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Super" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SuperAggregator" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_70tfe")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Singularity" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Super"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Artifact" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("10_p6ihj")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Pineapple" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("12_tiqkg")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus2" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Fruitphone" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("13_qjbi5")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Singularity" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("14_xak70")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Paradox2" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Super"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Fruitphone2" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("13_qjbi5")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Anxiety" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("9_o0m7r")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus2" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Epistemology" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("15_0tdsp")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Paradox" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("14_xak70")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Aggregates" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Aggregator" type="TextureRect" parent="Panel/HBoxContainer/Aggregates"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_uo5ya")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Gunpowder" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Ash" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Gunpowder"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("8_5u37l")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Gunpowder"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_foj40")
+stretch_mode = 5
+
+[node name="Gears" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Gunpowder"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("9_o0m7r")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Gunpowder"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_4ah1o")
+stretch_mode = 5
+
+[node name="Gunpowder" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Gunpowder"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("7_g3num")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Grenade" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Pineapple" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Grenade"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("12_tiqkg")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Grenade"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Gears" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Grenade"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("9_o0m7r")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Grenade"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Grenade" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Grenade"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("16_v3o8y")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Pineapple" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Starch" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pineapple"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("7_g3num")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pineapple"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Hopes" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pineapple"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("8_5u37l")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pineapple"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Pineapple" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pineapple"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("12_tiqkg")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Banana" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Starch" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Banana"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("7_g3num")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Banana"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Ash" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Banana"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("6_fnjiw")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Banana"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Banana" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Banana"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("17_57eu8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Epistemology" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Anxiety" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Epistemology"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("9_o0m7r")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Epistemology"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Gunpowder" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Epistemology"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("7_g3num")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Epistemology"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Epistemology" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Epistemology"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("15_0tdsp")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Artifact" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Springs" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Artifact"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("5_g1488")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Artifact"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Hopes" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Artifact"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("8_5u37l")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Artifact"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Artifact" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Artifact"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("10_p6ihj")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Pacifier" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Anxiety" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pacifier"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("9_o0m7r")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pacifier"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Banana" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pacifier"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("17_57eu8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pacifier"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Pacifier" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pacifier"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("18_lhryc")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Raygun" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Springs" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Raygun"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("5_g1488")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Raygun"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Grenade" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Raygun"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("16_v3o8y")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Raygun"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Raygun" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Raygun"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("19_ci5d8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="FruitPhone" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Banana" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/FruitPhone"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("17_57eu8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/FruitPhone"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Epistemology" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/FruitPhone"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("15_0tdsp")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/FruitPhone"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Fruitphone" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/FruitPhone"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("13_qjbi5")
+expand_mode = 3
+stretch_mode = 5

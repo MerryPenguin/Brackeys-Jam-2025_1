@@ -20,8 +20,10 @@ var recipe : ProductWidgetRecipe # so we don't need a unique scene for each prod
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if package != null:
 		return # you're on a conveyor belt, let the package handle delivery
+	elif body is RovingCustomer:
+		return # Customers like to carry widgets
 		
-	elif body != origin:
+	elif body != origin: # This was intended for the player to pick things up.
 		if body.has_method("receive_product"):
 			get_parent().remove_child(self) # detach from conveyor belt or floor
 			body.receive_product(self)

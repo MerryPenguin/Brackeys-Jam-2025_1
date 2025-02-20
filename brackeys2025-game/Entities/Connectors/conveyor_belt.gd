@@ -12,7 +12,7 @@
 class_name ConveyorBelt extends Node2D
 
 enum draw_modes { TILEMAP, SMOOTH_LINE, CARDINAL_LINE }
-@export var draw_mode : draw_modes = draw_modes.SMOOTH_LINE
+var draw_mode : draw_modes = draw_modes.TILEMAP
 
 enum states { DRAWING, OPERATING }
 var state = states.OPERATING
@@ -40,16 +40,20 @@ func validate_requirements():
 		$Path2D.curve = Curve2D.new()
 
 func setup_draw_mode():
-	match draw_mode:
-		draw_modes.TILEMAP:
+	var desired_draw_mode = Config.get_config('GameSettings', 'ConveyorBeltStyle', "TILEMAP")
+	match desired_draw_mode:
+		"TILEMAP":
 			$TileMapLayer.show()
 			$Line2D.hide()
-		draw_modes.SMOOTH_LINE:
+			draw_mode = draw_modes.TILEMAP
+		"SMOOTH_LINE":
 			$TileMapLayer.hide()
 			$Line2D.show()
-		draw_modes.CARDINAL_LINE:
+			draw_mode = draw_modes.SMOOTH_LINE
+		"CARDINAL_LINE":
 			$TileMapLayer.hide()
 			$Line2D.show()
+			draw_mode = draw_modes.CARDINAL_LINE
 			
 
 func activate(connector_node : ConnectorNode):
@@ -180,11 +184,15 @@ func is_input_node(node):
 	return node.type == node.types.INPUT
 
 func add_new_conveyance(widget: FactoryProductWidget):
-	# add a pathfollower2d and give it a reference to the widget we're transporting
-	var new_package = ConveyorBeltPackage.new()
-	$Path2D.add_child(new_package)
-	new_package.add_contents(widget)
-	new_package.conveyor_belt = self
+	var path : Path2D = $Path2D
+	if path.curve.point_count > 1 and path.curve.get_baked_length() > 0:
+		# add a pathfollower2d and give it a reference to the widget we're transporting
+		var new_package = ConveyorBeltPackage.new()
+		path.add_child(new_package)
+		new_package.add_contents(widget)
+		new_package.conveyor_belt = self
+	else:
+		push_warning("ConveyorBelt has less than 2 points or zero length interval.")
 
 func _on_new_widget_received(widget : FactoryProductWidget):
 	add_new_conveyance(widget)

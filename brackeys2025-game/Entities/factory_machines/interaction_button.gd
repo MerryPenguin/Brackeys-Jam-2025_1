@@ -1,3 +1,7 @@
+## Interaction Button
+## Show an icon for the current recipe.
+## optional: allow user to change recipes manually
+
 extends Node2D
 
 signal recipe_changed(recipe)
@@ -41,7 +45,8 @@ func is_recipe(item):
 	return item is ProductWidgetRecipe
 
 func is_recipe_unlocked(recipe):
-	return recipe in owner.unlocked_recipes
+	if owner != null: # children are instantiated before parents.
+		return recipe in owner.unlocked_recipes
 
 
 func dir_contents(path : String):
@@ -64,3 +69,8 @@ func _on_recipe_button_pressed(recipe):
 	$Button.text = ""
 	$Panel.hide()
 	recipe_changed.emit(recipe)
+
+func _on_factory_machine_recipe_changed(recipe):
+	$Button.icon = recipe.icon
+	$Button.text = ""
+	

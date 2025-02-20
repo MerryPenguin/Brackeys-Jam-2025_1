@@ -1,13 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://cthjx6ks3w43d"]
+[gd_scene load_steps=6 format=3 uid="uid://cthjx6ks3w43d"]
 
 [ext_resource type="PackedScene" uid="uid://vh1ucj2rfbby" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/mini_options_menu.tscn" id="1_jyfk8"]
 [ext_resource type="Script" uid="uid://dq3ipbpc8nbdp" path="res://GUI/maaack_template/scenes/menus/options_menu/mini_options_menu_with_reset.gd" id="2_8yma2"]
 [ext_resource type="PackedScene" uid="uid://dwsw221le2ea1" path="res://GUI/maaack_template/scenes/menus/options_menu/game/reset_game_control/reset_game_control.tscn" id="3_1bcxw"]
+[ext_resource type="PackedScene" uid="uid://b6bl3n5mp3m1e" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/option_control/list_option_control.tscn" id="4_8yma2"]
+[ext_resource type="PackedScene" uid="uid://bsxh6v7j0257h" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/option_control/toggle_option_control.tscn" id="5_1bcxw"]
 
 [node name="MiniOptionsMenu" instance=ExtResource("1_jyfk8")]
 script = ExtResource("2_8yma2")
 
 [node name="ResetGameControl" parent="." index="3" instance=ExtResource("3_1bcxw")]
 layout_mode = 2
+
+[node name="ConveyorBeltStyle" parent="." index="4" instance=ExtResource("4_8yma2")]
+layout_mode = 2
+option_values = ["TILEMAP", "SMOOTH_LINE", "CARDINAL_LINE"]
+option_titles = ["TILEMAP", "SMOOTH_LINE", "CARDINAL_LINE"]
+option_name = "Conveyor Belt Style"
+option_section = 4
+key = "ConveyorBeltStyle"
+section = "GameSettings"
+property_type = 4
+
+[node name="FactoriesSnapToGridOption" parent="." index="5" instance=ExtResource("5_1bcxw")]
+layout_mode = 2
+option_name = "Factories Snap To Grid"
+option_section = 4
+key = "FactoriesSnapToGrid"
+section = "GameSettings"
 
 [connection signal="reset_confirmed" from="ResetGameControl" to="." method="_on_reset_game_control_reset_confirmed"]

@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=7 format=3 uid="uid://c4rji7be6rmm4"]
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=8 format=3 uid="uid://c4rji7be6rmm4"]
 
-[ext_resource type="Texture2D" uid="uid://d0vm5h16qyc1b" path="res://Assets/Images/placeholder/artifact.png" id="1_8jffm"]
 [ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_8jffm"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_1dj64"]
 [ext_resource type="Resource" uid="uid://0quaimd7cba1" path="res://Recipes/springs_recipe.tres" id="3_t5uf6"]
+[ext_resource type="Resource" uid="uid://cxvefv0jaevrt" path="res://Recipes/hopes_recipe.tres" id="4_1dj64"]
+
+[sub_resource type="Resource" id="Resource_bhpnr"]
+metadata/__load_path__ = "res://Assets/Images/placeholder/artifact.png"
 
 [sub_resource type="Resource" id="Resource_qyf5u"]
 script = ExtResource("2_8jffm")
@@ -15,7 +18,7 @@ metadata/_custom_type_script = "uid://blqkt7huduip"
 
 [sub_resource type="Resource" id="Resource_fxo3d"]
 script = ExtResource("2_8jffm")
-recipe = ExtResource("3_t5uf6")
+recipe = ExtResource("4_1dj64")
 quantity_required = 1
 max_capacity = 10
 currently_held = 0
@@ -26,6 +29,7 @@ script = ExtResource("3_1dj64")
 product_name = &"Artifact"
 required_inputs = Array[ExtResource("2_8jffm")]([SubResource("Resource_qyf5u"), SubResource("Resource_fxo3d")])
 production_time = 10.0
-icon = ExtResource("1_8jffm")
+icon = SubResource("Resource_bhpnr")
 recipe_type = 3
+default_sale_price = 50
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

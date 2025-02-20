@@ -11,18 +11,30 @@ class_name FactoryMachine extends Node2D
 @onready var connectors : Node2D = $Connectors
 
 @export var unlocked_recipes : Array[ProductWidgetRecipe]
-@export var current_recipe : ProductWidgetRecipe = preload("res://Recipes/gears_recipe.tres")
+@export var current_recipe : ProductWidgetRecipe
 
+@onready var storage : StorageComponent = $StorageComponent
+@onready var production_timer : Timer = $ProductionTimer
 
 signal input_node_connected # for tutorial win condition only
-
+signal recipe_changed
 
 func _ready():
 	connectors.hide()
 	#setup_inventory_dict()
+	$PlacementNoise.play()
+	recipe_changed.connect($InteractionButton._on_factory_machine_recipe_changed)
+	set_first_recipe()
 	$ProductionTimer.set_wait_time(current_recipe.production_time)
 	$ProductionTimer.start()
 
+func set_first_recipe():
+	if unlocked_recipes.is_empty():
+		push_warning(self.name, " factory_machine has no unlocked recipes")
+		return
+	current_recipe = unlocked_recipes[0]
+	recipe_changed.emit(current_recipe)
+	
 
 func _on_mouse_detection_area_mouse_entered() -> void:
 	connectors.show()
@@ -31,42 +43,48 @@ func _on_mouse_detection_area_mouse_exited() -> void:
 	connectors.hide()
 
 func receive_product(widget : FactoryProductWidget):
-	for manifest : RequirementsManifest in current_recipe.required_inputs:
-		if not widget or not widget.recipe:
-			push_warning(widget.name, " has no recipe?")
-		if manifest.get_widget_name() == widget.recipe.product_name:
-			if not manifest.is_full():
-				manifest.add(1)
+	storage.receive_product(widget)
+	
+	#for manifest : RequirementsManifest in current_recipe.required_inputs:
+		#if not widget or not widget.recipe:
+			#push_warning(widget.name, " has no recipe?")
+		#if manifest.get_widget_name() == widget.recipe.product_name:
+			#if not manifest.is_full():
+				#manifest.add(1)
 
 
-func is_full(item_name : String):
-	#return inventory[item_name]["held"] >= inventory[item_name]["capacity"]
-	for manifest in current_recipe.required_inputs:
-		if manifest.get_widget_name() == item_name:
-			return manifest.max_capacity >= manifest.currently_held
-	return false # couldn't find item name in required_inputs
+func is_full(_item_name : String):
+	return storage.is_full()
 
 
-func requirements_met():
-	for manifest in current_recipe.required_inputs:
-		if not manifest.requirements_met():
-			return false
-	return true
+func requirements_met(recipe : ProductWidgetRecipe):
+	if recipe.required_inputs.is_empty():
+		return true
+	else:
+		for manifest : RequirementsManifest in recipe.required_inputs:
+			var requirement = manifest.get_requirements() # [recipe, quantity]
+			if storage.has_product_named(requirement[0].product_name, requirement[1]):
+				return true
+			else:
+				return false
 
 
-func produce(widget_scene : PackedScene):
+func produce():
+	var widget_scene = preload("res://Entities/factory_products/factory_product_widget.tscn")
 	if widget_scene == null:
 		push_warning(self.name, ": factory_machine has no widget_scene")
+		push_warning(current_recipe)
+		breakpoint
 		return # No recipe. Do nothing
 
 	# instantiate one of these onto a conveyor belt, or on the floor for the player if no conveyor belt
-	if not is_output_connected():
-		pass # we removed the player avatar, so there's no one to pick these up.
-		#drop_on_floor(widget_scene.instantiate())
-	else:
+	if is_output_connected():
 		var new_widget : FactoryProductWidget = widget_scene.instantiate()
 		new_widget.activate(current_recipe)
 		%OutputNode.receive_product(new_widget)
+	else:  # no conveyor belt
+		#drop_on_floor()
+		pass # player has no means to pick these up, so we removed it
 
 func is_output_connected():
 	if %OutputNode.conveyor_belt != null:
@@ -85,14 +103,34 @@ func drop_on_floor(widget : FactoryProductWidget):
 func get_root_node_name(packed_scene : PackedScene):
 	return packed_scene.get_state().get_node_name(0)
 
+func get_missing_requirements(recipe : ProductWidgetRecipe) -> PackedStringArray:
+	var missing : PackedStringArray = []
+	for manifest : RequirementsManifest in recipe.required_inputs:
+		var requirement = manifest.get_requirements() # [ recipe, quantity]
+		if storage.has_product_named(requirement[0].product_name, requirement[1]):
+			missing.push_back(manifest.get_widget_name())
+	return missing
+
+func check_all_recipes_for_requirements() -> ProductWidgetRecipe:
+	for recipe_num in Globals.products.values():
+		var recipe = Globals.product_recipes[recipe_num]
+		if recipe.recipe_type == recipe.recipe_types.AGGREGATED and requirements_met(recipe):
+			return recipe
+	return null
+
 
 func _on_production_timer_timeout() -> void:
 	# consume inventory, release product
-	if requirements_met():
-		produce(current_recipe.output_widget)
-		$MissingRequirementsLabel.hide()
+	var valid_recipe = check_all_recipes_for_requirements()
+	if valid_recipe:
+		current_recipe = valid_recipe
+		recipe_changed.emit(valid_recipe)
+		# should also change the icon on the button
+	if requirements_met(current_recipe):
+		produce()
+		$MissingRequirementsLabel.text = ""
 	else:
-		$MissingRequirementsLabel.show()
+		$MissingRequirementsLabel.text = "!!!"
 	$ProductionTimer.start()
 
 

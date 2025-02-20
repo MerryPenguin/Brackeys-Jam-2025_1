@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxnywkrqyk8qg"]
+[gd_scene load_steps=14 format=3 uid="uid://cxnywkrqyk8qg"]
 
 [ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="1_jr0p4"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="2_eagi6"]
@@ -14,16 +14,12 @@
 [ext_resource type="Resource" uid="uid://wo131a4l7f8o" path="res://Recipes/fruitphone_recipe.tres" id="12_xk7lp"]
 [ext_resource type="Resource" uid="uid://b5xpis4hcix7q" path="res://Recipes/paradox_recipe.tres" id="13_awo6x"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sgi0p"]
-load_path = "res://.godot/imported/Factories_prototype.png-0394bdf5cde180eb93527416570357ca.ctex"
-
 [node name="AggregatorCombiner" instance=ExtResource("1_jr0p4")]
 unlocked_recipes = Array[ExtResource("2_eagi6")]([ExtResource("3_oaam4"), ExtResource("4_61ca4"), ExtResource("5_dmscu"), ExtResource("6_xojk4"), ExtResource("7_8gqkt"), ExtResource("8_tfr2h"), ExtResource("9_snyja"), ExtResource("3_oaam4"), ExtResource("10_41ulj"), ExtResource("11_kag1t"), ExtResource("12_xk7lp"), ExtResource("13_awo6x")])
 current_recipe = ExtResource("8_tfr2h")
 
 [node name="Sprite2D" parent="StaticBody2D" index="1"]
-texture = SubResource("CompressedTexture2D_sgi0p")
 hframes = 1
 vframes = 1
 region_enabled = true
-region_rect = Rect2(33.8887, 4.75702, 11.4568, 11.6543)
+region_rect = Rect2(32.8981, 3.80763, 14.9354, 13.1403)

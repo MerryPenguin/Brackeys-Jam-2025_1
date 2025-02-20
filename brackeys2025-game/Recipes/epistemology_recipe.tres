@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=8 format=3 uid="uid://beacj5fvu83yg"]
 
-[ext_resource type="Texture2D" uid="uid://dlxvo7os0cbw7" path="res://Assets/Images/placeholder/epistemology.png" id="1_dar6x"]
 [ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_g0rxf"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_217p2"]
 [ext_resource type="Resource" uid="uid://bv28cte2sl2ip" path="res://Recipes/anxiety_recipe.tres" id="3_t25ji"]
 [ext_resource type="Resource" uid="uid://dbq3thokvdr7i" path="res://Recipes/gunpowder_recipe.tres" id="4_dshkg"]
+
+[sub_resource type="Resource" id="Resource_qhso2"]
+metadata/__load_path__ = "res://Assets/Images/placeholder/epistemology.png"
 
 [sub_resource type="Resource" id="Resource_g0rxf"]
 script = ExtResource("2_g0rxf")
@@ -27,6 +29,7 @@ script = ExtResource("3_217p2")
 product_name = &"Epistemology"
 required_inputs = Array[ExtResource("2_g0rxf")]([SubResource("Resource_g0rxf"), SubResource("Resource_jkaum")])
 production_time = 10.0
-icon = ExtResource("1_dar6x")
+icon = SubResource("Resource_qhso2")
 recipe_type = 3
+default_sale_price = 10
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

@@ -11,11 +11,15 @@ point_count = 2
 [node name="CustomerSpawner" type="Path2D"]
 curve = SubResource("Curve2D_llyv8")
 script = ExtResource("1_t6ipv")
+max_customers_on_stage = 10
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotation = 1.57392
+
+[node name="ExitDestination" type="Marker2D" parent="." groups=["exits"]]
+position = Vector2(416, 298)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

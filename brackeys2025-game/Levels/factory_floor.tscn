@@ -1,14 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://vndqdct5f50s"]
+[gd_scene load_steps=9 format=3 uid="uid://vndqdct5f50s"]
 
 [ext_resource type="Script" uid="uid://y1manp7jpn4c" path="res://Levels/factory_floor.gd" id="1_wrr4c"]
 [ext_resource type="PackedScene" uid="uid://d1m8n26ymxpa8" path="res://Entities/MobileWorker/factory_worker.tscn" id="2_7d5sh"]
 [ext_resource type="PackedScene" uid="uid://cnnapxyigsc4a" path="res://Entities/Connectors/conveyor_belt.tscn" id="3_xicpb"]
+[ext_resource type="PackedScene" uid="uid://djc0g4iedr3xo" path="res://Entities/Customers/customer_spawner.tscn" id="4_64ewy"]
 [ext_resource type="PackedScene" uid="uid://cu7xb7uvvt414" path="res://Entities/StorageChest.tscn" id="6_fpxqv"]
+[ext_resource type="AudioStream" uid="uid://by8bqpohhprun" path="res://Assets/music/Factory 1 (With EQ).mp3" id="7_fpxqv"]
 [ext_resource type="PackedScene" uid="uid://b01165no4oubu" path="res://Entities/Inspection/inspector.tscn" id="12_2g2ty"]
 [ext_resource type="PackedScene" uid="uid://bmuqgwwm8fcko" path="res://GUI/hud.tscn" id="13_2g2ty"]
 
 [node name="FactoryFloor" type="Node2D"]
 y_sort_enabled = true
+texture_filter = 3
 script = ExtResource("1_wrr4c")
 
 [node name="Machines" type="Node2D" parent="."]
@@ -23,20 +26,41 @@ script = ExtResource("1_wrr4c")
 position = Vector2(390, 221)
 
 [node name="Customers" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="CustomerSpawner" parent="Customers" instance=ExtResource("4_64ewy")]
+position = Vector2(1149, 6)
 
 [node name="Storage" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Chest" parent="Storage" instance=ExtResource("6_fpxqv")]
+y_sort_enabled = true
 position = Vector2(878, 330)
+
+[node name="Chest2" parent="Storage" instance=ExtResource("6_fpxqv")]
+y_sort_enabled = true
+position = Vector2(878, 489)
+
+[node name="Chest3" parent="Storage" instance=ExtResource("6_fpxqv")]
+y_sort_enabled = true
+position = Vector2(878, 150)
 
 [node name="LooseWidgets" type="Node2D" parent="."]
 
 [node name="InspectionArea" type="Node2D" parent="."]
 
 [node name="Inspector" parent="InspectionArea" instance=ExtResource("12_2g2ty")]
+visible = false
 position = Vector2(916, 96)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
 [node name="HUD" parent="." instance=ExtResource("13_2g2ty")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fpxqv")
+volume_db = -6.0
+autoplay = true
+bus = &"Music"

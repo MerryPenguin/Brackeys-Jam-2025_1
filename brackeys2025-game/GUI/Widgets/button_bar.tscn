@@ -1,13 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://cr6s0syst023p"]
+[gd_scene load_steps=19 format=3 uid="uid://cr6s0syst023p"]
 
 [ext_resource type="Script" uid="uid://b3lw358sa2bi4" path="res://GUI/Widgets/button_bar.gd" id="1_birog"]
-[ext_resource type="Texture2D" uid="uid://d3e8epqhh247q" path="res://Assets/Images/Factories_prototype.png" id="1_hfl1c"]
+[ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="1_sfx4s"]
+[ext_resource type="Texture2D" uid="uid://cv7myqqm0ja6u" path="res://Assets/Images/Factories.png" id="2_bbqvn"]
 [ext_resource type="Texture2D" uid="uid://pmitx0a4qkmt" path="res://Assets/Images/placeholder/book.png" id="2_birog"]
 [ext_resource type="Script" uid="uid://1f7cgscgww03" path="res://GUI/Widgets/factory_placement_button.gd" id="3_2lpnr"]
 [ext_resource type="PackedScene" uid="uid://3j00pxhcg44x" path="res://Entities/factory_machines/organics_harvester_machine.tscn" id="4_npfic"]
 [ext_resource type="PackedScene" uid="uid://c67okxlqxki7t" path="res://Entities/factory_machines/inorganics_harvester_machine.tscn" id="5_bbqvn"]
 [ext_resource type="PackedScene" uid="uid://bjiy14821bbjm" path="res://Entities/factory_machines/spiritual_harvester_machine.tscn" id="6_sfx4s"]
 [ext_resource type="PackedScene" uid="uid://cxnywkrqyk8qg" path="res://Entities/factory_machines/aggregator_combiner_machine.tscn" id="7_hsg8g"]
+[ext_resource type="PackedScene" uid="uid://bii0ko6ggnccs" path="res://Entities/factory_machines/super_aggregator_combiner_machine.tscn" id="8_bbqvn"]
+[ext_resource type="PackedScene" uid="uid://ddmw8ctke14gl" path="res://GUI/Widgets/recipe_book_popup.tscn" id="11_hsg8g"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_c3j1w"]
 device = -1
@@ -17,105 +20,170 @@ unicode = 49
 [sub_resource type="Shortcut" id="Shortcut_0sd2f"]
 events = [SubResource("InputEventKey_c3j1w")]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r8uld"]
-atlas = ExtResource("1_hfl1c")
-region = Rect2(2.69136, 4.93004, 12.0494, 12.2469)
+[sub_resource type="AtlasTexture" id="AtlasTexture_npfic"]
+atlas = ExtResource("2_bbqvn")
+region = Rect2(15.9521, 2.44334, 14.8636, 15.2226)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3herd"]
-atlas = ExtResource("1_hfl1c")
-region = Rect2(17.2961, 4.03274, 12.8395, 13.1029)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbqvn"]
+atlas = ExtResource("2_bbqvn")
+region = Rect2(1.51932, 2.65876, 14.2174, 14.5764)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_drwp6"]
-atlas = ExtResource("1_hfl1c")
-region = Rect2(2.54714, 20.0327, 12.3128, 13.5638)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfx4s"]
+atlas = ExtResource("2_bbqvn")
+region = Rect2(1.08849, 19.5329, 14.6482, 13.8583)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rdmlu"]
-atlas = ExtResource("1_hfl1c")
-region = Rect2(32.506, 4.03274, 13.7613, 13.4321)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsg8g"]
+atlas = ExtResource("2_bbqvn")
+region = Rect2(32.6826, 3.23319, 15.2944, 14.1456)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djy10"]
+atlas = ExtResource("2_bbqvn")
+region = Rect2(17.3882, 18.5276, 14.5046, 15.1508)
 
 [node name="ButtonBar" type="GridContainer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -236.0
+offset_right = 64.0
+offset_bottom = 236.0
+grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-theme_override_constants/h_separation = 12
-theme_override_constants/v_separation = 12
-columns = 2
+theme = ExtResource("1_sfx4s")
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
 script = ExtResource("1_birog")
 
 [node name="OrganicHarvesterButton" type="Button" parent="."]
+texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 shortcut = SubResource("Shortcut_0sd2f")
-icon = SubResource("AtlasTexture_r8uld")
+icon = SubResource("AtlasTexture_npfic")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("4_npfic")
 
-[node name="OrganicsLabel" type="Label" parent="."]
+[node name="OrganicsLabel" type="Label" parent="OrganicHarvesterButton"]
 layout_mode = 2
+offset_left = 76.0
+offset_top = 5.0
+offset_right = 200.0
+offset_bottom = 59.0
 text = "Organics
 Harvester
 (Vegetal)"
 horizontal_alignment = 1
 
 [node name="InorganicHarvesterButton2" type="Button" parent="."]
+texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-icon = SubResource("AtlasTexture_3herd")
+icon = SubResource("AtlasTexture_bbqvn")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("5_bbqvn")
 
-[node name="InorganicsLabel" type="Label" parent="."]
+[node name="InorganicsLabel" type="Label" parent="InorganicHarvesterButton2"]
 layout_mode = 2
+offset_left = 82.0
+offset_top = 11.0
+offset_right = 206.0
+offset_bottom = 65.0
 text = "Inorganics
 Harvester
 (Mineral)"
 horizontal_alignment = 1
 
 [node name="SpiritualHarvesterButton3" type="Button" parent="."]
+texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-icon = SubResource("AtlasTexture_drwp6")
+icon = SubResource("AtlasTexture_sfx4s")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("6_sfx4s")
 
-[node name="SpiritualLabel" type="Label" parent="."]
+[node name="SpiritualLabel" type="Label" parent="SpiritualHarvesterButton3"]
 layout_mode = 2
+offset_left = 79.0
+offset_top = 11.0
+offset_right = 203.0
+offset_bottom = 65.0
 text = "Mood
 Harvester
 (psy-residual)"
 horizontal_alignment = 1
 
 [node name="CombinerButton" type="Button" parent="."]
+texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-icon = SubResource("AtlasTexture_rdmlu")
+icon = SubResource("AtlasTexture_hsg8g")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("7_hsg8g")
 
-[node name="CombinerLabel" type="Label" parent="."]
+[node name="CombinerLabel" type="Label" parent="CombinerButton"]
 layout_mode = 2
+offset_left = 90.0
+offset_top = 1.0
+offset_right = 194.0
+offset_bottom = 74.0
 text = "Super
 Aggregator
 Combinator
 9000"
 horizontal_alignment = 1
 
+[node name="AdvCombinerButton" type="Button" parent="."]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = SubResource("AtlasTexture_djy10")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_2lpnr")
+factory_scene = ExtResource("8_bbqvn")
+
+[node name="AdvCombinerLabel" type="Label" parent="AdvCombinerButton"]
+layout_mode = 2
+offset_left = 86.0
+offset_top = 5.0
+offset_right = 190.0
+offset_bottom = 78.0
+text = "Super Duper
+Aggregator
+Combinator
+36000"
+horizontal_alignment = 1
+
 [node name="RecipesButton" type="Button" parent="."]
-custom_minimum_size = Vector2(32, 32)
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = ExtResource("2_birog")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("3_2lpnr")
 
-[node name="RecipeLabel" type="Label" parent="."]
+[node name="RecipeBookPopup" parent="RecipesButton" instance=ExtResource("11_hsg8g")]
+unique_name_in_owner = true
+visible = false
+
+[node name="RecipeLabel" type="Label" parent="RecipesButton"]
 layout_mode = 2
+offset_left = 96.0
+offset_top = 7.0
+offset_right = 160.0
+offset_bottom = 42.0
 text = "Recipe 
 Book"
 horizontal_alignment = 1
+
+[connection signal="pressed" from="RecipesButton" to="." method="_on_recipes_button_pressed"]
