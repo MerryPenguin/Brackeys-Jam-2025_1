@@ -36,33 +36,46 @@ region = Rect2(16, 0, 16, 16)
 atlas = ExtResource("2_v8hw0")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_70tfe"]
-atlas = ExtResource("2_v8hw0")
-region = Rect2(16, 16, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_uo5ya"]
 atlas = ExtResource("2_v8hw0")
 region = Rect2(32, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_70tfe"]
+atlas = ExtResource("2_v8hw0")
+region = Rect2(16, 16, 16, 16)
+
 [node name="RecipeBookPopup" type="PopupPanel"]
 auto_translate_mode = 1
-size = Vector2i(1152, 648)
+size = Vector2i(1408, 648)
 visible = true
 script = ExtResource("1_b5rhh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Control" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 1148.0
-offset_bottom = 644.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 text = "Recipe Book"
 horizontal_alignment = 1
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+[node name="TextEdit" type="TextEdit" parent="Control/ScrollContainer/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
@@ -84,44 +97,38 @@ text = "    STARCH, # ORGANIC
     PARADOX, # FRUITPHONE + ANXIETY + EPISTEMOLOGY - anyone - win game (anxiety ending)
     SINGULARITY, # ARTIFACT + PINEAPPLE + FRUITPHONE - anyone - win game (hopeful ending)"
 
-[node name="Panel" type="PanelContainer" parent="."]
+[node name="RecipeBook" type="PanelContainer" parent="Control/ScrollContainer/VBoxContainer"]
 texture_filter = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -572.0
-offset_top = -320.0
-offset_right = 572.0
-offset_bottom = 320.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.8, 0.8)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_v8hw0")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook"]
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 64
 
-[node name="Harvested" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+[node name="Harvested" type="VBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
-[node name="Inorganics" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Harvested"]
+[node name="Inorganics" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="InorganicHarvester" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Inorganics"]
+[node name="InorganicHarvester" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested/Inorganics"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -129,7 +136,7 @@ texture = SubResource("AtlasTexture_gqj5d")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Inorganics"]
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested/Inorganics"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -137,7 +144,7 @@ texture = ExtResource("3_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Gears" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Inorganics"]
+[node name="Gears" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested/Inorganics"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -145,7 +152,7 @@ texture = ExtResource("4_c1jkh")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Springs" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Inorganics"]
+[node name="Springs" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested/Inorganics"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -153,13 +160,13 @@ texture = ExtResource("5_g1488")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Organics" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Harvested"]
+[node name="Organics" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="OrganicHarvester" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Organics"]
+[node name="OrganicHarvester" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested/Organics"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -167,7 +174,7 @@ texture = SubResource("AtlasTexture_htf5p")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Organics"]
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested/Organics"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -175,7 +182,7 @@ texture = ExtResource("3_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Ash" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Organics"]
+[node name="Ash" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested/Organics"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -183,7 +190,7 @@ texture = ExtResource("6_fnjiw")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Starch" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Organics"]
+[node name="Starch" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested/Organics"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -191,13 +198,13 @@ texture = ExtResource("7_g3num")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Psychic" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Harvested"]
+[node name="Psychic" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="PsychicHarvester" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Psychic"]
+[node name="PsychicHarvester" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested/Psychic"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -205,7 +212,7 @@ texture = SubResource("AtlasTexture_uhhxh")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Psychic"]
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested/Psychic"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -213,7 +220,7 @@ texture = ExtResource("3_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Hopes" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Psychic"]
+[node name="Hopes" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested/Psychic"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -221,7 +228,7 @@ texture = ExtResource("8_5u37l")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Anxiety" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Harvested/Psychic"]
+[node name="Anxiety" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/VBoxContainer/Harvested/Psychic"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -229,145 +236,11 @@ texture = ExtResource("9_o0m7r")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Super" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+[node name="Aggregates" type="VBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="SuperAggregator" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super"]
-texture_filter = 3
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = SubResource("AtlasTexture_70tfe")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Singularity" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Super"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 32
-alignment = 1
-
-[node name="Artifact" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("10_p6ihj")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("11_foj40")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Pineapple" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("12_tiqkg")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Plus2" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("11_foj40")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Fruitphone" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("13_qjbi5")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("3_4ah1o")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Singularity" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Singularity"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("14_xak70")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Paradox2" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/Super"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 32
-alignment = 1
-
-[node name="Fruitphone2" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("13_qjbi5")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("11_foj40")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Anxiety" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("9_o0m7r")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Plus2" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("11_foj40")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Epistemology" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("15_0tdsp")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("3_4ah1o")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Paradox" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Super/Paradox2"]
-texture_filter = 3
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("14_xak70")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="Aggregates" type="VBoxContainer" parent="Panel/HBoxContainer"]
-layout_mode = 2
-
-[node name="Aggregator" type="TextureRect" parent="Panel/HBoxContainer/Aggregates"]
+[node name="Aggregator" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -375,13 +248,13 @@ texture = SubResource("AtlasTexture_uo5ya")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Gunpowder" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+[node name="Gunpowder" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Ash" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Gunpowder"]
+[node name="Ash" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Gunpowder"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -389,7 +262,7 @@ texture = ExtResource("8_5u37l")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Gunpowder"]
+[node name="Plus" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Gunpowder"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -398,7 +271,7 @@ size_flags_vertical = 4
 texture = ExtResource("11_foj40")
 stretch_mode = 5
 
-[node name="Gears" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Gunpowder"]
+[node name="Gears" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Gunpowder"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -406,7 +279,7 @@ texture = ExtResource("9_o0m7r")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Gunpowder"]
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Gunpowder"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -415,7 +288,7 @@ size_flags_vertical = 4
 texture = ExtResource("3_4ah1o")
 stretch_mode = 5
 
-[node name="Gunpowder" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Gunpowder"]
+[node name="Gunpowder" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Gunpowder"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -423,13 +296,13 @@ texture = ExtResource("7_g3num")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Grenade" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+[node name="Grenade" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Pineapple" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Grenade"]
+[node name="Pineapple" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Grenade"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -437,7 +310,7 @@ texture = ExtResource("12_tiqkg")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Grenade"]
+[node name="Plus" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Grenade"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -447,7 +320,7 @@ texture = ExtResource("11_foj40")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Hope" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Grenade"]
+[node name="Hope" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Grenade"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -455,7 +328,7 @@ texture = ExtResource("8_5u37l")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Grenade"]
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Grenade"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -465,7 +338,7 @@ texture = ExtResource("3_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Grenade" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Grenade"]
+[node name="Grenade" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Grenade"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -473,13 +346,13 @@ texture = ExtResource("16_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Pineapple" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+[node name="Pineapple" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Starch" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pineapple"]
+[node name="Starch" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Pineapple"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -487,7 +360,7 @@ texture = ExtResource("7_g3num")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pineapple"]
+[node name="Plus" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Pineapple"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -495,7 +368,7 @@ texture = ExtResource("11_foj40")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Gears" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pineapple"]
+[node name="Gears" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Pineapple"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -503,7 +376,7 @@ texture = ExtResource("4_c1jkh")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pineapple"]
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Pineapple"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -511,7 +384,7 @@ texture = ExtResource("3_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Pineapple" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pineapple"]
+[node name="Pineapple" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Pineapple"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -519,13 +392,13 @@ texture = ExtResource("12_tiqkg")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Banana" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+[node name="Banana" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Starch" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Banana"]
+[node name="Starch" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Banana"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -533,7 +406,7 @@ texture = ExtResource("7_g3num")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Banana"]
+[node name="Plus" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Banana"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -541,7 +414,7 @@ texture = ExtResource("11_foj40")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Ash" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Banana"]
+[node name="Ash" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Banana"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -549,7 +422,7 @@ texture = ExtResource("6_fnjiw")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Banana"]
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Banana"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -557,7 +430,7 @@ texture = ExtResource("3_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Banana" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Banana"]
+[node name="Banana" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates/Banana"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -565,13 +438,16 @@ texture = ExtResource("17_57eu8")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Epistemology" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+[node name="Aggregates2" type="VBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Epistemology" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Anxiety" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Epistemology"]
+[node name="Anxiety" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Epistemology"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -579,7 +455,7 @@ texture = ExtResource("9_o0m7r")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Epistemology"]
+[node name="Plus" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Epistemology"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -587,7 +463,7 @@ texture = ExtResource("11_foj40")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Gunpowder" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Epistemology"]
+[node name="Gunpowder" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Epistemology"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -595,7 +471,7 @@ texture = ExtResource("7_g3num")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Epistemology"]
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Epistemology"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -603,7 +479,7 @@ texture = ExtResource("3_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Epistemology" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Epistemology"]
+[node name="Epistemology" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Epistemology"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -611,13 +487,13 @@ texture = ExtResource("15_0tdsp")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Artifact" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+[node name="Artifact" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Springs" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Artifact"]
+[node name="Springs" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Artifact"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -625,7 +501,7 @@ texture = ExtResource("5_g1488")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Artifact"]
+[node name="Plus" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Artifact"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -633,7 +509,7 @@ texture = ExtResource("11_foj40")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Hopes" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Artifact"]
+[node name="Hopes" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Artifact"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -641,7 +517,7 @@ texture = ExtResource("8_5u37l")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Artifact"]
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Artifact"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -649,7 +525,7 @@ texture = ExtResource("3_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Artifact" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Artifact"]
+[node name="Artifact" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Artifact"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -657,13 +533,13 @@ texture = ExtResource("10_p6ihj")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Pacifier" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+[node name="Pacifier" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Anxiety" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pacifier"]
+[node name="Anxiety" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Pacifier"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -671,7 +547,7 @@ texture = ExtResource("9_o0m7r")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pacifier"]
+[node name="Plus" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Pacifier"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -679,7 +555,7 @@ texture = ExtResource("11_foj40")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Banana" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pacifier"]
+[node name="Banana" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Pacifier"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -687,7 +563,7 @@ texture = ExtResource("17_57eu8")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pacifier"]
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Pacifier"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -695,7 +571,7 @@ texture = ExtResource("3_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Pacifier" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Pacifier"]
+[node name="Pacifier" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Pacifier"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -703,13 +579,13 @@ texture = ExtResource("18_lhryc")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Raygun" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+[node name="Raygun" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Springs" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Raygun"]
+[node name="Springs" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Raygun"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -717,7 +593,7 @@ texture = ExtResource("5_g1488")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Raygun"]
+[node name="Plus" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Raygun"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -725,7 +601,7 @@ texture = ExtResource("11_foj40")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Grenade" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Raygun"]
+[node name="Grenade" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Raygun"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -733,7 +609,7 @@ texture = ExtResource("16_v3o8y")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Raygun"]
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Raygun"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -741,7 +617,7 @@ texture = ExtResource("3_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Raygun" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/Raygun"]
+[node name="Raygun" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/Raygun"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -749,13 +625,13 @@ texture = ExtResource("19_ci5d8")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="FruitPhone" type="HBoxContainer" parent="Panel/HBoxContainer/Aggregates"]
+[node name="FruitPhone" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Banana" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/FruitPhone"]
+[node name="Banana" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/FruitPhone"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -763,7 +639,7 @@ texture = ExtResource("17_57eu8")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Plus" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/FruitPhone"]
+[node name="Plus" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/FruitPhone"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -771,7 +647,7 @@ texture = ExtResource("11_foj40")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Epistemology" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/FruitPhone"]
+[node name="Epistemology" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/FruitPhone"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -779,7 +655,7 @@ texture = ExtResource("15_0tdsp")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Arrow" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/FruitPhone"]
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/FruitPhone"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -787,10 +663,154 @@ texture = ExtResource("3_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Fruitphone" type="TextureRect" parent="Panel/HBoxContainer/Aggregates/FruitPhone"]
+[node name="Fruitphone" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/HBoxContainer/Aggregates2/FruitPhone"]
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("13_qjbi5")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="Super" type="VBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer"]
+layout_mode = 2
+
+[node name="SuperAggregator" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super"]
+visible = false
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_70tfe")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Singularity" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Artifact" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("10_p6ihj")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Pineapple" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("12_tiqkg")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus2" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Fruitphone" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("13_qjbi5")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Singularity" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Singularity"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("14_xak70")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Paradox2" type="HBoxContainer" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Fruitphone2" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("13_qjbi5")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Anxiety" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("9_o0m7r")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Plus2" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("11_foj40")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Epistemology" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("15_0tdsp")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Arrow" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_4ah1o")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Paradox" type="TextureRect" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Super/Paradox2"]
+texture_filter = 3
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("14_xak70")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Close"
+
+[connection signal="pressed" from="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Button" to="." method="_on_button_pressed"]

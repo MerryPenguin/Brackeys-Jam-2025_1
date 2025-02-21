@@ -22,3 +22,8 @@ func create_recipe_book():
 		# X + Y -> A -> Z
 		
 		# three requirements might need the super aggregator
+
+
+func _on_button_pressed() -> void:
+	self.hide()
+	
