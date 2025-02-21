@@ -73,7 +73,7 @@ func _on_recipes_button_pressed() -> void:
 		clear_previous_tools()
 		var new_recipe_book = preload("res://GUI/Widgets/recipe_book_popup.tscn").instantiate()
 		add_child(new_recipe_book)
-		new_recipe_book.popup_centered_ratio(0.8)
+		new_recipe_book.popup_centered()
 		active_tools.push_back(new_recipe_book)
 	
 func _on_factory_unlocked(factory : Globals.buildings):
