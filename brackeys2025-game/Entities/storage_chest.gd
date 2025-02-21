@@ -43,12 +43,15 @@ func sell(product_name : StringName, buyer:RovingCustomer):
 		storage.give_product_by_name(product_name, buyer)
 		Globals.cash += lookup_value(product_name)
 
-func lookup_value(product_name):
+func lookup_value(product_name) -> int:
 	for product_num in Globals.products.values():
 		var product_recipe : ProductWidgetRecipe = Globals.product_recipes[product_num]
 		if product_recipe.product_name == product_name:
-			return product_recipe.default_sale_price
-	
+			var sale_price = product_recipe.default_sale_price
+			if Globals.products_in_demand.has(product_num):
+				sale_price *= 2.0
+			return sale_price
+	return 0
 
 func get_customer_count():
 	var count = 0

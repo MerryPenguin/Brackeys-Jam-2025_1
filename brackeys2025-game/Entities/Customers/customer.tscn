@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://cm8v5aepcle5p"]
 
-[ext_resource type="Texture2D" uid="uid://upsvedsr6ksx" path="res://Assets/Images/placeholder/dude.png" id="1_nkqq3"]
 [ext_resource type="Script" uid="uid://1gnswtuhuqxq" path="res://Entities/Customers/customer.gd" id="1_tronh"]
 [ext_resource type="PackedScene" uid="uid://dfqi3t3sg40rk" path="res://Components/storage_component.tscn" id="2_hhold"]
 [ext_resource type="PackedScene" uid="uid://vmifcy0mv2yo" path="res://Entities/Customers/sketchy_prop.tscn" id="3_j3thj"]
+[ext_resource type="Texture2D" uid="uid://bfmm7psb7rknn" path="res://Assets/Images/placeholder/white_face.png" id="3_rd0ff"]
 [ext_resource type="PackedScene" uid="uid://bjteivr6q34df" path="res://Props/hover_popup_display.tscn" id="4_8yoh6"]
 [ext_resource type="PackedScene" uid="uid://dvr7ipukonuwm" path="res://Entities/Customers/requirements_thought_bubble.tscn" id="6_rd0ff"]
 
@@ -16,27 +16,32 @@ radius = 69.3542
 
 [node name="Customer" type="CharacterBody2D" groups=["Customers"]]
 y_sort_enabled = true
+collision_layer = 0
 script = ExtResource("1_tronh")
 speed = 120.0
 max_cycles_to_wait = 3
 
 [node name="StorageComponent" parent="." instance=ExtResource("2_hhold")]
+tooltip_disabled = true
 
 [node name="RedLight" type="Polygon2D" parent="."]
 show_behind_parent = true
 color = Color(1, 0.568627, 0, 0.368627)
 polygon = PackedVector2Array(-18, 21, -34, 1, -34, -25, -15, -49, 18, -49, 39, -27, 38, 6, 18, 20)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -15)
-texture = ExtResource("1_nkqq3")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_tronh")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(1, -15)
+scale = Vector2(4, 4)
+texture = ExtResource("3_rd0ff")
+
 [node name="SketchyProp" parent="." instance=ExtResource("3_j3thj")]
+visible = false
 
 [node name="HoverPopupDisplay" parent="." instance=ExtResource("4_8yoh6")]
 position = Vector2(0, -10)
@@ -55,6 +60,7 @@ shape = SubResource("CircleShape2D_8yoh6")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="DebugInfoPanel" type="Panel" parent="."]
+visible = false
 custom_minimum_size = Vector2(96, 48)
 anchors_preset = 8
 anchor_left = 0.5

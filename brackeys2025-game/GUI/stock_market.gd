@@ -19,6 +19,7 @@ func _on_change_product_timer_timeout():
 		if products_in_demand.size() > 3:
 			# discard old products
 			products_in_demand.pop_back()
+	Globals.products_in_demand = products_in_demand
 	
 	var label = $ProductDemandLabel
 	label.text = "Products in demand: "

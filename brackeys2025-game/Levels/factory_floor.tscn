@@ -14,6 +14,23 @@ y_sort_enabled = true
 texture_filter = 3
 script = ExtResource("1_wrr4c")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -5
+custom_minimum_size = Vector2(356, 648)
+offset_left = 792.0
+offset_right = 1148.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.196329, 0.152901, 0.138424, 1)
+
+[node name="ShoppingZoneLabel" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 146.0
+offset_bottom = 72.0
+text = "Sell Goods Here"
+
 [node name="Machines" type="Node2D" parent="."]
 
 [node name="MobileWorkers" type="Node2D" parent="."]
@@ -36,15 +53,15 @@ y_sort_enabled = true
 
 [node name="Chest" parent="Storage" instance=ExtResource("6_fpxqv")]
 y_sort_enabled = true
-position = Vector2(840, 368)
+position = Vector2(864, 368)
 
 [node name="Chest2" parent="Storage" instance=ExtResource("6_fpxqv")]
 y_sort_enabled = true
-position = Vector2(840, 496)
+position = Vector2(864, 496)
 
 [node name="Chest3" parent="Storage" instance=ExtResource("6_fpxqv")]
 y_sort_enabled = true
-position = Vector2(840, 176)
+position = Vector2(864, 176)
 
 [node name="LooseWidgets" type="Node2D" parent="."]
 

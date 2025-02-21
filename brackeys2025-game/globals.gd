@@ -4,7 +4,8 @@ extends Node
 var current_level : Node2D
 var current_player : CharacterBody2D
 var current_hud : CanvasLayer
-	
+var products_in_demand : Array[products]
+
 const grid_size : Vector2 = Vector2(16,16)
 const building_scale : Vector2 = Vector2(6,6)
 
