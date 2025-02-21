@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cr6s0syst023p"]
+[gd_scene load_steps=19 format=3 uid="uid://cr6s0syst023p"]
 
 [ext_resource type="Script" uid="uid://b3lw358sa2bi4" path="res://GUI/Widgets/button_bar.gd" id="1_birog"]
 [ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="1_sfx4s"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bjiy14821bbjm" path="res://Entities/factory_machines/spiritual_harvester_machine.tscn" id="6_sfx4s"]
 [ext_resource type="PackedScene" uid="uid://cxnywkrqyk8qg" path="res://Entities/factory_machines/aggregator_combiner_machine.tscn" id="7_hsg8g"]
 [ext_resource type="PackedScene" uid="uid://bii0ko6ggnccs" path="res://Entities/factory_machines/super_aggregator_combiner_machine.tscn" id="8_bbqvn"]
-[ext_resource type="PackedScene" uid="uid://ddmw8ctke14gl" path="res://GUI/Widgets/recipe_book_popup.tscn" id="11_hsg8g"]
 [ext_resource type="Texture2D" uid="uid://bssrthkd53wcr" path="res://Assets/Images/placeholder/bulldozer.png" id="12_djy10"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_c3j1w"]
@@ -240,10 +239,6 @@ icon = ExtResource("2_birog")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_2lpnr")
-
-[node name="RecipeBookPopup" parent="HBoxContainer3/GridContainer2/RecipesButton" instance=ExtResource("11_hsg8g")]
-unique_name_in_owner = true
-visible = false
 
 [node name="RecipeLabel" type="Label" parent="HBoxContainer3/GridContainer2/RecipesButton"]
 layout_mode = 2

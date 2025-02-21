@@ -11,7 +11,7 @@ var active_tools : Array = [] # store a stack, so we can free old ones if user p
 
 func _ready():
 	setup_button_shortcut_keys()
-	%RecipeBookPopup.hide()
+	
 	hide_locked_buildings()
 	
 
@@ -67,7 +67,10 @@ func spawn_factory_blueprint(factory_scene):
 
 func _on_recipes_button_pressed() -> void:
 	clear_previous_tools()
-	%RecipeBookPopup.popup_centered_ratio(0.8)
+	var new_recipe_book = preload("res://GUI/Widgets/recipe_book_popup.tscn").instantiate()
+	add_child(new_recipe_book)
+	new_recipe_book.popup_centered_ratio(0.8)
+	active_tools.push_back(new_recipe_book)
 	
 func _on_factory_unlocked(factory : Globals.buildings):
 	for container in containers:
@@ -91,6 +94,7 @@ func clear_previous_tools():
 	for tool in active_tools:
 		if tool != null and is_instance_valid(tool):
 			tool.queue_free()
-
+	active_tools = []
+		
 func _on_tool_freed(tool):
 	active_tools.erase(tool)

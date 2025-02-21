@@ -56,8 +56,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 1404.0
+offset_bottom = 644.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -813,4 +813,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Close"
 
+[connection signal="popup_hide" from="." to="." method="_on_popup_hide"]
 [connection signal="pressed" from="Control/ScrollContainer/VBoxContainer/RecipeBook/VBoxContainer/Button" to="." method="_on_button_pressed"]

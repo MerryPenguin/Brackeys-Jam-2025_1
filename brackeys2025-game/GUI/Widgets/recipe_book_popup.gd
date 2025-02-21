@@ -3,10 +3,12 @@
 
 extends PopupPanel
 
+signal tool_freed(tool)
+
 # walk through the recipes list and make a display
 func _ready():
 	#create_recipe_book()
-	pass
+	tool_freed.connect(Globals.current_hud._on_tool_freed)
 	
 func create_recipe_book():
 	pass
@@ -26,4 +28,8 @@ func create_recipe_book():
 
 func _on_button_pressed() -> void:
 	self.hide()
-	
+
+
+func _on_popup_hide() -> void:
+	tool_freed.emit(self)
+	call_deferred("queue_free")
