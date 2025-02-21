@@ -50,11 +50,13 @@ offset_bottom = 236.0
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+mouse_filter = 2
 theme = ExtResource("1_sfx4s")
 script = ExtResource("1_birog")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
@@ -70,12 +72,13 @@ E
 R
 S"
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+[node name="HarvestersContainer" type="GridContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="OrganicHarvesterButton" type="Button" parent="HBoxContainer/GridContainer"]
+[node name="OrganicHarvesterButton" type="Button" parent="HBoxContainer/HarvestersContainer"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -86,7 +89,7 @@ expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("4_npfic")
 
-[node name="OrganicsLabel" type="Label" parent="HBoxContainer/GridContainer/OrganicHarvesterButton"]
+[node name="OrganicsLabel" type="Label" parent="HBoxContainer/HarvestersContainer/OrganicHarvesterButton"]
 layout_mode = 2
 offset_left = 76.0
 offset_top = 5.0
@@ -97,7 +100,7 @@ Harvester
 (Vegetal)"
 horizontal_alignment = 1
 
-[node name="InorganicHarvesterButton2" type="Button" parent="HBoxContainer/GridContainer"]
+[node name="InorganicHarvesterButton2" type="Button" parent="HBoxContainer/HarvestersContainer"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -107,7 +110,7 @@ expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("5_bbqvn")
 
-[node name="InorganicsLabel" type="Label" parent="HBoxContainer/GridContainer/InorganicHarvesterButton2"]
+[node name="InorganicsLabel" type="Label" parent="HBoxContainer/HarvestersContainer/InorganicHarvesterButton2"]
 layout_mode = 2
 offset_left = 82.0
 offset_top = 11.0
@@ -118,7 +121,7 @@ Harvester
 (Mineral)"
 horizontal_alignment = 1
 
-[node name="SpiritualHarvesterButton3" type="Button" parent="HBoxContainer/GridContainer"]
+[node name="SpiritualHarvesterButton3" type="Button" parent="HBoxContainer/HarvestersContainer"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -128,7 +131,7 @@ expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("6_sfx4s")
 
-[node name="SpiritualLabel" type="Label" parent="HBoxContainer/GridContainer/SpiritualHarvesterButton3"]
+[node name="SpiritualLabel" type="Label" parent="HBoxContainer/HarvestersContainer/SpiritualHarvesterButton3"]
 layout_mode = 2
 offset_left = 79.0
 offset_top = 11.0
@@ -141,6 +144,7 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="HBoxContainer2"]
 layout_mode = 2
@@ -155,12 +159,13 @@ E
 R
 S"
 
-[node name="GridContainer3" type="GridContainer" parent="HBoxContainer2"]
+[node name="CombinatorContainer" type="GridContainer" parent="HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="CombinerButton" type="Button" parent="HBoxContainer2/GridContainer3"]
+[node name="CombinerButton" type="Button" parent="HBoxContainer2/CombinatorContainer"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -170,7 +175,7 @@ expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("7_hsg8g")
 
-[node name="CombinerLabel" type="Label" parent="HBoxContainer2/GridContainer3/CombinerButton"]
+[node name="CombinerLabel" type="Label" parent="HBoxContainer2/CombinatorContainer/CombinerButton"]
 layout_mode = 2
 offset_left = 90.0
 offset_top = 1.0
@@ -182,7 +187,7 @@ Combinator
 9000"
 horizontal_alignment = 1
 
-[node name="AdvCombinerButton" type="Button" parent="HBoxContainer2/GridContainer3"]
+[node name="AdvCombinerButton" type="Button" parent="HBoxContainer2/CombinatorContainer"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -192,7 +197,7 @@ expand_icon = true
 script = ExtResource("3_2lpnr")
 factory_scene = ExtResource("8_bbqvn")
 
-[node name="AdvCombinerLabel" type="Label" parent="HBoxContainer2/GridContainer3/AdvCombinerButton"]
+[node name="AdvCombinerLabel" type="Label" parent="HBoxContainer2/CombinatorContainer/AdvCombinerButton"]
 layout_mode = 2
 offset_left = 86.0
 offset_top = 5.0
@@ -206,6 +211,7 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="HBoxContainer3"]
 layout_mode = 2
