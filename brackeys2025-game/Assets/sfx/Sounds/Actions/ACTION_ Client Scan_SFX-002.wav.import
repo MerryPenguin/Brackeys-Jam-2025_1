@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://30nmplx2f8yn"
+path="res://.godot/imported/ACTION_ Client Scan_SFX-002.wav-fec24544f759c2d97bb95708cc62eeda.sample"
+
+[deps]
+
+source_file="res://Assets/sfx/Sounds/Actions/ACTION_ Client Scan_SFX-002.wav"
+dest_files=["res://.godot/imported/ACTION_ Client Scan_SFX-002.wav-fec24544f759c2d97bb95708cc62eeda.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
