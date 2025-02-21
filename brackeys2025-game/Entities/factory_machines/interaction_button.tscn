@@ -6,7 +6,7 @@
 z_index = 1
 script = ExtResource("1_tfde3")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." groups=["no_sound_controller"]]
 custom_minimum_size = Vector2(32, 32)
 anchors_preset = 8
 anchor_left = 0.5

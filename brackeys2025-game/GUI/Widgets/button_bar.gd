@@ -48,7 +48,7 @@ func setup_button(button : Button, button_num: int):
 	
 
 func _on_button_pressed(button : Button): # Factories
-	clear_previous_tools()
+	#clear_previous_tools()
 	if "Harvester" in button.name:
 		spawn_factory_blueprint(button.factory_scene)
 	elif "Combiner" in button.name:
@@ -58,6 +58,7 @@ func _on_button_pressed(button : Button): # Factories
 	
 
 func spawn_factory_blueprint(factory_scene):
+	clear_previous_tools()
 	var new_blueprint = preload("res://Entities/factory_blueprints/factory_blueprint.tscn").instantiate()
 	new_blueprint.factory_scene = factory_scene
 	active_tools.push_back(new_blueprint)
@@ -66,11 +67,14 @@ func spawn_factory_blueprint(factory_scene):
 
 
 func _on_recipes_button_pressed() -> void:
-	clear_previous_tools()
-	var new_recipe_book = preload("res://GUI/Widgets/recipe_book_popup.tscn").instantiate()
-	add_child(new_recipe_book)
-	new_recipe_book.popup_centered_ratio(0.8)
-	active_tools.push_back(new_recipe_book)
+	if active_tools.size() > 0 and active_tools[-1].is_in_group("recipe_book"):
+		active_tools[-1]._on_button_pressed() # close the recipe book
+	else:
+		clear_previous_tools()
+		var new_recipe_book = preload("res://GUI/Widgets/recipe_book_popup.tscn").instantiate()
+		add_child(new_recipe_book)
+		new_recipe_book.popup_centered_ratio(0.8)
+		active_tools.push_back(new_recipe_book)
 	
 func _on_factory_unlocked(factory : Globals.buildings):
 	for container in containers:

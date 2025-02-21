@@ -131,7 +131,8 @@ func _connect_stream_player(node : Node, stream_player : AudioStreamPlayer, sign
 func connect_ui_sounds(node: Node) -> void:
 	if not node is Control:
 		return
-		
+	if node.is_in_group("no_sound_controller"):
+		return # don't take over the buttons in-game
 	if node is Button:
 		_connect_stream_player(node, button_hovered_player, &"mouse_entered", _play_stream)
 		_connect_stream_player(node, button_focused_player, &"focus_entered", _play_stream)

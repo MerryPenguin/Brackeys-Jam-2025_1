@@ -44,7 +44,7 @@ region = Rect2(32, 0, 16, 16)
 atlas = ExtResource("2_v8hw0")
 region = Rect2(16, 16, 16, 16)
 
-[node name="RecipeBookPopup" type="PopupPanel"]
+[node name="RecipeBookPopup" type="PopupPanel" groups=["recipe_book"]]
 auto_translate_mode = 1
 size = Vector2i(1408, 648)
 visible = true
