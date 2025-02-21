@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cegq3dg2ut413"]
+[gd_scene load_steps=17 format=3 uid="uid://cegq3dg2ut413"]
 
 [ext_resource type="Script" uid="uid://dlhuetv61urld" path="res://Entities/factory_machine.gd" id="1_kxche"]
 [ext_resource type="PackedScene" uid="uid://dfqi3t3sg40rk" path="res://Components/storage_component.tscn" id="2_02cwj"]
@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://bv7luae43n5t" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-003.wav" id="8_lsgkg"]
 [ext_resource type="AudioStream" uid="uid://ck6w8wo57cxyq" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-004.wav" id="9_y8mm5"]
 [ext_resource type="AudioStream" uid="uid://o25dpa367jgq" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-005.wav" id="10_fpwrl"]
+[ext_resource type="AudioStream" uid="uid://c51bkjqunmjwd" path="res://Assets/sfx/Sounds/Alarm/Alarm_Error Alarm_SFX.wav" id="12_y8mm5"]
+[ext_resource type="Script" uid="uid://c6nvcqn43kiwv" path="res://Components/persistent_audio.gd" id="13_fpwrl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btwl5"]
 size = Vector2(64, 64)
@@ -74,6 +76,10 @@ text = ""
 
 [node name="PlacementNoise" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_0qtup")
+
+[node name="DestructionNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_y8mm5")
+script = ExtResource("13_fpwrl")
 
 [connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_exited"]

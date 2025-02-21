@@ -91,5 +91,6 @@ func clear_previous_tools():
 	for tool in active_tools:
 		if tool != null and is_instance_valid(tool):
 			tool.queue_free()
-	
-	
+
+func _on_tool_freed(tool):
+	active_tools.erase(tool)

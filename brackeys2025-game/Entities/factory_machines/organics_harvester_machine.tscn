@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://bsqo7o5y0dslv" path="res://Recipes/ash_recipe.tres" id="3_p52ud"]
 [ext_resource type="Resource" uid="uid://cup51yte5fx7a" path="res://Recipes/starch_recipe.tres" id="4_xk0ei"]
 
-[node name="OrganicsHarvester" instance=ExtResource("1_3xjko")]
+[node name="OrganicsHarvester" groups=["harvesters"] instance=ExtResource("1_3xjko")]
 short_name = "Organics"
 unlocked_recipes = Array[ExtResource("2_dsm2w")]([ExtResource("3_p52ud"), ExtResource("4_xk0ei")])
 current_recipe = ExtResource("3_p52ud")

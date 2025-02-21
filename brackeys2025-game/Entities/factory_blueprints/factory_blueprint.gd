@@ -12,10 +12,12 @@ class_name FactoryBlueprint extends Node2D
 enum states { DRAGGING, DROPPED }
 var state = states.DRAGGING
 
+signal tool_freed(tool)
+
 func _ready():
 	#$SpawnNoise.play()
 	# was conflicting with button press
-	pass
+	tool_freed.connect(Globals.current_hud._on_tool_freed)
 	
 func _process(delta):
 	follow_mouse(delta)
@@ -25,6 +27,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and location_is_valid(global_position):
 		get_viewport().set_input_as_handled()
 		spawn_factory(global_position)
+		tool_freed.emit(self)
 		queue_free()
 		
 

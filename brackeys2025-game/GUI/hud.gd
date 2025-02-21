@@ -8,7 +8,11 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
-		spawn_pause_menu()
+		var active_tools = %ButtonBar.active_tools
+		if active_tools.is_empty():
+			call_deferred("spawn_pause_menu")
+		else:
+			print(active_tools)
 
 func spawn_pause_menu():
 	var pause_menu = preload("res://GUI/maaack_template/scenes/overlaid_menus/pause_menu.tscn").instantiate()
@@ -16,3 +20,6 @@ func spawn_pause_menu():
 	
 func _on_factory_unlocked(factory):
 	%ButtonBar._on_factory_unlocked(factory)
+
+func _on_tool_freed(tool):
+	%ButtonBar._on_tool_freed(tool)

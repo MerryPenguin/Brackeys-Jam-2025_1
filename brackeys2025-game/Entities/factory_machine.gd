@@ -139,6 +139,13 @@ func check_all_recipes_for_requirements() -> ProductWidgetRecipe:
 	return null
 
 
+func destruct():
+	$DestructionNoise.spawn() # plays independent of this node, which is about to leave the scene
+	for connector in $Connectors.get_children():
+		if connector.conveyor_belt:
+			connector.conveyor_belt.destruct()
+	queue_free()
+
 func _on_production_timer_timeout() -> void:
 	# consume inventory, release product
 	var valid_recipe = check_all_recipes_for_requirements()

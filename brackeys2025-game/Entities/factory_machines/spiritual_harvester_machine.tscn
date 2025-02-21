@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cxvefv0jaevrt" path="res://Recipes/hopes_recipe.tres" id="3_460co"]
 [ext_resource type="Resource" uid="uid://bv28cte2sl2ip" path="res://Recipes/anxiety_recipe.tres" id="4_6n75g"]
 
-[node name="SpiritualHarvester" instance=ExtResource("1_sgi0p")]
+[node name="SpiritualHarvester" groups=["harvesters"] instance=ExtResource("1_sgi0p")]
 short_name = "Spiritual"
 unlocked_recipes = Array[ExtResource("2_cvmkr")]([ExtResource("3_460co"), ExtResource("4_6n75g")])
 current_recipe = ExtResource("3_460co")

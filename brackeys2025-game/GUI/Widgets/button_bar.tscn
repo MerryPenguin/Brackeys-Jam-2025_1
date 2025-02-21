@@ -41,7 +41,7 @@ region = Rect2(32.6826, 3.23319, 15.2944, 14.1456)
 atlas = ExtResource("2_bbqvn")
 region = Rect2(17.3882, 18.5276, 14.5046, 15.1508)
 
-[node name="ButtonBar" type="VBoxContainer"]
+[node name="ButtonBar" type="VBoxContainer" groups=["button_bar"]]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
