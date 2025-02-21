@@ -20,6 +20,9 @@ script = ExtResource("1_iiyxp")
 
 [node name="StorageComponent" parent="." instance=ExtResource("2_3577q")]
 
+[node name="PanelContainer" parent="StorageComponent" index="1"]
+visible = true
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -12)
 scale = Vector2(0.2, 0.2)
@@ -66,6 +69,7 @@ shape = SubResource("CircleShape2D_iiyxp")
 one_shot = true
 
 [node name="PopupInfo" type="PanelContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(128, 96)
 anchors_preset = 8
 anchor_left = 0.5
@@ -116,3 +120,5 @@ shape = SubResource("CircleShape2D_3577q")
 [connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_exited"]
 [connection signal="timeout" from="HoverTimer" to="." method="_on_hover_timer_timeout"]
+
+[editable path="StorageComponent"]

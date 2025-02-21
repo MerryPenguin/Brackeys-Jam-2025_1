@@ -16,13 +16,13 @@ func _ready():
 func hide_hover_info():
 	$ItemCountLabel.hide()
 	#$ConnectorNodes.hide()
-	$PopupInfo.hide()
+	#$PopupInfo.hide()
 	
 func show_hover_info():
 	$ItemCountLabel.show()
 	$ConnectorNodes.show()
 	update_popup_text()
-	$PopupInfo.show()
+	#$PopupInfo.show()
 
 
 func update_popup_text():
