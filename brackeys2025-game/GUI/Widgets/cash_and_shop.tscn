@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://4a5gxnq21fpd"]
+[gd_scene load_steps=9 format=3 uid="uid://4a5gxnq21fpd"]
 
 [ext_resource type="Script" uid="uid://hv7j4spbk08n" path="res://GUI/Widgets/cash_and_shop.gd" id="1_7dk67"]
 [ext_resource type="Script" uid="uid://c4tyjbu104tb4" path="res://GUI/cash_tracker.gd" id="1_f3yru"]
@@ -17,10 +17,6 @@ region = Rect2(16, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jrewt"]
 atlas = ExtResource("4_jrewt")
 region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6kawu"]
-atlas = ExtResource("4_jrewt")
-region = Rect2(16, 16, 16, 16)
 
 [node name="CashAndShop" type="HBoxContainer"]
 anchors_preset = 1
@@ -75,12 +71,6 @@ layout_mode = 2
 factory_building = 2
 purchase_price = 1000
 icon = SubResource("AtlasTexture_jrewt")
-
-[node name="SuperAggregator" parent="Cash/ShoppingPanel/ButtonContainer" instance=ExtResource("2_78fl3")]
-layout_mode = 2
-factory_building = 4
-purchase_price = 10000
-icon = SubResource("AtlasTexture_6kawu")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
