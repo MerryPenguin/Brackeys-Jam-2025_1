@@ -27,6 +27,8 @@ func _ready():
 	#setup_inventory_dict()
 	$PlacementNoise.play()
 	recipe_changed.connect($InteractionButton._on_factory_machine_recipe_changed)
+	if current_recipe != null:
+		recipe_changed.emit(current_recipe)
 	setup_timer()
 
 func remove_unneeded_connectors():

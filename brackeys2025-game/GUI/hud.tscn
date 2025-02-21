@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmuqgwwm8fcko"]
+[gd_scene load_steps=7 format=3 uid="uid://bmuqgwwm8fcko"]
 
 [ext_resource type="PackedScene" uid="uid://pgsa53sfqf32" path="res://GUI/Widgets/inspection_criteria.tscn" id="1_15n47"]
 [ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="1_niwoe"]
 [ext_resource type="Script" uid="uid://dl0vcd1semq6p" path="res://GUI/hud.gd" id="1_r8uld"]
 [ext_resource type="PackedScene" uid="uid://cr6s0syst023p" path="res://GUI/Widgets/button_bar.tscn" id="2_36ch1"]
 [ext_resource type="PackedScene" uid="uid://4a5gxnq21fpd" path="res://GUI/Widgets/cash_and_shop.tscn" id="4_r8uld"]
+[ext_resource type="PackedScene" uid="uid://d4naqeyt3eanm" path="res://GUI/stock_market.tscn" id="6_3herd"]
 
 [node name="HUDCanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_r8uld")
@@ -29,6 +30,7 @@ text = "Select Factories from the buttons on the left, then place them on the fl
 Deliver products to the storage bin on the right."
 
 [node name="InspectionCriteria" parent="HUDMarginControl" instance=ExtResource("1_15n47")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -43,4 +45,7 @@ size_flags_vertical = 4
 
 [node name="ButtonBar" parent="HUDMarginControl/HBoxContainer" instance=ExtResource("2_36ch1")]
 unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StockMarket" parent="HUDMarginControl" instance=ExtResource("6_3herd")]
 layout_mode = 2

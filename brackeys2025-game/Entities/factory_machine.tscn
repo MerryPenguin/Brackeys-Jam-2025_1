@@ -30,6 +30,7 @@ stream_4/stream = ExtResource("10_fpwrl")
 script = ExtResource("1_kxche")
 
 [node name="StorageComponent" parent="." instance=ExtResource("2_02cwj")]
+tooltip_disabled = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

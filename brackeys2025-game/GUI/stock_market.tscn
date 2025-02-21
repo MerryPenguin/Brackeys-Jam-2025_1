@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4naqeyt3eanm"]
+
+[ext_resource type="Script" uid="uid://eki2sdne455" path="res://GUI/stock_market.gd" id="1_yr4ks"]
+
+[node name="StockMarket" type="MarginContainer"]
+size_flags_horizontal = 4
+size_flags_vertical = 8
+script = ExtResource("1_yr4ks")
+
+[node name="ProductDemandLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Stock Market Report: ASH in High Demand"
+
+[node name="ChangeProductTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[connection signal="timeout" from="ChangeProductTimer" to="." method="_on_change_product_timer_timeout"]

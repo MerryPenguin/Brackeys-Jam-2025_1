@@ -19,6 +19,9 @@ func _ready():
 	
 func _process(delta):
 	follow_mouse(delta)
+
+
+func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and location_is_valid(global_position):
 		get_viewport().set_input_as_handled()
 		spawn_factory(global_position)
@@ -48,3 +51,7 @@ func spawn_factory(location):
 		var new_factory = factory_scene.instantiate()
 		Globals.current_level.spawn_factory(new_factory, location )
 	
+
+
+func _on_mouse_blocker_gui_input(event: InputEvent) -> void:
+	pass

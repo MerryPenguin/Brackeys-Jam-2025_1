@@ -14,6 +14,7 @@ func _ready():
 	hide_if_unlocked()
 	setup_button_and_text()
 	factory_unlocked.connect(Globals.current_hud._on_factory_unlocked)
+	factory_unlocked.connect(owner._on_factory_unlocked)
 	Globals.cash_changed.connect(disable_if_insufficient_funds)
 
 #func _process(delta):

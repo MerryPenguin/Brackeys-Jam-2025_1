@@ -54,7 +54,7 @@ func erase_product(product_index : Globals.products):
 			return
 
 func get_inventory_list() -> String:
-	var text = ""
+	var text = "Stored Products:"
 	var product_counts = widget_array_to_dictionary(items_stored)
 	for product_type in product_counts.keys():
 		text += "\n" + product_type+ ": " + str(product_counts[product_type])

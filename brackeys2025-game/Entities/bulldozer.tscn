@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjjc3tckstfyw"]
+
+[ext_resource type="Script" uid="uid://d0l20ooe7amv1" path="res://Entities/bulldozer.gd" id="1_7a74r"]
+[ext_resource type="Texture2D" uid="uid://bb1qrdxwy8dt7" path="res://Assets/Images/placeholder/yellow_cirlce.png" id="2_ww6n4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i25b8"]
+radius = 32.0
+
+[node name="Bulldozer" type="Node2D" groups=["bulldozers"]]
+script = ExtResource("1_7a74r")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_i25b8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+scale = Vector2(4, 4)
+texture = ExtResource("2_ww6n4")

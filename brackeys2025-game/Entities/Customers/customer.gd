@@ -30,9 +30,15 @@ func _ready():
 
 func create_requirements_list():
 	var req_text = ""
+	
+	# Add one simple organic material, so player can progress in early stage
+	if randf() < 0.75:
+		var basic_recipes = [ Globals.products.ASH, Globals.products.STARCH ]
+		widgets_desired.push_back(basic_recipes.pick_random())
+	
+	# Add 1 to 3 random materials
 	for i in range((randi()%3) +1):
 		var random_choice = Globals.products.values().pick_random()
-		var random_recipe : ProductWidgetRecipe = Globals.product_recipes[random_choice]
 		widgets_desired.push_back(random_choice)
 		req_text += Globals.product_recipes[random_choice].product_name + ", "
 		

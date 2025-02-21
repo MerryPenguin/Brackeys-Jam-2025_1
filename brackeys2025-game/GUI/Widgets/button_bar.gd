@@ -7,6 +7,8 @@ extends Container
 
 @onready var containers = [ %HarvestersContainer, %CombinatorContainer ]
 
+var active_tools : Array = [] # store a stack, so we can free old ones if user presses two buttons in a row
+
 func _ready():
 	setup_button_shortcut_keys()
 	%RecipeBookPopup.hide()
@@ -45,22 +47,26 @@ func setup_button(button : Button, button_num: int):
 	button.shortcut.events.push_back(event_key)
 	
 
-func _on_button_pressed(button : Button):
+func _on_button_pressed(button : Button): # Factories
+	clear_previous_tools()
 	if "Harvester" in button.name:
 		spawn_factory_blueprint(button.factory_scene)
 	elif "Combiner" in button.name:
 		spawn_factory_blueprint(button.factory_scene)
 	elif "Recipes" in button.name:
 		print("player wants to open recipe book")
+	
 
 func spawn_factory_blueprint(factory_scene):
 	var new_blueprint = preload("res://Entities/factory_blueprints/factory_blueprint.tscn").instantiate()
 	new_blueprint.factory_scene = factory_scene
+	active_tools.push_back(new_blueprint)
 	get_tree().get_root().add_child(new_blueprint)
 	
 
 
 func _on_recipes_button_pressed() -> void:
+	clear_previous_tools()
 	%RecipeBookPopup.popup_centered_ratio(0.8)
 	
 func _on_factory_unlocked(factory : Globals.buildings):
@@ -69,3 +75,21 @@ func _on_factory_unlocked(factory : Globals.buildings):
 			if button.get("factory") and button.factory == factory:
 				button.show()
 				button.disabled = false
+
+
+func _on_bulldozer_button_pressed() -> void:
+	clear_previous_tools()
+	var active_bulldozer = get_tree().get_first_node_in_group("bulldozers")
+	if active_bulldozer == null:
+		var new_bulldozer = preload("res://Entities/bulldozer.tscn").instantiate()
+		get_tree().get_root().add_child(new_bulldozer)
+		active_tools.push_back(new_bulldozer)
+	else:
+		active_bulldozer.queue_free()
+
+func clear_previous_tools():
+	for tool in active_tools:
+		if tool != null and is_instance_valid(tool):
+			tool.queue_free()
+	
+	

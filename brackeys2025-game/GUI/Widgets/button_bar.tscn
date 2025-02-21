@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cr6s0syst023p"]
+[gd_scene load_steps=20 format=3 uid="uid://cr6s0syst023p"]
 
 [ext_resource type="Script" uid="uid://b3lw358sa2bi4" path="res://GUI/Widgets/button_bar.gd" id="1_birog"]
 [ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="1_sfx4s"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cxnywkrqyk8qg" path="res://Entities/factory_machines/aggregator_combiner_machine.tscn" id="7_hsg8g"]
 [ext_resource type="PackedScene" uid="uid://bii0ko6ggnccs" path="res://Entities/factory_machines/super_aggregator_combiner_machine.tscn" id="8_bbqvn"]
 [ext_resource type="PackedScene" uid="uid://ddmw8ctke14gl" path="res://GUI/Widgets/recipe_book_popup.tscn" id="11_hsg8g"]
+[ext_resource type="Texture2D" uid="uid://bssrthkd53wcr" path="res://Assets/Images/placeholder/bulldozer.png" id="12_djy10"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_c3j1w"]
 device = -1
@@ -254,4 +255,28 @@ text = "Recipe
 Book"
 horizontal_alignment = 1
 
+[node name="BulldozerButton" type="Button" parent="HBoxContainer3/GridContainer2"]
+texture_filter = 3
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = ExtResource("12_djy10")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="HBoxContainer3/GridContainer2/BulldozerButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 56.0
+offset_top = -8.0
+offset_right = 150.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Bulldozer"
+
 [connection signal="pressed" from="HBoxContainer3/GridContainer2/RecipesButton" to="." method="_on_recipes_button_pressed"]
+[connection signal="pressed" from="HBoxContainer3/GridContainer2/BulldozerButton" to="." method="_on_bulldozer_button_pressed"]

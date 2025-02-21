@@ -39,6 +39,7 @@ stream = SubResource("AudioStreamRandomizer_6ffpd")
 shape = SubResource("RectangleShape2D_42015")
 
 [node name="MouseBlocker" type="Control" parent="."]
+visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 3
 anchors_preset = 8
@@ -52,3 +53,5 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[connection signal="gui_input" from="MouseBlocker" to="." method="_on_mouse_blocker_gui_input"]

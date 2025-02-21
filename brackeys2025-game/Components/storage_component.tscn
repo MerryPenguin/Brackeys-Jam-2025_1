@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfqi3t3sg40rk"]
+[gd_scene load_steps=4 format=3 uid="uid://dfqi3t3sg40rk"]
 
 [ext_resource type="Script" uid="uid://crhdm7jt4mvmw" path="res://Components/storage_component.gd" id="1_ce8pt"]
+[ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="2_xlmhb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ce8pt"]
 radius = 64.0
@@ -14,7 +15,7 @@ script = ExtResource("1_ce8pt")
 shape = SubResource("CircleShape2D_ce8pt")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-visible = false
+z_index = 10
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -24,6 +25,7 @@ offset_right = 64.0
 offset_bottom = 111.0
 grow_horizontal = 2
 mouse_filter = 2
+theme = ExtResource("2_xlmhb")
 
 [node name="TooltipInfo" type="TextEdit" parent="PanelContainer"]
 unique_name_in_owner = true

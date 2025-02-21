@@ -61,7 +61,7 @@ alignment = 1
 
 [node name="Inorganics" parent="Cash/ShoppingPanel/ButtonContainer" instance=ExtResource("2_78fl3")]
 layout_mode = 2
-purchase_price = 100
+purchase_price = 20
 icon = SubResource("AtlasTexture_cih1i")
 
 [node name="Organics" parent="Cash/ShoppingPanel/ButtonContainer" instance=ExtResource("2_78fl3")]
