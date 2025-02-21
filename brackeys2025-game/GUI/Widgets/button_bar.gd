@@ -10,11 +10,13 @@ func _ready():
 	%RecipeBookPopup.hide()
 	
 func setup_button_shortcut_keys():
+	var containers = [ %HarvestersContainer, %CombinatorContainer ]
 	var button_num = 0
-	for item in get_children():
-		if item is Button:
-			setup_button(item, button_num)
-			button_num += 1
+	for container in containers:
+		for item in container.get_children():
+			if item is Button:
+				setup_button(item, button_num)
+				button_num += 1
 	
 			
 func setup_button(button : Button, button_num: int):
@@ -41,7 +43,7 @@ func _on_button_pressed(button : Button):
 func spawn_factory_blueprint(factory_scene):
 	var new_blueprint = preload("res://Entities/factory_blueprints/factory_blueprint.tscn").instantiate()
 	new_blueprint.factory_scene = factory_scene
-	add_sibling(new_blueprint)
+	get_tree().get_root().add_child(new_blueprint)
 	
 
 
