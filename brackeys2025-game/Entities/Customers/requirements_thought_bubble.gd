@@ -14,3 +14,6 @@ func make_icon(recipe) -> TextureRect:
 	new_texture_rect.texture = recipe.icon
 	return new_texture_rect
 	
+func _on_customer_desires_changed(desires):
+	update_icons(desires)
+	

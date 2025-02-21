@@ -8,6 +8,7 @@ class_name FactoryMachine extends Node2D
 
 enum types { HARVESTER, AGGREGATOR }
 @export var type = types.HARVESTER
+@export var short_name = ""
 
 @export var unlocked_recipes : Array[ProductWidgetRecipe]
 @export var current_recipe : ProductWidgetRecipe
@@ -40,7 +41,11 @@ func setup_timer():
 		timer.set_wait_time(1.0)
 	timer.start()
 	
+func get_icon():
+	return %Sprite2D.texture.duplicate()
 
+func get_icon_region():
+	return %Sprite2D.texture.region
 	
 
 func _on_mouse_detection_area_mouse_entered() -> void:

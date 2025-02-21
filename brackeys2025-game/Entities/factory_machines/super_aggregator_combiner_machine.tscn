@@ -4,6 +4,7 @@
 
 [node name="SuperAggregatorCombiner" groups=["aggregators"] instance=ExtResource("1_kph0n")]
 type = 1
+short_name = "SuperAggregator"
 
 [node name="Sprite2D" parent="StaticBody2D" index="1"]
 hframes = 1

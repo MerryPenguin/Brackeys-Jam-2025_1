@@ -6,8 +6,27 @@ var current_player : CharacterBody2D
 
 const grid_size : Vector2 = Vector2(16,16)
 const building_scale : Vector2 = Vector2(6,6)
-	
+
+
+# Player Progress
 var cash : int = 0
+var unlocked_recipes : Array = []
+
+
+enum buildings { ORGANICS, INORGANICS, SPIRITUAL, AGGREGATOR, SUPER_AGGREGATOR}
+
+var building_scenes : Dictionary = {
+	buildings.ORGANICS : preload("res://Entities/factory_machines/organics_harvester_machine.tscn"),
+	buildings.INORGANICS : preload("res://Entities/factory_machines/inorganics_harvester_machine.tscn"),
+	buildings.SPIRITUAL : preload("res://Entities/factory_machines/spiritual_harvester_machine.tscn"),
+	buildings.AGGREGATOR : preload("res://Entities/factory_machines/aggregator_combiner_machine.tscn"),
+	buildings.SUPER_AGGREGATOR : preload("res://Entities/factory_machines/super_aggregator_combiner_machine.tscn"),
+}
+
+var unlocked_buildings : Array = [
+	buildings.ORGANICS,
+	buildings.AGGREGATOR,
+]
 
 enum products {
 	STARCH, # ORGANIC
@@ -48,3 +67,9 @@ const product_recipes : Dictionary = {
 	products.PARADOX : preload("res://Recipes/paradox_recipe.tres"),
 	products.SINGULARITY : preload("res://Recipes/singularity_recipe.tres"),
 }
+
+
+func get_product_by_name(product_name):
+	for product_num in products.values():
+		if product_recipes[product_num].product_name == product_name:
+			return product_num

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b0btdiyhub03m"
+path="res://.godot/imported/ACTION_FACTORY REBUILDING_SFX.wav-6a64343613dc018c73626a8347913f39.sample"
+
+[deps]
+
+source_file="res://Assets/sfx/Sounds/Actions/ACTION_FACTORY REBUILDING_SFX.wav"
+dest_files=["res://.godot/imported/ACTION_FACTORY REBUILDING_SFX.wav-6a64343613dc018c73626a8347913f39.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

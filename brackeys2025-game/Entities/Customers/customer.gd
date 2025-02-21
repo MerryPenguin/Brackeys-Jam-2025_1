@@ -18,13 +18,15 @@ var cycles_waited : int = 0
 
 @onready var storage : StorageComponent = $StorageComponent
 
+signal desires_changed(new_desires)
+
 func _ready():
 	%CyclesRemaining.text = str(max_cycles_to_wait)
 	$RedLight.hide()
 	set_initial_sketchiness()
 	check_for_sketchiness()
 	create_requirements_list()
-	
+	desires_changed.connect($RequirementsThoughtBubble._on_customer_desires_changed)
 
 func create_requirements_list():
 	var req_text = ""
@@ -154,7 +156,7 @@ func attempt_to_buy_product():
 	var requirements_met = true
 	for desired_product in widgets_desired:
 		var requirement : ProductWidgetRecipe = Globals.product_recipes[desired_product]
-		if target_destination is Marker2D: # Not sure why i need this after we already verified that the target is a storage chest.. may be an unexpected multithreading issue, timers change variables even during a cycle.
+		if target_destination is Marker2D:
 			return
 		if target_destination.storage.has_product_named(requirement.product_name):
 			if target_destination.has_method("sell"):
@@ -199,9 +201,16 @@ func _on_hover_detection_area_mouse_exited() -> void:
 func receive_product(widget : FactoryProductWidget):
 	if not storage.is_full():
 		storage.receive_product(widget)
+		remove_product_from_desires_list(widget)
+
+func remove_product_from_desires_list(widget : FactoryProductWidget):
+	widgets_desired.erase(Globals.get_product_by_name(widget.recipe.product_name))
+	desires_changed.emit(widgets_desired)
+	if widgets_desired.size() == 0:
+		leave()
 
 func _on_cooldown_timer_timeout() -> void:
-	pass # Replace with function body.
+	pass # not required. we just check is_stopped() directly for cooldowns
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

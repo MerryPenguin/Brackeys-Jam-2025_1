@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://bv28cte2sl2ip" path="res://Recipes/anxiety_recipe.tres" id="4_6n75g"]
 
 [node name="SpiritualHarvester" instance=ExtResource("1_sgi0p")]
+short_name = "Spiritual"
 unlocked_recipes = Array[ExtResource("2_cvmkr")]([ExtResource("3_460co"), ExtResource("4_6n75g")])
 
 [node name="Sprite2D" parent="StaticBody2D" index="1"]
