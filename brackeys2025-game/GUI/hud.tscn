@@ -42,4 +42,5 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 
 [node name="ButtonBar" parent="HUDMarginControl/HBoxContainer" instance=ExtResource("2_36ch1")]
+unique_name_in_owner = true
 layout_mode = 2

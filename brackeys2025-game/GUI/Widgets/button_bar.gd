@@ -5,19 +5,32 @@
 
 extends Container
 
+@onready var containers = [ %HarvestersContainer, %CombinatorContainer ]
+
 func _ready():
 	setup_button_shortcut_keys()
 	%RecipeBookPopup.hide()
+	hide_locked_buildings()
+	
+
+	
 	
 func setup_button_shortcut_keys():
-	var containers = [ %HarvestersContainer, %CombinatorContainer ]
 	var button_num = 0
 	for container in containers:
 		for item in container.get_children():
 			if item is Button:
 				setup_button(item, button_num)
 				button_num += 1
-	
+
+func hide_locked_buildings():
+	for container in containers:
+		for button in container.get_children():
+			if button is Button:
+				var building_type = button.factory
+				if not Globals.unlocked_buildings.has(building_type):
+					button.disabled = true
+					button.hide()
 			
 func setup_button(button : Button, button_num: int):
 	
@@ -50,3 +63,9 @@ func spawn_factory_blueprint(factory_scene):
 func _on_recipes_button_pressed() -> void:
 	%RecipeBookPopup.popup_centered_ratio(0.8)
 	
+func _on_factory_unlocked(factory : Globals.buildings):
+	for container in containers:
+		for button in container.get_children():
+			if button.get("factory") and button.factory == factory:
+				button.show()
+				button.disabled = false

@@ -1,5 +1,6 @@
 extends Button
 
+@export var factory : Globals.buildings = Globals.buildings.ORGANICS
 @export var factory_scene : PackedScene
 var hovering : bool = false
 var timer : Timer

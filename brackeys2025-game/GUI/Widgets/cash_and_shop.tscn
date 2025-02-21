@@ -54,27 +54,29 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Cash/ShoppingPanel"]
+[node name="ButtonContainer" type="VBoxContainer" parent="Cash/ShoppingPanel"]
+unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="Inorganics" parent="Cash/ShoppingPanel/VBoxContainer" instance=ExtResource("2_78fl3")]
+[node name="Inorganics" parent="Cash/ShoppingPanel/ButtonContainer" instance=ExtResource("2_78fl3")]
 layout_mode = 2
+purchase_price = 100
 icon = SubResource("AtlasTexture_cih1i")
 
-[node name="Organics" parent="Cash/ShoppingPanel/VBoxContainer" instance=ExtResource("2_78fl3")]
+[node name="Organics" parent="Cash/ShoppingPanel/ButtonContainer" instance=ExtResource("2_78fl3")]
 layout_mode = 2
 factory_building = 0
 purchase_price = 300
 icon = SubResource("AtlasTexture_yvd3x")
 
-[node name="Spiritual" parent="Cash/ShoppingPanel/VBoxContainer" instance=ExtResource("2_78fl3")]
+[node name="Spiritual" parent="Cash/ShoppingPanel/ButtonContainer" instance=ExtResource("2_78fl3")]
 layout_mode = 2
 factory_building = 2
 purchase_price = 1000
 icon = SubResource("AtlasTexture_jrewt")
 
-[node name="SuperAggregator" parent="Cash/ShoppingPanel/VBoxContainer" instance=ExtResource("2_78fl3")]
+[node name="SuperAggregator" parent="Cash/ShoppingPanel/ButtonContainer" instance=ExtResource("2_78fl3")]
 layout_mode = 2
 factory_building = 4
 purchase_price = 10000
