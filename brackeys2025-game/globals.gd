@@ -3,13 +3,22 @@ extends Node
 # Store a few important node references for easy lookup
 var current_level : Node2D
 var current_player : CharacterBody2D
-
+var current_hud : CanvasLayer
+	
 const grid_size : Vector2 = Vector2(16,16)
 const building_scale : Vector2 = Vector2(6,6)
 
+signal cash_changed
 
 # Player Progress
-var cash : int = 0
+var cash : int = 0 :
+	set(v):
+		cash = v
+		cash_changed.emit(cash)
+	get:
+		return cash
+
+
 var unlocked_recipes : Array = []
 
 
@@ -22,6 +31,8 @@ var building_scenes : Dictionary = {
 	buildings.AGGREGATOR : preload("res://Entities/factory_machines/aggregator_combiner_machine.tscn"),
 	buildings.SUPER_AGGREGATOR : preload("res://Entities/factory_machines/super_aggregator_combiner_machine.tscn"),
 }
+
+
 
 var unlocked_buildings : Array = [
 	buildings.ORGANICS,

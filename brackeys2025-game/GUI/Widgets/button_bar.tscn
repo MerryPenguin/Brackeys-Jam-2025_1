@@ -108,6 +108,7 @@ icon = SubResource("AtlasTexture_bbqvn")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_2lpnr")
+factory = 1
 factory_scene = ExtResource("5_bbqvn")
 
 [node name="InorganicsLabel" type="Label" parent="HBoxContainer/HarvestersContainer/InorganicHarvesterButton2"]
@@ -129,6 +130,7 @@ icon = SubResource("AtlasTexture_sfx4s")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_2lpnr")
+factory = 2
 factory_scene = ExtResource("6_sfx4s")
 
 [node name="SpiritualLabel" type="Label" parent="HBoxContainer/HarvestersContainer/SpiritualHarvesterButton3"]
@@ -173,6 +175,7 @@ icon = SubResource("AtlasTexture_hsg8g")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_2lpnr")
+factory = 3
 factory_scene = ExtResource("7_hsg8g")
 
 [node name="CombinerLabel" type="Label" parent="HBoxContainer2/CombinatorContainer/CombinerButton"]
@@ -195,6 +198,7 @@ icon = SubResource("AtlasTexture_djy10")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_2lpnr")
+factory = 4
 factory_scene = ExtResource("8_bbqvn")
 
 [node name="AdvCombinerLabel" type="Label" parent="HBoxContainer2/CombinatorContainer/AdvCombinerButton"]

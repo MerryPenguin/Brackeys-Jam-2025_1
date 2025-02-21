@@ -6,11 +6,14 @@ var panel_open : bool = false
 func _ready():
 	initial_panel_pos = %ShoppingPanel.position
 
+
 func _on_button_pressed() -> void:
 	if not panel_open:
 		show_shopping_panel()
+		$Button.text = "Close"
 	else:
 		hide_shopping_panel()
+		$Button.text = "Shop"
 	
 func show_shopping_panel():
 	var tween = create_tween()
@@ -24,3 +27,6 @@ func hide_shopping_panel():
 	$SlideNoise.play()
 	panel_open = false
 	
+func _on_globals_cash_changed():
+	for button in %ButtonContainer:
+		button.disable_if_insufficient_funds()
