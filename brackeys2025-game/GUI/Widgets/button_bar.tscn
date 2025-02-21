@@ -262,6 +262,7 @@ layout_mode = 2
 icon = ExtResource("12_djy10")
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("3_2lpnr")
 
 [node name="Label" type="Label" parent="HBoxContainer3/GridContainer2/BulldozerButton"]
 layout_mode = 1

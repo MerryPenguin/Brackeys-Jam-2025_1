@@ -23,14 +23,6 @@ offset_bottom = 648.0
 mouse_filter = 2
 color = Color(0.196329, 0.152901, 0.138424, 1)
 
-[node name="ShoppingZoneLabel" type="Label" parent="ColorRect"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 56.0
-offset_right = 146.0
-offset_bottom = 72.0
-text = "Sell Goods Here"
-
 [node name="Machines" type="Node2D" parent="."]
 
 [node name="MobileWorkers" type="Node2D" parent="."]

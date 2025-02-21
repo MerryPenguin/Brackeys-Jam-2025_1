@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_me54w")
 product_name = &"Grenade"
-required_inputs = Array[int]([8, 2])
+required_inputs = Array[int]([8, 4])
 production_time = 10.0
 icon = ExtResource("1_wtk63")
 recipe_type = 0
-default_sale_price = 10
+default_sale_price = 50
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"
