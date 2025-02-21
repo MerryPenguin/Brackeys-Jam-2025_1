@@ -36,6 +36,7 @@ script = ExtResource("1_f3yru")
 
 [node name="ShoppingPanel" type="PanelContainer" parent="Cash"]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 2
 offset_left = 149.0
 offset_top = 64.0
@@ -46,18 +47,28 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="ButtonContainer" type="VBoxContainer" parent="Cash/ShoppingPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="Cash/ShoppingPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ButtonContainer" type="VBoxContainer" parent="Cash/ShoppingPanel/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 64
 alignment = 1
 
-[node name="Inorganics" parent="Cash/ShoppingPanel/ButtonContainer" instance=ExtResource("2_78fl3")]
+[node name="Inorganics" parent="Cash/ShoppingPanel/MarginContainer/ButtonContainer" instance=ExtResource("2_78fl3")]
 layout_mode = 2
+size_flags_horizontal = 4
 purchase_price = 20
 icon = SubResource("AtlasTexture_cih1i")
 
-[node name="Spiritual" parent="Cash/ShoppingPanel/ButtonContainer" instance=ExtResource("2_78fl3")]
+[node name="Spiritual" parent="Cash/ShoppingPanel/MarginContainer/ButtonContainer" instance=ExtResource("2_78fl3")]
 layout_mode = 2
+size_flags_horizontal = 4
 factory_building = 2
 icon = SubResource("AtlasTexture_jrewt")
 

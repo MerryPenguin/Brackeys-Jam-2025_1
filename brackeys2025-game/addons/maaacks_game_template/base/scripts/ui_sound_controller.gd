@@ -134,7 +134,8 @@ func connect_ui_sounds(node: Node) -> void:
 	if node.is_in_group("no_sound_controller"):
 		return # don't take over the buttons in-game
 	if node is Button:
-		_connect_stream_player(node, button_hovered_player, &"mouse_entered", _play_stream)
+		if not node.is_in_group("no_hover_noise"):
+			_connect_stream_player(node, button_hovered_player, &"mouse_entered", _play_stream)
 		_connect_stream_player(node, button_focused_player, &"focus_entered", _play_stream)
 		_connect_stream_player(node, button_pressed_player, &"pressed", _play_stream)
 	elif node is TabBar:

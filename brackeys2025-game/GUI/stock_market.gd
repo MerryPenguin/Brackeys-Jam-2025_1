@@ -5,12 +5,13 @@ var products_in_demand : Array[Globals.products] = []
 func _ready():
 	_on_change_product_timer_timeout()
 
-func price_lookup(product : Globals.products):
+func price_lookup(product : Globals.products) -> float:
 	
 	var base_price = Globals.product_recipes[product].purchase_price
 	var supply_demand_factor = 1.0
 	
 	var adj_price = base_price * supply_demand_factor
+	return adj_price
 
 func _on_change_product_timer_timeout():
 	var random_product = Globals.products.values().pick_random()
@@ -22,10 +23,10 @@ func _on_change_product_timer_timeout():
 	Globals.products_in_demand = products_in_demand
 	
 	var label = $ProductDemandLabel
-	label.text = "Products in demand: "
+	label.text = "Products in demand: \n"
 	for product in products_in_demand:
 		label.text += Globals.product_recipes[product].product_name
 		if product != products_in_demand[-1]:
 			# not the last product
-			label.text += ", "
+			label.text += "\n"
 	

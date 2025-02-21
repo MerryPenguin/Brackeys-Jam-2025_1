@@ -5,7 +5,7 @@ var panel_open : bool = false
 
 func _ready():
 	initial_panel_pos = %ShoppingPanel.position
-
+	_on_globals_cash_changed()
 
 
 
@@ -32,8 +32,8 @@ func hide_shopping_panel():
 	panel_open = false
 	
 func _on_globals_cash_changed():
-	for button in %ButtonContainer:
-		button.disable_if_insufficient_funds()
+	for button in %ButtonContainer.get_children():
+		button.disable_if_insufficient_funds(Globals.cash)
 
 func _on_factory_unlocked(building):
 	hide_shopping_panel()
