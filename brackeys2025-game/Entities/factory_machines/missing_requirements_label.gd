@@ -11,7 +11,7 @@ func _on_info_hover_area_mouse_entered() -> void:
 
 func update_details_label():
 	$DetailsLabel.text = ""
-	if owner.requirements_met(owner.current_recipe):
+	if owner.current_recipe != null and owner.requirements_met(owner.current_recipe):
 		$DetailsLabel.text += "Producing: " + owner.current_recipe.product_name
 	$DetailsLabel.show()
 

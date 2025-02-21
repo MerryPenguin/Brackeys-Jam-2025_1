@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4ehr"]
 size = Vector2(144, 99)
 
-[node name="MissingRequirementsLabel" type="Label"]
+[node name="ProductionLabel" type="Label"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

@@ -1,31 +1,14 @@
-[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=8 format=3 uid="uid://bm03xeyecnc71"]
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=3 format=3 uid="uid://bm03xeyecnc71"]
 
-[ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_3vnkr"]
-[ext_resource type="Resource" uid="uid://bv28cte2sl2ip" path="res://Recipes/anxiety_recipe.tres" id="3_kmc01"]
+[ext_resource type="Texture2D" uid="uid://cm85dw602l71t" path="res://Assets/Images/placeholder/pacifier.png" id="1_obqny"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_nte2m"]
-[ext_resource type="Resource" uid="uid://drbxbhhkyj3vk" path="res://Recipes/banana_recipe.tres" id="4_xobfi"]
-
-[sub_resource type="Resource" id="Resource_6d7s0"]
-metadata/__load_path__ = "res://Assets/Images/placeholder/pacifier.png"
-
-[sub_resource type="Resource" id="Resource_nkblp"]
-script = ExtResource("2_3vnkr")
-recipe = ExtResource("3_kmc01")
-quantity_required = 1
-metadata/_custom_type_script = "uid://blqkt7huduip"
-
-[sub_resource type="Resource" id="Resource_qnepv"]
-script = ExtResource("2_3vnkr")
-recipe = ExtResource("4_xobfi")
-quantity_required = 1
-metadata/_custom_type_script = "uid://blqkt7huduip"
 
 [resource]
 script = ExtResource("3_nte2m")
 product_name = &"Pacifier"
-required_inputs = Array[ExtResource("2_3vnkr")]([SubResource("Resource_nkblp"), SubResource("Resource_qnepv")])
+required_inputs = Array[int]([5, 9])
 production_time = 10.0
-icon = SubResource("Resource_6d7s0")
+icon = ExtResource("1_obqny")
 recipe_type = 3
 default_sale_price = 10
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

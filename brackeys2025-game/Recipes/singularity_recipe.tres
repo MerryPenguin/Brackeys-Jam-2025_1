@@ -1,38 +1,14 @@
-[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=10 format=3 uid="uid://bxf88342k8gnm"]
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=3 format=3 uid="uid://bxf88342k8gnm"]
 
-[ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_f1qqy"]
+[ext_resource type="Texture2D" uid="uid://rr67c2oi7ipv" path="res://icon.svg" id="1_ogj2p"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_enmtm"]
-[ext_resource type="Resource" uid="uid://c4rji7be6rmm4" path="res://Recipes/artifact_recipe.tres" id="3_ivvi3"]
-[ext_resource type="Resource" uid="uid://caw4fnmk3jd1a" path="res://Recipes/pineapple_recipe.tres" id="4_nmtsm"]
-[ext_resource type="Resource" uid="uid://wo131a4l7f8o" path="res://Recipes/fruitphone_recipe.tres" id="5_kh7ms"]
-
-[sub_resource type="Resource" id="Resource_yormn"]
-metadata/__load_path__ = "res://Assets/Images/placeholder/anxiety.png"
-
-[sub_resource type="Resource" id="Resource_ylvea"]
-script = ExtResource("2_f1qqy")
-recipe = ExtResource("3_ivvi3")
-quantity_required = 1
-metadata/_custom_type_script = "uid://blqkt7huduip"
-
-[sub_resource type="Resource" id="Resource_ve8wr"]
-script = ExtResource("2_f1qqy")
-recipe = ExtResource("4_nmtsm")
-quantity_required = 1
-metadata/_custom_type_script = "uid://blqkt7huduip"
-
-[sub_resource type="Resource" id="Resource_rw3dt"]
-script = ExtResource("2_f1qqy")
-recipe = ExtResource("5_kh7ms")
-quantity_required = 1
-metadata/_custom_type_script = "uid://blqkt7huduip"
 
 [resource]
 script = ExtResource("3_enmtm")
 product_name = &"Singularity"
-required_inputs = Array[ExtResource("2_f1qqy")]([SubResource("Resource_ylvea"), SubResource("Resource_ve8wr"), SubResource("Resource_rw3dt")])
+required_inputs = Array[int]([11, 8, 14])
 production_time = 10.0
-icon = SubResource("Resource_yormn")
+icon = ExtResource("1_ogj2p")
 recipe_type = 3
 default_sale_price = 10
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

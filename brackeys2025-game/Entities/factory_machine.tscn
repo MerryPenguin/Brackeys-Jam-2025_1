@@ -62,7 +62,7 @@ type = 1
 
 [node name="ProductionTimer" type="Timer" parent="."]
 
-[node name="MissingRequirementsLabel" parent="." instance=ExtResource("4_btwl5")]
+[node name="ProductionLabel" parent="." instance=ExtResource("4_btwl5")]
 offset_left = -7.0
 offset_top = -45.0
 offset_right = 8.0

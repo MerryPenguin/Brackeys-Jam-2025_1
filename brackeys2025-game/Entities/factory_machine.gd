@@ -148,9 +148,9 @@ func _on_production_timer_timeout() -> void:
 		# should also change the icon on the button
 	if current_recipe and requirements_met(current_recipe):
 		produce(current_recipe)
-		$MissingRequirementsLabel.text = ""
+		$ProductionLabel.text = ""
 	else:
-		$MissingRequirementsLabel.text = "!!!"
+		$ProductionLabel.text = "!!!"
 	$ProductionTimer.start()
 
 
