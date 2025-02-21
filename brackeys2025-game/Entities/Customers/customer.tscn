@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cm8v5aepcle5p"]
+[gd_scene load_steps=9 format=3 uid="uid://cm8v5aepcle5p"]
 
 [ext_resource type="Texture2D" uid="uid://upsvedsr6ksx" path="res://Assets/Images/placeholder/dude.png" id="1_nkqq3"]
 [ext_resource type="Script" uid="uid://1gnswtuhuqxq" path="res://Entities/Customers/customer.gd" id="1_tronh"]
 [ext_resource type="PackedScene" uid="uid://dfqi3t3sg40rk" path="res://Components/storage_component.tscn" id="2_hhold"]
 [ext_resource type="PackedScene" uid="uid://vmifcy0mv2yo" path="res://Entities/Customers/sketchy_prop.tscn" id="3_j3thj"]
 [ext_resource type="PackedScene" uid="uid://bjteivr6q34df" path="res://Props/hover_popup_display.tscn" id="4_8yoh6"]
+[ext_resource type="PackedScene" uid="uid://dvr7ipukonuwm" path="res://Entities/Customers/requirements_thought_bubble.tscn" id="6_rd0ff"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tronh"]
 radius = 16.0
@@ -89,6 +90,12 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "state"
 horizontal_alignment = 1
+
+[node name="RequirementsThoughtBubble" parent="." instance=ExtResource("6_rd0ff")]
+offset_left = -15.0
+offset_top = -106.0
+offset_right = 17.0
+offset_bottom = -74.0
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

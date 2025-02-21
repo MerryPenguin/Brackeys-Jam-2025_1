@@ -96,6 +96,7 @@ offset_right = 572.0
 offset_bottom = 320.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_v8hw0")
@@ -449,7 +450,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("9_o0m7r")
+texture = ExtResource("4_c1jkh")
 expand_mode = 3
 stretch_mode = 5
 

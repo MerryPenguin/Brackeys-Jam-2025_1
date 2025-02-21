@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=4 format=3 uid="uid://drbxbhhkyj3vk"]
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=3 format=3 uid="uid://drbxbhhkyj3vk"]
 
 [ext_resource type="Texture2D" uid="uid://ng0mv1hhegv6" path="res://Assets/Images/placeholder/banana.png" id="1_lncnj"]
-[ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_syffa"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_vib58"]
 
 [resource]
 script = ExtResource("3_vib58")
 product_name = &"Banana"
-required_inputs = Array[ExtResource("2_syffa")]([])
+required_inputs = Array[int]([0, 1])
 production_time = 10.0
 icon = ExtResource("1_lncnj")
-recipe_type = 0
+recipe_type = 3
+default_sale_price = 10
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

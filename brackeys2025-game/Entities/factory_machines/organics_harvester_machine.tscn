@@ -6,8 +6,8 @@
 [ext_resource type="Resource" uid="uid://cup51yte5fx7a" path="res://Recipes/starch_recipe.tres" id="4_xk0ei"]
 
 [node name="OrganicsHarvester" instance=ExtResource("1_3xjko")]
+short_name = "Organics"
 unlocked_recipes = Array[ExtResource("2_dsm2w")]([ExtResource("3_p52ud"), ExtResource("4_xk0ei")])
-current_recipe = ExtResource("3_p52ud")
 
 [node name="Sprite2D" parent="StaticBody2D" index="1"]
 hframes = 1

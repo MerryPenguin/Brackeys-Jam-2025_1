@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://csahe6iby7u6n"
+path="res://.godot/imported/ALARM_Product Clear_SFX.wav-88e53a0dd15c2cf88ba55bfcdb39e937.sample"
+
+[deps]
+
+source_file="res://Assets/sfx/Sounds/Alarm/ALARM_Product Clear_SFX.wav"
+dest_files=["res://.godot/imported/ALARM_Product Clear_SFX.wav-88e53a0dd15c2cf88ba55bfcdb39e937.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

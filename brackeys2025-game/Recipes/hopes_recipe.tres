@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=4 format=3 uid="uid://cxvefv0jaevrt"]
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=3 format=3 uid="uid://cxvefv0jaevrt"]
 
 [ext_resource type="Texture2D" uid="uid://w32xjk0pmknr" path="res://Assets/Images/placeholder/hope.png" id="1_bsdvk"]
-[ext_resource type="Script" uid="uid://blqkt7huduip" path="res://Entities/factory_machines/requirements_manifest.gd" id="2_bqad3"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_xvgvw"]
 
 [resource]
 script = ExtResource("3_xvgvw")
 product_name = &"Hopes"
-required_inputs = Array[ExtResource("2_bqad3")]([])
-production_time = 10.0
+required_inputs = Array[int]([])
+production_time = 1.5
 icon = ExtResource("1_bsdvk")
 recipe_type = 2
+default_sale_price = 10
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

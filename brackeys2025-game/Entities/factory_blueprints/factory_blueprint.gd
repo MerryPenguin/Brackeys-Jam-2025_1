@@ -24,7 +24,7 @@ func _process(delta):
 
 func follow_mouse(_delta):
 	var mouse_pos = get_global_mouse_position()
-	var adjusted_pos = mouse_pos.snapped(Globals.grid_size)
+	var adjusted_pos = mouse_pos.snapped(Globals.grid_size * Globals.building_scale)
 	if Config.get_config("GameSettings", "FactoriesSnapToGrid") == true:
 		global_position = adjusted_pos
 	else:

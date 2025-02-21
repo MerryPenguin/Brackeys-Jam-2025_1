@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://0quaimd7cba1" path="res://Recipes/springs_recipe.tres" id="4_0w5ck"]
 
 [node name="InOrganicsHarvester" instance=ExtResource("1_iixpc")]
+short_name = "Inorganics"
 unlocked_recipes = Array[ExtResource("2_ckbdl")]([ExtResource("3_syu7b"), ExtResource("4_0w5ck")])
 
 [node name="Sprite2D" parent="StaticBody2D" index="1"]

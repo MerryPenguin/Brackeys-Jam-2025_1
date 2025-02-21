@@ -7,12 +7,12 @@ func _ready():
 	
 func _on_info_hover_area_mouse_entered() -> void:
 	hovered = true
+	update_details_label()
 
-	$DetailsLabel.text = "Producing: " + owner.current_recipe.product_name	
-	if not owner.requirements_met(owner.current_recipe):
-		$DetailsLabel.text += "\nMissing: "
-		for requirement in owner.get_missing_requirements(owner.current_recipe):
-			$DetailsLabel.text += "\n\t" + requirement
+func update_details_label():
+	$DetailsLabel.text = ""
+	if owner.requirements_met(owner.current_recipe):
+		$DetailsLabel.text += "Producing: " + owner.current_recipe.product_name
 	$DetailsLabel.show()
 
 func _on_info_hover_area_mouse_exited() -> void:

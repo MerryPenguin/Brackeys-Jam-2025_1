@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnnapxyigsc4a"]
+[gd_scene load_steps=10 format=3 uid="uid://cnnapxyigsc4a"]
 
 [ext_resource type="Script" uid="uid://ceox10kxh50ne" path="res://Entities/Connectors/conveyor_belt.gd" id="1_kdglh"]
 [ext_resource type="Texture2D" uid="uid://b8deu46vvmph8" path="res://Assets/Images/placeholder/grey_rect.png" id="2_4tvtk"]
 [ext_resource type="Texture2D" uid="uid://bumtfh025v622" path="res://Assets/Images/Conveyor_belt.png" id="2_kdglh"]
+[ext_resource type="Texture2D" uid="uid://dt5evbetmdaak" path="res://Assets/Images/placeholder/tilemap_test.png" id="4_38ohr"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4tvtk"]
 
 [sub_resource type="Curve2D" id="Curve2D_4tvtk"]
 resource_local_to_scene = true
@@ -10,6 +13,30 @@ bake_interval = 16.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdglh"]
 texture = ExtResource("2_kdglh")
+1:0/0 = 0
+1:0/0/terrain_set = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+0:0/0 = 0
+0:0/0/terrain_set = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_20o04"]
+texture = ExtResource("4_38ohr")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
 1:0/0 = 0
 1:0/0/terrain_set = 0
 1:0/0/terrain = 0
@@ -39,17 +66,13 @@ texture = ExtResource("2_kdglh")
 2:2/0/terrain = 0
 2:2/0/terrains_peering_bit/left_side = 0
 2:2/0/terrains_peering_bit/top_side = 0
-0:0/0 = 0
-0:0/0/terrain_set = 0
-0:0/0/terrain = 0
-0:0/0/terrains_peering_bit/right_side = 0
-0:0/0/terrains_peering_bit/bottom_side = 0
 
 [sub_resource type="TileSet" id="TileSet_4tvtk"]
 terrain_set_0/mode = 2
 terrain_set_0/terrain_0/name = "Conveyors 0"
 terrain_set_0/terrain_0/color = Color(0.82, 0.164, 0.776267, 1)
 sources/0 = SubResource("TileSetAtlasSource_kdglh")
+sources/1 = SubResource("TileSetAtlasSource_20o04")
 
 [node name="ConveyorBelt" type="Node2D"]
 script = ExtResource("1_kdglh")
@@ -64,10 +87,14 @@ texture_mode = 1
 joint_mode = 2
 round_precision = 16
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D"]
+shape = SubResource("SegmentShape2D_4tvtk")
+
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_4tvtk")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
 texture_filter = 3
-scale = Vector2(4, 4)
+scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_4tvtk")

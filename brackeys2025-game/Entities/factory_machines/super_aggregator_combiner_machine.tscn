@@ -1,22 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bii0ko6ggnccs"]
+[gd_scene load_steps=2 format=3 uid="uid://bii0ko6ggnccs"]
 
 [ext_resource type="PackedScene" uid="uid://cegq3dg2ut413" path="res://Entities/factory_machine.tscn" id="1_kph0n"]
-[ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="2_vlmdv"]
-[ext_resource type="Resource" uid="uid://c4rji7be6rmm4" path="res://Recipes/artifact_recipe.tres" id="3_03p14"]
-[ext_resource type="Resource" uid="uid://drbxbhhkyj3vk" path="res://Recipes/banana_recipe.tres" id="4_em4f7"]
-[ext_resource type="Resource" uid="uid://dbq3thokvdr7i" path="res://Recipes/gunpowder_recipe.tres" id="5_mf1bw"]
-[ext_resource type="Resource" uid="uid://bm013l6hpxvab" path="res://Recipes/raygun_recipe.tres" id="6_8pwbl"]
-[ext_resource type="Resource" uid="uid://caw4fnmk3jd1a" path="res://Recipes/pineapple_recipe.tres" id="7_lsgqr"]
-[ext_resource type="Resource" uid="uid://eescdi7hydkg" path="res://Recipes/grenade_recipe.tres" id="8_e0x6d"]
-[ext_resource type="Resource" uid="uid://beacj5fvu83yg" path="res://Recipes/epistemology_recipe.tres" id="9_00emn"]
-[ext_resource type="Resource" uid="uid://bm03xeyecnc71" path="res://Recipes/pacifier_recipe.tres" id="10_8ti48"]
-[ext_resource type="Resource" uid="uid://bxf88342k8gnm" path="res://Recipes/singularity_recipe.tres" id="11_o3vd6"]
-[ext_resource type="Resource" uid="uid://wo131a4l7f8o" path="res://Recipes/fruitphone_recipe.tres" id="12_76liq"]
-[ext_resource type="Resource" uid="uid://b5xpis4hcix7q" path="res://Recipes/paradox_recipe.tres" id="13_eyn8p"]
 
-[node name="AggregatorCombiner" instance=ExtResource("1_kph0n")]
-unlocked_recipes = Array[ExtResource("2_vlmdv")]([ExtResource("3_03p14"), ExtResource("4_em4f7"), ExtResource("5_mf1bw"), ExtResource("6_8pwbl"), ExtResource("7_lsgqr"), ExtResource("8_e0x6d"), ExtResource("9_00emn"), ExtResource("3_03p14"), ExtResource("10_8ti48"), ExtResource("11_o3vd6"), ExtResource("12_76liq"), ExtResource("13_eyn8p")])
-current_recipe = ExtResource("8_e0x6d")
+[node name="SuperAggregatorCombiner" groups=["aggregators"] instance=ExtResource("1_kph0n")]
+type = 1
+short_name = "SuperAggregator"
 
 [node name="Sprite2D" parent="StaticBody2D" index="1"]
 hframes = 1

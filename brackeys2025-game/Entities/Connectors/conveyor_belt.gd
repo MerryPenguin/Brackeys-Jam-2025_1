@@ -19,7 +19,8 @@ var state = states.OPERATING
 var desired_points : PackedVector2Array = []
 var tilemap_path : Array[Vector2i]
 
-var polling_interval : int = 100 # msec
+
+var polling_interval : int = 20 # msec
 var time_at_last_poll : int = 0
 
 var origin : ConnectorNode
@@ -33,7 +34,7 @@ signal belt_connected(belt)
 func _ready():
 	validate_requirements()
 	setup_draw_mode()
-	
+	add_point(get_global_mouse_position())
 
 func validate_requirements():
 	if $Path2D.curve == null:
@@ -83,6 +84,11 @@ func move_goods():
 
 func add_point(location):
 	var stepped_location = location.snapped(Globals.grid_size)
+	var path : Path2D = $Path2D
+	
+	
+	if path.curve.point_count > 0 and is_zero_approx(path.curve.get_closest_point(stepped_location).distance_squared_to(stepped_location)):
+		return
 	
 	var last_point : Vector2 = location
 	if not desired_points.is_empty():
@@ -103,27 +109,40 @@ func add_point(location):
 		update_tilemap(desired_points[-1])
 	else: # SMOOTH_LINE or #CARDINAL_LINE
 		$Line2D.add_point(desired_points[-1])
-	
 
-func update_tilemap(location):
+
+func update_tilemap(global_location):
+	# method intended to draw a continuous pipe using Godot tilemap
+	
 	var tilemap : TileMapLayer = $TileMapLayer
-	var tilemap_coord : Vector2i = tilemap.local_to_map(location / tilemap.scale)
+	var tilemap_local_pos = tilemap.to_local(global_location)
+	var tilemap_coord : Vector2i = tilemap.local_to_map(tilemap_local_pos)
 	
-	#var direction = tilemap_coord - previous_tile_coord
-	#direction.x = ceil(direction.x)
-	#direction.y = ceil(direction.y)
-	#var tile_atlas_coord = direction + Vector2.ONE
-	if tilemap_path.is_empty() or tilemap_coord != tilemap_path[-1]:
+	if tilemap_path.is_empty():
 		tilemap_path.push_back(tilemap_coord)
+	else:
+		var last_tile_coord = tilemap_path[-1]
+		# Convert Vector2i to Vector2 for calculations
+		var last_tile_coord_vec2 = Vector2(last_tile_coord)
+		var tilemap_coord_vec2 = Vector2(tilemap_coord)
+		
+		var distance = last_tile_coord_vec2.distance_to(tilemap_coord_vec2)
+		var direction = (tilemap_coord_vec2 - last_tile_coord_vec2).normalized()
+		
+		for i in range(1, int(distance) + 1):
+			var intermediate_coord_vec2 = last_tile_coord_vec2 + direction * i
+			var intermediate_coord = Vector2i(intermediate_coord_vec2) # Convert back to Vector2i
+			if intermediate_coord != tilemap_path[-1]:
+				tilemap_path.push_back(intermediate_coord)
 	
-	#tilemap.set_cell(tilemap_coord, 0, tile_atlas_coord)
 	if tilemap_path.size() > 1:
 		tilemap.set_cells_terrain_path(tilemap_path, 0, 0)
 		
 	previous_tile_coord = tilemap_coord
 
+
 func point_too_close():
-	var tolerance_sq = 32 * 32
+	var tolerance_sq = Globals.grid_size.x * Globals.grid_size.y
 	if desired_points.is_empty():
 		return false
 	elif desired_points[-1].distance_squared_to(get_global_mouse_position()) < tolerance_sq:
@@ -141,7 +160,6 @@ func stop_drawing():
 		var connector_reached : ConnectorNode = get_nearest_input_connector()
 		connector_reached.conveyor_belt = self
 		destination = connector_reached
-		print("Connected a conveyor belt! ", origin.name, ", " , destination.name)
 		belt_connected.emit(self)
 	else:
 		# TODO: drop all the contents on the ground, flash and queue_free
@@ -188,7 +206,11 @@ func add_new_conveyance(widget: FactoryProductWidget):
 	if path.curve.point_count > 1 and path.curve.get_baked_length() > 0:
 		# add a pathfollower2d and give it a reference to the widget we're transporting
 		var new_package = ConveyorBeltPackage.new()
-		path.add_child(new_package)
+		if path.curve.get_baked_length() > 1:
+			new_package.progress = 0.00001 ## Prevents BUG: a lot of errors about zero length interval.
+			path.call_deferred("add_child", new_package) 
+		else:
+			breakpoint
 		new_package.add_contents(widget)
 		new_package.conveyor_belt = self
 	else:

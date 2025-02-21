@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="1_niwoe"]
 [ext_resource type="Script" uid="uid://dl0vcd1semq6p" path="res://GUI/hud.gd" id="1_r8uld"]
 [ext_resource type="PackedScene" uid="uid://cr6s0syst023p" path="res://GUI/Widgets/button_bar.tscn" id="2_36ch1"]
-[ext_resource type="Script" uid="uid://c4tyjbu104tb4" path="res://GUI/cash_tracker.gd" id="5_r8uld"]
+[ext_resource type="PackedScene" uid="uid://4a5gxnq21fpd" path="res://GUI/Widgets/cash_and_shop.tscn" id="4_r8uld"]
 
 [node name="HUDCanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_r8uld")
@@ -33,50 +33,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="Cash" type="Label" parent="HUDMarginControl"]
-unique_name_in_owner = true
+[node name="CashAndShop" parent="HUDMarginControl" instance=ExtResource("4_r8uld")]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_type_variation = &"HeaderLarge"
-text = "$$$"
-script = ExtResource("5_r8uld")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUDMarginControl"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HUDMarginControl/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 32
-
-[node name="Label" type="Label" parent="HUDMarginControl/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "H
-A
-R
-V
-E
-S
-T
-E
-R
-S"
-
-[node name="Label2" type="Label" parent="HUDMarginControl/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "C
-O
-M
-B
-I
-N
-E
-R
-S"
 
 [node name="ButtonBar" parent="HUDMarginControl/HBoxContainer" instance=ExtResource("2_36ch1")]
 layout_mode = 2

@@ -3,7 +3,7 @@
 ## They can then place the factory on the floor,
 ## or press escape to cancel.
 
-extends GridContainer
+extends Container
 
 func _ready():
 	setup_button_shortcut_keys()

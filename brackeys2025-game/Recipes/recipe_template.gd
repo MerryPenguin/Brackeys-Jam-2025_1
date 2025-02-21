@@ -2,9 +2,9 @@ class_name ProductWidgetRecipe extends Resource
 # Note about resources: they're re-used / shared between scenes.
 # Therefore, if you edit one, it'll change on all.
 @export var product_name : StringName = ""
-@export var required_inputs : Array[RequirementsManifest] = []
+@export var required_inputs : Array[Globals.products] = []
 
-@export var production_time : float = 10.0 # time to convert requirements into output
+@export var production_time : float = 1.5 # time to convert requirements into output
 #const output_widget : PackedScene = preload("res://Entities/factory_products/factory_product_widget.tscn")
 @export var icon : Texture2D
 

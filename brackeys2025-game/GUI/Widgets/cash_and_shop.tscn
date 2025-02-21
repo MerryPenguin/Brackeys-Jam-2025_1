@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://4a5gxnq21fpd"]
+
+[ext_resource type="Script" uid="uid://hv7j4spbk08n" path="res://GUI/Widgets/cash_and_shop.gd" id="1_7dk67"]
+[ext_resource type="Script" uid="uid://c4tyjbu104tb4" path="res://GUI/cash_tracker.gd" id="1_f3yru"]
+[ext_resource type="PackedScene" uid="uid://11pbtfitmk6l" path="res://GUI/Widgets/purchase_factory_button.tscn" id="2_78fl3"]
+[ext_resource type="AudioStream" uid="uid://c2jxqrumctc45" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-001.wav" id="4_a5eda"]
+[ext_resource type="Texture2D" uid="uid://cv7myqqm0ja6u" path="res://Assets/Images/Factories.png" id="4_jrewt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cih1i"]
+atlas = ExtResource("4_jrewt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvd3x"]
+atlas = ExtResource("4_jrewt")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrewt"]
+atlas = ExtResource("4_jrewt")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kawu"]
+atlas = ExtResource("4_jrewt")
+region = Rect2(16, 16, 16, 16)
+
+[node name="CashAndShop" type="HBoxContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -145.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+script = ExtResource("1_7dk67")
+
+[node name="Cash" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_type_variation = &"HeaderLarge"
+text = "$$$"
+script = ExtResource("1_f3yru")
+
+[node name="ShoppingPanel" type="PanelContainer" parent="Cash"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 149.0
+offset_top = 64.0
+offset_right = 391.0
+offset_bottom = 460.0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Cash/ShoppingPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="Inorganics" parent="Cash/ShoppingPanel/VBoxContainer" instance=ExtResource("2_78fl3")]
+layout_mode = 2
+icon = SubResource("AtlasTexture_cih1i")
+
+[node name="Organics" parent="Cash/ShoppingPanel/VBoxContainer" instance=ExtResource("2_78fl3")]
+layout_mode = 2
+factory_building = 0
+purchase_price = 300
+icon = SubResource("AtlasTexture_yvd3x")
+
+[node name="Spiritual" parent="Cash/ShoppingPanel/VBoxContainer" instance=ExtResource("2_78fl3")]
+layout_mode = 2
+factory_building = 2
+purchase_price = 1000
+icon = SubResource("AtlasTexture_jrewt")
+
+[node name="SuperAggregator" parent="Cash/ShoppingPanel/VBoxContainer" instance=ExtResource("2_78fl3")]
+layout_mode = 2
+factory_building = 4
+purchase_price = 10000
+icon = SubResource("AtlasTexture_6kawu")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "Shop for
+Upgrades"
+
+[node name="SlideNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_a5eda")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
