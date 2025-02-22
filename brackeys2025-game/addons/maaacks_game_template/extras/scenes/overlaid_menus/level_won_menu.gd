@@ -26,6 +26,7 @@ func _on_confirm_main_menu_confirmed():
 	close()
 
 func _on_restart_button_pressed():
+	print("Level Won Menu: restart_pressed conntions: ", restart_pressed.get_connections())
 	restart_pressed.emit()
 	close()
 

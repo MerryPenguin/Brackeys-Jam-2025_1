@@ -38,7 +38,6 @@ text = "Main Menu"
 
 [node name="RestartButton" type="Button" parent="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
 text = "Restart"

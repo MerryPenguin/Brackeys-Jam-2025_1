@@ -52,20 +52,36 @@ func generate_single_item(product : Globals.products) -> TextureRect:
 func populate_receipt(new_customer : RovingCustomer):
 	var receipt_tree : Tree = %Receipt.get_node("Tree")
 	receipt_tree.columns = 2
+	receipt_tree.set_column_clip_content(0, true)
+	receipt_tree.set_column_clip_content(1, false)
+	
 	var root = receipt_tree.create_item()
 	receipt_tree.hide_root = true
-	var header = receipt_tree.create_item(root)
-	header.set_text(0, "Item:")
-	header.set_text(1, "Price Paid")
+	var in_stock = receipt_tree.create_item(root)
+	in_stock.set_text(0, "Item:")
+	in_stock.set_text(1, "Paid")
 	
-	for item in new_customer.items_purchased:
+	## Note: I couldn't get tree column clipping to work correctly in a timely fashion, so I won't bother showing out of stock items.
+	#var out_of_stock = receipt_tree.create_item(root)
+	#out_of_stock.set_text(0, "Out of Stock")
+	#out_of_stock.set_text(1, "Out of Stock")
+
+	create_pricelist(in_stock, new_customer.items_purchased, true)
+	#create_pricelist(out_of_stock, new_customer.widgets_desired, false)
+
+func create_pricelist(tree_node : TreeItem, item_list : Array, show_price: bool = true):
+	var receipt_tree : Tree = %Receipt.get_node("Tree")
+
+	for item in item_list:
 		var recipe = Globals.product_recipes[item]
-		var cost = Utils.lookup_value(item)
-		if cost == null or cost == 0:
-			push_warning("price of " + recipe.product_name + " is not set correctly")
-		var row_entry = receipt_tree.create_item(root)
+		var row_entry = receipt_tree.create_item(tree_node)
 		row_entry.set_text(0, recipe.product_name)
-		row_entry.set_text(1, "$" + str(cost))
+
+		if show_price:
+			var cost = Utils.lookup_value(item)
+			if cost == null or cost == 0:
+				push_warning("price of " + recipe.product_name + " is not set correctly")
+			row_entry.set_text(1, "$" + str(cost))
 
 
 func _on_close_button_pressed() -> void:

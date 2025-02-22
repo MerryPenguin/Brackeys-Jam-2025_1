@@ -4,4 +4,5 @@
 [ext_resource type="Script" uid="uid://de0g8lks2t8ib" path="res://GUI/maaack_template/scenes/overlaid_menus/level_won_menu.gd" id="2_ahw51"]
 
 [node name="LevelWonMenu" instance=ExtResource("1_4fxan")]
+z_index = 20
 script = ExtResource("2_ahw51")

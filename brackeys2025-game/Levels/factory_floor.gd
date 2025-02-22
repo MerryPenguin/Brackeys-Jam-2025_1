@@ -5,6 +5,7 @@
 
 class_name FactoryFloor extends Node2D
 
+@export var next_scene_path : StringName = "res://GUI/maaack_template/scenes/end_credits/end_credits.tscn"
 
 func _init():
 	Globals.current_level = self
@@ -34,14 +35,18 @@ func spawn_factory(factory : FactoryMachine, location : Vector2):
 	$Machines.add_child(factory)
 	factory.global_position = location
 	
-func show_level_won_overlay(text):
+func show_level_won_overlay(text, scene_path):
 	var level_won_overlay = preload("res://GUI/maaack_template/scenes/overlaid_menus/level_won_menu.tscn").instantiate()	
 	level_won_overlay.text = text
 	add_sibling(level_won_overlay)
-	level_won_overlay.continue_pressed.connect(_on_next_level_requested)
+	level_won_overlay.continue_pressed.connect(_on_next_level_requested.bind(scene_path))
+	level_won_overlay.restart_pressed.connect(restart)
 
-func _on_next_level_requested():
+func _on_next_level_requested(scene_path):
 	# TODO: This needs to emit something to a level manager from Maaack's template.
 	# so the system knows which levels are complete.
 	GameState.set_current_level(1)
-	SceneLoader.load_scene("res://Levels/factory_floor.tscn")
+	SceneLoader.load_scene(scene_path)
+
+func restart():
+	SceneLoader.reload_current_scene()
