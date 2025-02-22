@@ -20,6 +20,6 @@ autostart = true
 rotation = 1.57392
 
 [node name="ExitDestination" type="Marker2D" parent="." groups=["exits"]]
-position = Vector2(416, 298)
+position = Vector2(402, -128)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

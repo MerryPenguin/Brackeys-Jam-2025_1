@@ -1,23 +1,13 @@
 # Attribution
-## Collaborators
+## Developers of Factoriohno
+### For Brackeys Game Jam 2025
+[Plexsoup](https://plexsoup.itch.io)  - Code
+MerryPenguin - Art
+Miguel Neves - audio - SFX
+Riley Gayford - audio - Music
 
-### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
 
 
-## Sourced / Unaffiliated
-### Asset Type
-#### Use Case
-Author: [Name]()  
-Source: [Domain : webpage.html]()  
-License: [License]()
-
-### Godot Wild Jam Logos
-Author: [Dawk](https://coreyaroberts.com/)  
-Source: [godotwildjam.com](https://godotwildjam.com/branding/)  
-License: Copyrighted
 
 ## Tools
 #### Godot
