@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://vndqdct5f50s"]
 
-[ext_resource type="Script" uid="uid://y1manp7jpn4c" path="res://Levels/factory_floor.gd" id="1_wrr4c"]
+[ext_resource type="Script" uid="uid://dcsinn3h1e0sr" path="res://Levels/level_01_main.gd" id="1_fpxqv"]
 [ext_resource type="PackedScene" uid="uid://d1m8n26ymxpa8" path="res://Entities/MobileWorker/factory_worker.tscn" id="2_7d5sh"]
 [ext_resource type="PackedScene" uid="uid://djc0g4iedr3xo" path="res://Entities/Customers/customer_spawner.tscn" id="4_64ewy"]
 [ext_resource type="PackedScene" uid="uid://cu7xb7uvvt414" path="res://Entities/StorageChest.tscn" id="6_fpxqv"]
@@ -17,7 +17,7 @@ size = Vector2(336, 20)
 [node name="FactoryFloor" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 3
-script = ExtResource("1_wrr4c")
+script = ExtResource("1_fpxqv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -5
