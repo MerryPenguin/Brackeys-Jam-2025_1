@@ -178,7 +178,7 @@ func attempt_to_buy_product():
 	var requirements_met = true
 	for desired_product in widgets_desired:
 		var requirement : ProductWidgetRecipe = Globals.product_recipes[desired_product]
-		if target_destination is Marker2D:
+		if target_destination is Marker2D or target_destination.is_in_group("inspection_areas"):
 			return
 		if target_destination.storage.has_product_named(requirement.product_name):
 			if target_destination.has_method("sell"):
@@ -228,17 +228,20 @@ func receive_product(widget : FactoryProductWidget):
 	if not storage.is_full():
 		storage.receive_product(widget)
 		remove_product_from_desires_list(widget)
+		add_product_to_carrying_lists(widget)
 
 func add_product_to_carrying_lists(widget : FactoryProductWidget):
 	var product = Globals.get_product_by_name(widget.recipe.product_name)
 	if randf() < 0.8: # paid for it, no problem
 		Globals.cash += Utils.lookup_value(product)
-		items_purchased += product
+		items_purchased.push_back(product)
 		purchases_changed.emit(items_stolen)
+		$BoughtSomething.play()
 		
 	else: # stole the product
-		items_stolen += product
+		items_stolen.push_back(product)
 		thefts_changed.emit(items_stolen)
+		
 
 
 

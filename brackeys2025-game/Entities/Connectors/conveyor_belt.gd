@@ -35,6 +35,7 @@ func _ready():
 	validate_requirements()
 	setup_draw_mode()
 	add_point(get_global_mouse_position())
+	$AudioStreamPlayer2D.play()
 
 func validate_requirements():
 	if $Path2D.curve == null:
@@ -222,3 +223,7 @@ func _on_new_widget_received(widget : FactoryProductWidget):
 
 func receive_product(widget):
 	_on_new_widget_received(widget)
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	$AudioStreamPlayer2D.play()

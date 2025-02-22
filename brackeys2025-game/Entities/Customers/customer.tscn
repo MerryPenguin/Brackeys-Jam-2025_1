@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cm8v5aepcle5p"]
+[gd_scene load_steps=14 format=3 uid="uid://cm8v5aepcle5p"]
 
 [ext_resource type="Script" uid="uid://1gnswtuhuqxq" path="res://Entities/Customers/customer.gd" id="1_tronh"]
 [ext_resource type="PackedScene" uid="uid://dfqi3t3sg40rk" path="res://Components/storage_component.tscn" id="2_hhold"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bfmm7psb7rknn" path="res://Assets/Images/placeholder/white_face.png" id="3_rd0ff"]
 [ext_resource type="PackedScene" uid="uid://bjteivr6q34df" path="res://Props/hover_popup_display.tscn" id="4_8yoh6"]
 [ext_resource type="PackedScene" uid="uid://dvr7ipukonuwm" path="res://Entities/Customers/requirements_thought_bubble.tscn" id="6_rd0ff"]
+[ext_resource type="AudioStream" uid="uid://r7qfg8xmtu8x" path="res://Assets/sfx/Sounds/Actions/ACTION_Product Bought_SFX-001.wav" id="7_n7v0p"]
+[ext_resource type="AudioStream" uid="uid://x2l3h851oveq" path="res://Assets/sfx/Sounds/Actions/ACTION_Product Bought_SFX-002.wav" id="8_6d431"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rd0ff"]
 radius = 32.0
@@ -18,6 +20,11 @@ radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8yoh6"]
 radius = 69.3542
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_06a7e"]
+streams_count = 2
+stream_0/stream = ExtResource("7_n7v0p")
+stream_1/stream = ExtResource("8_6d431")
 
 [node name="Customer" type="CharacterBody2D" groups=["Customers"]]
 y_sort_enabled = true
@@ -129,6 +136,11 @@ offset_top = -39.0
 offset_right = 44.0
 offset_bottom = -7.0
 list_type = 2
+
+[node name="BoughtSomething" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_06a7e")
+
+[node name="Unhappy" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

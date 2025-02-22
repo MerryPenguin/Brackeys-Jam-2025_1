@@ -170,3 +170,4 @@ func _on_connector_node_connected(node):
 	if node.type == node.types.INPUT:
 		# for tutorial level win condition
 		input_node_connected.emit()
+		$BeltConnectedNoise.play()

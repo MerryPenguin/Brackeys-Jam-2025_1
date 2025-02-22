@@ -1,8 +1,412 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbggorckkrcwt"]
+[gd_scene load_steps=22 format=3 uid="uid://bbggorckkrcwt"]
 
 [ext_resource type="Texture2D" uid="uid://b0nfglsibwgcu" path="res://Assets/Images/Discrim_step_ui.png" id="1_b4ljr"]
 [ext_resource type="Script" uid="uid://dc7277a80pwtv" path="res://GUI/Discriminator/discriminator.gd" id="1_goub6"]
 [ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="3_cfvcw"]
+[ext_resource type="Texture2D" uid="uid://b78e3m1efsafm" path="res://Assets/Images/placeholder/signature.png" id="3_u27os"]
+[ext_resource type="Texture2D" uid="uid://ppuds1pyb7c5" path="res://Assets/Images/placeholder/basket.png" id="4_2prbc"]
+[ext_resource type="AudioStream" uid="uid://cprmt3ynkqub1" path="res://Assets/sfx/Sounds/Actions/ACTION_ Client Scan_SFX-001.wav" id="4_3qtec"]
+[ext_resource type="AudioStream" uid="uid://blm0i3mm55xuo" path="res://Assets/sfx/Sounds/Actions/ACTION_ Client Scan_SFX-002.wav" id="5_2prbc"]
+[ext_resource type="Texture2D" uid="uid://bniy6pududshc" path="res://Assets/Images/placeholder/green_button.png" id="5_xf0th"]
+[ext_resource type="AudioStream" uid="uid://babcg0eppv4j" path="res://Assets/sfx/Sounds/Actions/ACTION_ Client Scan_SFX-003.wav" id="6_iu62g"]
+[ext_resource type="Texture2D" uid="uid://d0xsx7l0f5g4g" path="res://Assets/Images/placeholder/red_button.png" id="6_u27os"]
+[ext_resource type="Texture2D" uid="uid://bpmv1mnw4qwn" path="res://Assets/Images/placeholder/green_button_pressed.png" id="8_14tjp"]
+[ext_resource type="Texture2D" uid="uid://bwk5uo3f2hol6" path="res://Assets/Images/placeholder/red_button_pressed.png" id="9_4buwt"]
+[ext_resource type="AudioStream" uid="uid://hifna4802l8t" path="res://Assets/sfx/Sounds/Actions/ACTION_Product Scan_SFX-001.wav" id="13_k32an"]
+[ext_resource type="AudioStream" uid="uid://bili3nvvxk8er" path="res://Assets/sfx/Sounds/Actions/ACTION_Product Scan_SFX-002.wav" id="14_qnlf6"]
+[ext_resource type="AudioStream" uid="uid://dxfu1indoghsb" path="res://Assets/sfx/Sounds/Actions/ACTION_Product Scan_SFX-003.wav" id="15_130tv"]
+
+[sub_resource type="Animation" id="Animation_wqgwb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(224, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pen:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/OrderForm/ApprovedStamp:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(512, -144)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/OrderForm/ApprovedStamp:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer/OrderForm/DeniedStamp:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/OrderForm/DeniedStamp:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(816, -128)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/OrderForm/DeniedStamp:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PanelContainer/OrderForm/ApprovedStamp:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PanelContainer/OrderForm/Signature/ColorRect:size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(81, 18)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PanelContainer/OrderForm/Signature/ColorRect:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-40, -10)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ApproveNoise:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PanelContainer/DecisionButtons/GridContainer/DenyButton:icon")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_u27os")]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("PanelContainer/DecisionButtons/GridContainer/ApproveButton:icon")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_xf0th")]
+}
+
+[sub_resource type="Animation" id="Animation_a7t41"]
+resource_name = "approve"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(224, 128), Vector2(736, 512), Vector2(848, 496), Vector2(976, 496), Vector2(224, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pen:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.540687, 0.540687, 0.326868, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/OrderForm/ApprovedStamp:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(480, -128), Vector2(816, 400)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/OrderForm/ApprovedStamp:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer/OrderForm/ApprovedStamp:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/OrderForm/Signature/ColorRect:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(81, 18), Vector2(6, 18)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/OrderForm/Signature/ColorRect:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-40, -10), Vector2(35, -10)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PanelContainer/DecisionButtons/GridContainer/ApproveButton:icon")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_xf0th"), ExtResource("8_14tjp")]
+}
+
+[sub_resource type="Animation" id="Animation_xf0th"]
+resource_name = "deny"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/OrderForm/DeniedStamp:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/OrderForm/DeniedStamp:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(816, -128), Vector2(816, 400)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pen:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(224, 128), Vector2(723, 496), Vector2(962, 496), Vector2(224, 128)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/OrderForm/DeniedStamp:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.471239]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pen:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.233102, 0.466204, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/OrderForm/Signature/ColorRect:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(81, 18), Vector2(81, 18), Vector2(2, 18)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/OrderForm/Signature/ColorRect:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-40, -10), Vector2(-40, -10), Vector2(39, -10)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ApproveNoise:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PanelContainer/DecisionButtons/GridContainer/DenyButton:icon")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_u27os"), ExtResource("9_4buwt")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7lg1n"]
+_data = {
+&"RESET": SubResource("Animation_wqgwb"),
+&"approve": SubResource("Animation_a7t41"),
+&"deny": SubResource("Animation_xf0th")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xf0th"]
+streams_count = 3
+stream_0/stream = ExtResource("4_3qtec")
+stream_1/stream = ExtResource("5_2prbc")
+stream_2/stream = ExtResource("6_iu62g")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_we81x"]
+streams_count = 3
+stream_0/stream = ExtResource("13_k32an")
+stream_1/stream = ExtResource("14_qnlf6")
+stream_2/stream = ExtResource("15_130tv")
 
 [node name="DiscriminatorInterface" type="Control"]
 layout_mode = 3
@@ -12,7 +416,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_goub6")
-metadata/_edit_lock_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -21,14 +424,55 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
 
-[node name="Pen" type="Sprite2D" parent="PanelContainer"]
-position = Vector2(224, 128)
+[node name="OrderForm" type="Node2D" parent="PanelContainer"]
+unique_name_in_owner = true
+
+[node name="OrderFormSprite" type="Sprite2D" parent="PanelContainer/OrderForm"]
+position = Vector2(816, 416)
 scale = Vector2(4, 4)
 texture = ExtResource("1_b4ljr")
 region_enabled = true
-region_rect = Rect2(36.8735, 65.1969, 9.48764, 43.2531)
+region_rect = Rect2(163.009, 84.097, 100.136, 117.027)
+
+[node name="marker" type="Marker2D" parent="PanelContainer/OrderForm"]
+position = Vector2(688, 352)
+
+[node name="Signature" type="Sprite2D" parent="PanelContainer/OrderForm"]
+position = Vector2(816, 553)
+scale = Vector2(4, 4)
+texture = ExtResource("3_u27os")
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/OrderForm/Signature"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -17.0
+offset_right = 12.5
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+color = Color(0.972549, 0.956863, 0.94902, 1)
+
+[node name="ApprovedStamp" type="Sprite2D" parent="PanelContainer/OrderForm"]
+visible = false
+position = Vector2(512, -144)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b4ljr")
+region_enabled = true
+region_rect = Rect2(97.3667, 51.1796, 78.3664, 32.482)
+
+[node name="DeniedStamp" type="Sprite2D" parent="PanelContainer/OrderForm"]
+visible = false
+position = Vector2(816, -128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b4ljr")
+region_enabled = true
+region_rect = Rect2(97.3667, 84.3363, 60.2529, 32.3888)
 
 [node name="MagnifyingGlass" type="Sprite2D" parent="PanelContainer"]
 position = Vector2(112, 96)
@@ -36,20 +480,6 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_b4ljr")
 region_enabled = true
 region_rect = Rect2(0, 64, 32, 32)
-
-[node name="ApprovedStamp" type="Sprite2D" parent="PanelContainer"]
-position = Vector2(432, 80)
-scale = Vector2(4, 4)
-texture = ExtResource("1_b4ljr")
-region_enabled = true
-region_rect = Rect2(97.3667, 51.1796, 78.3664, 32.482)
-
-[node name="DeniedStamp" type="Sprite2D" parent="PanelContainer"]
-position = Vector2(416, 224)
-scale = Vector2(4, 4)
-texture = ExtResource("1_b4ljr")
-region_enabled = true
-region_rect = Rect2(97.3667, 84.3363, 60.2529, 32.3888)
 
 [node name="Receipt" type="Node2D" parent="PanelContainer"]
 unique_name_in_owner = true
@@ -92,19 +522,6 @@ texture = ExtResource("1_b4ljr")
 region_enabled = true
 region_rect = Rect2(33.5365, 159.528, 56.8512, 40.9388)
 
-[node name="OrderForm" type="Node2D" parent="PanelContainer"]
-unique_name_in_owner = true
-
-[node name="OrderFormSprite" type="Sprite2D" parent="PanelContainer/OrderForm"]
-position = Vector2(816, 416)
-scale = Vector2(4, 4)
-texture = ExtResource("1_b4ljr")
-region_enabled = true
-region_rect = Rect2(163.009, 84.097, 100.136, 117.027)
-
-[node name="marker" type="Marker2D" parent="PanelContainer/OrderForm"]
-position = Vector2(688, 352)
-
 [node name="AuthSeals" type="Sprite2D" parent="PanelContainer"]
 position = Vector2(720, 96)
 scale = Vector2(4, 4)
@@ -126,6 +543,66 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "Close"
 
+[node name="Basket" type="Node2D" parent="PanelContainer"]
+unique_name_in_owner = true
+position = Vector2(912, 96)
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/Basket"]
+scale = Vector2(6, 6)
+texture = ExtResource("4_2prbc")
+
+[node name="DecisionButtons" type="Node2D" parent="PanelContainer"]
+position = Vector2(288, 112)
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/DecisionButtons"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 1150.0
+offset_bottom = 646.0
+theme_override_constants/h_separation = 32
+columns = 2
+
+[node name="ApproveButton" type="Button" parent="PanelContainer/DecisionButtons/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+text = "Approve"
+icon = ExtResource("5_xf0th")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="DenyButton" type="Button" parent="PanelContainer/DecisionButtons/GridContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+text = "Deny"
+icon = ExtResource("6_u27os")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Pen" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(224, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b4ljr")
+region_enabled = true
+region_rect = Rect2(36.8735, 65.1969, 9.48764, 43.2531)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7lg1n")
+}
+
+[node name="StartupNoise" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_xf0th")
+autoplay = true
+
+[node name="ApproveNoise" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_we81x")
+
+[node name="DenyNoise" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="PanelContainer/DecisionButtons/GridContainer/ApproveButton" to="." method="_on_approve_button_pressed"]
+[connection signal="pressed" from="PanelContainer/DecisionButtons/GridContainer/DenyButton" to="." method="_on_deny_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

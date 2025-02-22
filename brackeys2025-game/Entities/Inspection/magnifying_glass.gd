@@ -9,10 +9,11 @@ func _process(delta):
 		var potential_customers : Array = $Area2D.get_overlapping_bodies()
 		if potential_customers.size() > 0:
 			var customers = potential_customers.filter(is_customer)
-			var nearest_customer = Utils.find_closest_node(customers, global_position)
-			Globals.current_hud.spawn_discriminator(nearest_customer)
+			if customers.size() > 0:
+				var nearest_customer = Utils.find_closest_node(customers, global_position)
+				Globals.current_hud.spawn_discriminator(nearest_customer)
 			
-			# Should we also queue_free the customer? 
+				# Should we also queue_free the customer? 
 
 
 func is_customer(body):
