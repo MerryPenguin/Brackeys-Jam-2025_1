@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d4ev8r4o8m5i4"
+path="res://.godot/imported/ACTION_Belt Connected-SFX-002.wav-084307e83d864201fd770894f4d0290e.sample"
+
+[deps]
+
+source_file="res://Assets/sfx/Sounds/Actions/ACTION_Belt Connected-SFX-002.wav"
+dest_files=["res://.godot/imported/ACTION_Belt Connected-SFX-002.wav-084307e83d864201fd770894f4d0290e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
