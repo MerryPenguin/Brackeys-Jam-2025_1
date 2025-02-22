@@ -14,7 +14,7 @@ var items_stolen : Array[Globals.products]
 
 
 enum states { MOVING_TO_INSPECTOR, DETAINED, MOVING_TO_SHOP, BROWSING, BUYING, LEAVING }
-var state = states.MOVING_TO_SHOP
+var state : states = states.MOVING_TO_SHOP
 
 @export var max_cycles_to_wait : int = 10
 var cycles_waited : int = 0
@@ -72,6 +72,7 @@ func add_sketchy_props():
 	
 
 func go_to_inspector(inspector : Node2D = null):
+	state = states.MOVING_TO_INSPECTOR
 	if inspector == null:
 		var inspectors = get_tree().get_nodes_in_group("inspection_areas")
 		if inspectors != null and not inspectors.is_empty():
@@ -100,6 +101,8 @@ func _process(delta):
 		states.BROWSING:
 			attempt_to_buy_product()
 		states.LEAVING:
+			pass
+		states.MOVING_TO_INSPECTOR:
 			pass
 		
 
@@ -180,17 +183,21 @@ func attempt_to_buy_product():
 		if target_destination.storage.has_product_named(requirement.product_name):
 			if target_destination.has_method("sell"):
 				target_destination.sell(requirement.product_name, self) # -> comes back in receive_product
-				cycles_waited = 0
+				cycles_waited = 0 # reset timer if they bought something?
 		else:
 			requirements_met = false
 		
 		if cycles_waited > max_cycles_to_wait:
-			leave()
+			if items_purchased.size() > 0:
+				go_to_inspector()
+			else:
+				leave() # Might be stealing?
 		%CyclesRemaining.text = str(max_cycles_to_wait - cycles_waited)
 		$CooldownTimer.start()
-		if requirements_met:
-			leave()
 	cycles_waited += 1
+	if requirements_met:
+		go_to_inspector()
+	
 
 func leave():
 	state = states.LEAVING

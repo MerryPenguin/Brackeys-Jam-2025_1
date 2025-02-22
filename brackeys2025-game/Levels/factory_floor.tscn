@@ -60,8 +60,7 @@ position = Vector2(864, 176)
 [node name="InspectionArea" type="Node2D" parent="."]
 
 [node name="Inspector" parent="InspectionArea" instance=ExtResource("12_2g2ty")]
-visible = false
-position = Vector2(916, 96)
+position = Vector2(1104, 624)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
