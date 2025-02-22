@@ -5,7 +5,7 @@
 
 extends Container
 
-@onready var containers = [ %HarvestersContainer, %CombinatorContainer ]
+@onready var containers = [ %HarvestersContainer, %CombinatorContainer, %MiscToolsContainer ]
 
 var active_tools : Array = [] # store a stack, so we can free old ones if user presses two buttons in a row
 
@@ -54,7 +54,7 @@ func _on_button_pressed(button : Button): # Factories
 	elif "Combiner" in button.name:
 		spawn_factory_blueprint(button.factory_scene)
 	elif "Recipes" in button.name:
-		print("player wants to open recipe book")
+		pass
 	
 
 func spawn_factory_blueprint(factory_scene):
@@ -67,13 +67,17 @@ func spawn_factory_blueprint(factory_scene):
 
 
 func _on_recipes_button_pressed() -> void:
-	if active_tools.size() > 0 and active_tools[-1].is_in_group("recipe_book"):
-		active_tools[-1]._on_button_pressed() # close the recipe book
+	
+	var book = get_tree().get_first_node_in_group("recipe_book")
+	if book != null:
+		# This never comes up because the book frees itself on hide
+		book.queue_free()
+		clear_previous_tools()
 	else:
 		clear_previous_tools()
 		var new_recipe_book = preload("res://GUI/Widgets/recipe_book_popup.tscn").instantiate()
 		add_child(new_recipe_book)
-		new_recipe_book.popup_centered_ratio(0.8)
+		new_recipe_book.popup_centered()
 		active_tools.push_back(new_recipe_book)
 	
 func _on_factory_unlocked(factory : Globals.buildings):
@@ -93,6 +97,17 @@ func _on_bulldozer_button_pressed() -> void:
 		active_tools.push_back(new_bulldozer)
 	else:
 		active_bulldozer.queue_free()
+
+func _on_magnifying_glass_button_pressed() -> void:
+	clear_previous_tools()
+	var active_magnifying_glass = get_tree().get_first_node_in_group("magnifiers")
+	if active_magnifying_glass == null:
+		var new_magnifying_glass = preload("res://Entities/Inspection/magnifying_glass.tscn").instantiate()
+		get_tree().get_root().add_child(new_magnifying_glass)
+		active_tools.push_back(new_magnifying_glass)
+	else:
+		active_magnifying_glass.queue_free() # user clicked the button again
+
 
 func clear_previous_tools():
 	for tool in active_tools:

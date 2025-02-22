@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy4gk05yk6qgf"]
+
+[ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="1_fryd4"]
+[ext_resource type="Script" uid="uid://b1t3xeh634iul" path="res://GUI/Widgets/help_button.gd" id="1_huid8"]
+[ext_resource type="Script" uid="uid://lqg8cf0sh1x6" path="res://GUI/Widgets/popup_panel.gd" id="2_huid8"]
+
+[node name="HelpButton" type="Button"]
+custom_minimum_size = Vector2(128, 32)
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Help"
+script = ExtResource("1_huid8")
+
+[node name="InstructionPopupPanel" type="PopupPanel" parent="."]
+auto_translate_mode = 1
+initial_position = 1
+size = Vector2i(512, 436)
+visible = true
+theme = ExtResource("1_fryd4")
+script = ExtResource("2_huid8")
+
+[node name="MarginContainer" type="MarginContainer" parent="InstructionPopupPanel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 512.0
+offset_bottom = 436.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InstructionPopupPanel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HelpTextLabel" type="Label" parent="InstructionPopupPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(384, 384)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+
+[node name="CloseButton" type="Button" parent="InstructionPopupPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Close"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="pressed" from="InstructionPopupPanel/MarginContainer/VBoxContainer/CloseButton" to="InstructionPopupPanel" method="_on_close_button_pressed"]

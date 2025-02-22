@@ -10,6 +10,7 @@ script = ExtResource("1_yr4ks")
 [node name="ProductDemandLabel" type="Label" parent="."]
 layout_mode = 2
 text = "Stock Market Report: ASH in High Demand"
+horizontal_alignment = 2
 
 [node name="ChangeProductTimer" type="Timer" parent="."]
 wait_time = 15.0

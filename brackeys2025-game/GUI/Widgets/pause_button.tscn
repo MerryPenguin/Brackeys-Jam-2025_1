@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://f2mlnqvxf4c4"]
+
+[ext_resource type="Script" uid="uid://cjp65khebexyo" path="res://GUI/Widgets/pause_button.gd" id="1_fadhw"]
+
+[node name="PauseButton" type="Button"]
+custom_minimum_size = Vector2(128, 32)
+text = "Pause"
+script = ExtResource("1_fadhw")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

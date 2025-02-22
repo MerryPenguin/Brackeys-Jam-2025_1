@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://tajmnv1ghui5" path="res://Entities/storage_chest.gd" id="1_iiyxp"]
 [ext_resource type="PackedScene" uid="uid://dfqi3t3sg40rk" path="res://Components/storage_component.tscn" id="2_3577q"]
 [ext_resource type="PackedScene" uid="uid://b3tihsme16qjf" path="res://Entities/factory_machines/connector_node.tscn" id="2_iiyxp"]
-[ext_resource type="Texture2D" uid="uid://ppuds1pyb7c5" path="res://Assets/Images/placeholder/basket.png" id="3_3577q"]
+[ext_resource type="Texture2D" uid="uid://cv7myqqm0ja6u" path="res://Assets/Images/Factories.png" id="3_3577q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3577q"]
 radius = 85.3756
@@ -24,6 +24,7 @@ script = ExtResource("1_iiyxp")
 shape = SubResource("CircleShape2D_3577q")
 
 [node name="StorageComponent" parent="." instance=ExtResource("2_3577q")]
+tooltip_disabled = true
 
 [node name="PanelContainer" parent="StorageComponent" index="1"]
 custom_minimum_size = Vector2(192, 256)
@@ -36,6 +37,8 @@ offset_bottom = 130.0
 position = Vector2(-4, -21)
 scale = Vector2(4, 4)
 texture = ExtResource("3_3577q")
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -63,7 +66,7 @@ horizontal_alignment = 1
 [node name="ConnectorNodes" type="Node2D" parent="."]
 
 [node name="InputConnectorNode" parent="ConnectorNodes" instance=ExtResource("2_iiyxp")]
-position = Vector2(-63, -40)
+position = Vector2(-40, -8)
 
 [node name="OutputConnectorNode" parent="ConnectorNodes" instance=ExtResource("2_iiyxp")]
 visible = false
@@ -122,6 +125,17 @@ horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDetectionArea"]
 shape = SubResource("CircleShape2D_iiyxp")
+
+[node name="EmptyLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Out of Stock"
 
 [connection signal="timeout" from="HoverTimer" to="." method="_on_hover_timer_timeout"]
 [connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_entered"]

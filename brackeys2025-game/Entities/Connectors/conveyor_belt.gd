@@ -35,6 +35,7 @@ func _ready():
 	validate_requirements()
 	setup_draw_mode()
 	add_point(get_global_mouse_position())
+	$BuildingNoise.play()
 
 func validate_requirements():
 	if $Path2D.curve == null:
@@ -160,6 +161,7 @@ func stop_drawing():
 		var connector_reached : ConnectorNode = get_nearest_input_connector()
 		connector_reached.conveyor_belt = self
 		destination = connector_reached
+		$BuildingNoise.stop()
 		belt_connected.emit(self)
 	else:
 		# TODO: drop all the contents on the ground, flash and queue_free
@@ -207,7 +209,7 @@ func add_new_conveyance(widget: FactoryProductWidget):
 		# add a pathfollower2d and give it a reference to the widget we're transporting
 		var new_package = ConveyorBeltPackage.new()
 		if path.curve.get_baked_length() > 1:
-			new_package.progress = 0.00001 ## Prevents BUG: a lot of errors about zero length interval.
+			new_package.progress = 0.00002 ## Prevents BUG: a lot of errors about zero length interval.
 			path.call_deferred("add_child", new_package) 
 		else:
 			breakpoint
@@ -222,3 +224,7 @@ func _on_new_widget_received(widget : FactoryProductWidget):
 
 func receive_product(widget):
 	_on_new_widget_received(widget)
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	$BuildingNoise.play()

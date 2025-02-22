@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b01165no4oubu"]
 
 [ext_resource type="Script" uid="uid://b8e8p7v41jor1" path="res://Entities/Inspection/inspector.gd" id="1_hoq6h"]
-[ext_resource type="Texture2D" uid="uid://bv2mm5k3rxp3h" path="res://Assets/Images/placeholder/inspection.png" id="2_vv1o7"]
+[ext_resource type="Texture2D" uid="uid://borpxqwcibiys" path="res://Assets/Images/placeholder/inspection-s.png" id="2_hoq6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5wv4"]
 size = Vector2(96, 96)
@@ -16,8 +16,8 @@ script = ExtResource("1_hoq6h")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 3
 position = Vector2(0, -24)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_vv1o7")
+scale = Vector2(4, 4)
+texture = ExtResource("2_hoq6h")
 
 [node name="InspectionArea" type="Area2D" parent="."]
 

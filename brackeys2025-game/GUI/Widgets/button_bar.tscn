@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://c67okxlqxki7t" path="res://Entities/factory_machines/inorganics_harvester_machine.tscn" id="5_bbqvn"]
 [ext_resource type="PackedScene" uid="uid://bjiy14821bbjm" path="res://Entities/factory_machines/spiritual_harvester_machine.tscn" id="6_sfx4s"]
 [ext_resource type="PackedScene" uid="uid://cxnywkrqyk8qg" path="res://Entities/factory_machines/aggregator_combiner_machine.tscn" id="7_hsg8g"]
-[ext_resource type="PackedScene" uid="uid://bii0ko6ggnccs" path="res://Entities/factory_machines/super_aggregator_combiner_machine.tscn" id="8_bbqvn"]
 [ext_resource type="Texture2D" uid="uid://bssrthkd53wcr" path="res://Assets/Images/placeholder/bulldozer.png" id="12_djy10"]
+[ext_resource type="Texture2D" uid="uid://b0nfglsibwgcu" path="res://Assets/Images/Discrim_step_ui.png" id="12_v35dp"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_c3j1w"]
 device = -1
@@ -36,9 +36,9 @@ region = Rect2(1.08849, 19.5329, 14.6482, 13.8583)
 atlas = ExtResource("2_bbqvn")
 region = Rect2(32.6826, 3.23319, 15.2944, 14.1456)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_djy10"]
-atlas = ExtResource("2_bbqvn")
-region = Rect2(17.3882, 18.5276, 14.5046, 15.1508)
+[sub_resource type="AtlasTexture" id="AtlasTexture_a66k6"]
+atlas = ExtResource("12_v35dp")
+region = Rect2(3.74719, 65.7528, 30.5547, 30.9282)
 
 [node name="ButtonBar" type="VBoxContainer" groups=["button_bar"]]
 anchors_preset = 4
@@ -52,6 +52,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 mouse_filter = 2
 theme = ExtResource("1_sfx4s")
+theme_override_constants/separation = 32
 script = ExtResource("1_birog")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -95,7 +96,7 @@ offset_left = 76.0
 offset_top = 5.0
 offset_right = 200.0
 offset_bottom = 59.0
-text = "Organics
+text = "[1] Organics
 Harvester
 (Vegetal)"
 horizontal_alignment = 1
@@ -117,7 +118,7 @@ offset_left = 82.0
 offset_top = 11.0
 offset_right = 206.0
 offset_bottom = 65.0
-text = "Inorganics
+text = "[2] Inorganics
 Harvester
 (Mineral)"
 horizontal_alignment = 1
@@ -139,7 +140,7 @@ offset_left = 79.0
 offset_top = 11.0
 offset_right = 203.0
 offset_bottom = 65.0
-text = "Mood
+text = "[3] Mood
 Harvester
 (psy-residual)"
 horizontal_alignment = 1
@@ -151,15 +152,11 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "C
-O
-M
-B
+text = "M
 I
-N
+X
 E
-R
-S"
+R"
 
 [node name="CombinatorContainer" type="GridContainer" parent="HBoxContainer2"]
 unique_name_in_owner = true
@@ -184,33 +181,10 @@ offset_left = 90.0
 offset_top = 1.0
 offset_right = 194.0
 offset_bottom = 74.0
-text = "Super
+text = "[4] Super
 Aggregator
 Combinator
 9000"
-horizontal_alignment = 1
-
-[node name="AdvCombinerButton" type="Button" parent="HBoxContainer2/CombinatorContainer"]
-texture_filter = 3
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-icon = SubResource("AtlasTexture_djy10")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("3_2lpnr")
-factory = 4
-factory_scene = ExtResource("8_bbqvn")
-
-[node name="AdvCombinerLabel" type="Label" parent="HBoxContainer2/CombinatorContainer/AdvCombinerButton"]
-layout_mode = 2
-offset_left = 86.0
-offset_top = 5.0
-offset_right = 190.0
-offset_bottom = 78.0
-text = "Super Duper
-Aggregator
-Combinator
-36000"
 horizontal_alignment = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="."]
@@ -219,19 +193,17 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="HBoxContainer3"]
 layout_mode = 2
-text = "R
-E
-C
+text = "M
 I
-P
-E
-S"
+S
+C"
 
-[node name="GridContainer2" type="GridContainer" parent="HBoxContainer3"]
+[node name="MiscToolsContainer" type="GridContainer" parent="HBoxContainer3"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="RecipesButton" type="Button" parent="HBoxContainer3/GridContainer2"]
+[node name="RecipesButton" type="Button" parent="HBoxContainer3/MiscToolsContainer"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -240,17 +212,17 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_2lpnr")
 
-[node name="RecipeLabel" type="Label" parent="HBoxContainer3/GridContainer2/RecipesButton"]
+[node name="RecipeLabel" type="Label" parent="HBoxContainer3/MiscToolsContainer/RecipesButton"]
 layout_mode = 2
 offset_left = 96.0
 offset_top = 7.0
 offset_right = 160.0
 offset_bottom = 42.0
-text = "Recipe 
+text = "[5] Recipe 
 Book"
 horizontal_alignment = 1
 
-[node name="BulldozerButton" type="Button" parent="HBoxContainer3/GridContainer2"]
+[node name="BulldozerButton" type="Button" parent="HBoxContainer3/MiscToolsContainer"]
 texture_filter = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -259,7 +231,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_2lpnr")
 
-[node name="Label" type="Label" parent="HBoxContainer3/GridContainer2/BulldozerButton"]
+[node name="Label" type="Label" parent="HBoxContainer3/MiscToolsContainer/BulldozerButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -272,7 +244,32 @@ offset_right = 150.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Bulldozer"
+text = "[6] Bulldozer"
 
-[connection signal="pressed" from="HBoxContainer3/GridContainer2/RecipesButton" to="." method="_on_recipes_button_pressed"]
-[connection signal="pressed" from="HBoxContainer3/GridContainer2/BulldozerButton" to="." method="_on_bulldozer_button_pressed"]
+[node name="MagnifyingGlassButton" type="Button" parent="HBoxContainer3/MiscToolsContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = SubResource("AtlasTexture_a66k6")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_2lpnr")
+
+[node name="Label" type="Label" parent="HBoxContainer3/MiscToolsContainer/MagnifyingGlassButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 56.0
+offset_top = -8.0
+offset_right = 150.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "[7] Customer
+Inspection"
+
+[connection signal="pressed" from="HBoxContainer3/MiscToolsContainer/RecipesButton" to="." method="_on_recipes_button_pressed"]
+[connection signal="pressed" from="HBoxContainer3/MiscToolsContainer/BulldozerButton" to="." method="_on_bulldozer_button_pressed"]
+[connection signal="pressed" from="HBoxContainer3/MiscToolsContainer/MagnifyingGlassButton" to="." method="_on_magnifying_glass_button_pressed"]

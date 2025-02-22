@@ -9,9 +9,12 @@ var target_destination : Node2D
 var dangerous_limit : float = 0.5
 
 @export var widgets_desired : Array[Globals.products]
+var items_purchased : Array[Globals.products]
+var items_stolen : Array[Globals.products]
+
 
 enum states { MOVING_TO_INSPECTOR, DETAINED, MOVING_TO_SHOP, BROWSING, BUYING, LEAVING }
-var state = states.MOVING_TO_SHOP
+var state : states = states.MOVING_TO_SHOP
 
 @export var max_cycles_to_wait : int = 10
 var cycles_waited : int = 0
@@ -19,6 +22,9 @@ var cycles_waited : int = 0
 @onready var storage : StorageComponent = $StorageComponent
 
 signal desires_changed(new_desires)
+signal thefts_changed(items_stolen)
+signal purchases_changed(items_purchased)
+
 
 func _ready():
 	%CyclesRemaining.text = str(max_cycles_to_wait)
@@ -26,8 +32,11 @@ func _ready():
 	set_initial_sketchiness()
 	check_for_sketchiness()
 	create_requirements_list()
-	desires_changed.connect($RequirementsThoughtBubble._on_customer_desires_changed)
-
+	desires_changed.connect($RequirementsThoughtBubble._on_items_changed)
+	thefts_changed.connect($TheftsThoughtBubble._on_items_changed)
+	purchases_changed.connect($PurchasesThoughtBubble._on_items_changed)
+	$CustomerAvoidanceArea.show()
+	
 func create_requirements_list():
 	var req_text = ""
 	
@@ -45,6 +54,10 @@ func create_requirements_list():
 	$HoverPopupDisplay.text = "Customer Wants:\n" + req_text
 	$RequirementsThoughtBubble.update_icons(widgets_desired)
 
+
+#func get_thought_bubble():
+	#return $RequirementsThoughtBubble.duplicate()
+
 func set_initial_sketchiness():
 	sketchiness_factor = randf()
 
@@ -59,6 +72,7 @@ func add_sketchy_props():
 	
 
 func go_to_inspector(inspector : Node2D = null):
+	state = states.MOVING_TO_INSPECTOR
 	if inspector == null:
 		var inspectors = get_tree().get_nodes_in_group("inspection_areas")
 		if inspectors != null and not inspectors.is_empty():
@@ -87,6 +101,8 @@ func _process(delta):
 		states.BROWSING:
 			attempt_to_buy_product()
 		states.LEAVING:
+			pass
+		states.MOVING_TO_INSPECTOR:
 			pass
 		
 
@@ -162,22 +178,26 @@ func attempt_to_buy_product():
 	var requirements_met = true
 	for desired_product in widgets_desired:
 		var requirement : ProductWidgetRecipe = Globals.product_recipes[desired_product]
-		if target_destination is Marker2D:
+		if target_destination is Marker2D or target_destination.is_in_group("inspection_areas"):
 			return
 		if target_destination.storage.has_product_named(requirement.product_name):
 			if target_destination.has_method("sell"):
-				target_destination.sell(requirement.product_name, self)
-				cycles_waited = 0
+				target_destination.sell(requirement.product_name, self) # -> comes back in receive_product
+				cycles_waited = 0 # reset timer if they bought something?
 		else:
 			requirements_met = false
 		
 		if cycles_waited > max_cycles_to_wait:
-			leave()
+			if items_purchased.size() > 0:
+				go_to_inspector()
+			else:
+				leave() # Might be stealing?
 		%CyclesRemaining.text = str(max_cycles_to_wait - cycles_waited)
 		$CooldownTimer.start()
-		if requirements_met:
-			leave()
 	cycles_waited += 1
+	if requirements_met:
+		go_to_inspector()
+	
 
 func leave():
 	state = states.LEAVING
@@ -185,7 +205,7 @@ func leave():
 	if exit != null:
 		target_destination = exit
 
-func _on_selected_for_inspection(inspection_area):
+func _on_selected_for_inspection(_inspection_area):
 	#go_to_inspector(inspection_area)
 	pass
 
@@ -208,6 +228,22 @@ func receive_product(widget : FactoryProductWidget):
 	if not storage.is_full():
 		storage.receive_product(widget)
 		remove_product_from_desires_list(widget)
+		add_product_to_carrying_lists(widget)
+
+func add_product_to_carrying_lists(widget : FactoryProductWidget):
+	var product = Globals.get_product_by_name(widget.recipe.product_name)
+	if randf() < 0.8: # paid for it, no problem
+		Globals.cash += Utils.lookup_value(product)
+		items_purchased.push_back(product)
+		purchases_changed.emit(items_stolen)
+		$BoughtSomething.play()
+		
+	else: # stole the product
+		items_stolen.push_back(product)
+		thefts_changed.emit(items_stolen)
+		
+
+
 
 func remove_product_from_desires_list(widget : FactoryProductWidget):
 	widgets_desired.erase(Globals.get_product_by_name(widget.recipe.product_name))

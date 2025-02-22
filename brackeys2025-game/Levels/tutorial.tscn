@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8vf7xtonorpt"]
+[gd_scene load_steps=9 format=3 uid="uid://b8vf7xtonorpt"]
 
 [ext_resource type="Script" uid="uid://6igrotro1nqu" path="res://Levels/tutorial.gd" id="1_0xeif"]
 [ext_resource type="PackedScene" uid="uid://3j00pxhcg44x" path="res://Entities/factory_machines/organics_harvester_machine.tscn" id="1_lalqu"]
 [ext_resource type="PackedScene" uid="uid://cxnywkrqyk8qg" path="res://Entities/factory_machines/aggregator_combiner_machine.tscn" id="2_0xeif"]
 [ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="2_avars"]
 [ext_resource type="Resource" uid="uid://caw4fnmk3jd1a" path="res://Recipes/pineapple_recipe.tres" id="3_gdvy0"]
+[ext_resource type="PackedScene" uid="uid://dy4gk05yk6qgf" path="res://GUI/Widgets/help_button.tscn" id="3_j0mkc"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_mscth"]
 [ext_resource type="Resource" uid="uid://bsqo7o5y0dslv" path="res://Recipes/ash_recipe.tres" id="5_e312d"]
 
@@ -48,10 +49,18 @@ text = "Connect the Harvester to the Combinator
 horizontal_alignment = 1
 
 [node name="SkipButton" type="Button" parent="CanvasLayer/MarginContainer"]
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Skip >>"
+
+[node name="HelpButton" parent="CanvasLayer/MarginContainer" instance=ExtResource("3_j0mkc")]
+layout_mode = 2
+help_text = "Welcome to the World's most Beneficent Supply Chain Logistics and Fulfillment Company.
+Your role is to connect Manufacturing facilities to Distribution Centers.
+
+In this training scenario, please connect the output from the Green Building to the input on the other building."
 
 [node name="FactoryFloor" type="Node2D" parent="."]
 

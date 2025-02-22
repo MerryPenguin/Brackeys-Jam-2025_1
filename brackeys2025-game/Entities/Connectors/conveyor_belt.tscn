@@ -1,9 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnnapxyigsc4a"]
+[gd_scene load_steps=17 format=3 uid="uid://cnnapxyigsc4a"]
 
 [ext_resource type="Script" uid="uid://ceox10kxh50ne" path="res://Entities/Connectors/conveyor_belt.gd" id="1_kdglh"]
 [ext_resource type="Texture2D" uid="uid://b8deu46vvmph8" path="res://Assets/Images/placeholder/grey_rect.png" id="2_4tvtk"]
 [ext_resource type="Texture2D" uid="uid://bumtfh025v622" path="res://Assets/Images/Conveyor_belt.png" id="2_kdglh"]
 [ext_resource type="Texture2D" uid="uid://dt5evbetmdaak" path="res://Assets/Images/placeholder/tilemap_test.png" id="4_38ohr"]
+[ext_resource type="AudioStream" uid="uid://cdhmw5jylnjm0" path="res://Assets/sfx/Sounds/Actions/ACTION_ Belt Construction Long_SFX-001.wav" id="5_juvib"]
+[ext_resource type="AudioStream" uid="uid://b0swkslys1efx" path="res://Assets/sfx/Sounds/Actions/ACTION_ Belt Construction Long_SFX-002.wav" id="6_s34pb"]
+[ext_resource type="AudioStream" uid="uid://1doffkk5b1y6" path="res://Assets/sfx/Sounds/Actions/ACTION_ Belt Construction Long_SFX-003.wav" id="7_70sg1"]
+[ext_resource type="AudioStream" uid="uid://cp8g2pv2qm8er" path="res://Assets/sfx/Sounds/Actions/ACTION_ Belt Construction Short_SFX-001.wav" id="8_shqio"]
+[ext_resource type="AudioStream" uid="uid://cd5jul5w2evux" path="res://Assets/sfx/Sounds/Actions/ACTION_ Belt Construction Short_SFX-002.wav" id="9_cvpyi"]
+[ext_resource type="AudioStream" uid="uid://c5la415bayh7o" path="res://Assets/sfx/Sounds/Actions/ACTION_ Belt Construction Short_SFX-003.wav" id="10_msldw"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_4tvtk"]
 
@@ -74,6 +80,15 @@ terrain_set_0/terrain_0/color = Color(0.82, 0.164, 0.776267, 1)
 sources/0 = SubResource("TileSetAtlasSource_kdglh")
 sources/1 = SubResource("TileSetAtlasSource_20o04")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bdjg3"]
+streams_count = 6
+stream_0/stream = ExtResource("5_juvib")
+stream_1/stream = ExtResource("6_s34pb")
+stream_2/stream = ExtResource("7_70sg1")
+stream_3/stream = ExtResource("8_shqio")
+stream_4/stream = ExtResource("9_cvpyi")
+stream_5/stream = ExtResource("10_msldw")
+
 [node name="ConveyorBelt" type="Node2D"]
 script = ExtResource("1_kdglh")
 
@@ -98,3 +113,9 @@ z_index = -1
 texture_filter = 3
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_4tvtk")
+
+[node name="BuildingNoise" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_bdjg3")
+bus = &"SFX"
+
+[connection signal="finished" from="BuildingNoise" to="." method="_on_audio_stream_player_2d_finished"]

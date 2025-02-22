@@ -7,7 +7,7 @@ extends Node2D
 func _ready():
 	%RedLight.hide()
 	%GreenLight.hide()
-	$RandomInspectionTimer.start()
+	#$RandomInspectionTimer.start()
 
 func call_customer():
 	var customer = pick_random_customer()
@@ -22,11 +22,13 @@ func pick_random_customer():
 
 
 func _on_random_inspection_timer_timeout() -> void:
-	call_customer()
-	$RandomInspectionTimer.set_wait_time(randf_range(time_between_inspections*0.75, time_between_inspections*1.5))
-	$RandomInspectionTimer.start()
+	pass
+	#call_customer()
+	#$RandomInspectionTimer.set_wait_time(randf_range(time_between_inspections*0.75, time_between_inspections*1.5))
+	#$RandomInspectionTimer.start()
 
 func _on_inspection_completed():
-	%RedLight.hide()
-	%GreenLight.show()
+	pass
+	#%RedLight.hide()
+	#%GreenLight.show()
 	

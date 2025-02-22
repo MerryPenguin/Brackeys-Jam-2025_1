@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=3 format=3 uid="uid://b5xpis4hcix7q"]
 
-[ext_resource type="Texture2D" uid="uid://rr67c2oi7ipv" path="res://icon.svg" id="1_pc4bi"]
+[ext_resource type="Texture2D" uid="uid://cbdtf5mv0lisa" path="res://Assets/Images/placeholder/paradox.png" id="1_pc4bi"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_fof86"]
 
 [resource]

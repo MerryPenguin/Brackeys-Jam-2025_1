@@ -95,6 +95,7 @@ func load_scene(scene_path : String, in_background : bool = false) -> void:
 	_scene_path = scene_path
 	_background_loading = in_background
 	ResourceLoader.load_threaded_request(_scene_path)
+	#ResourceLoader.load(_scene_path) # web was complaining about pid
 	if _background_loading or not _check_loading_screen():
 		set_process(true)
 	else:

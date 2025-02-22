@@ -58,9 +58,10 @@ func _ready():
 func _setup_game_buttons():
 	super._setup_game_buttons()
 	if GameState.has_game_state():
-		%ContinueGameButton.show()
-		if level_select_packed_scene != null and GameState.get_max_level_reached() >= 0:
-			%LevelSelectButton.show()
+		#%ContinueGameButton.show()
+		if level_select_packed_scene != null and GameState.get_max_level_reached() >= 1:
+			#%LevelSelectButton.show()
+			pass # TODO: fix this, https://github.com/MerryPenguin/Brackeys-Jam-2025_1/issues/28
 
 func _on_continue_game_button_pressed():
 	load_game_scene()
