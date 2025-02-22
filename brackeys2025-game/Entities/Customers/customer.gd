@@ -205,7 +205,7 @@ func leave():
 	if exit != null:
 		target_destination = exit
 
-func _on_selected_for_inspection(inspection_area):
+func _on_selected_for_inspection(_inspection_area):
 	#go_to_inspector(inspection_area)
 	pass
 

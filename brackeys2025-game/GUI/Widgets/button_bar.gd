@@ -5,7 +5,7 @@
 
 extends Container
 
-@onready var containers = [ %HarvestersContainer, %CombinatorContainer ]
+@onready var containers = [ %HarvestersContainer, %CombinatorContainer, %MiscToolsContainer ]
 
 var active_tools : Array = [] # store a stack, so we can free old ones if user presses two buttons in a row
 

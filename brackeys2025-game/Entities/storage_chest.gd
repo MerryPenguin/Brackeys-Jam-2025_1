@@ -34,6 +34,7 @@ func receive_product(widget):
 	storage.receive_product(widget)
 	$ItemCountLabel.text = str(storage.get_total_held())
 	update_popup_text()
+	$EmptyLabel.hide()
 
 
 func sell(product_name : StringName, buyer:RovingCustomer):

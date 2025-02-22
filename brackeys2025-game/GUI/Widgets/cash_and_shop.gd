@@ -35,5 +35,5 @@ func _on_globals_cash_changed():
 	for button in %ButtonContainer.get_children():
 		button.disable_if_insufficient_funds(Globals.cash)
 
-func _on_factory_unlocked(building):
+func _on_factory_unlocked(_building):
 	hide_shopping_panel()

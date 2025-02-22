@@ -6,12 +6,12 @@ var state : states = states.UNDECIDED
 var customer : RovingCustomer
 
 func _ready():
-	pass
+	$InstructionsPopupPanel.hide()
 	
 
 func activate(new_customer : RovingCustomer):
 	customer = new_customer
-	customer.state == customer.states.DETAINED
+	customer.state = customer.states.DETAINED
 	populate_receipt(customer)
 	populate_order_form(customer)
 	populate_basket(customer)
@@ -90,3 +90,12 @@ func _on_deny_button_pressed() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name in ["approve", "deny"]:
 		queue_free()
+
+
+func _on_help_button_pressed() -> void:
+	$InstructionsPopupPanel.popup_centered(Vector2(512, 384))
+	
+
+
+func _on_instructions_close_button_pressed() -> void:
+	$InstructionsPopupPanel.hide()

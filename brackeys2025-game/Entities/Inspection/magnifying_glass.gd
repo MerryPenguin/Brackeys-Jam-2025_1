@@ -15,7 +15,7 @@ func _process(_delta):
 			#
 				## Should we also queue_free the customer? 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		$ScanNoise.play()
 		var potential_customers : Array = $Area2D.get_overlapping_bodies()

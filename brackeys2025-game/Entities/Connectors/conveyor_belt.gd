@@ -209,7 +209,7 @@ func add_new_conveyance(widget: FactoryProductWidget):
 		# add a pathfollower2d and give it a reference to the widget we're transporting
 		var new_package = ConveyorBeltPackage.new()
 		if path.curve.get_baked_length() > 1:
-			new_package.progress = 0.00001 ## Prevents BUG: a lot of errors about zero length interval.
+			new_package.progress = 0.00002 ## Prevents BUG: a lot of errors about zero length interval.
 			path.call_deferred("add_child", new_package) 
 		else:
 			breakpoint

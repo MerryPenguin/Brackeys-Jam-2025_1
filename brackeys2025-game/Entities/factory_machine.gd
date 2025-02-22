@@ -78,13 +78,13 @@ func requirements_met(recipe : ProductWidgetRecipe) -> bool:
 		return true # Harvesters don't need anything
 	else:
 		var requirements_count = recipe.required_inputs.size()
-		var requirements_met = 0
+		var products_found = 0
 		for product : Globals.products in recipe.required_inputs:
 
 			var requirement = Globals.product_recipes[product] # [recipe, quantity]
 			if storage.has_product_named(requirement.product_name):
-				requirements_met += 1
-		return requirements_met >= requirements_count
+				products_found += 1
+		return products_found >= requirements_count
 	
 
 func produce(recipe : ProductWidgetRecipe):

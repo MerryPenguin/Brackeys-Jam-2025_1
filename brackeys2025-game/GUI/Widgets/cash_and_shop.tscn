@@ -38,9 +38,9 @@ script = ExtResource("1_f3yru")
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 2
-offset_left = 149.0
+offset_left = 185.0
 offset_top = 64.0
-offset_right = 391.0
+offset_right = 455.0
 offset_bottom = 460.0
 grow_vertical = 2
 size_flags_horizontal = 8
@@ -73,6 +73,7 @@ factory_building = 2
 icon = SubResource("AtlasTexture_jrewt")
 
 [node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 text = "Shop for
 Upgrades"

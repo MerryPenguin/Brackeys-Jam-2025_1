@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmuqgwwm8fcko"]
+[gd_scene load_steps=8 format=3 uid="uid://bmuqgwwm8fcko"]
 
 [ext_resource type="PackedScene" uid="uid://pgsa53sfqf32" path="res://GUI/Widgets/inspection_criteria.tscn" id="1_15n47"]
 [ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="1_niwoe"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cr6s0syst023p" path="res://GUI/Widgets/button_bar.tscn" id="2_36ch1"]
 [ext_resource type="PackedScene" uid="uid://4a5gxnq21fpd" path="res://GUI/Widgets/cash_and_shop.tscn" id="4_r8uld"]
 [ext_resource type="PackedScene" uid="uid://d4naqeyt3eanm" path="res://GUI/stock_market.tscn" id="6_3herd"]
+[ext_resource type="PackedScene" uid="uid://dy4gk05yk6qgf" path="res://GUI/Widgets/help_button.tscn" id="7_drwp6"]
 
 [node name="HUDCanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_r8uld")
@@ -22,12 +23,6 @@ theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
-
-[node name="Header" type="Label" parent="HUDMarginControl"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "Select Factories from the buttons on the left, then place them on the floor.
-Deliver products to the storage bin on the right."
 
 [node name="InspectionCriteria" parent="HUDMarginControl" instance=ExtResource("1_15n47")]
 visible = false
@@ -57,3 +52,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
+
+[node name="HelpButton" parent="HUDMarginControl" instance=ExtResource("7_drwp6")]
+layout_mode = 2
+size_flags_horizontal = 4
+help_text = "Select Factories using the buttons on the left, then place them on the floor.
+
+Use conveyor belts to Deliver their products to the storage bin on the right.
+
+Use red factories (mixer / aggregators) to combine products into other products.
+
+Once customers have purchased items we have in stock, they will proceed to inspection.
+Please use the magnifying glass icon and click on a customer to ensure adequate loss-prevention.
+
+"

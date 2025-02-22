@@ -5,7 +5,7 @@ signal tool_freed(tool)
 func _ready():
 	tool_freed.connect(Globals.current_hud._on_tool_freed)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	global_position = get_global_mouse_position()
 	queue_redraw() # might not need this
 	if Input.is_action_just_pressed("interact"):
