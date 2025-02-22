@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://vndqdct5f50s"]
+[gd_scene load_steps=11 format=3 uid="uid://vndqdct5f50s"]
 
 [ext_resource type="Script" uid="uid://dcsinn3h1e0sr" path="res://Levels/level_01_main.gd" id="1_fpxqv"]
 [ext_resource type="PackedScene" uid="uid://d1m8n26ymxpa8" path="res://Entities/MobileWorker/factory_worker.tscn" id="2_7d5sh"]
 [ext_resource type="PackedScene" uid="uid://djc0g4iedr3xo" path="res://Entities/Customers/customer_spawner.tscn" id="4_64ewy"]
 [ext_resource type="PackedScene" uid="uid://cu7xb7uvvt414" path="res://Entities/StorageChest.tscn" id="6_fpxqv"]
 [ext_resource type="AudioStream" uid="uid://by8bqpohhprun" path="res://Assets/music/Factory 1 (With EQ).mp3" id="7_fpxqv"]
+[ext_resource type="PackedScene" uid="uid://cefa1nyfmqh7b" path="res://GUI/Marketing/TitlePageThumbnail.tscn" id="8_64ewy"]
 [ext_resource type="PackedScene" uid="uid://b01165no4oubu" path="res://Entities/Inspection/inspector.tscn" id="12_2g2ty"]
 [ext_resource type="PackedScene" uid="uid://bmuqgwwm8fcko" path="res://GUI/hud.tscn" id="13_2g2ty"]
 
@@ -88,3 +89,10 @@ shape = SubResource("RectangleShape2D_fpxqv")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="WallForCustomers"]
 position = Vector2(-168, 0)
 shape = SubResource("RectangleShape2D_64ewy")
+
+[node name="MarketingOverlays" type="CanvasLayer" parent="."]
+layer = 10
+visible = false
+
+[node name="TitlePageThumbnail" parent="MarketingOverlays" instance=ExtResource("8_64ewy")]
+visible = false
