@@ -21,26 +21,11 @@ func popup_widget_selection_panel():
 	$Panel.show()
 
 func populate_grid_container():
-	var recipes = get_recipes()
-	for recipe in recipes:
-		var new_button = Button.new()
-		
-		new_button.icon = recipe.icon
-		new_button.expand_icon = true
-		new_button.custom_minimum_size = Vector2(32, 32)
-		new_button.pressed.connect(_on_recipe_button_pressed.bind(recipe))
-		%Buttons.add_child(new_button)
-		
-func get_recipes():
-	var possible_recipes = dir_contents("res://Recipes/")
-	var actual_recipes = []
-	for possible_recipe_path : String in possible_recipes:
-		if possible_recipe_path.get_extension() == "tres":
-			var item = load(possible_recipe_path)
-			if item is ProductWidgetRecipe:
-				actual_recipes.push_back(item)
-	var unlocked_recipes = actual_recipes.filter(is_recipe_unlocked)
-	return unlocked_recipes
+	var buttons = %Buttons.get_children()
+	## NOTE: Workaround for bug in html export.. we need two buttons for each harvester already set up.
+	for new_button in buttons:
+		new_button.pressed.connect(_on_recipe_button_pressed.bind(new_button.recipe))
+
 
 func is_recipe(item):
 	return item is ProductWidgetRecipe
@@ -65,13 +50,13 @@ func dir_contents(path : String):
 		print("An error occurred when trying to access the path.")
 	return files
 
-func _on_recipe_button_pressed(recipe):
+func _on_recipe_button_pressed(recipe : ProductWidgetRecipe):
 	$Button.icon = recipe.icon
 	$Button.text = ""
 	$Panel.hide()
 	recipe_changed.emit(recipe)
 
-func _on_factory_machine_recipe_changed(recipe):
+func _on_factory_machine_recipe_changed(recipe : ProductWidgetRecipe):
 	$Button.icon = recipe.icon
 	$Button.text = ""
 	

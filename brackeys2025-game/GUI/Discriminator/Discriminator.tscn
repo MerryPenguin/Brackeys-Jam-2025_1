@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bbggorckkrcwt"]
+[gd_scene load_steps=20 format=3 uid="uid://bbggorckkrcwt"]
 
 [ext_resource type="Texture2D" uid="uid://b0nfglsibwgcu" path="res://Assets/Images/Discrim_step_ui.png" id="1_b4ljr"]
 [ext_resource type="Script" uid="uid://dc7277a80pwtv" path="res://GUI/Discriminator/discriminator.gd" id="1_goub6"]
@@ -12,9 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://d0xsx7l0f5g4g" path="res://Assets/Images/placeholder/red_button.png" id="6_u27os"]
 [ext_resource type="Texture2D" uid="uid://bpmv1mnw4qwn" path="res://Assets/Images/placeholder/green_button_pressed.png" id="8_14tjp"]
 [ext_resource type="Texture2D" uid="uid://bwk5uo3f2hol6" path="res://Assets/Images/placeholder/red_button_pressed.png" id="9_4buwt"]
-[ext_resource type="AudioStream" uid="uid://hifna4802l8t" path="res://Assets/sfx/Sounds/Actions/ACTION_Product Scan_SFX-001.wav" id="13_k32an"]
-[ext_resource type="AudioStream" uid="uid://bili3nvvxk8er" path="res://Assets/sfx/Sounds/Actions/ACTION_Product Scan_SFX-002.wav" id="14_qnlf6"]
-[ext_resource type="AudioStream" uid="uid://dxfu1indoghsb" path="res://Assets/sfx/Sounds/Actions/ACTION_Product Scan_SFX-003.wav" id="15_130tv"]
+[ext_resource type="AudioStream" uid="uid://csahe6iby7u6n" path="res://Assets/sfx/Sounds/Alarm/ALARM_Product Clear_SFX.wav" id="13_572pp"]
+[ext_resource type="AudioStream" uid="uid://c51bkjqunmjwd" path="res://Assets/sfx/Sounds/Alarm/Alarm_Error Alarm_SFX.wav" id="14_14tjp"]
 
 [sub_resource type="Animation" id="Animation_wqgwb"]
 length = 0.001
@@ -174,6 +173,18 @@ tracks/12/keys = {
 "update": 1,
 "values": [ExtResource("5_xf0th")]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("DenyNoise:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_a7t41"]
 resource_name = "approve"
@@ -275,6 +286,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [ExtResource("5_xf0th"), ExtResource("8_14tjp")]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ApproveNoise:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_xf0th"]
 resource_name = "deny"
@@ -367,26 +390,26 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("ApproveNoise:playing")
+tracks/7/path = NodePath("PanelContainer/DecisionButtons/GridContainer/DenyButton:icon")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("PanelContainer/DecisionButtons/GridContainer/DenyButton:icon")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("6_u27os"), ExtResource("9_4buwt")]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DenyNoise:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(-0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7lg1n"]
@@ -401,12 +424,6 @@ streams_count = 3
 stream_0/stream = ExtResource("4_3qtec")
 stream_1/stream = ExtResource("5_2prbc")
 stream_2/stream = ExtResource("6_iu62g")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_we81x"]
-streams_count = 3
-stream_0/stream = ExtResource("13_k32an")
-stream_1/stream = ExtResource("14_qnlf6")
-stream_2/stream = ExtResource("15_130tv")
 
 [node name="DiscriminatorInterface" type="Control"]
 layout_mode = 3
@@ -596,11 +613,15 @@ libraries = {
 [node name="StartupNoise" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_xf0th")
 autoplay = true
+bus = &"SFX"
 
 [node name="ApproveNoise" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_we81x")
+stream = ExtResource("13_572pp")
+bus = &"SFX"
 
 [node name="DenyNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_14tjp")
+bus = &"SFX"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="PanelContainer/DecisionButtons/GridContainer/ApproveButton" to="." method="_on_approve_button_pressed"]

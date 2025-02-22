@@ -114,7 +114,8 @@ texture_filter = 3
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_4tvtk")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="BuildingNoise" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_bdjg3")
+bus = &"SFX"
 
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
+[connection signal="finished" from="BuildingNoise" to="." method="_on_audio_stream_player_2d_finished"]

@@ -24,6 +24,7 @@ func spawn_discriminator(customer):
 	discriminator.activate(customer)
 	
 	
+	
 func _on_factory_unlocked(factory):
 	%ButtonBar._on_factory_unlocked(factory)
 

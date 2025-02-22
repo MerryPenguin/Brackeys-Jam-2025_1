@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2y6dn7deqgw2"]
+[gd_scene load_steps=3 format=3 uid="uid://b2y6dn7deqgw2"]
 
 [ext_resource type="Script" uid="uid://bjcv0bngd7xlv" path="res://Entities/factory_machines/interaction_button.gd" id="1_tfde3"]
+[ext_resource type="PackedScene" uid="uid://wqvwqnv3slvj" path="res://GUI/Widgets/recipe_button.tscn" id="2_80afb"]
 
 [node name="InteractionButton" type="Node2D"]
 z_index = 1
@@ -29,13 +30,16 @@ offset_top = -41.0
 offset_right = 93.0
 offset_bottom = -1.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
-layout_mode = 2
-
-[node name="Buttons" type="GridContainer" parent="Panel/ScrollContainer"]
+[node name="Buttons" type="GridContainer" parent="Panel"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+
+[node name="RecipeButton" parent="Panel/Buttons" instance=ExtResource("2_80afb")]
+layout_mode = 2
+
+[node name="RecipeButton2" parent="Panel/Buttons" instance=ExtResource("2_80afb")]
+layout_mode = 2
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

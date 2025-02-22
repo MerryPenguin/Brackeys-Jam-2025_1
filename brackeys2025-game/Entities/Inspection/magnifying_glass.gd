@@ -2,7 +2,7 @@ extends Node2D
 
 var has_target : bool
 
-func _process(delta):
+func _process(_delta):
 	global_position = get_global_mouse_position()
 	
 	if Input.is_action_just_pressed("interact"):

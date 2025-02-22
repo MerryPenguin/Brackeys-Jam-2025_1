@@ -18,3 +18,11 @@ region_rect = Rect2(2.52459, 3.3768, 12.6377, 13.7147)
 
 [node name="InputNode" parent="Connectors" index="0"]
 visible = false
+
+[node name="RecipeButton" parent="InteractionButton/Panel/Buttons" index="0"]
+product = 2
+
+[node name="RecipeButton2" parent="InteractionButton/Panel/Buttons" index="1"]
+product = 3
+
+[editable path="InteractionButton"]

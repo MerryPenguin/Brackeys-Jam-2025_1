@@ -35,7 +35,7 @@ func _ready():
 	validate_requirements()
 	setup_draw_mode()
 	add_point(get_global_mouse_position())
-	$AudioStreamPlayer2D.play()
+	$BuildingNoise.play()
 
 func validate_requirements():
 	if $Path2D.curve == null:
@@ -161,6 +161,7 @@ func stop_drawing():
 		var connector_reached : ConnectorNode = get_nearest_input_connector()
 		connector_reached.conveyor_belt = self
 		destination = connector_reached
+		$BuildingNoise.stop()
 		belt_connected.emit(self)
 	else:
 		# TODO: drop all the contents on the ground, flash and queue_free
@@ -226,4 +227,4 @@ func receive_product(widget):
 
 
 func _on_audio_stream_player_2d_finished() -> void:
-	$AudioStreamPlayer2D.play()
+	$BuildingNoise.play()

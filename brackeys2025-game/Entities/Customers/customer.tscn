@@ -139,8 +139,10 @@ list_type = 2
 
 [node name="BoughtSomething" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_06a7e")
+bus = &"SFX"
 
 [node name="Unhappy" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
