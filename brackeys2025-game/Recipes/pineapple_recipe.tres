@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=3 format=3 uid="uid://caw4fnmk3jd1a"]
 
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="1_oedb6"]
-[ext_resource type="Texture2D" uid="uid://dxa22uteuj8hv" path="res://Assets/Images/placeholder/pineapple-s.png" id="1_vgjaf"]
+[ext_resource type="Texture2D" uid="uid://dp01fojjm0n0t" path="res://Assets/Images/placeholder/pineapple-2.png" id="1_pblho"]
 
 [resource]
 script = ExtResource("1_oedb6")
 product_name = &"Pineapple"
 required_inputs = Array[int]([0, 2])
 production_time = 10.0
-icon = ExtResource("1_vgjaf")
+icon = ExtResource("1_pblho")
 recipe_type = 3
 default_sale_price = 50
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

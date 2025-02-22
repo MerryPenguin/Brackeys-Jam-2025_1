@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bbggorckkrcwt"]
+[gd_scene load_steps=25 format=3 uid="uid://bbggorckkrcwt"]
 
 [ext_resource type="Texture2D" uid="uid://b0nfglsibwgcu" path="res://Assets/Images/Discrim_step_ui.png" id="1_b4ljr"]
 [ext_resource type="Script" uid="uid://dc7277a80pwtv" path="res://GUI/Discriminator/discriminator.gd" id="1_goub6"]
@@ -11,9 +11,13 @@
 [ext_resource type="AudioStream" uid="uid://babcg0eppv4j" path="res://Assets/sfx/Sounds/Actions/ACTION_ Client Scan_SFX-003.wav" id="6_iu62g"]
 [ext_resource type="Texture2D" uid="uid://d0xsx7l0f5g4g" path="res://Assets/Images/placeholder/red_button.png" id="6_u27os"]
 [ext_resource type="Texture2D" uid="uid://bpmv1mnw4qwn" path="res://Assets/Images/placeholder/green_button_pressed.png" id="8_14tjp"]
+[ext_resource type="Texture2D" uid="uid://bespvk4a324jp" path="res://Assets/Images/placeholder/finger-l.png" id="8_qnlf6"]
 [ext_resource type="Texture2D" uid="uid://bwk5uo3f2hol6" path="res://Assets/Images/placeholder/red_button_pressed.png" id="9_4buwt"]
 [ext_resource type="AudioStream" uid="uid://csahe6iby7u6n" path="res://Assets/sfx/Sounds/Alarm/ALARM_Product Clear_SFX.wav" id="13_572pp"]
-[ext_resource type="AudioStream" uid="uid://c51bkjqunmjwd" path="res://Assets/sfx/Sounds/Alarm/Alarm_Error Alarm_SFX.wav" id="14_14tjp"]
+[ext_resource type="AudioStream" uid="uid://b1eq8t302psp7" path="res://Assets/sfx/Sounds/Alarm/Game_Alarm_SFX-004-2s-deny.wav.import.wav" id="14_572pp"]
+[ext_resource type="AudioStream" uid="uid://dp4ry5o064gjd" path="res://Assets/sfx/Sounds/Objects/OBJECT_Stamp_01_SFX.wav" id="16_130tv"]
+[ext_resource type="AudioStream" uid="uid://cqxet2gvecj03" path="res://Assets/sfx/Sounds/Objects/OBJECT_Stamp_02.wav" id="17_we81x"]
+[ext_resource type="AudioStream" uid="uid://3rv8fee7d142" path="res://Assets/sfx/Sounds/Objects/OBJECT_Stamp_03.wav" id="18_yjxon"]
 
 [sub_resource type="Animation" id="Animation_wqgwb"]
 length = 0.001
@@ -185,11 +189,35 @@ tracks/13/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("StampNoise:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("PanelContainer/Finger:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(436, -187)]
+}
 
 [sub_resource type="Animation" id="Animation_a7t41"]
 resource_name = "approve"
 length = 1.5
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -293,7 +321,31 @@ tracks/8/path = NodePath("ApproveNoise:playing")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PanelContainer/Finger:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(436, -187), Vector2(368, 50), Vector2(436, -187)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("StampNoise:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.75),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -301,7 +353,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_xf0th"]
 resource_name = "deny"
-length = 1.5
+length = 2.5
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -406,10 +458,34 @@ tracks/8/path = NodePath("DenyNoise:playing")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(-0.1),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("StampNoise:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PanelContainer/Finger:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(436, -187), Vector2(527, 46), Vector2(436, -187)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7lg1n"]
@@ -424,6 +500,12 @@ streams_count = 3
 stream_0/stream = ExtResource("4_3qtec")
 stream_1/stream = ExtResource("5_2prbc")
 stream_2/stream = ExtResource("6_iu62g")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wp27r"]
+streams_count = 3
+stream_0/stream = ExtResource("16_130tv")
+stream_1/stream = ExtResource("17_we81x")
+stream_2/stream = ExtResource("18_yjxon")
 
 [node name="DiscriminatorInterface" type="Control"]
 layout_mode = 3
@@ -607,6 +689,14 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
+[node name="Finger" type="Node2D" parent="PanelContainer"]
+position = Vector2(436, -187)
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/Finger"]
+rotation = 3.14159
+scale = Vector2(4, 4)
+texture = ExtResource("8_qnlf6")
+
 [node name="Pen" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(224, 128)
@@ -630,12 +720,15 @@ stream = ExtResource("13_572pp")
 bus = &"SFX"
 
 [node name="DenyNoise" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_14tjp")
+stream = ExtResource("14_572pp")
+bus = &"SFX"
+
+[node name="StampNoise" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_wp27r")
 bus = &"SFX"
 
 [node name="InstructionsPopupPanel" type="PopupPanel" parent="."]
 size = Vector2i(548, 492)
-visible = true
 
 [node name="MarginContainer" type="MarginContainer" parent="InstructionsPopupPanel"]
 offset_right = 548.0

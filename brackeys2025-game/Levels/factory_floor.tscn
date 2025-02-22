@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bmuqgwwm8fcko" path="res://GUI/hud.tscn" id="13_2g2ty"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpxqv"]
-size = Vector2(20, 352)
+size = Vector2(346, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64ewy"]
 size = Vector2(336, 20)
@@ -40,7 +40,8 @@ color = Color(0.196329, 0.152901, 0.138424, 1)
 y_sort_enabled = true
 
 [node name="CustomerSpawner" parent="Customers" instance=ExtResource("4_64ewy")]
-position = Vector2(1149, 6)
+position = Vector2(1040, -496)
+rotation = -0.629813
 
 [node name="Storage" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -79,7 +80,8 @@ bus = &"Music"
 position = Vector2(1168, 672)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallForCustomers"]
-position = Vector2(0, -176)
+position = Vector2(160, -48)
+rotation = -0.332823
 shape = SubResource("RectangleShape2D_fpxqv")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="WallForCustomers"]

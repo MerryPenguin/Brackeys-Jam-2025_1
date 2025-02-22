@@ -18,6 +18,8 @@ func _process(_delta: float) -> void:
 func destroy_buildings_under_cursor():
 	var bodies = $Area2D.get_overlapping_bodies()
 	for body in bodies:
+		if body.owner == null:
+			continue
 		if body.owner.is_in_group("harvesters") or body.owner.is_in_group("aggregators"):
 			body.owner.destruct()
 	

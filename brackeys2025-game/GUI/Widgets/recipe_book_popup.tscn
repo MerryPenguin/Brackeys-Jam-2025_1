@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ddmw8ctke14gl"]
+[gd_scene load_steps=28 format=3 uid="uid://ddmw8ctke14gl"]
 
 [ext_resource type="Script" uid="uid://ck463osk2dw8t" path="res://GUI/Widgets/recipe_book_popup.gd" id="1_b5rhh"]
 [ext_resource type="Texture2D" uid="uid://cv7myqqm0ja6u" path="res://Assets/Images/Factories.png" id="2_v8hw0"]
@@ -12,14 +12,15 @@
 [ext_resource type="Texture2D" uid="uid://d0vm5h16qyc1b" path="res://Assets/Images/placeholder/artifact.png" id="10_p6ihj"]
 [ext_resource type="Texture2D" uid="uid://c7ie3ho42yiwn" path="res://Assets/Images/placeholder/plus.png" id="11_foj40"]
 [ext_resource type="Texture2D" uid="uid://2bp6ti2rae5c" path="res://Assets/Images/placeholder/gunpowder.png" id="12_c1jkh"]
-[ext_resource type="Texture2D" uid="uid://dxa22uteuj8hv" path="res://Assets/Images/placeholder/pineapple-s.png" id="12_tiqkg"]
+[ext_resource type="Texture2D" uid="uid://dp01fojjm0n0t" path="res://Assets/Images/placeholder/pineapple-2.png" id="13_c1jkh"]
 [ext_resource type="Texture2D" uid="uid://c50mumkbl8mp6" path="res://Assets/Images/placeholder/fruitphone.png" id="13_qjbi5"]
-[ext_resource type="Texture2D" uid="uid://rr67c2oi7ipv" path="res://icon.svg" id="14_xak70"]
 [ext_resource type="Texture2D" uid="uid://dlxvo7os0cbw7" path="res://Assets/Images/placeholder/epistemology.png" id="15_0tdsp"]
 [ext_resource type="Texture2D" uid="uid://dij3tbxt7fdrt" path="res://Assets/Images/placeholder/grenade.png" id="16_4ah1o"]
 [ext_resource type="Texture2D" uid="uid://ng0mv1hhegv6" path="res://Assets/Images/placeholder/banana.png" id="17_57eu8"]
 [ext_resource type="Texture2D" uid="uid://cm85dw602l71t" path="res://Assets/Images/placeholder/pacifier.png" id="18_lhryc"]
 [ext_resource type="Texture2D" uid="uid://drx17uee0x3vb" path="res://Assets/Images/placeholder/raygun.png" id="19_ci5d8"]
+[ext_resource type="Texture2D" uid="uid://bymd2gqx0hdkx" path="res://Assets/Images/placeholder/singularity.png" id="20_g1488"]
+[ext_resource type="Texture2D" uid="uid://cbdtf5mv0lisa" path="res://Assets/Images/placeholder/paradox.png" id="21_fnjiw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8hw0"]
 bg_color = Color(0.632518, 0.542487, 0.493417, 1)
@@ -51,10 +52,8 @@ visible = true
 script = ExtResource("1_b5rhh")
 
 [node name="Control" type="MarginContainer" parent="."]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 836.0
-offset_bottom = 672.0
+offset_right = 840.0
+offset_bottom = 676.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 2
@@ -386,7 +385,7 @@ columns = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("12_tiqkg")
+texture = ExtResource("13_c1jkh")
 expand_mode = 3
 stretch_mode = 5
 
@@ -489,7 +488,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("12_tiqkg")
+texture = ExtResource("13_c1jkh")
 expand_mode = 3
 stretch_mode = 5
 
@@ -910,7 +909,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("12_tiqkg")
+texture = ExtResource("13_c1jkh")
 expand_mode = 3
 stretch_mode = 5
 
@@ -942,7 +941,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("14_xak70")
+texture = ExtResource("20_g1488")
 expand_mode = 3
 stretch_mode = 5
 
@@ -1032,7 +1031,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("14_xak70")
+texture = ExtResource("21_fnjiw")
 expand_mode = 3
 stretch_mode = 5
 
