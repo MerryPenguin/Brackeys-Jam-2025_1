@@ -94,6 +94,17 @@ func _on_bulldozer_button_pressed() -> void:
 	else:
 		active_bulldozer.queue_free()
 
+func _on_magnifying_glass_button_pressed() -> void:
+	clear_previous_tools()
+	var active_magnifying_glass = get_tree().get_first_node_in_group("magnifiers")
+	if active_magnifying_glass == null:
+		var new_magnifying_glass = preload("res://Entities/Inspection/magnifying_glass.tscn").instantiate()
+		get_tree().get_root().add_child(new_magnifying_glass)
+		active_tools.push_back(new_magnifying_glass)
+	else:
+		active_magnifying_glass.queue_free() # user clicked the button again
+
+
 func clear_previous_tools():
 	for tool in active_tools:
 		if tool != null and is_instance_valid(tool):

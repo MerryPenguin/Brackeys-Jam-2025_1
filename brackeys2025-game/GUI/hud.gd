@@ -18,6 +18,12 @@ func spawn_pause_menu():
 	var pause_menu = preload("res://GUI/maaack_template/scenes/overlaid_menus/pause_menu.tscn").instantiate()
 	add_child(pause_menu)
 	
+func spawn_discriminator(customer):
+	var discriminator = preload("res://GUI/Discriminator/discriminator.tscn").instantiate()
+	add_child(discriminator)
+	discriminator.activate(customer)
+	
+	
 func _on_factory_unlocked(factory):
 	%ButtonBar._on_factory_unlocked(factory)
 

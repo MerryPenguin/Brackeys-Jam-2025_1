@@ -9,6 +9,9 @@ var target_destination : Node2D
 var dangerous_limit : float = 0.5
 
 @export var widgets_desired : Array[Globals.products]
+var items_purchased : Array[Globals.products]
+var items_stolen : Array[Globals.products]
+
 
 enum states { MOVING_TO_INSPECTOR, DETAINED, MOVING_TO_SHOP, BROWSING, BUYING, LEAVING }
 var state = states.MOVING_TO_SHOP
@@ -19,6 +22,9 @@ var cycles_waited : int = 0
 @onready var storage : StorageComponent = $StorageComponent
 
 signal desires_changed(new_desires)
+signal thefts_changed(items_stolen)
+signal purchases_changed(items_purchased)
+
 
 func _ready():
 	%CyclesRemaining.text = str(max_cycles_to_wait)
@@ -26,8 +32,11 @@ func _ready():
 	set_initial_sketchiness()
 	check_for_sketchiness()
 	create_requirements_list()
-	desires_changed.connect($RequirementsThoughtBubble._on_customer_desires_changed)
-
+	desires_changed.connect($RequirementsThoughtBubble._on_items_changed)
+	thefts_changed.connect($TheftsThoughtBubble._on_items_changed)
+	purchases_changed.connect($PurchasesThoughtBubble._on_items_changed)
+	$CustomerAvoidanceArea.show()
+	
 func create_requirements_list():
 	var req_text = ""
 	
@@ -44,6 +53,10 @@ func create_requirements_list():
 		
 	$HoverPopupDisplay.text = "Customer Wants:\n" + req_text
 	$RequirementsThoughtBubble.update_icons(widgets_desired)
+
+
+#func get_thought_bubble():
+	#return $RequirementsThoughtBubble.duplicate()
 
 func set_initial_sketchiness():
 	sketchiness_factor = randf()
@@ -166,7 +179,7 @@ func attempt_to_buy_product():
 			return
 		if target_destination.storage.has_product_named(requirement.product_name):
 			if target_destination.has_method("sell"):
-				target_destination.sell(requirement.product_name, self)
+				target_destination.sell(requirement.product_name, self) # -> comes back in receive_product
 				cycles_waited = 0
 		else:
 			requirements_met = false
@@ -208,6 +221,19 @@ func receive_product(widget : FactoryProductWidget):
 	if not storage.is_full():
 		storage.receive_product(widget)
 		remove_product_from_desires_list(widget)
+
+func add_product_to_carrying_lists(widget : FactoryProductWidget):
+	var product = Globals.get_product_by_name(widget.recipe.product_name)
+	if randf() < 0.8: # paid for it, no problem
+		Globals.cash += Utils.lookup_value(product)
+		items_purchased += product
+		purchases_changed.emit(items_stolen)
+		
+	else: # stole the product
+		items_stolen += product
+		thefts_changed.emit(items_stolen)
+
+
 
 func remove_product_from_desires_list(widget : FactoryProductWidget):
 	widgets_desired.erase(Globals.get_product_by_name(widget.recipe.product_name))

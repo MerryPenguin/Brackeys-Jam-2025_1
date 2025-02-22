@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://qpj0lhk2owvc" path="res://Entities/Customers/requirements_thought_bubble.gd" id="1_2d1rb"]
 
-[node name="RequirementsThoughtBubble" type="Control"]
+[node name="ItemListThoughtBubble" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

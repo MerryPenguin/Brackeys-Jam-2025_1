@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbggorckkrcwt"]
+
+[ext_resource type="Texture2D" uid="uid://b0nfglsibwgcu" path="res://Assets/Images/Discrim_step_ui.png" id="1_b4ljr"]
+[ext_resource type="Script" uid="uid://dc7277a80pwtv" path="res://GUI/Discriminator/discriminator.gd" id="1_goub6"]
+
+[node name="DiscriminatorInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_goub6")
+metadata/_edit_lock_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Pen" type="Sprite2D" parent="PanelContainer"]
+position = Vector2(224, 128)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b4ljr")
+region_enabled = true
+region_rect = Rect2(36.8735, 65.1969, 9.48764, 43.2531)
+
+[node name="MagnifyingGlass" type="Sprite2D" parent="PanelContainer"]
+position = Vector2(112, 96)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b4ljr")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="ApprovedStamp" type="Sprite2D" parent="PanelContainer"]
+position = Vector2(432, 80)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b4ljr")
+region_enabled = true
+region_rect = Rect2(97.3667, 51.1796, 78.3664, 32.482)
+
+[node name="DeniedStamp" type="Sprite2D" parent="PanelContainer"]
+position = Vector2(416, 224)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b4ljr")
+region_enabled = true
+region_rect = Rect2(97.3667, 84.3363, 60.2529, 32.3888)
+
+[node name="Scroll" type="Sprite2D" parent="PanelContainer"]
+position = Vector2(464, 464)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b4ljr")
+region_enabled = true
+region_rect = Rect2(92.0187, 119.084, 68.5761, 85.1793)
+
+[node name="Tree" type="Tree" parent="PanelContainer/Scroll"]
+offset_right = 16.0
+offset_bottom = 17.0
+
+[node name="ID" type="Sprite2D" parent="PanelContainer"]
+position = Vector2(144, 320)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b4ljr")
+region_enabled = true
+region_rect = Rect2(32.529, 114.513, 57.0006, 41.2376)
+
+[node name="Passport" type="Sprite2D" parent="PanelContainer"]
+position = Vector2(160, 512)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b4ljr")
+region_enabled = true
+region_rect = Rect2(33.5365, 159.528, 56.8512, 40.9388)
+
+[node name="OrderForm" type="Sprite2D" parent="PanelContainer"]
+unique_name_in_owner = true
+position = Vector2(816, 416)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b4ljr")
+region_enabled = true
+region_rect = Rect2(163.009, 84.097, 100.136, 117.027)
+
+[node name="marker" type="Marker2D" parent="PanelContainer/OrderForm"]
+position = Vector2(-32, -16)
+
+[node name="AuthSeals" type="Sprite2D" parent="PanelContainer"]
+position = Vector2(720, 96)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b4ljr")
+region_enabled = true
+region_rect = Rect2(195.963, 43.7115, 40.9388, 39.2206)
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="CloseButton" type="Button" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Close"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/CloseButton" to="." method="_on_close_button_pressed"]

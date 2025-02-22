@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cr6s0syst023p"]
+[gd_scene load_steps=21 format=3 uid="uid://cr6s0syst023p"]
 
 [ext_resource type="Script" uid="uid://b3lw358sa2bi4" path="res://GUI/Widgets/button_bar.gd" id="1_birog"]
 [ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="1_sfx4s"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cxnywkrqyk8qg" path="res://Entities/factory_machines/aggregator_combiner_machine.tscn" id="7_hsg8g"]
 [ext_resource type="PackedScene" uid="uid://bii0ko6ggnccs" path="res://Entities/factory_machines/super_aggregator_combiner_machine.tscn" id="8_bbqvn"]
 [ext_resource type="Texture2D" uid="uid://bssrthkd53wcr" path="res://Assets/Images/placeholder/bulldozer.png" id="12_djy10"]
+[ext_resource type="Texture2D" uid="uid://b0nfglsibwgcu" path="res://Assets/Images/Discrim_step_ui.png" id="12_v35dp"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_c3j1w"]
 device = -1
@@ -39,6 +40,10 @@ region = Rect2(32.6826, 3.23319, 15.2944, 14.1456)
 [sub_resource type="AtlasTexture" id="AtlasTexture_djy10"]
 atlas = ExtResource("2_bbqvn")
 region = Rect2(17.3882, 18.5276, 14.5046, 15.1508)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a66k6"]
+atlas = ExtResource("12_v35dp")
+region = Rect2(3.74719, 65.7528, 30.5547, 30.9282)
 
 [node name="ButtonBar" type="VBoxContainer" groups=["button_bar"]]
 anchors_preset = 4
@@ -274,5 +279,29 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Bulldozer"
 
+[node name="MagnifyingGlassButton" type="Button" parent="HBoxContainer3/GridContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+icon = SubResource("AtlasTexture_a66k6")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_2lpnr")
+
+[node name="Label" type="Label" parent="HBoxContainer3/GridContainer2/MagnifyingGlassButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 56.0
+offset_top = -8.0
+offset_right = 150.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Inspection"
+
 [connection signal="pressed" from="HBoxContainer3/GridContainer2/RecipesButton" to="." method="_on_recipes_button_pressed"]
 [connection signal="pressed" from="HBoxContainer3/GridContainer2/BulldozerButton" to="." method="_on_bulldozer_button_pressed"]
+[connection signal="pressed" from="HBoxContainer3/GridContainer2/MagnifyingGlassButton" to="." method="_on_magnifying_glass_button_pressed"]

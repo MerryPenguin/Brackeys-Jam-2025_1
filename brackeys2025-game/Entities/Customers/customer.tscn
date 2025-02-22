@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cm8v5aepcle5p"]
+[gd_scene load_steps=11 format=3 uid="uid://cm8v5aepcle5p"]
 
 [ext_resource type="Script" uid="uid://1gnswtuhuqxq" path="res://Entities/Customers/customer.gd" id="1_tronh"]
 [ext_resource type="PackedScene" uid="uid://dfqi3t3sg40rk" path="res://Components/storage_component.tscn" id="2_hhold"]
@@ -7,36 +7,44 @@
 [ext_resource type="PackedScene" uid="uid://bjteivr6q34df" path="res://Props/hover_popup_display.tscn" id="4_8yoh6"]
 [ext_resource type="PackedScene" uid="uid://dvr7ipukonuwm" path="res://Entities/Customers/requirements_thought_bubble.tscn" id="6_rd0ff"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tronh"]
-radius = 16.0
-height = 32.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_rd0ff"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g53iw"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n7v0p"]
+radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8yoh6"]
 radius = 69.3542
 
 [node name="Customer" type="CharacterBody2D" groups=["Customers"]]
 y_sort_enabled = true
-collision_layer = 0
 script = ExtResource("1_tronh")
 speed = 120.0
 max_cycles_to_wait = 3
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rd0ff")
+
 [node name="StorageComponent" parent="." instance=ExtResource("2_hhold")]
 tooltip_disabled = true
 
+[node name="CollisionShape2D" parent="StorageComponent/HoverArea" index="0"]
+shape = SubResource("CircleShape2D_g53iw")
+
 [node name="RedLight" type="Polygon2D" parent="."]
+visible = false
 show_behind_parent = true
 color = Color(1, 0.568627, 0, 0.368627)
 polygon = PackedVector2Array(-18, 21, -34, 1, -34, -25, -15, -49, 18, -49, 39, -27, 38, 6, 18, 20)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_tronh")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 3
-position = Vector2(1, -15)
+position = Vector2(0, -2)
 scale = Vector2(4, 4)
 texture = ExtResource("3_rd0ff")
 
@@ -48,10 +56,15 @@ position = Vector2(0, -10)
 text = "Customer Wants:
 "
 
+[node name="CollisionShape2D" parent="HoverPopupDisplay" index="0"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_n7v0p")
+
 [node name="CooldownTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="CustomerAvoidanceArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerAvoidanceArea"]
 position = Vector2(1, -12)
@@ -103,5 +116,22 @@ offset_top = -106.0
 offset_right = 17.0
 offset_bottom = -74.0
 
+[node name="PurchasesThoughtBubble" parent="." instance=ExtResource("6_rd0ff")]
+offset_left = 18.0
+offset_top = 20.0
+offset_right = 50.0
+offset_bottom = 52.0
+list_type = 1
+
+[node name="TheftsThoughtBubble" parent="." instance=ExtResource("6_rd0ff")]
+offset_left = 12.0
+offset_top = -39.0
+offset_right = 44.0
+offset_bottom = -7.0
+list_type = 2
+
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+
+[editable path="StorageComponent"]
+[editable path="HoverPopupDisplay"]

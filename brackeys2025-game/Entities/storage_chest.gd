@@ -41,7 +41,7 @@ func sell(product_name : StringName, buyer:RovingCustomer):
 	# remove widget from inventory, give it to customer
 	if storage.has_product_named(product_name):
 		storage.give_product_by_name(product_name, buyer)
-		Globals.cash += lookup_value(product_name)
+		#Globals.cash += lookup_value(product_name)
 
 func lookup_value(product_name) -> int:
 	for product_num in Globals.products.values():

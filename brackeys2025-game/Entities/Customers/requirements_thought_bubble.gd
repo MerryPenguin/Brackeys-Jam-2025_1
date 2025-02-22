@@ -1,9 +1,12 @@
 extends Control
 
-func update_icons(desired_products : Array[Globals.products]):
+enum list_types { DESIRES, PURCHASED, STOLEN }
+@export var list_type = list_types.DESIRES
+
+func update_icons(products : Array[Globals.products]):
 	for previous_icon in $GridContainer.get_children():
 		previous_icon.queue_free()
-	for product in desired_products:
+	for product in products:
 		$GridContainer.add_child(make_icon(Globals.product_recipes[product]))
 
 func make_icon(recipe) -> TextureRect:
@@ -14,6 +17,6 @@ func make_icon(recipe) -> TextureRect:
 	new_texture_rect.texture = recipe.icon
 	return new_texture_rect
 	
-func _on_customer_desires_changed(desires):
-	update_icons(desires)
+func _on_items_changed(new_item_list : Array[Globals.products]):
+	update_icons(new_item_list)
 	
