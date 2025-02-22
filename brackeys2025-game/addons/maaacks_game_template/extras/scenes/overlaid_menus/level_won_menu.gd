@@ -5,6 +5,13 @@ signal continue_pressed
 signal restart_pressed
 signal main_menu_pressed
 
+@export var text : String = "Level Won":
+	set(v):
+		text = v
+		%DescriptionLabel.text = v
+	get:
+		return text
+
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if $ConfirmMainMenu.visible:
