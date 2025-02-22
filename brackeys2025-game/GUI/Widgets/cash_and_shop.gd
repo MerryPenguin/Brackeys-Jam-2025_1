@@ -20,7 +20,8 @@ func _on_button_pressed() -> void:
 func show_shopping_panel():
 	$Button.text = "Close"
 	var tween = create_tween()
-	tween.tween_property(%ShoppingPanel, "position", initial_panel_pos + Vector2.LEFT*%ShoppingPanel.size.x , 0.2 )
+	var offset_x = 128
+	tween.tween_property(%ShoppingPanel, "position", initial_panel_pos + Vector2.LEFT*(%ShoppingPanel.size.x + offset_x), 0.2 )
 	$SlideNoise.play()
 	panel_open = true
 	
