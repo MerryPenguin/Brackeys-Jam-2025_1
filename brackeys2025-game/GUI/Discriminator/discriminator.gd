@@ -16,12 +16,12 @@ func activate(new_customer : RovingCustomer):
 	populate_order_form(customer)
 	populate_basket(customer)
 
-func populate_order_form(customer : RovingCustomer):
+func populate_order_form(new_customer : RovingCustomer):
 	# fill it with random product icons
 	var item_list = []
-	item_list.append_array(customer.widgets_desired) # Take this out later?
-	item_list.append_array(customer.items_purchased)
-	item_list.append_array(customer.items_stolen)
+	item_list.append_array(new_customer.widgets_desired) # Take this out later?
+	item_list.append_array(new_customer.items_purchased)
+	item_list.append_array(new_customer.items_stolen)
 	var new_grid = GridContainer.new()
 	new_grid.columns = 2
 	%OrderForm.get_node("marker").add_child(new_grid)
@@ -29,10 +29,10 @@ func populate_order_form(customer : RovingCustomer):
 	for item in item_list:
 		new_grid.add_child(generate_single_item(item))
 
-func populate_basket(customer: RovingCustomer):
+func populate_basket(new_customer: RovingCustomer):
 	var item_list = []
-	item_list.append_array(customer.items_purchased)
-	item_list.append_array(customer.items_stolen)
+	item_list.append_array(new_customer.items_purchased)
+	item_list.append_array(new_customer.items_stolen)
 	var new_grid = GridContainer.new()
 	new_grid.columns = 2
 	%Basket.add_child(new_grid)
@@ -49,7 +49,7 @@ func generate_single_item(product : Globals.products) -> TextureRect:
 	return new_texture_rect
 	
 	
-func populate_receipt(customer : RovingCustomer):
+func populate_receipt(new_customer : RovingCustomer):
 	var receipt_tree : Tree = %Receipt.get_node("Tree")
 	receipt_tree.columns = 2
 	var root = receipt_tree.create_item()
@@ -58,7 +58,7 @@ func populate_receipt(customer : RovingCustomer):
 	header.set_text(0, "Item:")
 	header.set_text(1, "Price Paid")
 	
-	for item in customer.items_purchased:
+	for item in new_customer.items_purchased:
 		var recipe = Globals.product_recipes[item]
 		var cost = Utils.lookup_value(item)
 		if cost == null or cost == 0:
