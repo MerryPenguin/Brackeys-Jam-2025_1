@@ -524,6 +524,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Checklist" type="Node2D" parent="PanelContainer"]
+position = Vector2(95, 111)
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/Checklist"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b4ljr")
+region_enabled = true
+region_rect = Rect2(47.7001, 59.5857, 41.3333, 47.8519)
+
 [node name="OrderForm" type="Node2D" parent="PanelContainer"]
 unique_name_in_owner = true
 

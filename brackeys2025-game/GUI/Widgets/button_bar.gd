@@ -54,7 +54,7 @@ func _on_button_pressed(button : Button): # Factories
 	elif "Combiner" in button.name:
 		spawn_factory_blueprint(button.factory_scene)
 	elif "Recipes" in button.name:
-		print("player wants to open recipe book")
+		pass
 	
 
 func spawn_factory_blueprint(factory_scene):
@@ -67,8 +67,12 @@ func spawn_factory_blueprint(factory_scene):
 
 
 func _on_recipes_button_pressed() -> void:
-	if active_tools.size() > 0 and active_tools[-1].is_in_group("recipe_book"):
-		active_tools[-1]._on_button_pressed() # close the recipe book
+	
+	var book = get_tree().get_first_node_in_group("recipe_book")
+	if book != null:
+		# This never comes up because the book frees itself on hide
+		book.queue_free()
+		clear_previous_tools()
 	else:
 		clear_previous_tools()
 		var new_recipe_book = preload("res://GUI/Widgets/recipe_book_popup.tscn").instantiate()
