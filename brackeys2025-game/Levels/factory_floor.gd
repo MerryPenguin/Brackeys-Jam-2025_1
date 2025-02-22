@@ -3,7 +3,7 @@
 # should have a couple of helper functions for instantiating temporary nodes into the correct containers
 
 
-extends Node2D
+class_name FactoryFloor extends Node2D
 
 
 func _init():
@@ -34,3 +34,14 @@ func spawn_factory(factory : FactoryMachine, location : Vector2):
 	$Machines.add_child(factory)
 	factory.global_position = location
 	
+func show_level_won_overlay(text):
+	var level_won_overlay = preload("res://GUI/maaack_template/scenes/overlaid_menus/level_won_menu.tscn").instantiate()	
+	level_won_overlay.text = text
+	add_sibling(level_won_overlay)
+	level_won_overlay.continue_pressed.connect(_on_next_level_requested)
+
+func _on_next_level_requested():
+	# TODO: This needs to emit something to a level manager from Maaack's template.
+	# so the system knows which levels are complete.
+	GameState.set_current_level(1)
+	SceneLoader.load_scene("res://Levels/factory_floor.tscn")
