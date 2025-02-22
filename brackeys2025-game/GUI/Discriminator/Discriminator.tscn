@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbggorckkrcwt"]
+[gd_scene load_steps=4 format=3 uid="uid://bbggorckkrcwt"]
 
 [ext_resource type="Texture2D" uid="uid://b0nfglsibwgcu" path="res://Assets/Images/Discrim_step_ui.png" id="1_b4ljr"]
 [ext_resource type="Script" uid="uid://dc7277a80pwtv" path="res://GUI/Discriminator/discriminator.gd" id="1_goub6"]
+[ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="3_cfvcw"]
 
 [node name="DiscriminatorInterface" type="Control"]
 layout_mode = 3
@@ -50,16 +51,32 @@ texture = ExtResource("1_b4ljr")
 region_enabled = true
 region_rect = Rect2(97.3667, 84.3363, 60.2529, 32.3888)
 
-[node name="Scroll" type="Sprite2D" parent="PanelContainer"]
-position = Vector2(464, 464)
+[node name="Receipt" type="Node2D" parent="PanelContainer"]
+unique_name_in_owner = true
+position = Vector2(304, 304)
+
+[node name="ScrollSprite" type="Sprite2D" parent="PanelContainer/Receipt"]
+position = Vector2(136, 170)
 scale = Vector2(4, 4)
 texture = ExtResource("1_b4ljr")
 region_enabled = true
 region_rect = Rect2(92.0187, 119.084, 68.5761, 85.1793)
 
-[node name="Tree" type="Tree" parent="PanelContainer/Scroll"]
-offset_right = 16.0
-offset_bottom = 17.0
+[node name="Tree" type="Tree" parent="PanelContainer/Receipt"]
+custom_minimum_size = Vector2(192, 192)
+offset_left = 32.0
+offset_top = 80.0
+offset_right = 160.0
+offset_bottom = 272.0
+theme = ExtResource("3_cfvcw")
+
+[node name="Label" type="Label" parent="PanelContainer/Receipt"]
+offset_left = 80.0
+offset_top = 64.0
+offset_right = 148.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Receipt"
 
 [node name="ID" type="Sprite2D" parent="PanelContainer"]
 position = Vector2(144, 320)
@@ -75,8 +92,10 @@ texture = ExtResource("1_b4ljr")
 region_enabled = true
 region_rect = Rect2(33.5365, 159.528, 56.8512, 40.9388)
 
-[node name="OrderForm" type="Sprite2D" parent="PanelContainer"]
+[node name="OrderForm" type="Node2D" parent="PanelContainer"]
 unique_name_in_owner = true
+
+[node name="OrderFormSprite" type="Sprite2D" parent="PanelContainer/OrderForm"]
 position = Vector2(816, 416)
 scale = Vector2(4, 4)
 texture = ExtResource("1_b4ljr")
@@ -84,7 +103,7 @@ region_enabled = true
 region_rect = Rect2(163.009, 84.097, 100.136, 117.027)
 
 [node name="marker" type="Marker2D" parent="PanelContainer/OrderForm"]
-position = Vector2(-32, -16)
+position = Vector2(688, 352)
 
 [node name="AuthSeals" type="Sprite2D" parent="PanelContainer"]
 position = Vector2(720, 96)

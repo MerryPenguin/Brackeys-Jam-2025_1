@@ -6,6 +6,7 @@ func _ready():
 
 func activate(customer : RovingCustomer):
 	customer.state == customer.states.DETAINED
+	populate_receipt(customer)
 	populate_order_form(customer)
 
 func populate_order_form(customer : RovingCustomer):
@@ -32,13 +33,16 @@ func generate_single_item(product : Globals.products) -> TextureRect:
 	
 	
 func populate_receipt(customer : RovingCustomer):
-	var receipt_tree : Tree = $PanelContainer/Scroll/Tree
+	var receipt_tree : Tree = %Receipt.get_node("Tree")
 	var root = receipt_tree.create_item()
 	receipt_tree.hide_root = true
-	var child1 = receipt_tree.create_item(root)
-	var child2 = receipt_tree.create_item(root)
-	var subchild1 = receipt_tree.create_item(child1)
-	subchild1.set_text(0, "Subchild1")
+	
+	for item in customer.items_purchased:
+		var recipe = Globals.product_recipes[item]
+		var cost = Utils.lookup_value(item)
+		var row_entry = receipt_tree.create_item(root)
+		row_entry.set_text(0, recipe.product_name)
+		row_entry.set_text(1, "$" + str(cost))
 
 
 func _on_close_button_pressed() -> void:
