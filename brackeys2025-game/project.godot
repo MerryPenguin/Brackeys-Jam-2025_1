@@ -103,4 +103,5 @@ copy_path="res://GUI/maaack_template"
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.0748452, 0.0748453, 0.0748452, 1)

@@ -13,8 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://o25dpa367jgq" path="res://Assets/sfx/Sounds/UI/UI_Select UI_SFX1-005.wav" id="10_fpwrl"]
 [ext_resource type="AudioStream" uid="uid://c51bkjqunmjwd" path="res://Assets/sfx/Sounds/Alarm/Alarm_Error Alarm_SFX.wav" id="12_y8mm5"]
 [ext_resource type="Script" uid="uid://c6nvcqn43kiwv" path="res://Components/persistent_audio.gd" id="13_fpwrl"]
-[ext_resource type="AudioStream" uid="uid://cxm4kimyv8ye3" path="res://Assets/sfx/Sounds/Actions/ACTION_Belt Connected-SFX-001.wav" id="14_0qtup"]
-[ext_resource type="AudioStream" uid="uid://clrg7jajck88e" path="res://Assets/sfx/Sounds/Actions/ACTION_Belt Connected-SFX-002.wav" id="15_315xo"]
+[ext_resource type="AudioStream" uid="uid://d2gqly2k0wnne" path="res://Assets/sfx/Sounds/Actions/ACTION_Belt Connected-SFX-001.wav" id="14_0qtup"]
+[ext_resource type="AudioStream" uid="uid://d4ev8r4o8m5i4" path="res://Assets/sfx/Sounds/Actions/ACTION_Belt Connected-SFX-002.wav" id="15_315xo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btwl5"]
 size = Vector2(64, 64)

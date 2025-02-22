@@ -18,6 +18,7 @@ size = Vector2(336, 20)
 y_sort_enabled = true
 texture_filter = 3
 script = ExtResource("1_fpxqv")
+winning_products = Array[int]([15, 16])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -5

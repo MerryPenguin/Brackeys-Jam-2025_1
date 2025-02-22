@@ -11,10 +11,9 @@ func check_win_conditions():
 	pass
 	
 func _on_globals_cash_changed(cash):
-	if cash > 20:
+	if cash > 5000:
 		win("You made a whole lot of money! Thanks for playing.")
 		
 func win(text):
 	Globals.cash = 0
 	show_level_won_overlay(text, next_scene_path)
-	

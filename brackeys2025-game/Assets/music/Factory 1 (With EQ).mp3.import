@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Factory 1 (With EQ).mp3-c5eebb6e47fe73164f5e9
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

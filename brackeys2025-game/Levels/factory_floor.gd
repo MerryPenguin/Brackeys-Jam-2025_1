@@ -6,6 +6,7 @@
 class_name FactoryFloor extends Node2D
 
 @export var next_scene_path : StringName = "res://GUI/maaack_template/scenes/end_credits/end_credits.tscn"
+@export var winning_products : Array[Globals.products] = []
 
 func _init():
 	Globals.current_level = self
@@ -50,3 +51,9 @@ func _on_next_level_requested(scene_path):
 
 func restart():
 	SceneLoader.reload_current_scene()
+
+func _on_winning_item_produced(product_name : String):
+	win("You created a " + product_name)
+
+func win(text):
+	show_level_won_overlay(text, next_scene_path)

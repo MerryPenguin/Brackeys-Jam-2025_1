@@ -20,6 +20,7 @@ enum types { HARVESTER, AGGREGATOR }
 
 signal input_node_connected # for tutorial win condition only
 signal recipe_changed
+signal winning_product_produced(product)
 
 func _ready():
 	connectors.hide()
@@ -27,6 +28,8 @@ func _ready():
 	#setup_inventory_dict()
 	$PlacementNoise.play()
 	recipe_changed.connect($InteractionButton._on_factory_machine_recipe_changed)
+	var current_level = Globals.current_level
+	winning_product_produced.connect(current_level._on_winning_item_produced)
 	if current_recipe != null:
 		recipe_changed.emit(current_recipe)
 	setup_timer()
@@ -99,12 +102,18 @@ func produce(recipe : ProductWidgetRecipe):
 	if is_output_connected():
 		var new_widget : FactoryProductWidget = widget_scene.instantiate()
 		new_widget.activate(recipe)
+		check_win_conditions(recipe)
 		%OutputNode.receive_product(new_widget)
 		for requirement in recipe.required_inputs:
 			storage.erase_product(requirement)
 	else:  # no conveyor belt
 		#drop_on_floor()
 		pass # player has no means to pick these up, so we removed it
+
+func check_win_conditions(recipe : ProductWidgetRecipe):
+	var product = Globals.get_product_by_name(recipe.product_name)
+	if product in Globals.current_level.winning_products:
+		winning_product_produced.emit(recipe.product_name)
 
 func is_output_connected():
 	if %OutputNode.conveyor_belt != null:
