@@ -90,6 +90,7 @@ func requirements_met(recipe : ProductWidgetRecipe) -> bool:
 		return products_found >= requirements_count
 	
 
+
 func produce(recipe : ProductWidgetRecipe):
 	var widget_scene = preload("res://Entities/factory_products/factory_product_widget.tscn")
 	if widget_scene == null:

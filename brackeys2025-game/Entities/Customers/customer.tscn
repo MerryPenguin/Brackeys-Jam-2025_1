@@ -278,6 +278,7 @@ wait_time = 15.0
 one_shot = true
 
 [node name="Identity" parent="." instance=ExtResource("13_id6p1")]
+unique_name_in_owner = true
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

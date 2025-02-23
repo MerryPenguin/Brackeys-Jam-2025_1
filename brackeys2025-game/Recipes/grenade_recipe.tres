@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="1_me54w"]
 [ext_resource type="Texture2D" uid="uid://8qbfvkx24cso" path="res://Assets/Images/products_atlas.tres" id="1_wtk63"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c1jkh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_me54w"]
 atlas = ExtResource("1_wtk63")
 region = Rect2(80, 0, 16, 16)
 
@@ -12,7 +12,7 @@ script = ExtResource("1_me54w")
 product_name = &"Grenade"
 required_inputs = Array[int]([8, 4])
 production_time = 10.0
-icon = SubResource("AtlasTexture_c1jkh")
-recipe_type = 0
+icon = SubResource("AtlasTexture_me54w")
+recipe_type = 3
 default_sale_price = 50
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"
