@@ -8,7 +8,8 @@ signal tool_freed(tool)
 # walk through the recipes list and make a display
 func _ready():
 	#create_recipe_book()
-	tool_freed.connect(Globals.current_hud._on_tool_freed)
+	if Globals.current_hud != null:
+		tool_freed.connect(Globals.current_hud._on_tool_freed)
 	
 func create_recipe_book():
 	pass
