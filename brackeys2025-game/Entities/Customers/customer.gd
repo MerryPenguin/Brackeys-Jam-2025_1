@@ -19,7 +19,13 @@ var state : states = states.MOVING_TO_SHOP
 @export var max_cycles_to_wait : int = 10
 var cycles_waited : int = 0
 
+@onready var identity : CustomerIdentity = %Identity
+
+
 @onready var storage : StorageComponent = $StorageComponent
+
+
+
 
 signal desires_changed(new_desires)
 signal thefts_changed(items_stolen)

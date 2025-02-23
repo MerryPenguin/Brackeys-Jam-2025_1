@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cm8v5aepcle5p"]
+[gd_scene load_steps=23 format=3 uid="uid://cm8v5aepcle5p"]
 
 [ext_resource type="Script" uid="uid://1gnswtuhuqxq" path="res://Entities/Customers/customer.gd" id="1_tronh"]
 [ext_resource type="PackedScene" uid="uid://dfqi3t3sg40rk" path="res://Components/storage_component.tscn" id="2_hhold"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dk1v6op7ioy05" path="res://Assets/sfx/Sounds/Humans/HUMAN_disgruntled-SFX_02_er.wav" id="10_id6p1"]
 [ext_resource type="AudioStream" uid="uid://dvoji31jruaj5" path="res://Assets/sfx/Sounds/Humans/HUMAN_disgruntled-SFX_03_oh.wav" id="11_oyrvp"]
 [ext_resource type="AudioStream" uid="uid://cnwm4clif7ycg" path="res://Assets/sfx/Sounds/Humans/HUMAN_disgruntled-SFX_04_mmm.wav" id="12_cm7ob"]
+[ext_resource type="PackedScene" uid="uid://dp7ivvoul4yxb" path="res://Entities/Customers/identity.tscn" id="13_id6p1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rd0ff"]
 radius = 32.0
@@ -275,6 +276,8 @@ libraries = {
 [node name="CheckoutWaitTime" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
+
+[node name="Identity" parent="." instance=ExtResource("13_id6p1")]
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

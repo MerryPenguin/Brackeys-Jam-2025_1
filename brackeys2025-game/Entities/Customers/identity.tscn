@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp7ivvoul4yxb"]
+
+[ext_resource type="Script" uid="uid://dnaq1n8m8b2db" path="res://Entities/Customers/identity.gd" id="1_vhpxq"]
+
+[node name="Identity" type="Node"]
+script = ExtResource("1_vhpxq")
