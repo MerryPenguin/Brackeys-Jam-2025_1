@@ -13,7 +13,7 @@ var items_purchased : Array[Globals.products]
 var items_stolen : Array[Globals.products]
 
 
-enum states { MOVING_TO_INSPECTOR, DETAINED, MOVING_TO_SHOP, BROWSING, BUYING, LEAVING }
+enum states { MOVING_TO_INSPECTOR, DETAINED, MOVING_TO_SHOP, BROWSING, BUYING, INTENDING_HARM, CAUSING_DAMAGE, LEAVING }
 var state : states = states.MOVING_TO_SHOP
 
 @export var max_cycles_to_wait : int = 10
@@ -103,8 +103,17 @@ func _process(delta):
 		states.LEAVING:
 			pass
 		states.MOVING_TO_INSPECTOR:
+			if is_near_inspector(target_destination):
+				state = states.DETAINED
+				$CheckoutWaitTime.start()
+		states.INTENDING_HARM:
+			# Move toward a random factory, then cause damage
+			if is_near_damage_target(target_destination):
+				state = states.CAUSING_DAMAGE
+				$AnimationPlayer.play("cause_harm")
+		states.CAUSING_DAMAGE:
+			#Bounce around for some cooldown period then destroy factory?
 			pass
-		
 
 func update_target():
 	if target_destination == null:
@@ -188,14 +197,18 @@ func attempt_to_buy_product():
 			requirements_met = false
 		
 		if cycles_waited > max_cycles_to_wait:
-			if items_purchased.size() > 0:
+			if items_purchased.size() > 0: # happy customer
 				go_to_inspector()
-			else:
-				leave() # Might be stealing?
+			else: # couldn't find anything.
+				if randf() < 0.25:
+					become_evil()
+				else:
+					leave() # Might be stealing?
+				
 		%CyclesRemaining.text = str(max_cycles_to_wait - cycles_waited)
 		$CooldownTimer.start()
 	cycles_waited += 1
-	if requirements_met:
+	if requirements_met and not state == states.INTENDING_HARM:
 		go_to_inspector()
 	
 
@@ -205,6 +218,23 @@ func leave():
 	if exit != null:
 		target_destination = exit
 
+func become_evil():
+	# pick a random factory machine (harvester or aggregator), go there, and bulldoze it.
+	var interesting_groups = [ "aggregators", "harvesters" ]
+	var machines_of_interest = []
+	for group in interesting_groups:
+		var group_machines = get_tree().get_nodes_in_group(group)
+		if group_machines != null and not group_machines.is_empty():
+			machines_of_interest.append_array(group_machines)
+	if machines_of_interest != null and not machines_of_interest.is_empty():
+		var random_target = machines_of_interest.pick_random()
+		state = states.INTENDING_HARM
+		target_destination = random_target
+		$Unhappy.play()
+		$Sprite2D.texture = preload("res://Assets/Images/placeholder/evil_face.png")
+	else:
+		leave() # nothing to do
+	
 func _on_selected_for_inspection(_inspection_area):
 	#go_to_inspector(inspection_area)
 	pass
@@ -216,6 +246,20 @@ func is_near_storage_bin(bin : StorageChest):
 			return true
 	return false
 
+func is_near_damage_target(machine : FactoryMachine):
+	if machine:
+		var threshold_sq = 96*96
+		if global_position.distance_squared_to(machine.global_position) < threshold_sq:
+			return true
+	return false
+
+func is_near_inspector(inspector):
+	if inspector:
+		var threshold_sq = 96*96
+		if global_position.distance_squared_to(inspector.global_position) < threshold_sq:
+			return true
+	return false
+	
 
 func _on_hover_detection_area_mouse_entered() -> void:
 	pass # Replace with function body.
@@ -258,3 +302,22 @@ func _on_cooldown_timer_timeout() -> void:
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	if state == states.LEAVING:
 		queue_free()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "cause_harm":
+		destroy_building()
+
+func destroy_building():
+	if state == states.CAUSING_DAMAGE and target_destination != null and is_instance_valid(target_destination):
+		if target_destination.is_in_group("harvesters") or target_destination.is_in_group("aggregators"):
+			target_destination.destruct()
+			queue_free()
+
+
+func _on_checkout_wait_time_timeout() -> void:
+	if state == states.DETAINED:
+		if randf() < 0.5:
+			become_evil()
+		else:
+			leave()

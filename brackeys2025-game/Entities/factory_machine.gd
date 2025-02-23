@@ -153,7 +153,14 @@ func destruct():
 	for connector in $Connectors.get_children():
 		if connector.conveyor_belt:
 			connector.conveyor_belt.destruct()
+	remove_conveyors_attached_to_me()
 	queue_free()
+
+func remove_conveyors_attached_to_me():
+	var belts = get_tree().get_nodes_in_group("conveyor_belts")
+	for belt in belts:
+		if belt.destination == %InputNode:
+			belt.destruct()
 
 func _on_production_timer_timeout() -> void:
 	# consume inventory, release product
