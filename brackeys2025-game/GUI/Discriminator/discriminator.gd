@@ -17,6 +17,14 @@ func activate(new_customer : RovingCustomer):
 	populate_receipt(customer)
 	populate_order_form(customer)
 	populate_basket(customer)
+	populate_identity(customer)
+
+func populate_identity(new_customer):
+	%ID.text = customer.identity.id
+	%IDContainer.sex = customer.identity.sex
+	%Affiliations.text = customer.identity.affiliation
+	%IDContainer.education = customer.identity.education
+	
 
 func populate_order_form(new_customer : RovingCustomer):
 	# fill it with random product icons
@@ -123,3 +131,7 @@ func _on_instructions_close_button_pressed() -> void:
 func _on_tree_exiting() -> void:
 	
 	get_tree().paused = false
+
+
+func _on_id_extents_gui_input(event: InputEvent) -> void:
+	pass # Replace with function body.
