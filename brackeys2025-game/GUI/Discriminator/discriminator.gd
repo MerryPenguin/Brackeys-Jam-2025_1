@@ -133,5 +133,5 @@ func _on_tree_exiting() -> void:
 	get_tree().paused = false
 
 
-func _on_id_extents_gui_input(event: InputEvent) -> void:
+func _on_id_extents_gui_input(_event: InputEvent) -> void:
 	pass # Replace with function body.

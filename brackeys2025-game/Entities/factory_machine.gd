@@ -203,4 +203,4 @@ func _on_connector_node_connected(node):
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "destruct":
-		queue_free()
+		call_deferred("queue_free")

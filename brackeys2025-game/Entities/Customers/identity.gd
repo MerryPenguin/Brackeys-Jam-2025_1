@@ -43,7 +43,7 @@ func _ready():
 	education = educations.pick_random()
 	affiliation = affiliations.pick_random()
 	id = create_uid()
-	sex = [ "male", "female","inter", "none"].pick_random()
+	sex = [ "male", "male", "female", "female","inter", "none"].pick_random()
 	
 func create_uid():
 	var temp_id = ""
