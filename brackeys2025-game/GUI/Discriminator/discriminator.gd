@@ -20,10 +20,10 @@ func activate(new_customer : RovingCustomer):
 	populate_identity(customer)
 
 func populate_identity(new_customer):
-	%ID.text = customer.identity.id
-	%IDContainer.sex = customer.identity.sex
-	%Affiliations.text = customer.identity.affiliation
-	%IDContainer.education = customer.identity.education
+	%PassportContainer.id = new_customer.identity.id
+	%IDContainer.sex = new_customer.identity.sex
+	%PassportContainer.affiliations = new_customer.identity.affiliation
+	%IDContainer.education = new_customer.identity.education
 	
 
 func populate_order_form(new_customer : RovingCustomer):

@@ -18,6 +18,8 @@ var education = "":
 		return education
 	
 
+
+
 func _on_id_extents_gui_input(event: InputEvent) -> void:
 	if event.is_action("interact") and Input.is_action_just_pressed("interact"):
 		if state == states.ON_DESK:
