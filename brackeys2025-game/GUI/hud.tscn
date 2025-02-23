@@ -50,6 +50,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="StockMarket" parent="HUDMarginControl/VBoxContainer" instance=ExtResource("6_3herd")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0

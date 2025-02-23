@@ -24,7 +24,7 @@ script = ExtResource("1_iiyxp")
 shape = SubResource("CircleShape2D_3577q")
 
 [node name="StorageComponent" parent="." instance=ExtResource("2_3577q")]
-tooltip_disabled = true
+z_index = 1
 
 [node name="PanelContainer" parent="StorageComponent" index="1"]
 custom_minimum_size = Vector2(192, 256)

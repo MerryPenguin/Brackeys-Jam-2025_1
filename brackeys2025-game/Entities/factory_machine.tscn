@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cegq3dg2ut413"]
+[gd_scene load_steps=39 format=3 uid="uid://cegq3dg2ut413"]
 
 [ext_resource type="Script" uid="uid://dlhuetv61urld" path="res://Entities/factory_machine.gd" id="1_kxche"]
 [ext_resource type="PackedScene" uid="uid://dfqi3t3sg40rk" path="res://Components/storage_component.tscn" id="2_02cwj"]
@@ -16,6 +16,9 @@
 [ext_resource type="AudioStream" uid="uid://d2gqly2k0wnne" path="res://Assets/sfx/Sounds/Actions/ACTION_Belt Connected-SFX-001.wav" id="14_0qtup"]
 [ext_resource type="AudioStream" uid="uid://d4ev8r4o8m5i4" path="res://Assets/sfx/Sounds/Actions/ACTION_Belt Connected-SFX-002.wav" id="15_315xo"]
 [ext_resource type="Texture2D" uid="uid://hg78ik0yug0d" path="res://Assets/Images/Explosion.png" id="16_315xo"]
+[ext_resource type="AudioStream" uid="uid://bn8tf0gqjfc21" path="res://Assets/sfx/Sounds/freesound/explosion_01.wav" id="17_xq00b"]
+[ext_resource type="AudioStream" uid="uid://qxt0bd283xwo" path="res://Assets/sfx/Sounds/freesound/explosion_02.wav" id="18_h1bca"]
+[ext_resource type="AudioStream" uid="uid://dhej2511ltcxu" path="res://Assets/sfx/Sounds/freesound/explosion_03.wav" id="19_1yvt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btwl5"]
 size = Vector2(64, 64)
@@ -169,6 +172,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExplosionNoise:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_mbnyk"]
 resource_name = "destruct"
@@ -220,12 +235,31 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExplosionNoise:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.149151),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sybd5"]
 _data = {
 &"RESET": SubResource("Animation_6f72c"),
 &"destruct": SubResource("Animation_mbnyk")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eqqlu"]
+random_volume_offset_db = 0.1
+streams_count = 3
+stream_0/stream = ExtResource("17_xq00b")
+stream_1/stream = ExtResource("18_h1bca")
+stream_2/stream = ExtResource("19_1yvt6")
 
 [node name="FactoryMachine" type="Node2D"]
 script = ExtResource("1_kxche")
@@ -296,6 +330,9 @@ animation = &"explode"
 libraries = {
 &"": SubResource("AnimationLibrary_sybd5")
 }
+
+[node name="ExplosionNoise" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_eqqlu")
 
 [connection signal="mouse_entered" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_entered"]
 [connection signal="mouse_exited" from="MouseDetectionArea" to="." method="_on_mouse_detection_area_mouse_exited"]

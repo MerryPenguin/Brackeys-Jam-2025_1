@@ -36,7 +36,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_passport_extents_gui_input(event: InputEvent) -> void:
 	if event.is_action("interact") and Input.is_action_just_pressed("interact"):
-		print("got the click")
 		match state:
 			states.ON_DESK:
 				print("zooming")
