@@ -149,12 +149,23 @@ func check_all_recipes_for_requirements() -> ProductWidgetRecipe:
 
 
 func destruct():
+	
 	$DestructionNoise.spawn() # plays independent of this node, which is about to leave the scene
 	for connector in $Connectors.get_children():
 		if connector.conveyor_belt:
 			connector.conveyor_belt.destruct()
 	remove_conveyors_attached_to_me()
-	queue_free()
+	remove_connectors()
+	$AnimationPlayer.play("destruct")
+
+
+func remove_connectors(): # prevent people drawing new conveyor belts during explosions.
+	for node in $Connectors.get_children():
+		if node is Area2D:
+			# Might need to call deferred physics states
+			node.set_deferred("monitoring", false)
+			node.set_deferred("monitorable", false)
+			
 
 func remove_conveyors_attached_to_me():
 	var belts = get_tree().get_nodes_in_group("conveyor_belts")
@@ -187,3 +198,8 @@ func _on_connector_node_connected(node):
 		# for tutorial level win condition
 		input_node_connected.emit()
 		$BeltConnectedNoise.play()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "destruct":
+		queue_free()

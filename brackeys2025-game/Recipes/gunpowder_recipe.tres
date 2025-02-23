@@ -10,5 +10,5 @@ required_inputs = Array[int]([1, 2])
 production_time = 10.0
 icon = ExtResource("1_s71hm")
 recipe_type = 3
-default_sale_price = 10
+default_sale_price = 50
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"
