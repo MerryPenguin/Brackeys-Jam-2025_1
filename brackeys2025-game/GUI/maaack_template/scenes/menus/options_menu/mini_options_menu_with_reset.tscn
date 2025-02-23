@@ -13,6 +13,7 @@ script = ExtResource("2_8yma2")
 layout_mode = 2
 
 [node name="ConveyorBeltStyle" parent="." index="4" instance=ExtResource("4_8yma2")]
+visible = false
 layout_mode = 2
 option_values = ["TILEMAP", "SMOOTH_LINE", "CARDINAL_LINE"]
 option_titles = ["TILEMAP", "SMOOTH_LINE", "CARDINAL_LINE"]
@@ -23,6 +24,7 @@ section = "GameSettings"
 property_type = 4
 
 [node name="FactoriesSnapToGridOption" parent="." index="5" instance=ExtResource("5_1bcxw")]
+visible = false
 layout_mode = 2
 option_name = "Factories Snap To Grid"
 option_section = 4
