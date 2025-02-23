@@ -319,7 +319,7 @@ columns = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("8_5u37l")
+texture = ExtResource("6_fnjiw")
 expand_mode = 3
 stretch_mode = 5
 
@@ -336,7 +336,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("9_o0m7r")
+texture = ExtResource("4_c1jkh")
 expand_mode = 3
 stretch_mode = 5
 

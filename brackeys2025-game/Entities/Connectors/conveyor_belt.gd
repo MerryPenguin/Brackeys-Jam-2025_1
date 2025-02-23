@@ -70,12 +70,23 @@ func _process(_delta):
 				add_point(get_global_mouse_position())
 				stop_drawing() # note: we don't care whether the destination is valid yet.
 			else:
-				if Time.get_ticks_msec() > time_at_last_poll + polling_interval:
+				var time = Time.get_ticks_msec()
+				if time > time_at_last_poll + polling_interval:
+					time_at_last_poll = time
 					if not point_too_close():
 						# TODO: Change this to virtual cursor for gamepads
 						add_point(get_global_mouse_position())
 		states.OPERATING:
-			pass
+			var time = Time.get_ticks_msec()
+			if time > time_at_last_poll + polling_interval * 4:
+				time_at_last_poll = time
+				remove_if_building_is_gone()
+			
+func remove_if_building_is_gone():
+		if origin == null or not is_instance_valid(origin):
+			queue_free()
+		if destination == null or not is_instance_valid(destination):
+			queue_free()
 
 func move_goods():
 	# Maybe just let the packages move themselves
