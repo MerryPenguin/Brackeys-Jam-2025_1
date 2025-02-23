@@ -311,7 +311,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func destroy_building():
 	if state == states.CAUSING_DAMAGE and target_destination != null and is_instance_valid(target_destination):
 		if target_destination.is_in_group("harvesters") or target_destination.is_in_group("aggregators"):
-			target_destination.destruct()
+			target_destination.destruct() # should play a noise.
 			queue_free()
 
 
