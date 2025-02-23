@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bbggorckkrcwt"]
+[gd_scene load_steps=26 format=3 uid="uid://bbggorckkrcwt"]
 
 [ext_resource type="Texture2D" uid="uid://b0nfglsibwgcu" path="res://Assets/Images/Discrim_step_ui.png" id="1_b4ljr"]
 [ext_resource type="Script" uid="uid://dc7277a80pwtv" path="res://GUI/Discriminator/discriminator.gd" id="1_goub6"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://dp4ry5o064gjd" path="res://Assets/sfx/Sounds/Objects/OBJECT_Stamp_01_SFX.wav" id="16_130tv"]
 [ext_resource type="AudioStream" uid="uid://cqxet2gvecj03" path="res://Assets/sfx/Sounds/Objects/OBJECT_Stamp_02.wav" id="17_we81x"]
 [ext_resource type="AudioStream" uid="uid://3rv8fee7d142" path="res://Assets/sfx/Sounds/Objects/OBJECT_Stamp_03.wav" id="18_yjxon"]
+[ext_resource type="AudioStream" uid="uid://b4pqmyilnhrcx" path="res://Assets/music/factory title(with EQ).mp3" id="19_130tv"]
 
 [sub_resource type="Animation" id="Animation_wqgwb"]
 length = 0.001
@@ -508,6 +509,7 @@ stream_1/stream = ExtResource("17_we81x")
 stream_2/stream = ExtResource("18_yjxon")
 
 [node name="DiscriminatorInterface" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -764,6 +766,11 @@ layout_mode = 2
 size_flags_vertical = 8
 text = "Close"
 
+[node name="BGMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_130tv")
+autoplay = true
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="pressed" from="PanelContainer/DecisionButtons/GridContainer/ApproveButton" to="." method="_on_approve_button_pressed"]

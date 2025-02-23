@@ -6,6 +6,8 @@ var state : states = states.UNDECIDED
 var customer : RovingCustomer
 
 func _ready():
+	get_tree().paused = true
+	
 	$InstructionsPopupPanel.hide()
 	
 
@@ -94,7 +96,8 @@ func _on_approve_button_pressed() -> void:
 	if state == states.UNDECIDED:
 		$AnimationPlayer.play("approve")
 		state = states.APPROVED
-		customer.queue_free()
+		if customer != null and is_instance_valid(customer):
+			customer.queue_free()
 
 func _on_deny_button_pressed() -> void:
 	if state == states.UNDECIDED:
@@ -115,3 +118,8 @@ func _on_help_button_pressed() -> void:
 
 func _on_instructions_close_button_pressed() -> void:
 	$InstructionsPopupPanel.hide()
+
+
+func _on_tree_exiting() -> void:
+	
+	get_tree().paused = false
