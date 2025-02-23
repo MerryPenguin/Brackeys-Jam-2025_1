@@ -7,6 +7,7 @@ signal tool_freed(tool)
 
 # walk through the recipes list and make a display
 func _ready():
+	get_tree().paused = true
 	#create_recipe_book()
 	if Globals.current_hud != null:
 		tool_freed.connect(Globals.current_hud._on_tool_freed)
@@ -34,3 +35,7 @@ func _on_button_pressed() -> void:
 func _on_popup_hide() -> void:
 	tool_freed.emit(self)
 	call_deferred("queue_free")
+
+
+func _on_paradox_tree_exiting() -> void:
+	get_tree().paused = false

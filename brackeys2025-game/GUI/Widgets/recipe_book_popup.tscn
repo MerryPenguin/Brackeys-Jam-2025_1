@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ddmw8ctke14gl"]
+[gd_scene load_steps=36 format=3 uid="uid://ddmw8ctke14gl"]
 
 [ext_resource type="Script" uid="uid://ck463osk2dw8t" path="res://GUI/Widgets/recipe_book_popup.gd" id="1_b5rhh"]
 [ext_resource type="Texture2D" uid="uid://cv7myqqm0ja6u" path="res://Assets/Images/Factories.png" id="2_v8hw0"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://gq1am4gdvnlu" path="res://Assets/Images/placeholder/anxiety.png" id="9_o0m7r"]
 [ext_resource type="Texture2D" uid="uid://8qbfvkx24cso" path="res://Assets/Images/products_atlas.tres" id="10_oolxu"]
 [ext_resource type="Texture2D" uid="uid://c7ie3ho42yiwn" path="res://Assets/Images/placeholder/plus.png" id="11_foj40"]
+[ext_resource type="AudioStream" uid="uid://b4pqmyilnhrcx" path="res://Assets/music/factory title(with EQ).mp3" id="13_qmok8"]
 [ext_resource type="Texture2D" uid="uid://cm85dw602l71t" path="res://Assets/Images/placeholder/pacifier.png" id="18_lhryc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8hw0"]
@@ -101,14 +102,15 @@ atlas = ExtResource("10_oolxu")
 region = Rect2(32, 16, 16, 16)
 
 [node name="RecipeBookPopup" type="PopupPanel" groups=["recipe_book"]]
+process_mode = 3
 auto_translate_mode = 1
-size = Vector2i(1282, 676)
+size = Vector2i(832, 648)
 visible = true
 script = ExtResource("1_b5rhh")
 
 [node name="Control" type="MarginContainer" parent="."]
-offset_right = 1282.0
-offset_bottom = 676.0
+offset_right = 832.0
+offset_bottom = 648.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 2
@@ -918,6 +920,7 @@ layout_mode = 2
 
 [node name="Bottom" type="PanelContainer" parent="Control/VBoxContainer/RecipeBook/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom"]
 layout_mode = 2
@@ -1118,5 +1121,10 @@ text = "Paradox"
 [node name="ReferenceRect4" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
 layout_mode = 2
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_qmok8")
+autoplay = true
+
 [connection signal="popup_hide" from="." to="." method="_on_popup_hide"]
 [connection signal="pressed" from="Control/VBoxContainer/RecipeBook/VBoxContainer/MarginContainer/Header/CloseButton" to="." method="_on_button_pressed"]
+[connection signal="tree_exiting" from="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2/Paradox" to="." method="_on_paradox_tree_exiting"]
