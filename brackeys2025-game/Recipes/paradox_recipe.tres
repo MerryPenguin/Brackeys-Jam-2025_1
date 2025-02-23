@@ -1,14 +1,18 @@
-[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=3 format=3 uid="uid://b5xpis4hcix7q"]
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=4 format=3 uid="uid://b5xpis4hcix7q"]
 
-[ext_resource type="Texture2D" uid="uid://cbdtf5mv0lisa" path="res://Assets/Images/placeholder/paradox.png" id="1_pc4bi"]
+[ext_resource type="Texture2D" uid="uid://8qbfvkx24cso" path="res://Assets/Images/products_atlas.tres" id="1_pc4bi"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_fof86"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foj40"]
+atlas = ExtResource("1_pc4bi")
+region = Rect2(32, 16, 16, 16)
 
 [resource]
 script = ExtResource("3_fof86")
 product_name = &"Paradox"
 required_inputs = Array[int]([14, 5, 10])
 production_time = 10.0
-icon = ExtResource("1_pc4bi")
+icon = SubResource("AtlasTexture_foj40")
 recipe_type = 3
 default_sale_price = 1000
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

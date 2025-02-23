@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddmw8ctke14gl"]
+[gd_scene load_steps=35 format=3 uid="uid://ddmw8ctke14gl"]
 
 [ext_resource type="Script" uid="uid://ck463osk2dw8t" path="res://GUI/Widgets/recipe_book_popup.gd" id="1_b5rhh"]
 [ext_resource type="Texture2D" uid="uid://cv7myqqm0ja6u" path="res://Assets/Images/Factories.png" id="2_v8hw0"]
@@ -9,18 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://c456q6g2s5eff" path="res://Assets/Images/placeholder/starch.png" id="7_g3num"]
 [ext_resource type="Texture2D" uid="uid://w32xjk0pmknr" path="res://Assets/Images/placeholder/hope.png" id="8_5u37l"]
 [ext_resource type="Texture2D" uid="uid://gq1am4gdvnlu" path="res://Assets/Images/placeholder/anxiety.png" id="9_o0m7r"]
-[ext_resource type="Texture2D" uid="uid://d0vm5h16qyc1b" path="res://Assets/Images/placeholder/artifact.png" id="10_p6ihj"]
+[ext_resource type="Texture2D" uid="uid://8qbfvkx24cso" path="res://Assets/Images/products_atlas.tres" id="10_oolxu"]
 [ext_resource type="Texture2D" uid="uid://c7ie3ho42yiwn" path="res://Assets/Images/placeholder/plus.png" id="11_foj40"]
-[ext_resource type="Texture2D" uid="uid://2bp6ti2rae5c" path="res://Assets/Images/placeholder/gunpowder.png" id="12_c1jkh"]
-[ext_resource type="Texture2D" uid="uid://dp01fojjm0n0t" path="res://Assets/Images/placeholder/pineapple-2.png" id="13_c1jkh"]
-[ext_resource type="Texture2D" uid="uid://c50mumkbl8mp6" path="res://Assets/Images/placeholder/fruitphone.png" id="13_qjbi5"]
-[ext_resource type="Texture2D" uid="uid://dlxvo7os0cbw7" path="res://Assets/Images/placeholder/epistemology.png" id="15_0tdsp"]
-[ext_resource type="Texture2D" uid="uid://dij3tbxt7fdrt" path="res://Assets/Images/placeholder/grenade.png" id="16_4ah1o"]
-[ext_resource type="Texture2D" uid="uid://ng0mv1hhegv6" path="res://Assets/Images/placeholder/banana.png" id="17_57eu8"]
 [ext_resource type="Texture2D" uid="uid://cm85dw602l71t" path="res://Assets/Images/placeholder/pacifier.png" id="18_lhryc"]
-[ext_resource type="Texture2D" uid="uid://drx17uee0x3vb" path="res://Assets/Images/placeholder/raygun.png" id="19_ci5d8"]
-[ext_resource type="Texture2D" uid="uid://bymd2gqx0hdkx" path="res://Assets/Images/placeholder/singularity.png" id="20_g1488"]
-[ext_resource type="Texture2D" uid="uid://cbdtf5mv0lisa" path="res://Assets/Images/placeholder/paradox.png" id="21_fnjiw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8hw0"]
 bg_color = Color(0.632518, 0.542487, 0.493417, 1)
@@ -41,18 +32,82 @@ region = Rect2(0, 16, 16, 16)
 atlas = ExtResource("2_v8hw0")
 region = Rect2(32, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmok8"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgd2a"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjluh"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5hd0"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mikk"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klule"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8hw0"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ah1o"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1jkh"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1488"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnjiw"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3num"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u37l"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0m7r"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(0, 32, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_70tfe"]
 atlas = ExtResource("2_v8hw0")
 region = Rect2(16, 16, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6ihj"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foj40"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(32, 16, 16, 16)
+
 [node name="RecipeBookPopup" type="PopupPanel" groups=["recipe_book"]]
 auto_translate_mode = 1
-size = Vector2i(840, 676)
+size = Vector2i(1282, 676)
 visible = true
 script = ExtResource("1_b5rhh")
 
 [node name="Control" type="MarginContainer" parent="."]
-offset_right = 840.0
+offset_right = 1282.0
 offset_bottom = 676.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
@@ -252,7 +307,7 @@ columns = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("7_g3num")
+texture = SubResource("AtlasTexture_qmok8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -268,7 +323,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("6_fnjiw")
+texture = SubResource("AtlasTexture_fgd2a")
 expand_mode = 3
 stretch_mode = 5
 
@@ -284,7 +339,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("17_57eu8")
+texture = SubResource("AtlasTexture_sjluh")
 expand_mode = 3
 stretch_mode = 5
 
@@ -319,7 +374,7 @@ columns = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("6_fnjiw")
+texture = SubResource("AtlasTexture_s5hd0")
 expand_mode = 3
 stretch_mode = 5
 
@@ -336,7 +391,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("4_c1jkh")
+texture = SubResource("AtlasTexture_1mikk")
 expand_mode = 3
 stretch_mode = 5
 
@@ -353,7 +408,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("12_c1jkh")
+texture = SubResource("AtlasTexture_klule")
 expand_mode = 3
 stretch_mode = 5
 
@@ -385,7 +440,7 @@ columns = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("13_c1jkh")
+texture = SubResource("AtlasTexture_v8hw0")
 expand_mode = 3
 stretch_mode = 5
 
@@ -403,7 +458,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("8_5u37l")
+texture = SubResource("AtlasTexture_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
@@ -421,7 +476,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("16_4ah1o")
+texture = SubResource("AtlasTexture_c1jkh")
 expand_mode = 3
 stretch_mode = 5
 
@@ -456,7 +511,7 @@ columns = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("7_g3num")
+texture = SubResource("AtlasTexture_qmok8")
 expand_mode = 3
 stretch_mode = 5
 
@@ -472,7 +527,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("4_c1jkh")
+texture = SubResource("AtlasTexture_g1488")
 expand_mode = 3
 stretch_mode = 5
 
@@ -488,7 +543,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("13_c1jkh")
+texture = SubResource("AtlasTexture_v8hw0")
 expand_mode = 3
 stretch_mode = 5
 
@@ -537,7 +592,7 @@ columns = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("9_o0m7r")
+texture = SubResource("AtlasTexture_1mikk")
 expand_mode = 3
 stretch_mode = 5
 
@@ -553,7 +608,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("12_c1jkh")
+texture = SubResource("AtlasTexture_klule")
 expand_mode = 3
 stretch_mode = 5
 
@@ -569,7 +624,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("15_0tdsp")
+texture = SubResource("AtlasTexture_fnjiw")
 expand_mode = 3
 stretch_mode = 5
 
@@ -620,7 +675,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("8_5u37l")
+texture = SubResource("AtlasTexture_s5hd0")
 expand_mode = 3
 stretch_mode = 5
 
@@ -636,7 +691,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("10_p6ihj")
+texture = SubResource("AtlasTexture_g3num")
 expand_mode = 3
 stretch_mode = 5
 
@@ -671,7 +726,7 @@ columns = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("9_o0m7r")
+texture = SubResource("AtlasTexture_1mikk")
 expand_mode = 3
 stretch_mode = 5
 
@@ -687,7 +742,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("17_57eu8")
+texture = SubResource("AtlasTexture_sjluh")
 expand_mode = 3
 stretch_mode = 5
 
@@ -754,7 +809,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("16_4ah1o")
+texture = SubResource("AtlasTexture_c1jkh")
 expand_mode = 3
 stretch_mode = 5
 
@@ -770,7 +825,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("19_ci5d8")
+texture = SubResource("AtlasTexture_5u37l")
 expand_mode = 3
 stretch_mode = 5
 
@@ -804,7 +859,7 @@ columns = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("17_57eu8")
+texture = SubResource("AtlasTexture_sjluh")
 expand_mode = 3
 stretch_mode = 5
 
@@ -820,7 +875,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("15_0tdsp")
+texture = SubResource("AtlasTexture_fnjiw")
 expand_mode = 3
 stretch_mode = 5
 
@@ -836,7 +891,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("13_qjbi5")
+texture = SubResource("AtlasTexture_o0m7r")
 expand_mode = 3
 stretch_mode = 5
 
@@ -893,7 +948,7 @@ columns = 7
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("10_p6ihj")
+texture = SubResource("AtlasTexture_g3num")
 expand_mode = 3
 stretch_mode = 5
 
@@ -909,7 +964,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("13_c1jkh")
+texture = SubResource("AtlasTexture_v8hw0")
 expand_mode = 3
 stretch_mode = 5
 
@@ -925,7 +980,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("13_qjbi5")
+texture = SubResource("AtlasTexture_o0m7r")
 expand_mode = 3
 stretch_mode = 5
 
@@ -941,7 +996,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("20_g1488")
+texture = SubResource("AtlasTexture_p6ihj")
 expand_mode = 3
 stretch_mode = 5
 
@@ -983,7 +1038,7 @@ columns = 7
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("13_qjbi5")
+texture = SubResource("AtlasTexture_o0m7r")
 expand_mode = 3
 stretch_mode = 5
 
@@ -999,7 +1054,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("9_o0m7r")
+texture = SubResource("AtlasTexture_1mikk")
 expand_mode = 3
 stretch_mode = 5
 
@@ -1015,7 +1070,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("15_0tdsp")
+texture = SubResource("AtlasTexture_fnjiw")
 expand_mode = 3
 stretch_mode = 5
 
@@ -1031,7 +1086,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("21_fnjiw")
+texture = SubResource("AtlasTexture_foj40")
 expand_mode = 3
 stretch_mode = 5
 

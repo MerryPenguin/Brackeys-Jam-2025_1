@@ -1,14 +1,18 @@
-[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=3 format=3 uid="uid://c4rji7be6rmm4"]
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=4 format=3 uid="uid://c4rji7be6rmm4"]
 
-[ext_resource type="Texture2D" uid="uid://d0vm5h16qyc1b" path="res://Assets/Images/placeholder/artifact.png" id="1_ppd2g"]
+[ext_resource type="Texture2D" uid="uid://8qbfvkx24cso" path="res://Assets/Images/products_atlas.tres" id="1_ppd2g"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_1dj64"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3num"]
+atlas = ExtResource("1_ppd2g")
+region = Rect2(32, 32, 16, 16)
 
 [resource]
 script = ExtResource("3_1dj64")
 product_name = &"Artifact"
 required_inputs = Array[int]([3, 4])
 production_time = 10.0
-icon = ExtResource("1_ppd2g")
+icon = SubResource("AtlasTexture_g3num")
 recipe_type = 3
 default_sale_price = 50
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

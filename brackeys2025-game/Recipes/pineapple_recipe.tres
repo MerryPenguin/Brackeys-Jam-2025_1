@@ -1,14 +1,18 @@
-[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=3 format=3 uid="uid://caw4fnmk3jd1a"]
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=4 format=3 uid="uid://caw4fnmk3jd1a"]
 
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="1_oedb6"]
-[ext_resource type="Texture2D" uid="uid://dp01fojjm0n0t" path="res://Assets/Images/placeholder/pineapple-2.png" id="1_pblho"]
+[ext_resource type="Texture2D" uid="uid://8qbfvkx24cso" path="res://Assets/Images/products_atlas.tres" id="1_pblho"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8hw0"]
+atlas = ExtResource("1_pblho")
+region = Rect2(48, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_oedb6")
 product_name = &"Pineapple"
 required_inputs = Array[int]([0, 2])
 production_time = 10.0
-icon = ExtResource("1_pblho")
+icon = SubResource("AtlasTexture_v8hw0")
 recipe_type = 3
 default_sale_price = 50
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"
