@@ -1,14 +1,18 @@
-[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=3 format=3 uid="uid://bm03xeyecnc71"]
+[gd_resource type="Resource" script_class="ProductWidgetRecipe" load_steps=4 format=3 uid="uid://bm03xeyecnc71"]
 
-[ext_resource type="Texture2D" uid="uid://cm85dw602l71t" path="res://Assets/Images/placeholder/pacifier.png" id="1_obqny"]
+[ext_resource type="Texture2D" uid="uid://8qbfvkx24cso" path="res://Assets/Images/products_atlas.tres" id="1_obqny"]
 [ext_resource type="Script" uid="uid://bgdy8tjau7bp5" path="res://Recipes/recipe_template.gd" id="3_nte2m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjbi5"]
+atlas = ExtResource("1_obqny")
+region = Rect2(16, 32, 16, 16)
 
 [resource]
 script = ExtResource("3_nte2m")
 product_name = &"Pacifier"
 required_inputs = Array[int]([5, 9])
 production_time = 10.0
-icon = ExtResource("1_obqny")
+icon = SubResource("AtlasTexture_qjbi5")
 recipe_type = 3
 default_sale_price = 40
 metadata/_custom_type_script = "uid://bgdy8tjau7bp5"

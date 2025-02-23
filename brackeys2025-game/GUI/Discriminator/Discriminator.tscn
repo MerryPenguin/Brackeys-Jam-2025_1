@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://dc7277a80pwtv" path="res://GUI/Discriminator/discriminator.gd" id="1_goub6"]
 [ext_resource type="Theme" uid="uid://d1e0mgeiio6bb" path="res://GUI/Themes/default_game_UI_theme.tres" id="3_cfvcw"]
 [ext_resource type="Texture2D" uid="uid://b78e3m1efsafm" path="res://Assets/Images/placeholder/signature.png" id="3_u27os"]
-[ext_resource type="Texture2D" uid="uid://ppuds1pyb7c5" path="res://Assets/Images/placeholder/basket.png" id="4_2prbc"]
 [ext_resource type="AudioStream" uid="uid://cprmt3ynkqub1" path="res://Assets/sfx/Sounds/Actions/ACTION_ Client Scan_SFX-001.wav" id="4_3qtec"]
 [ext_resource type="AudioStream" uid="uid://blm0i3mm55xuo" path="res://Assets/sfx/Sounds/Actions/ACTION_ Client Scan_SFX-002.wav" id="5_2prbc"]
+[ext_resource type="Texture2D" uid="uid://d17r2034qtvg5" path="res://Assets/Images/placeholder/basket-open.png" id="5_130tv"]
 [ext_resource type="Texture2D" uid="uid://bniy6pududshc" path="res://Assets/Images/placeholder/green_button.png" id="5_xf0th"]
 [ext_resource type="AudioStream" uid="uid://babcg0eppv4j" path="res://Assets/sfx/Sounds/Actions/ACTION_ Client Scan_SFX-003.wav" id="6_iu62g"]
 [ext_resource type="Texture2D" uid="uid://d0xsx7l0f5g4g" path="res://Assets/Images/placeholder/red_button.png" id="6_u27os"]
@@ -641,6 +641,7 @@ region_rect = Rect2(195.963, 43.7115, 40.9388, 39.2206)
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
@@ -648,6 +649,9 @@ theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
 theme_override_constants/separation = 12
 
 [node name="CloseButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -669,7 +673,14 @@ position = Vector2(912, 96)
 
 [node name="Sprite2D" type="Sprite2D" parent="PanelContainer/Basket"]
 scale = Vector2(6, 6)
-texture = ExtResource("4_2prbc")
+texture = ExtResource("5_130tv")
+
+[node name="Label" type="Label" parent="PanelContainer/Basket"]
+offset_left = -76.0
+offset_top = 57.0
+offset_right = 70.0
+offset_bottom = 73.0
+text = "Customer Basket"
 
 [node name="DecisionButtons" type="Node2D" parent="PanelContainer"]
 position = Vector2(288, 112)

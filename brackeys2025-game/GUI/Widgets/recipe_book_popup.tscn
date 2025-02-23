@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ddmw8ctke14gl"]
+[gd_scene load_steps=38 format=3 uid="uid://ddmw8ctke14gl"]
 
 [ext_resource type="Script" uid="uid://ck463osk2dw8t" path="res://GUI/Widgets/recipe_book_popup.gd" id="1_b5rhh"]
 [ext_resource type="Texture2D" uid="uid://cv7myqqm0ja6u" path="res://Assets/Images/Factories.png" id="2_v8hw0"]
@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://gq1am4gdvnlu" path="res://Assets/Images/placeholder/anxiety.png" id="9_o0m7r"]
 [ext_resource type="Texture2D" uid="uid://8qbfvkx24cso" path="res://Assets/Images/products_atlas.tres" id="10_oolxu"]
 [ext_resource type="Texture2D" uid="uid://c7ie3ho42yiwn" path="res://Assets/Images/placeholder/plus.png" id="11_foj40"]
+[ext_resource type="Texture2D" uid="uid://dipo2enxrlyw4" path="res://Assets/Images/Factory_products-2.png" id="12_qmok8"]
 [ext_resource type="AudioStream" uid="uid://b4pqmyilnhrcx" path="res://Assets/music/factory title(with EQ).mp3" id="13_qmok8"]
-[ext_resource type="Texture2D" uid="uid://cm85dw602l71t" path="res://Assets/Images/placeholder/pacifier.png" id="18_lhryc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8hw0"]
 bg_color = Color(0.632518, 0.542487, 0.493417, 1)
@@ -77,9 +77,17 @@ region = Rect2(16, 0, 16, 16)
 atlas = ExtResource("10_oolxu")
 region = Rect2(64, 16, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiqkg"]
+atlas = ExtResource("12_qmok8")
+region = Rect2(64, 32, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3num"]
 atlas = ExtResource("10_oolxu")
 region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjbi5"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(16, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5u37l"]
 atlas = ExtResource("10_oolxu")
@@ -104,13 +112,13 @@ region = Rect2(32, 16, 16, 16)
 [node name="RecipeBookPopup" type="PopupPanel" groups=["recipe_book"]]
 process_mode = 3
 auto_translate_mode = 1
-size = Vector2i(832, 648)
+size = Vector2i(946, 696)
 visible = true
 script = ExtResource("1_b5rhh")
 
 [node name="Control" type="MarginContainer" parent="."]
-offset_right = 832.0
-offset_bottom = 648.0
+offset_right = 946.0
+offset_bottom = 696.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 2
@@ -313,7 +321,15 @@ texture = SubResource("AtlasTexture_qmok8")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="PlusLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Banana"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Plus" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Banana"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -329,7 +345,15 @@ texture = SubResource("AtlasTexture_fgd2a")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="EqualsLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Banana"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Arrow" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Banana"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -346,22 +370,28 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Banana"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Starch"
+horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Banana"]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Banana"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Ash"
+horizontal_alignment = 1
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Banana"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Banana"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Banana"
+horizontal_alignment = 1
 
 [node name="ReferenceRect3" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Banana"]
 layout_mode = 2
@@ -380,7 +410,15 @@ texture = SubResource("AtlasTexture_s5hd0")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="PlusLabel2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Gunpowder"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Plus" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Gunpowder"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -397,7 +435,15 @@ texture = SubResource("AtlasTexture_1mikk")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="EqualsLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Gunpowder"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Arrow" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Gunpowder"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -415,22 +461,28 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="HopesLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Gunpowder"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Hopes"
+horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Gunpowder"]
 layout_mode = 2
 
 [node name="AnxietyLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Gunpowder"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Anxiety"
+horizontal_alignment = 1
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Gunpowder"]
 layout_mode = 2
 
 [node name="GunpowderLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Gunpowder"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Gunpowder"
+horizontal_alignment = 1
 
 [node name="Grenade" type="GridContainer" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates"]
 layout_mode = 2
@@ -446,7 +498,15 @@ texture = SubResource("AtlasTexture_v8hw0")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="PlusLabel2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Grenade"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Plus" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Grenade"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -464,7 +524,15 @@ texture = SubResource("AtlasTexture_4ah1o")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="EqualsLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Grenade"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Arrow" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Grenade"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -483,22 +551,28 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Grenade"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Pineapple"
+horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Grenade"]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Grenade"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Hopes"
+horizontal_alignment = 1
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Grenade"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Grenade"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Grenade"
+horizontal_alignment = 1
 
 [node name="ReferenceRect3" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Grenade"]
 layout_mode = 2
@@ -517,7 +591,15 @@ texture = SubResource("AtlasTexture_qmok8")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="PlusLabel2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Pineapple"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Plus" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Pineapple"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -533,7 +615,15 @@ texture = SubResource("AtlasTexture_g1488")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="EqualsLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Pineapple"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Arrow" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Pineapple"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -550,22 +640,28 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Pineapple"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Starch"
+horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Pineapple"]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Pineapple"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Gears"
+horizontal_alignment = 1
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Pineapple"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Pineapple"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Pineapple"
+horizontal_alignment = 1
 
 [node name="ReferenceRect3" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Pineapple"]
 layout_mode = 2
@@ -599,12 +695,21 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Plus" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Epistemology"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("11_foj40")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="PlusLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Epistemology"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Gunpowder" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Epistemology"]
 texture_filter = 3
@@ -614,7 +719,24 @@ texture = SubResource("AtlasTexture_klule")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="ArrowLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Epistemology"]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "->"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EqualsLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Epistemology"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Arrow" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Epistemology"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -631,22 +753,28 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Epistemology"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Anxiety"
+horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Epistemology"]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Epistemology"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Gunpowder"
+horizontal_alignment = 1
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Epistemology"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Epistemology"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Epistemology"
+horizontal_alignment = 1
 
 [node name="ReferenceRect3" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Epistemology"]
 layout_mode = 2
@@ -661,11 +789,19 @@ columns = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("5_g1488")
+texture = SubResource("AtlasTexture_tiqkg")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="PlusLabel2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Artifact"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Plus" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Artifact"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -681,7 +817,15 @@ texture = SubResource("AtlasTexture_s5hd0")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="EqualsLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Artifact"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Arrow" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Artifact"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -698,22 +842,28 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Artifact"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Springs"
+horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Artifact"]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Artifact"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Hopes"
+horizontal_alignment = 1
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Artifact"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Artifact"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Artifact"
+horizontal_alignment = 1
 
 [node name="ReferenceRect3" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Artifact"]
 layout_mode = 2
@@ -732,7 +882,15 @@ texture = SubResource("AtlasTexture_1mikk")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="PlusLabel2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Pacifier"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Plus" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Pacifier"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -748,7 +906,15 @@ texture = SubResource("AtlasTexture_sjluh")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="EqualsLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Pacifier"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Arrow" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Pacifier"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -760,27 +926,33 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("18_lhryc")
+texture = SubResource("AtlasTexture_qjbi5")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Pacifier"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Anxiety"
+horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Pacifier"]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Pacifier"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Banana"
+horizontal_alignment = 1
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Pacifier"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Pacifier"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Pacifier"
+horizontal_alignment = 1
 
 [node name="ReferenceRect3" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Pacifier"]
 layout_mode = 2
@@ -795,11 +967,19 @@ columns = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = ExtResource("5_g1488")
+texture = SubResource("AtlasTexture_tiqkg")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="PlusLabel2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Raygun"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Plus" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Raygun"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -815,7 +995,15 @@ texture = SubResource("AtlasTexture_c1jkh")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="EqualsLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Raygun"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Arrow" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Raygun"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -832,22 +1020,28 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Raygun"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Springs"
+horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Raygun"]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Raygun"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Grenade"
+horizontal_alignment = 1
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Raygun"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Raygun"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Raygun"
+horizontal_alignment = 1
 
 [node name="ReferenceRect3" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/Raygun"]
 layout_mode = 2
@@ -865,7 +1059,15 @@ texture = SubResource("AtlasTexture_sjluh")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="PlusLabel2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/FruitPhone"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Plus" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/FruitPhone"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -881,7 +1083,15 @@ texture = SubResource("AtlasTexture_fnjiw")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="EqualsLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/FruitPhone"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Arrow" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/FruitPhone"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -898,22 +1108,28 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/FruitPhone"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Banana"
+horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/FruitPhone"]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/FruitPhone"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Epistemology"
+horizontal_alignment = 1
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/FruitPhone"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/FruitPhone"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Fruit Phone"
+horizontal_alignment = 1
 
 [node name="ReferenceRect3" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/RightSide/MarginContainer2/Aggregates2/FruitPhone"]
 layout_mode = 2
@@ -955,7 +1171,15 @@ texture = SubResource("AtlasTexture_g3num")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="PlusLabel2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Plus" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -971,7 +1195,15 @@ texture = SubResource("AtlasTexture_v8hw0")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="PlusLabel3" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Plus2" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -987,7 +1219,15 @@ texture = SubResource("AtlasTexture_o0m7r")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="EqualsLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Arrow" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -1004,29 +1244,37 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Artifact"
+horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Pineapple"
+horizontal_alignment = 1
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Fruit Phone"
+horizontal_alignment = 1
 
 [node name="ReferenceRect3" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
 layout_mode = 2
 
 [node name="Label4" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Singularity"
+horizontal_alignment = 1
 
 [node name="ReferenceRect4" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Singularity"]
 layout_mode = 2
@@ -1045,7 +1293,15 @@ texture = SubResource("AtlasTexture_o0m7r")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="PlusLabel2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Plus" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -1061,7 +1317,15 @@ texture = SubResource("AtlasTexture_1mikk")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="PlusLabel3" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Plus2" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -1077,7 +1341,15 @@ texture = SubResource("AtlasTexture_fnjiw")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="EqualsLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Arrow" type="TextureRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
+visible = false
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -1094,29 +1366,37 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Fruit Phone"
+horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Anxiety"
+horizontal_alignment = 1
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Epistemology"
+horizontal_alignment = 1
 
 [node name="ReferenceRect3" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
 layout_mode = 2
 
 [node name="Label4" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Paradox"
+horizontal_alignment = 1
 
 [node name="ReferenceRect4" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Bottom/MarginContainer/Super/Paradox2"]
 layout_mode = 2
