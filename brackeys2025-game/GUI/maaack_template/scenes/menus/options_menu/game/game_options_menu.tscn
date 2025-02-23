@@ -26,6 +26,7 @@ search_depth = 2
 layout_mode = 2
 
 [node name="ConveyorBeltStyle" parent="VBoxContainer" instance=ExtResource("4_ruxe3")]
+visible = false
 layout_mode = 2
 option_values = ["TILEMAP", "SMOOTH_LINE", "CARDINAL_LINE"]
 option_titles = ["TILEMAP", "SMOOTH_LINE", "CARDINAL_LINE"]
@@ -36,6 +37,7 @@ section = "GameSettings"
 property_type = 4
 
 [node name="FactoriesSnapToGridOption" parent="VBoxContainer" instance=ExtResource("5_rlgji")]
+visible = false
 layout_mode = 2
 option_name = "Factories Snap To Grid"
 option_section = 4
