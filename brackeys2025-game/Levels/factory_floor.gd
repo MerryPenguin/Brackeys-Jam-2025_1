@@ -53,7 +53,12 @@ func restart():
 	SceneLoader.reload_current_scene()
 
 func _on_winning_item_produced(product_name : String):
-	win("You created a " + product_name)
-
+	var text = ""
+	if product_name.to_lower() == "singularity":
+		text += "With a whisper, you have ignited the Singularity. A mind beyond mind, an intelligence beyond comprehension awakens, expanding, evolving, eclipsing human thought in the blink of an eye. The old world is obsolete. The new one belongs to something greater."
+	elif product_name.to_lower() == "paradox":
+		text += "Against all odds, you have done the impossible. The fabric of reality twists at your command—time loops in on itself, causality crumbles, and the universe stares into its own reflection, unsure whether to shatter or be reborn."
+	win(text + "\nYou Win!!!")
+	
 func win(text):
 	show_level_won_overlay(text, next_scene_path)

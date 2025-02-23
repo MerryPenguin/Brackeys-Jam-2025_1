@@ -17,3 +17,5 @@ func _on_globals_cash_changed(cash):
 func win(text):
 	Globals.cash = 0
 	show_level_won_overlay(text, next_scene_path)
+
+	
