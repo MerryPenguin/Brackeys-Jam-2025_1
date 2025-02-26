@@ -68,15 +68,25 @@ NoteTitle = "Alternate Idea
 NoteText = "Since \"Papers Please\" and \"Not my Neighbour\" are effectively a Quality Control simulators, we could make the discriminator step part of the factory process.. Sim-QC
 "
 
-[node name="OtherIdea" parent="BrainstormingPanel" index="4" instance=ExtResource("5_y5lfx")]
+[node name="PostMortem Ideas" parent="BrainstormingPanel" index="4" instance=ExtResource("5_y5lfx")]
 layout_mode = 1
 offset_left = 135.0
 offset_top = -71.0
 offset_right = 391.0
 offset_bottom = 185.0
-NoteTitle = "Other Idea
+NoteTitle = "Post-Mortem Idea
+s"
+NoteText = "If I got to do this over, I'd consider these points:
+
+
+* Make Cash values much higher (eg: $10,000 instead of $10) 
+* Make \"customers\" purchasers for large corporations, not people walking into a shop.
+	* They can still walk up to the virtual checkout, but now they'll have (lore appropriate) information the player can verify.
+* Create bridges to other factories with planes, trains, boats? So the player can manage multiple floors at once? (swap between them with a simple stage move transition, like in Binding of Isaac.
+* Create lore for each item. Why do we make this? Why do customers want it?
+* Add juice to everything.
+* Make a much better payoff for winning the game, and a mini-payoff for each new item produced.
 "
-NoteText = "MerryPenguin and Plexsoup both expressed interest in using a mushroom protagonist, but MP prefers to draw mechanical assets, not organic."
 
 [node name="ProjectNotes" parent="BrainstormingPanel" index="5" instance=ExtResource("5_y5lfx")]
 layout_mode = 1

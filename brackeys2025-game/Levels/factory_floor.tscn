@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://vndqdct5f50s"]
+[gd_scene load_steps=13 format=3 uid="uid://vndqdct5f50s"]
 
 [ext_resource type="Script" uid="uid://dcsinn3h1e0sr" path="res://Levels/level_01_main.gd" id="1_fpxqv"]
 [ext_resource type="PackedScene" uid="uid://d1m8n26ymxpa8" path="res://Entities/MobileWorker/factory_worker.tscn" id="2_7d5sh"]
 [ext_resource type="PackedScene" uid="uid://djc0g4iedr3xo" path="res://Entities/Customers/customer_spawner.tscn" id="4_64ewy"]
-[ext_resource type="PackedScene" uid="uid://cu7xb7uvvt414" path="res://Entities/StorageChest.tscn" id="6_fpxqv"]
+[ext_resource type="PackedScene" uid="uid://c0epywcqqnwdo" path="res://Entities/ShippingPorts/ShipPort.tscn" id="4_wrr4c"]
+[ext_resource type="PackedScene" uid="uid://cob3cq2b3y85s" path="res://Entities/ShippingPorts/airport.tscn" id="5_qp40h"]
+[ext_resource type="PackedScene" uid="uid://kq65o2trjyim" path="res://Entities/ShippingPorts/rail_port.tscn" id="6_jtrj6"]
 [ext_resource type="AudioStream" uid="uid://by8bqpohhprun" path="res://Assets/music/Factory 1 (With EQ).mp3" id="7_fpxqv"]
 [ext_resource type="PackedScene" uid="uid://cefa1nyfmqh7b" path="res://GUI/Marketing/TitlePageThumbnail.tscn" id="8_64ewy"]
 [ext_resource type="PackedScene" uid="uid://b01165no4oubu" path="res://Entities/Inspection/inspector.tscn" id="12_2g2ty"]
@@ -48,17 +50,14 @@ rotation = -0.629813
 [node name="Storage" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Chest" parent="Storage" instance=ExtResource("6_fpxqv")]
-y_sort_enabled = true
-position = Vector2(864, 368)
-
-[node name="Chest2" parent="Storage" instance=ExtResource("6_fpxqv")]
-y_sort_enabled = true
+[node name="ShipPort" parent="Storage" instance=ExtResource("4_wrr4c")]
 position = Vector2(864, 496)
 
-[node name="Chest3" parent="Storage" instance=ExtResource("6_fpxqv")]
-y_sort_enabled = true
+[node name="Airport" parent="Storage" instance=ExtResource("5_qp40h")]
 position = Vector2(864, 176)
+
+[node name="RailPort" parent="Storage" instance=ExtResource("6_jtrj6")]
+position = Vector2(864, 336)
 
 [node name="LooseWidgets" type="Node2D" parent="."]
 

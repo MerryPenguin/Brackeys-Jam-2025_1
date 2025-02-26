@@ -45,13 +45,9 @@ region = Rect2(32, 0, 16, 16)
 atlas = ExtResource("10_oolxu")
 region = Rect2(48, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s5hd0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1488"]
 atlas = ExtResource("10_oolxu")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1mikk"]
-atlas = ExtResource("10_oolxu")
-region = Rect2(16, 16, 16, 16)
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_klule"]
 atlas = ExtResource("10_oolxu")
@@ -69,9 +65,9 @@ region = Rect2(0, 16, 16, 16)
 atlas = ExtResource("10_oolxu")
 region = Rect2(80, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g1488"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mikk"]
 atlas = ExtResource("10_oolxu")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fnjiw"]
 atlas = ExtResource("10_oolxu")
@@ -80,6 +76,10 @@ region = Rect2(64, 16, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tiqkg"]
 atlas = ExtResource("12_qmok8")
 region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5hd0"]
+atlas = ExtResource("10_oolxu")
+region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3num"]
 atlas = ExtResource("10_oolxu")
@@ -406,7 +406,7 @@ columns = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = SubResource("AtlasTexture_s5hd0")
+texture = SubResource("AtlasTexture_fgd2a")
 expand_mode = 3
 stretch_mode = 5
 
@@ -431,7 +431,7 @@ stretch_mode = 5
 texture_filter = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-texture = SubResource("AtlasTexture_1mikk")
+texture = SubResource("AtlasTexture_g1488")
 expand_mode = 3
 stretch_mode = 5
 
@@ -463,7 +463,7 @@ stretch_mode = 5
 [node name="HopesLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Gunpowder"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
-text = "Hopes"
+text = "Ash"
 horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Gunpowder"]
@@ -472,7 +472,7 @@ layout_mode = 2
 [node name="AnxietyLabel" type="Label" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Gunpowder"]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
-text = "Anxiety"
+text = "Gears"
 horizontal_alignment = 1
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/RecipeBook/VBoxContainer/Top/LeftSide/MarginContainer/Aggregates/Gunpowder"]

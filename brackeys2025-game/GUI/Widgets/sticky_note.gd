@@ -22,6 +22,7 @@ func _ready():
 		# in editor
 		if NoteTitle == null:
 			NoteTitle = self.name
+		%NoteText.text = NoteText
 	else: # in-game
 		hide()
 		
