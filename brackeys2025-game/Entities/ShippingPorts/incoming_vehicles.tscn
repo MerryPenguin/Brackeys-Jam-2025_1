@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm3ea7ml1kfvo"]
+
+[ext_resource type="Script" uid="uid://bn0iynlgoc53i" path="res://Entities/ShippingPorts/incoming_vehicles.gd" id="1_bwlfw"]
+
+[sub_resource type="Curve2D" id="Curve2D_3w15f"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 496, -80, 0, 0, 0, 0, 272, -80, 0, 0, 0, 0, 144, -8, 0, 0, 0, 0, 8, -8)
+}
+point_count = 4
+
+[node name="IncomingVehicles" type="Node2D"]
+script = ExtResource("1_bwlfw")
+
+[node name="Trajectory" type="Path2D" parent="."]
+position = Vector2(64, 11)
+curve = SubResource("Curve2D_3w15f")
+
+[node name="VehicleSpawnTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="VehicleSpawnTimer" to="." method="_on_vehicle_spawn_timer_timeout"]

@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://kq65o2trjyim"]
+[gd_scene load_steps=7 format=3 uid="uid://kq65o2trjyim"]
 
 [ext_resource type="PackedScene" uid="uid://cu7xb7uvvt414" path="res://Entities/StorageChest.tscn" id="1_hjn54"]
 [ext_resource type="Texture2D" uid="uid://ealb056nmqub" path="res://Assets/Images/placeholder/train_station.png" id="2_6yige"]
 [ext_resource type="Texture2D" uid="uid://cr86u064giw5o" path="res://Assets/Images/placeholder/train_track.png" id="3_v3vi5"]
+[ext_resource type="PackedScene" uid="uid://bm3ea7ml1kfvo" path="res://Entities/ShippingPorts/incoming_vehicles.tscn" id="4_6yige"]
+[ext_resource type="PackedScene" uid="uid://c4ecj48thf6mr" path="res://Entities/ShippingPorts/train_path_follower.tscn" id="5_v3vi5"]
+
+[sub_resource type="Curve2D" id="Curve2D_v3vi5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 498, -9, 0, 0, 0, 0, 282, -11, 0, 0, 0, 0, 144, -8, 0, 0, 0, 0, 8, -8)
+}
+point_count = 4
 
 [node name="RailPort" instance=ExtResource("1_hjn54")]
+
+[node name="PanelContainer" parent="StorageComponent" index="1"]
+visible = false
 
 [node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_6yige")
@@ -14,7 +25,17 @@ region_enabled = false
 visible = true
 text = "Rail to Americas"
 
-[node name="Sprite2D2" type="Sprite2D" parent="." index="11"]
+[node name="IncomingVehicles" parent="." index="11" instance=ExtResource("4_6yige")]
+position = Vector2(104, -8)
+vehicle_scene = ExtResource("5_v3vi5")
+
+[node name="Trajectory" parent="IncomingVehicles" index="0"]
+position = Vector2(-34, 10)
+scale = Vector2(1, -1)
+curve = SubResource("Curve2D_v3vi5")
+
+[node name="Tracks" type="Sprite2D" parent="." index="12"]
+z_index = -1
 texture_repeat = 2
 position = Vector2(176, -8)
 scale = Vector2(4, 4)
@@ -23,3 +44,4 @@ region_enabled = true
 region_rect = Rect2(0, 0, 64, 16)
 
 [editable path="StorageComponent"]
+[editable path="IncomingVehicles"]

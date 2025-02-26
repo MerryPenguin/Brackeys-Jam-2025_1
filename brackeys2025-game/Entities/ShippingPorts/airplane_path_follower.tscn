@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://y0dkhdoq6pg0"]
+
+[ext_resource type="Texture2D" uid="uid://dhsd0bano03bj" path="res://Assets/Images/placeholder/airplane_02.png" id="1_y7mek"]
+[ext_resource type="Script" uid="uid://dtoifadfmcmo0" path="res://Entities/ShippingPorts/airplane_path_follower.gd" id="1_yo7jj"]
+
+[node name="AirplanePathFollower" type="PathFollow2D"]
+rotation = 3.14159
+loop = false
+script = ExtResource("1_yo7jj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_y7mek")
+flip_v = true
+
+[node name="LoadingWaitTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="LoadingWaitTimer" to="." method="_on_loading_wait_timer_timeout"]

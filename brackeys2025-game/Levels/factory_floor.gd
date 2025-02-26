@@ -7,6 +7,7 @@ class_name FactoryFloor extends Node2D
 
 @export var next_scene_path : StringName = "res://GUI/maaack_template/scenes/end_credits/end_credits.tscn"
 @export var winning_products : Array[Globals.products] = []
+signal level_won
 
 func _init():
 	Globals.current_level = self
@@ -41,14 +42,19 @@ func show_level_won_overlay(text, scene_path):
 	level_won_overlay.text = text
 	add_sibling(level_won_overlay)
 	level_won_overlay.continue_pressed.connect(_on_next_level_requested.bind(scene_path))
+	#level_won_overlay.continue_pressed.connect(LevelListManager._on_level_won) # <-- I don't know how to use Maaack's template for loading levels
 	level_won_overlay.restart_pressed.connect(restart)
 
 func _on_next_level_requested(scene_path):
 	# TODO: This needs to emit something to a level manager from Maaack's template.
 	# so the system knows which levels are complete.
-	GameState.set_current_level(1)
+	
+	GameState.level_reached(GameState.get_current_level() + 1)
 	SceneLoader.load_scene(scene_path)
 
+	# Let LevelListManager handle this?
+	#level_won.emit()
+	
 func restart():
 	SceneLoader.reload_current_scene()
 

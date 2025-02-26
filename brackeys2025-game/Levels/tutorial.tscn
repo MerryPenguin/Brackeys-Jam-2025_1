@@ -11,7 +11,7 @@
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_0xeif")
-next_scene_path = &"res://Levels/factory_floor.tscn"
+next_scene_path = &"res://Levels/level_02_International.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

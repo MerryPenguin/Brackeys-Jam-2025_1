@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmnuf1ytc4hnt"]
+
+[ext_resource type="PackedScene" uid="uid://vndqdct5f50s" path="res://Levels/factory_floor.tscn" id="1_8e5fi"]
+[ext_resource type="PackedScene" uid="uid://c0epywcqqnwdo" path="res://Entities/ShippingPorts/ShipPort.tscn" id="2_g7q22"]
+[ext_resource type="PackedScene" uid="uid://cob3cq2b3y85s" path="res://Entities/ShippingPorts/airport.tscn" id="3_6f4os"]
+[ext_resource type="PackedScene" uid="uid://kq65o2trjyim" path="res://Entities/ShippingPorts/rail_port.tscn" id="4_6jtrh"]
+
+[node name="Level_02" instance=ExtResource("1_8e5fi")]
+
+[node name="ShipPort" parent="Storage" index="0" instance=ExtResource("2_g7q22")]
+position = Vector2(864, 496)
+
+[node name="Airport" parent="Storage" index="1" instance=ExtResource("3_6f4os")]
+position = Vector2(864, 176)
+
+[node name="RailPort" parent="Storage" index="2" instance=ExtResource("4_6jtrh")]
+position = Vector2(864, 336)

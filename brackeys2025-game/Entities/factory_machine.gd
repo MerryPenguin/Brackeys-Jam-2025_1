@@ -29,7 +29,8 @@ func _ready():
 	$PlacementNoise.play()
 	recipe_changed.connect($InteractionButton._on_factory_machine_recipe_changed)
 	var current_level = Globals.current_level
-	winning_product_produced.connect(current_level._on_winning_item_produced)
+	if current_level and current_level.has_method("_on_winning_item_produced"):
+		winning_product_produced.connect(current_level._on_winning_item_produced)
 	if current_recipe != null:
 		recipe_changed.emit(current_recipe)
 	setup_timer()

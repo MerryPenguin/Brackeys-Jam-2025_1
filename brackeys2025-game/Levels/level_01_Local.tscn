@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf1f7k5teva53"]
+
+[ext_resource type="PackedScene" uid="uid://vndqdct5f50s" path="res://Levels/factory_floor.tscn" id="1_uesoy"]
+[ext_resource type="PackedScene" uid="uid://djc0g4iedr3xo" path="res://Entities/Customers/customer_spawner.tscn" id="2_1f5fg"]
+[ext_resource type="PackedScene" uid="uid://cu7xb7uvvt414" path="res://Entities/StorageChest.tscn" id="3_v4skq"]
+
+[node name="Level_01_local" instance=ExtResource("1_uesoy")]
+next_scene_path = &"res://Levels/level_02_International.tscn"
+
+[node name="CustomerSpawner" parent="Customers" index="0" instance=ExtResource("2_1f5fg")]
+position = Vector2(1072, -448)
+rotation = -0.826029
+
+[node name="Chest" parent="Storage" index="0" instance=ExtResource("3_v4skq")]
+position = Vector2(864, 176)
+
+[node name="Chest2" parent="Storage" index="1" instance=ExtResource("3_v4skq")]
+position = Vector2(864, 336)
+
+[node name="Chest3" parent="Storage" index="2" instance=ExtResource("3_v4skq")]
+position = Vector2(864, 496)
