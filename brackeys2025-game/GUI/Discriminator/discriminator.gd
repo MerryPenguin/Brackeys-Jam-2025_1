@@ -11,27 +11,27 @@ func _ready():
 	$InstructionsPopupPanel.hide()
 	
 
-func activate(new_customer : RovingCustomer):
-	customer = new_customer
-	customer.state = customer.states.DETAINED
-	populate_receipt(customer)
-	populate_order_form(customer)
-	populate_basket(customer)
-	populate_identity(customer)
+func activate(manifest : ProcurementManifest):
+	#customer = new_customer
+	#customer.state = customer.states.DETAINED
+	populate_receipt(manifest)
+	populate_order_form(manifest)
+	populate_basket(manifest)
+	populate_identity(manifest)
 
-func populate_identity(new_customer):
-	%PassportContainer.id = new_customer.identity.id
-	%IDContainer.sex = new_customer.identity.sex
-	%PassportContainer.affiliations = new_customer.identity.affiliation
-	%IDContainer.education = new_customer.identity.education
+func populate_identity(manifest: ProcurementManifest):
+	%PassportContainer.id = manifest.purchasing_agent.id
+	%IDContainer.sex = manifest.purchasing_agent.sex
+	%PassportContainer.affiliations = manifest.purchasing_agent.affiliation
+	%IDContainer.education = manifest.purchasing_agent.education
 	
 
-func populate_order_form(new_customer : RovingCustomer):
+func populate_order_form(manifest : ProcurementManifest):
 	# fill it with random product icons
 	var item_list = []
-	item_list.append_array(new_customer.widgets_desired) # Take this out later?
-	item_list.append_array(new_customer.items_purchased)
-	item_list.append_array(new_customer.items_stolen)
+	item_list.append_array(manifest.widgets_desired) # Take this out later?
+	item_list.append_array(manifest.items_purchased)
+	item_list.append_array(manifest.items_stolen)
 	var new_grid = GridContainer.new()
 	new_grid.columns = 2
 	%OrderForm.get_node("marker").add_child(new_grid)
@@ -39,10 +39,10 @@ func populate_order_form(new_customer : RovingCustomer):
 	for item in item_list:
 		new_grid.add_child(generate_single_item(item))
 
-func populate_basket(new_customer: RovingCustomer):
+func populate_basket(manifest: ProcurementManifest):
 	var item_list = []
-	item_list.append_array(new_customer.items_purchased)
-	item_list.append_array(new_customer.items_stolen)
+	item_list.append_array(manifest.items_purchased)
+	item_list.append_array(manifest.items_stolen)
 	var new_grid = GridContainer.new()
 	new_grid.columns = 2
 	%Basket.add_child(new_grid)
@@ -59,7 +59,7 @@ func generate_single_item(product : Globals.products) -> TextureRect:
 	return new_texture_rect
 	
 	
-func populate_receipt(new_customer : RovingCustomer):
+func populate_receipt(manifest : ProcurementManifest):
 	var receipt_tree : Tree = %Receipt.get_node("Tree")
 	receipt_tree.columns = 2
 	receipt_tree.set_column_clip_content(0, true)
@@ -76,7 +76,7 @@ func populate_receipt(new_customer : RovingCustomer):
 	#out_of_stock.set_text(0, "Out of Stock")
 	#out_of_stock.set_text(1, "Out of Stock")
 
-	create_pricelist(in_stock, new_customer.items_purchased, true)
+	create_pricelist(in_stock, manifest.items_purchased, true)
 	#create_pricelist(out_of_stock, new_customer.widgets_desired, false)
 
 func create_pricelist(tree_node : TreeItem, item_list : Array, show_price: bool = true):
@@ -111,7 +111,8 @@ func _on_deny_button_pressed() -> void:
 	if state == states.UNDECIDED:
 		$AnimationPlayer.play("deny")
 		state = states.DENIED
-		customer.queue_free()
+		if customer != null and is_instance_valid(customer):
+			customer.queue_free()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

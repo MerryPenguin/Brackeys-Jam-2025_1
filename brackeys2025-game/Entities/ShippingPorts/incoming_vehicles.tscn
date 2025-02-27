@@ -17,6 +17,5 @@ curve = SubResource("Curve2D_3w15f")
 
 [node name="VehicleSpawnTimer" type="Timer" parent="."]
 one_shot = true
-autostart = true
 
 [connection signal="timeout" from="VehicleSpawnTimer" to="." method="_on_vehicle_spawn_timer_timeout"]

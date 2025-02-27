@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://blisra2pjmgd3"]
 
-[ext_resource type="Script" uid="uid://dtoifadfmcmo0" path="res://Entities/ShippingPorts/airplane_path_follower.gd" id="1_2ifel"]
+[ext_resource type="Script" uid="uid://dtoifadfmcmo0" path="res://Entities/ShippingPorts/vehicle_path_follower.gd" id="1_2ifel"]
 [ext_resource type="Texture2D" uid="uid://c6dsmhbjk8pt5" path="res://Assets/Images/placeholder/cargo_ship.png" id="2_2ifel"]
 
 [node name="ShipPathFollower" type="PathFollow2D"]
@@ -8,6 +8,7 @@ rotation = 3.14159
 rotates = false
 loop = false
 script = ExtResource("1_2ifel")
+region = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.000162252, 64)

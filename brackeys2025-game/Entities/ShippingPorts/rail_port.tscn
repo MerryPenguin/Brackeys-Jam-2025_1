@@ -26,8 +26,9 @@ visible = true
 text = "Rail to Americas"
 
 [node name="IncomingVehicles" parent="." index="11" instance=ExtResource("4_6yige")]
-position = Vector2(104, -8)
+position = Vector2(48, -8)
 vehicle_scene = ExtResource("5_v3vi5")
+speed = 30.0
 
 [node name="Trajectory" parent="IncomingVehicles" index="0"]
 position = Vector2(-34, 10)

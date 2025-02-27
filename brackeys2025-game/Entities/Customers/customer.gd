@@ -8,10 +8,10 @@ var target_destination : Node2D
 @export_range(0.0, 1.0) var sketchiness_factor : float = 0.25
 var dangerous_limit : float = 0.5
 
-@export var widgets_desired : Array[Globals.products]
-var items_purchased : Array[Globals.products]
-var items_stolen : Array[Globals.products]
-
+#@export var widgets_desired : Array[Globals.products]
+#var items_purchased : Array[Globals.products]
+#var items_stolen : Array[Globals.products]
+var manifest : ProcurementManifest
 
 enum states { MOVING_TO_INSPECTOR, DETAINED, MOVING_TO_SHOP, BROWSING, BUYING, INTENDING_HARM, CAUSING_DAMAGE, LEAVING }
 var state : states = states.MOVING_TO_SHOP
@@ -33,6 +33,7 @@ signal purchases_changed(items_purchased)
 
 
 func _ready():
+	manifest = ProcurementManifest.new()
 	%CyclesRemaining.text = str(max_cycles_to_wait)
 	$RedLight.hide()
 	set_initial_sketchiness()
@@ -44,25 +45,14 @@ func _ready():
 	$CustomerAvoidanceArea.show()
 	
 func create_requirements_list():
+	manifest.create_random_requirements_list()
+	
 	var req_text = ""
-	
-	# Add one simple organic material, so player can progress in early stage
-	if randf() < 0.75:
-		var basic_recipes = [ Globals.products.ASH, Globals.products.STARCH ]
-		widgets_desired.push_back(basic_recipes.pick_random())
-	
-	# Add 1 to 3 random materials
-	for i in range((randi()%3) +1):
-		var random_choice = Globals.products.values().pick_random()
-		widgets_desired.push_back(random_choice)
-		req_text += Globals.product_recipes[random_choice].product_name + ", "
-		
+	for widget in manifest.widgets_desired:
+		req_text += Globals.product_recipes[widget].product_name + ", "
 	$HoverPopupDisplay.text = "Customer Wants:\n" + req_text
-	$RequirementsThoughtBubble.update_icons(widgets_desired)
+	$RequirementsThoughtBubble.update_icons(manifest.widgets_desired)
 
-
-#func get_thought_bubble():
-	#return $RequirementsThoughtBubble.duplicate()
 
 func set_initial_sketchiness():
 	sketchiness_factor = randf()
@@ -191,7 +181,7 @@ func attempt_to_buy_product():
 		return
 
 	var requirements_met = true
-	for desired_product in widgets_desired:
+	for desired_product in manifest.widgets_desired:
 		var requirement : ProductWidgetRecipe = Globals.product_recipes[desired_product]
 		if target_destination is Marker2D or target_destination.is_in_group("inspection_areas"):
 			return
@@ -203,7 +193,7 @@ func attempt_to_buy_product():
 			requirements_met = false
 		
 		if cycles_waited > max_cycles_to_wait:
-			if items_purchased.size() > 0: # happy customer
+			if manifest.items_purchased.size() > 0: # happy customer
 				go_to_inspector()
 			else: # couldn't find anything.
 				if randf() < 0.25:
@@ -284,21 +274,21 @@ func add_product_to_carrying_lists(widget : FactoryProductWidget):
 	var product = Globals.get_product_by_name(widget.recipe.product_name)
 	if randf() < 0.8: # paid for it, no problem
 		Globals.cash += Utils.lookup_value(product)
-		items_purchased.push_back(product)
-		purchases_changed.emit(items_stolen)
+		manifest.items_purchased.push_back(product)
+		purchases_changed.emit(manifest.items_stolen)
 		$BoughtSomething.play()
 		
 	else: # stole the product
-		items_stolen.push_back(product)
-		thefts_changed.emit(items_stolen)
+		manifest.items_stolen.push_back(product)
+		thefts_changed.emit(manifest.items_stolen)
 		
 
 
 
 func remove_product_from_desires_list(widget : FactoryProductWidget):
-	widgets_desired.erase(Globals.get_product_by_name(widget.recipe.product_name))
-	desires_changed.emit(widgets_desired)
-	if widgets_desired.size() == 0:
+	manifest.widgets_desired.erase(Globals.get_product_by_name(widget.recipe.product_name))
+	desires_changed.emit(manifest.widgets_desired)
+	if manifest.widgets_desired.size() == 0:
 		leave()
 
 func _on_cooldown_timer_timeout() -> void:

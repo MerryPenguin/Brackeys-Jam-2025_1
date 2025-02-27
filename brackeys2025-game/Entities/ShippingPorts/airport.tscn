@@ -27,6 +27,6 @@ texture = ExtResource("3_3w15f")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 16)
 
-[node name="IncomingAirplanes" parent="." index="12" instance=ExtResource("4_xcms3")]
+[node name="IncomingVehicles" parent="." index="12" instance=ExtResource("4_xcms3")]
 
 [editable path="StorageComponent"]

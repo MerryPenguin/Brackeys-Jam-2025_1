@@ -85,3 +85,5 @@ func get_product_by_name(product_name):
 	for product_num in products.values():
 		if product_recipes[product_num].product_name == product_name:
 			return product_num
+
+enum regions { PACIFIC, ATLANTIC, AMERICAS }

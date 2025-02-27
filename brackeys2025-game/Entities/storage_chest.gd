@@ -3,14 +3,20 @@
 
 class_name StorageChest extends Node2D
 
+@export var interval : float = 3.0
+
 #@export var max_capacity : int = 24
 #var items_stored : Array[FactoryProductWidget] # may not be optimal keeping all those objects around, could be a dictionary with names and quantities
 
 var hovering : bool = false
 @onready var storage : StorageComponent = $StorageComponent
 
+
+
 func _ready():
 	hide_hover_info()
+	if has_node("IncomingVehicles"):
+		get_node("IncomingVehicles").interval = interval
 	
 	
 func hide_hover_info():
