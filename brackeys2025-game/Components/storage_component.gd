@@ -24,6 +24,23 @@ func receive_product(widget):
 	#$ItemCountLabel.text = str(items_stored.size())
 	#update_popup_text()
 	
+func has_product(product : FactoryProductWidget) -> bool:
+	for item in items_stored:
+		if item.recipe.product_name == product.recipe.product_name:
+			return true
+	return false
+
+func has_product_num(product : Globals.products) -> bool:
+	for item in items_stored:
+		if item.recipe.product_name == Globals.product_recipes.product_name:
+			return true
+	return false
+
+func has_product_for_recipe(recipe: ProductWidgetRecipe) -> bool:
+	for item in items_stored:
+		if item.recipe.product_name == recipe.product_name:
+			return true
+	return false
 
 func has_product_named(product_name, amount_required : int = 1) -> bool:
 	var count = 0
@@ -34,7 +51,7 @@ func has_product_named(product_name, amount_required : int = 1) -> bool:
 
 
 func give_product_by_name(product_name, recipient):
-	for item in items_stored:
+	for item : FactoryProductWidget in items_stored:
 		if item.recipe.product_name == product_name:
 			if recipient.has_method("receive_product"):
 				recipient.receive_product(item)
@@ -42,10 +59,13 @@ func give_product_by_name(product_name, recipient):
 				return
 	
 func give_product(widget, recipient):
-	if widget in items_stored:
-		if recipient.has_method("receive_product"):
-			recipient.receive_product(widget)
-			items_stored.erase(widget)
+	if widget is FactoryProductWidget:
+		if widget in items_stored:
+			if recipient.has_method("receive_product"):
+				recipient.receive_product(widget)
+				items_stored.erase(widget)
+	elif widget is Globals.products:
+		pass
 
 func erase_product(product_index : Globals.products):
 	for widget in items_stored:

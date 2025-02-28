@@ -8,7 +8,6 @@ rotation = 3.14159
 rotates = false
 loop = false
 script = ExtResource("1_2ifel")
-region = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.000162252, 64)

@@ -4,6 +4,7 @@
 class_name StorageChest extends Node2D
 
 @export var interval : float = 3.0
+@export var region : Globals.regions = Globals.regions.AMERICAS
 
 #@export var max_capacity : int = 24
 #var items_stored : Array[FactoryProductWidget] # may not be optimal keeping all those objects around, could be a dictionary with names and quantities
@@ -16,7 +17,8 @@ var hovering : bool = false
 func _ready():
 	hide_hover_info()
 	if has_node("IncomingVehicles"):
-		get_node("IncomingVehicles").interval = interval
+		var incoming_vehicles = get_node("IncomingVehicles")
+		incoming_vehicles.activate(self, region, interval)
 	
 	
 func hide_hover_info():
@@ -42,8 +44,12 @@ func receive_product(widget):
 	update_popup_text()
 	$EmptyLabel.hide()
 
+func sell_product(product : Globals.products, buyer):
+	if storage.has_product_num(product):
+		storage.give_product(product, buyer)
 
-func sell(product_name : StringName, buyer:RovingCustomer):
+	
+func sell(product_name : StringName, buyer): # Buyer could be RovingCustomer or VehiclePathFollower
 	# most likely selling a product to a customer
 	# remove widget from inventory, give it to customer
 	if storage.has_product_named(product_name):
