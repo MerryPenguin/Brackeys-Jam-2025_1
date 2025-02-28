@@ -264,29 +264,28 @@ func _on_hover_detection_area_mouse_entered() -> void:
 func _on_hover_detection_area_mouse_exited() -> void:
 	pass # Replace with function body.
 
-func receive_product(widget : FactoryProductWidget):
+func receive_product(product_idx : Globals.products):
 	if not storage.is_full():
-		storage.receive_product(widget)
-		remove_product_from_desires_list(widget)
-		add_product_to_carrying_lists(widget)
+		storage.receive_product(product_idx)
+		remove_product_from_desires_list(product_idx)
+		add_product_to_carrying_lists(product_idx)
 
-func add_product_to_carrying_lists(widget : FactoryProductWidget):
-	var product = Globals.get_product_by_name(widget.recipe.product_name)
+func add_product_to_carrying_lists(product_idx : Globals.products):
 	if randf() < 0.8: # paid for it, no problem
-		Globals.cash += Utils.lookup_value(product)
-		manifest.items_purchased.push_back(product)
+		Globals.cash += Utils.lookup_value(product_idx)
+		manifest.items_purchased.push_back(product_idx)
 		purchases_changed.emit(manifest.items_stolen)
 		$BoughtSomething.play()
 		
 	else: # stole the product
-		manifest.items_stolen.push_back(product)
+		manifest.items_stolen.push_back(product_idx)
 		thefts_changed.emit(manifest.items_stolen)
 		
 
 
 
-func remove_product_from_desires_list(widget : FactoryProductWidget):
-	manifest.widgets_desired.erase(Globals.get_product_by_name(widget.recipe.product_name))
+func remove_product_from_desires_list(product_idx : Globals.products):
+	manifest.widgets_desired.erase(product_idx)
 	desires_changed.emit(manifest.widgets_desired)
 	if manifest.widgets_desired.size() == 0:
 		leave()

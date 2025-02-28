@@ -45,8 +45,8 @@ func destroy_contents(contents_node : FactoryProductWidget):
 		# assume someone else is spawning the unowned widget?
 		
 func deliver_contents(target : ConnectorNode):
-	remove_child(widget)
-	target.receive_product(widget)
-	queue_free() # we're no longer required
-		
+	var product_idx = Globals.get_product_by_name(widget.recipe.product_name)
+	target.receive_product(product_idx)
+	queue_free() # we're no longer required, along with the widget we carry
+	
 	

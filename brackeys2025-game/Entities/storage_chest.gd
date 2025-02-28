@@ -44,9 +44,9 @@ func receive_product(widget):
 	update_popup_text()
 	$EmptyLabel.hide()
 
-func sell_product(product : Globals.products, buyer):
-	if storage.has_product_num(product):
-		storage.give_product(product, buyer)
+func sell_product(product_idx : Globals.products, buyer):
+	if storage.has_product_num(product_idx):
+		storage.give_product(product_idx, buyer)
 
 	
 func sell(product_name : StringName, buyer): # Buyer could be RovingCustomer or VehiclePathFollower

@@ -2,89 +2,85 @@ class_name StorageComponent extends Node2D
 
 @export var max_capacity : int = 24
 @export var tooltip_disabled : bool = false
-var items_stored : Array[FactoryProductWidget] # may not be optimal keeping all those objects around, could be a dictionary with names and quantities
+#var items_stored : Array[FactoryProductWidget] # may not be optimal keeping all those objects around, could be a dictionary with names and quantities
+var products_stored : Array[Globals.products] # no need to hold the whole object
 
 var hovering : bool = false
 
 func _ready():
 	hide_popup_info()
 
-func widget_array_to_dictionary(widgets_array):
+func products_array_to_dictionary(products_array : Array[Globals.products]):
 	var product_counts := {}
-	for widget in widgets_array:
-		var product_name = widget.recipe.product_name
+	for product_idx in products_array:
+		var product_name = Globals.product_recipes[product_idx].product_name
 		if product_name in product_counts:
 			product_counts[product_name] += 1
 		else:
 			product_counts[product_name] = 1
 	return product_counts
 
-func receive_product(widget):
-	items_stored.push_back(widget)
-	#$ItemCountLabel.text = str(items_stored.size())
-	#update_popup_text()
+func receive_product(product_idx : Globals.products):
+	products_stored.push_back(product_idx)
 	
-func has_product(product : FactoryProductWidget) -> bool:
-	for item in items_stored:
-		if item.recipe.product_name == product.recipe.product_name:
-			return true
-	return false
+	
+
+func has_product_obj(product_obj : FactoryProductWidget) -> bool:
+	var product_idx = Globals.get_product_by_name(product_obj.recipe.product_name)
+	return has_product_num(product_idx)
 
 func has_product_num(product : Globals.products) -> bool:
-	for item in items_stored:
-		if item.recipe.product_name == Globals.product_recipes[product].product_name:
+	for product_idx in products_stored:
+		if product_idx == product:
 			return true
 	return false
 
 func has_product_for_recipe(recipe: ProductWidgetRecipe) -> bool:
-	for item in items_stored:
-		if item.recipe.product_name == recipe.product_name:
-			return true
-	return false
+	var product_idx = Globals.get_product_by_name(recipe.product_name)
+	return has_product_num(product_idx)
 
-func has_product_named(product_name, amount_required : int = 1) -> bool:
-	var count = 0
-	for item in items_stored:
-		if item.recipe.product_name == product_name:
-			count += 1
-	return count >= amount_required
 
+func has_product_named(product_name) -> bool:
+	var product_idx = Globals.get_product_by_name(product_name)
+	return has_product_num(product_idx)
 
 func give_product_by_name(product_name, recipient):
-	for item : FactoryProductWidget in items_stored:
-		if item.recipe.product_name == product_name:
+	#for item : FactoryProductWidget in items_stored:
+	for product_idx in products_stored:
+		if Globals.product_recipes[product_idx].product_name == product_name:
 			if recipient.has_method("receive_product"):
-				recipient.receive_product(item)
-				items_stored.erase(item)
+				recipient.receive_product(product_idx)
+				products_stored.erase(product_idx)
 				return
+
+func spawn_product_obj(recipe) -> FactoryProductWidget: # might not need this
+	var new_product_obj = preload("res://Entities/factory_products/factory_product_widget.tscn").instantiate()
+	new_product_obj.activate(recipe)
+	return new_product_obj
 	
-func give_product(widget, recipient):
-	if widget is FactoryProductWidget:
-		if widget in items_stored:
-			if recipient.has_method("receive_product"):
-				recipient.receive_product(widget)
-				items_stored.erase(widget)
-	elif widget is Globals.products:
-		pass
+	
+func give_product(product_idx : Globals.products, recipient):
+	if product_idx in products_stored:
+		if recipient.has_method("receive_product"):
+			recipient.receive_product(product_idx)
+			products_stored.erase(product_idx)
 
 func erase_product(product_index : Globals.products):
-	for widget in items_stored:
-		if widget.recipe.product_name == Globals.product_recipes[product_index].product_name:
-			items_stored.erase(widget)
-			return
+	products_stored.erase(product_index)
+
 
 func get_inventory_list() -> String:
 	var text = "Stored Products:"
-	var product_counts = widget_array_to_dictionary(items_stored)
+	var product_counts = products_array_to_dictionary(products_stored)
 	for product_type in product_counts.keys():
 		text += "\n" + product_type+ ": " + str(product_counts[product_type])
 	return text
 
 func get_total_held() -> int:
-	return items_stored.size()
+	return products_stored.size()
 
 func is_full():
-	return items_stored.size() >= max_capacity
+	return products_stored.size() >= max_capacity
 	
 
 

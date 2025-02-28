@@ -74,13 +74,13 @@ func _on_new_conveyor_belt_connected(belt : ConveyorBelt):
 	$ConnectionNoise.play()
 	node_connected.emit(belt.destination)
 
-func receive_product(widget : FactoryProductWidget):
+func receive_product(product_idx : Globals.products):
 	# coming from factory
 	# spawn a package, add the widget scene to the package
 	match type:
 		types.OUTPUT:
-			conveyor_belt.receive_product(widget)
+			conveyor_belt.receive_product(product_idx)
 		types.INPUT:
-			connected_machine.receive_product(widget)
+			connected_machine.receive_product(product_idx)
 		
 	

@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var vehicle_scene = preload("res://Entities/ShippingPorts/airplane_path_follower.tscn")
+@export var vehicle_scene = preload("res://Entities/cargo_vehicles/airplane.tscn")
 
 ## NOTE: Airport, RailPort and ShipPort will try and set these
 var interval : float = 3.0 ## default time between vehicles

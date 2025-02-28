@@ -214,27 +214,27 @@ func is_node_near_cursor(node):
 func is_input_node(node):
 	return node.type == node.types.INPUT
 
-func add_new_conveyance(widget: FactoryProductWidget):
+func add_new_conveyance(product_idx: Globals.products):
 	var path : Path2D = $Path2D
 	if path.curve.point_count > 1 and path.curve.get_baked_length() > 0:
 		# add a pathfollower2d and give it a reference to the widget we're transporting
 		var new_package = ConveyorBeltPackage.new()
+		var new_widget = preload("res://Entities/factory_products/factory_product_widget.tscn").instantiate()
+		new_widget.activate(Globals.product_recipes[product_idx])
 		if path.curve.get_baked_length() > 1:
 			new_package.progress = 0.00002 ## Prevents BUG: a lot of errors about zero length interval.
 			path.call_deferred("add_child", new_package) 
-		else:
-			breakpoint
-		new_package.add_contents(widget)
+		new_package.add_contents(new_widget)
 		new_package.conveyor_belt = self
 	else:
 		push_warning("ConveyorBelt has less than 2 points or zero length interval.")
 
-func _on_new_widget_received(widget : FactoryProductWidget):
-	add_new_conveyance(widget)
+func _on_new_widget_received(product_idx : Globals.products):
+	add_new_conveyance(product_idx)
 	
 
-func receive_product(widget):
-	_on_new_widget_received(widget)
+func receive_product(product_idx : Globals.products):
+	_on_new_widget_received(product_idx)
 
 
 func _on_audio_stream_player_2d_finished() -> void:

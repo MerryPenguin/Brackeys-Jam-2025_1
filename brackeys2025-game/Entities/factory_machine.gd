@@ -60,8 +60,8 @@ func _on_mouse_detection_area_mouse_entered() -> void:
 func _on_mouse_detection_area_mouse_exited() -> void:
 	connectors.hide()
 
-func receive_product(widget : FactoryProductWidget):
-	storage.receive_product(widget)
+func receive_product(product_idx : Globals.products):
+	storage.receive_product(product_idx)
 	
 	#for manifest : RequirementsManifest in current_recipe.required_inputs:
 		#if not widget or not widget.recipe:
@@ -93,19 +93,19 @@ func requirements_met(recipe : ProductWidgetRecipe) -> bool:
 
 
 func produce(recipe : ProductWidgetRecipe):
-	var widget_scene = preload("res://Entities/factory_products/factory_product_widget.tscn")
-	if widget_scene == null:
-		push_warning(self.name, ": factory_machine has no widget_scene")
-		push_warning(recipe)
-		breakpoint
-		return # No recipe. Do nothing
+	#var widget_scene = preload("res://Entities/factory_products/factory_product_widget.tscn")
+	#if widget_scene == null:
+		#push_warning(self.name, ": factory_machine has no widget_scene")
+		#push_warning(recipe)
+		#breakpoint
+		#return # No recipe. Do nothing
 
 	# instantiate one of these onto a conveyor belt, or on the floor for the player if no conveyor belt
 	if is_output_connected():
-		var new_widget : FactoryProductWidget = widget_scene.instantiate()
-		new_widget.activate(recipe)
+		#var new_widget : FactoryProductWidget = widget_scene.instantiate()
+		#new_widget.activate(recipe)
 		check_win_conditions(recipe)
-		%OutputNode.receive_product(new_widget)
+		%OutputNode.receive_product(Globals.get_product_by_name(recipe.product_name))
 		for requirement in recipe.required_inputs:
 			storage.erase_product(requirement)
 	else:  # no conveyor belt
@@ -124,12 +124,6 @@ func is_output_connected():
 		return false
 
 
-
-func drop_on_floor(widget : FactoryProductWidget):
-	var scatter_vec = Vector2(randi_range(-32, 32), randi_range(-32,32))
-	var location = %OutputNode.global_position + scatter_vec
-	
-	Globals.current_level.spawn_widget_on_floor(widget, location)
 
 func get_root_node_name(packed_scene : PackedScene):
 	return packed_scene.get_state().get_node_name(0)
