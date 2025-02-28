@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ealb056nmqub" path="res://Assets/Images/placeholder/train_station.png" id="2_6yige"]
 [ext_resource type="Texture2D" uid="uid://cr86u064giw5o" path="res://Assets/Images/placeholder/train_track.png" id="3_v3vi5"]
 [ext_resource type="PackedScene" uid="uid://bm3ea7ml1kfvo" path="res://Entities/ShippingPorts/incoming_vehicles.tscn" id="4_6yige"]
-[ext_resource type="PackedScene" uid="uid://c4ecj48thf6mr" path="res://Entities/ShippingPorts/train_path_follower.tscn" id="5_v3vi5"]
+[ext_resource type="PackedScene" uid="uid://c1lkb2vvu2y2x" path="res://Entities/cargo_vehicles/train.tscn" id="4_v3vi5"]
 
 [sub_resource type="Curve2D" id="Curve2D_v3vi5"]
 _data = {
@@ -27,12 +27,11 @@ text = "Rail to Americas"
 
 [node name="IncomingVehicles" parent="." index="11" instance=ExtResource("4_6yige")]
 position = Vector2(48, -8)
-vehicle_scene = ExtResource("5_v3vi5")
+vehicle_scene = ExtResource("4_v3vi5")
 speed = 30.0
 
 [node name="Trajectory" parent="IncomingVehicles" index="0"]
-position = Vector2(-34, 10)
-scale = Vector2(1, -1)
+position = Vector2(-32, 32)
 curve = SubResource("Curve2D_v3vi5")
 
 [node name="Tracks" type="Sprite2D" parent="." index="12"]

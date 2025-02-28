@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://drdoxd6phn6fc"]
+
+[ext_resource type="PackedScene" uid="uid://d53r2bj2swkl" path="res://Entities/cargo_vehicles/vehicle_path_follower.tscn" id="1_d5xc4"]
+[ext_resource type="Texture2D" uid="uid://dhsd0bano03bj" path="res://Assets/Images/placeholder/airplane_02.png" id="2_jaonu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0gnj"]
+size = Vector2(32, 64)
+
+[node name="Airplane" instance=ExtResource("1_d5xc4")]
+
+[node name="Sprites" parent="." index="0"]
+rotation = 3.14159
+
+[node name="Airplane" type="Sprite2D" parent="Sprites" index="0"]
+scale = Vector2(4, 4)
+texture = ExtResource("2_jaonu")
+flip_h = true
+
+[node name="DebugInfo" parent="." index="3"]
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_a0gnj")

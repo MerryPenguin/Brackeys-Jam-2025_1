@@ -32,7 +32,7 @@ func has_product(product : FactoryProductWidget) -> bool:
 
 func has_product_num(product : Globals.products) -> bool:
 	for item in items_stored:
-		if item.recipe.product_name == Globals.product_recipes.product_name:
+		if item.recipe.product_name == Globals.product_recipes[product].product_name:
 			return true
 	return false
 
