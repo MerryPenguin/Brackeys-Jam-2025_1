@@ -56,6 +56,10 @@ func sell(product_name : StringName, buyer): # Buyer could be RovingCustomer or 
 		storage.give_product_by_name(product_name, buyer)
 		#Globals.cash += lookup_value(product_name)
 
+func sell_oldest_product(buyer):
+	if storage.get_total_held() > 0:
+		storage.give_product(storage.products_stored[0], buyer)
+
 func lookup_value(product_name) -> int:
 	for product_num in Globals.products.values():
 		var product_recipe : ProductWidgetRecipe = Globals.product_recipes[product_num]

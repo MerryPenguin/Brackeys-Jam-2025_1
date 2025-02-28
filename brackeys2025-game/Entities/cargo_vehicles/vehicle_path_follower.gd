@@ -45,28 +45,37 @@ func _process(delta):
 		states.OUTBOUND:
 			move(-1, delta)
 			
-func receive_product(item: FactoryProductWidget):
-	products_in_cargo.push_back(Globals.get_product_by_name(item.recipe.product_name))
-	popup_icon(item.recipe.icon)
+func receive_product(product_idx: Globals.products):
+	products_in_cargo.push_back(product_idx)
+	popup_icon(product_idx)
+	# payment should come on approval of paperwork
+	
 
-
-func popup_icon(icon):
+func popup_icon(product_idx : Globals.products):
+	print(self.name, " received ", Globals.product_recipes[product_idx].product_name)
 	var new_icon = Sprite2D.new()
-	new_icon.texture = icon
+	new_icon.texture = Globals.product_recipes[product_idx].icon
 	new_icon.scale = Vector2(4,4)
-	new_icon.position = Vector2(0, -16)
+	new_icon.global_rotation = 0
 	add_child(new_icon)
+	new_icon.global_position = global_position + Vector2(0, -16)
+	
 	var tween = new_icon.create_tween()
-	tween.tween_property(new_icon, "position", Vector2(0, -32), 0.33)
+	tween.tween_property(new_icon, "global_position", new_icon.global_position + Vector2(0, -32), 0.33)
+	tween.tween_property(new_icon, "scale", new_icon.scale * 2.0, 0.33)
 	tween.tween_callback(new_icon.queue_free)
 
 func load_cargo(delta):
 	if $LoadingWaitTimer.is_stopped():
 		# check the list of goods in the nearest store, if they have any on your manifest, add one
 		# then restart the timer and do it again.
+		var found_desired_product = false
 		for product_idx : Globals.products in manifest.widgets_desired:
 			if port.storage.has_product_num(product_idx):
 				port.sell(Globals.product_recipes[product_idx].product_name, self)
+				found_desired_product = true
+		if not found_desired_product: #take whatever they've got at a discount
+			port.sell_oldest_product(self)
 		cycles_waited += 1
 		$LoadingWaitTimer.start()
 		if products_in_cargo.size() >= max_capacity or cycles_waited > max_wait_cycles:
