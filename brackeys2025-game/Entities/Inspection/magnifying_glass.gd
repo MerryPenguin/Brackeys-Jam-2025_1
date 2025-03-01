@@ -15,7 +15,7 @@ func _input(_event: InputEvent) -> void:
 			var customers = potential_customers.filter(is_customer)
 			if customers.size() > 0:
 				var nearest_customer = Utils.find_closest_node(customers, global_position)
-				Globals.current_hud.spawn_discriminator(nearest_customer.manifest)
+				Globals.current_hud.spawn_discriminator(nearest_customer.manifest, nearest_customer)
 				call_deferred("queue_free") # Remove the magnifying glass
 		elif potential_vehicles.size() > 0:
 			var vehicle_areas = potential_vehicles.filter(is_vehicle)
@@ -23,7 +23,7 @@ func _input(_event: InputEvent) -> void:
 				var nearest_vehicle_area = Utils.find_closest_node(vehicle_areas, global_position)
 				var nearest_vehicle = nearest_vehicle_area.owner
 				if nearest_vehicle.state == nearest_vehicle.states.DETAINED:
-					Globals.current_hud.spawn_discriminator(nearest_vehicle.manifest)
+					Globals.current_hud.spawn_discriminator(nearest_vehicle.manifest, nearest_vehicle)
 					call_deferred("queue_free")
 			
 

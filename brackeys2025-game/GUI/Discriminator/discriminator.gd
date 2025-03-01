@@ -3,7 +3,9 @@ extends Control
 enum states { UNDECIDED, APPROVED, DENIED }
 var state : states = states.UNDECIDED
 
-var customer : RovingCustomer
+var customer # Could be RovingCustomer or VehiclePathFollower
+signal approved
+signal denied
 
 func _ready():
 	get_tree().paused = true
@@ -11,13 +13,20 @@ func _ready():
 	$InstructionsPopupPanel.hide()
 	
 
-func activate(manifest : ProcurementManifest):
-	#customer = new_customer
-	#customer.state = customer.states.DETAINED
+func activate(manifest : ProcurementManifest, incoming_customer): # include customer so we can callback to them and release them from their DETAINED state
+	customer = incoming_customer
+	#customer.state = customer.states.DETAINED # they can handle this themselves, I think
 	populate_receipt(manifest)
 	populate_order_form(manifest)
 	populate_basket(manifest)
 	populate_identity(manifest)
+	connect_signals(incoming_customer)
+
+func connect_signals(incoming_customer):
+	if incoming_customer.has_method("_on_discriminator_approved"):
+		approved.connect(incoming_customer._on_discriminator_approved)
+	if incoming_customer.has_method("_on_discriminator_denied"):
+		denied.connect(incoming_customer._on_discriminator_denied)
 
 func populate_identity(manifest: ProcurementManifest):
 	%PassportContainer.id = manifest.purchasing_agent.id
@@ -104,15 +113,17 @@ func _on_approve_button_pressed() -> void:
 	if state == states.UNDECIDED:
 		$AnimationPlayer.play("approve")
 		state = states.APPROVED
-		if customer != null and is_instance_valid(customer):
-			customer.queue_free()
+		approved.emit()
+		#if customer != null and is_instance_valid(customer):
+			#customer.queue_free()
 
 func _on_deny_button_pressed() -> void:
 	if state == states.UNDECIDED:
 		$AnimationPlayer.play("deny")
 		state = states.DENIED
-		if customer != null and is_instance_valid(customer):
-			customer.queue_free()
+		denied.emit()
+		#if customer != null and is_instance_valid(customer):
+			#customer.queue_free()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

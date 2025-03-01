@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0v05m2242yp5"]
 
-[ext_resource type="Script" uid="uid://bn0iynlgoc53i" path="res://Entities/ShippingPorts/incoming_vehicles.gd" id="1_v1vkk"]
+[ext_resource type="Script" uid="uid://bn0iynlgoc53i" path="res://Entities/ShippingPorts/incoming_vehicle_path2d.gd" id="1_v1vkk"]
 
 [sub_resource type="Curve2D" id="Curve2D_3w15f"]
 _data = {

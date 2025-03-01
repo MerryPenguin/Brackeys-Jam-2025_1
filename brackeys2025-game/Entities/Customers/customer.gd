@@ -316,3 +316,11 @@ func _on_checkout_wait_time_timeout() -> void:
 			become_evil()
 		else:
 			leave()
+
+func _on_discriminator_approved():
+	# TODO: Add some juice and payoff (if we still want floating head customers)
+	queue_free()
+	
+func _on_discriminator_denied():
+	# TODO: Add some juice and payoff (if we still want floating head customers)
+	queue_free()

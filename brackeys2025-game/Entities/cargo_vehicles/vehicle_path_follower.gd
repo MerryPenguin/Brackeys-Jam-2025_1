@@ -55,17 +55,17 @@ func popup_icon(product_idx : Globals.products):
 	print(self.name, " received ", Globals.product_recipes[product_idx].product_name)
 	var new_icon = Sprite2D.new()
 	new_icon.texture = Globals.product_recipes[product_idx].icon
-	new_icon.scale = Vector2(4,4)
-	new_icon.global_rotation = 0
 	add_child(new_icon)
-	new_icon.global_position = global_position + Vector2(0, -16)
+	new_icon.global_position = global_position + Vector2(-32, 0)
+	new_icon.global_scale = Vector2(4, 4)
+	new_icon.global_rotation = 0
 	
 	var tween = new_icon.create_tween()
-	tween.tween_property(new_icon, "global_position", new_icon.global_position + Vector2(0, -32), 0.33)
+	tween.tween_property(new_icon, "global_position", new_icon.global_position + Vector2(32, -48), 0.33)
 	tween.tween_property(new_icon, "scale", new_icon.scale * 2.0, 0.33)
 	tween.tween_callback(new_icon.queue_free)
 
-func load_cargo(delta):
+func load_cargo(_delta):
 	if $LoadingWaitTimer.is_stopped():
 		# check the list of goods in the nearest store, if they have any on your manifest, add one
 		# then restart the timer and do it again.
@@ -102,6 +102,7 @@ func move(direction, delta):
 
 func arrive():
 	state = states.LOADING
+	arrived.emit() # I don't know who this is for yet. Maybe the magnifying glass should flash, or the hud should do something
 	var new_customer = generate_random_customer(region)
 	var new_manifest = generate_random_manifest(region)
 	
@@ -129,7 +130,7 @@ func generate_random_customer(new_region):
 	new_customer.state = new_customer.states.DETAINED
 	return new_customer
 
-func generate_random_customer_ID(region):
+func generate_random_customer_ID(new_region):
 	var new_customer_ID = CustomerIdentity.new() # automatically randomizes the stats
 	return new_customer_ID
 
@@ -143,3 +144,13 @@ func _on_inspection_wait_timer_timeout() -> void:
 	if state == states.DETAINED:
 		# player didn't click on you in time
 		leave()
+
+
+func _on_discriminator_approved():
+	$InspectionWaitTimer.stop()
+	leave()
+
+func _on_discriminator_denied():
+	#??? What should happen?
+	# TODO: play a pissed off animation and return the goods to storage.
+	pass
