@@ -2,6 +2,9 @@
 
 class_name RovingCustomer extends CharacterBody2D
 
+@export var region : Globals.regions = Globals.regions.AMERICAS
+@export var law_abiding = true
+
 var target_destination : Node2D
 @export var speed = 30.0
 
@@ -45,7 +48,7 @@ func _ready():
 	$CustomerAvoidanceArea.show()
 	
 func create_requirements_list():
-	manifest.create_random_requirements_list()
+	manifest.create_random_requirements_list(region, law_abiding)
 	
 	var req_text = ""
 	for widget in manifest.widgets_desired:
@@ -60,7 +63,7 @@ func set_initial_sketchiness():
 func check_for_sketchiness():
 	if sketchiness_factor >= dangerous_limit:
 		add_sketchy_props()
-		#go_to_inspector()
+		law_abiding = false
 
 func add_sketchy_props():
 	# TODO: show more than 1 and make sure they don't occlude each other

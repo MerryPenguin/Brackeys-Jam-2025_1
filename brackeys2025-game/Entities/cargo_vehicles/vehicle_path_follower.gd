@@ -14,15 +14,17 @@ var state : states = states.INCOMING
 signal arrived(region)
 var port : StorageChest
 var region : Globals.regions = Globals.regions.AMERICAS
+var law_abiding : bool = true
 
 var manifest : ProcurementManifest
-var products_in_cargo : Array[Globals.products] # just store the product index (enum), not the node
+#var products_in_cargo : Array[Globals.products] # just store the product index (enum), not the node
 var cycles_waited : int = 0
 var max_wait_cycles : int = 10
 
 func _ready():
-	manifest = generate_random_manifest(region)
 	validate_dependencies()
+	if randf() < 0.33:
+		law_abiding = false
 
 func validate_dependencies():
 	if $Sprites.get_child_count() == 0:
@@ -33,8 +35,11 @@ func validate_dependencies():
 	
 
 func activate(new_port : StorageChest, new_region : Globals.regions):
+	# called by incoming_vehicle_path
 	port = new_port
 	region = new_region
+	manifest = generate_random_manifest(region)
+
 
 func _process(delta):
 	match state:
@@ -46,7 +51,11 @@ func _process(delta):
 			move(-1, delta)
 			
 func receive_product(product_idx: Globals.products):
-	products_in_cargo.push_back(product_idx)
+	#products_in_cargo.push_back(product_idx)
+	if law_abiding or randf() < 0.75:
+		manifest.items_purchased.push_back(product_idx)
+	else:
+		manifest.items_stolen.push_back(product_idx)
 	popup_icon(product_idx)
 	# payment should come on approval of paperwork
 	
@@ -78,7 +87,8 @@ func load_cargo(_delta):
 			port.sell_oldest_product(self)
 		cycles_waited += 1
 		$LoadingWaitTimer.start()
-		if products_in_cargo.size() >= max_capacity or cycles_waited > max_wait_cycles:
+		var total_held = manifest.items_purchased.size() + manifest.items_stolen.size()
+		if total_held >= max_capacity or cycles_waited > max_wait_cycles:
 			queue_for_inspection()
 
 func queue_for_inspection():
@@ -118,7 +128,7 @@ func generate_random_manifest(manifest_region) -> ProcurementManifest:
 	# figure out what the port has and buy some
 	# Do we want to show things we might want, but they don't have?
 	var new_manifest : ProcurementManifest = ProcurementManifest.new()
-	new_manifest.create_random_requirements_list()
+	new_manifest.create_random_requirements_list(region, law_abiding)
 	new_manifest.purchasing_company = null # TODO: come up with some corporations
 	new_manifest.purchasing_agent = generate_random_customer_ID(manifest_region)
 	return new_manifest

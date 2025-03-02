@@ -87,3 +87,8 @@ func get_product_by_name(product_name):
 			return product_num
 
 enum regions { PACIFIC, ATLANTIC, AMERICAS }
+const region_resources : Dictionary = {
+	regions.PACIFIC: preload("res://Regions/pacific_region.tres"),
+	regions.ATLANTIC: preload("res://Regions/pacific_region.tres"),
+	regions.AMERICAS: preload("res://Regions/americas_region.tres"),
+}

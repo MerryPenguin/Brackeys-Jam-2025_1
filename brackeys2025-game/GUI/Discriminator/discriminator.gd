@@ -42,7 +42,7 @@ func populate_order_form(manifest : ProcurementManifest):
 	item_list.append_array(manifest.items_purchased)
 	item_list.append_array(manifest.items_stolen)
 	var new_grid = GridContainer.new()
-	new_grid.columns = 2
+	new_grid.columns = 5
 	%OrderForm.get_node("marker").add_child(new_grid)
 	#new_grid.position = Vector2.ZERO
 	for item in item_list:
@@ -52,11 +52,9 @@ func populate_basket(manifest: ProcurementManifest):
 	var item_list = []
 	item_list.append_array(manifest.items_purchased)
 	item_list.append_array(manifest.items_stolen)
-	var new_grid = GridContainer.new()
-	new_grid.columns = 2
-	%Basket.add_child(new_grid)
+	var grid = %PurchasedItems
 	for item in item_list:
-		new_grid.add_child(generate_single_item(item))
+		grid.add_child(generate_single_item(item))
 
 func generate_single_item(product : Globals.products) -> TextureRect: 
 	var new_texture_rect = TextureRect.new()
