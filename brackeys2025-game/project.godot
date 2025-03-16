@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Brackeys2025-Game"
+config/name="Factoriohno - Brackeys Jam 2025-1"
+config/description="Factory game with elements from Papers Please"
 run/main_scene="res://GUI/maaack_template/scenes/opening/opening_with_logo.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="uid://knb3vquwjv55"
+config/icon="uid://cqkabe4egtmyx"
 
 [autoload]
 

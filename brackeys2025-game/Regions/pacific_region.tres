@@ -26,5 +26,5 @@ price_adjustments = Dictionary[int, float]({
 15: 1.0,
 16: 1.0
 })
-forbidden_products = Array[int]([])
+contraband = Array[int]([])
 metadata/_custom_type_script = "uid://cb1ek52gv6fxo"
